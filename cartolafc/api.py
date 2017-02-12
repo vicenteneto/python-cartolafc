@@ -4,7 +4,7 @@ import json
 import requests
 
 from cartolafc.error import CartolaFCError
-from cartolafc.models import Highlight, Status
+from cartolafc.models import Highlight, Sponsor, Status
 
 
 class Api(object):
@@ -30,6 +30,14 @@ class Api(object):
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return [Highlight.from_dict(highlight) for highlight in data]
+
+    def sponsors(self):
+        url = '%s/patrocinadores' % (self.base_url,)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return [Sponsor.from_dict(sponsor) for sponsor in data]
 
     def _parse_and_check_cartolafc(self, json_data):
         """
