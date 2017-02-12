@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 import json
 
 import requests
 
 from cartolafc.error import CartolaFCError
-from cartolafc.models import Status
+from cartolafc.models import Highlight, Status
 
 
 class Api(object):
@@ -21,6 +22,14 @@ class Api(object):
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return Status.from_dict(data)
+
+    def highlights(self):
+        url = '%s/mercado/destaques' % (self.base_url,)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return [Highlight.from_dict(highlight) for highlight in data]
 
     def _parse_and_check_cartolafc(self, json_data):
         """

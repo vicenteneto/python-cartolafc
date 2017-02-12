@@ -10,4 +10,4 @@
 
 from .api import Api
 from .error import CartolaFCError
-from .models import Status
+from .models import Highlight, Player, Status

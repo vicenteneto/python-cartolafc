@@ -5,11 +5,12 @@ from datetime import datetime
 class BaseModel(object):
     """ Base class from which all Cartola FC models will inherit. """
 
-    def __init__(self, **kwargs):
-        pass
+    def __init__(self, param_defaults, **kwargs):
+        for param in param_defaults:
+            setattr(self, param, kwargs.get(param, getattr(self, param, None)))
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
+    def from_dict(cls, data):
         """
         Create a new instance based on a JSON dict. Any kwargs should be supplied by the inherited, calling class.
         Args:
@@ -17,28 +18,31 @@ class BaseModel(object):
         """
 
         json_data = data.copy()
-        if kwargs:
-            for key, val in kwargs.items():
-                json_data[key] = val
-
         return cls(**json_data)
+
+
+class Highlight(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('atleta', 'escalacoes', 'clube', 'escudo_clube', 'posicao')
+        super(Highlight, self).__init__(param_defaults, **kwargs)
+
+    @classmethod
+    def from_dict(cls, data, **kwargs):
+        data['atleta'] = Player.from_dict(data.pop('Atleta'))
+        return super(cls, cls).from_dict(data)
+
+
+class Player(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'preco_editorial')
+        super(Player, self).__init__(param_defaults, **kwargs)
 
 
 class Status(BaseModel):
     def __init__(self, **kwargs):
-        super(Status, self).__init__(**kwargs)
-
-        param_defaults = {
-            'rodada_atual': None,
-            'status_mercado': None,
-            'temporada': None,
-            'times_escalados': None,
-            'fechamento': None,
-            'mercado_pos_rodada': None,
-            'aviso': None
-        }
-        for (param, default) in param_defaults.items():
-            setattr(self, param, kwargs.get(param, default))
+        param_defaults = ('rodada_atual', 'status_mercado', 'temporada', 'times_escalados', 'fechamento',
+                          'mercado_pos_rodada', 'aviso')
+        super(Status, self).__init__(param_defaults, **kwargs)
 
     @classmethod
     def from_dict(cls, data, **kwargs):
@@ -52,4 +56,4 @@ class Status(BaseModel):
 
         data['status_mercado'] = status_mercado.get(data['status_mercado'], 'Desconhecido')
         data['fechamento'] = datetime.fromtimestamp(data['fechamento']['timestamp'])
-        return super(cls, cls).from_dict(data=data)
+        return super(cls, cls).from_dict(data)
