@@ -38,6 +38,19 @@ class Player(BaseModel):
         super(Player, self).__init__(param_defaults, **kwargs)
 
 
+class Round(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('rodada_id', 'inicio', 'fim')
+        super(Round, self).__init__(param_defaults, **kwargs)
+
+    @classmethod
+    def from_dict(cls, data):
+        date_format = '%Y-%m-%d %H:%M:%S'
+        data['inicio'] = datetime.strptime(data['inicio'], date_format)
+        data['fim'] = datetime.strptime(data['fim'], date_format)
+        return super(cls, cls).from_dict(data)
+
+
 class Sponsor(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('liga_editorial_id', 'liga_id', 'tipo_ranking', 'url_link', 'url_editoria_ge',
