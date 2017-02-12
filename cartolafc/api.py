@@ -4,7 +4,7 @@ import json
 import requests
 
 from cartolafc.error import CartolaFCError
-from cartolafc.models import Highlight, Sponsor, Status
+from cartolafc.models import Highlight, Round, Sponsor, Status
 
 
 class Api(object):
@@ -38,6 +38,14 @@ class Api(object):
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return [Sponsor.from_dict(sponsor) for sponsor in data]
+
+    def rounds(self):
+        url = '%s/rodadas' % (self.base_url,)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return [Round.from_dict(round_) for round_ in data]
 
     def _parse_and_check_cartolafc(self, json_data):
         """
