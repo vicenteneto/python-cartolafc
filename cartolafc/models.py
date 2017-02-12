@@ -38,6 +38,13 @@ class Player(BaseModel):
         super(Player, self).__init__(param_defaults, **kwargs)
 
 
+class Sponsor(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('liga_editorial_id', 'liga_id', 'tipo_ranking', 'url_link', 'url_editoria_ge',
+                          'img_background', 'img_marca_patrocinador', 'nome')
+        super(Sponsor, self).__init__(param_defaults, **kwargs)
+
+
 class Status(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('rodada_atual', 'status_mercado', 'temporada', 'times_escalados', 'fechamento',
