@@ -6,7 +6,7 @@ install:
  - pip install -r requirements/development.txt
 
 script:
- - nosetests --with-coverage --cover-html --cover-branches --cover-erase --cover-package=cartolafc_api
+ - nosetests --with-coverage --cover-html --cover-branches --cover-erase --cover-package=cartolafc
 
 after_success:
   - coveralls
