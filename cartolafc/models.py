@@ -10,7 +10,7 @@ class BaseModel(object):
             setattr(self, param, kwargs.get(param, getattr(self, param, None)))
 
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data, extra=None):
         """
         Create a new instance based on a JSON dict. Any kwargs should be supplied by the inherited, calling class.
         Args:
@@ -21,14 +21,33 @@ class BaseModel(object):
         return cls(**json_data)
 
 
+class Club(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('id', 'nome', 'abreviacao', 'posicao', 'escudos')
+        super(Club, self).__init__(param_defaults, **kwargs)
+
+
 class Highlight(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('atleta', 'escalacoes', 'clube', 'escudo_clube', 'posicao')
         super(Highlight, self).__init__(param_defaults, **kwargs)
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
+    def from_dict(cls, data, extra=None):
         data['atleta'] = Player.from_dict(data.pop('Atleta'))
+        return super(cls, cls).from_dict(data)
+
+
+class Match(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('clube_casa', 'clube_casa_posicao', 'clube_visitante', 'clube_visitante_posicao',
+                          'partida_data', 'local')
+        super(Match, self).__init__(param_defaults, **kwargs)
+
+    @classmethod
+    def from_dict(cls, data, extra=None):
+        data['clube_casa'] = Club.from_dict(extra[str(data.pop('clube_casa_id'))])
+        data['clube_visitante'] = Club.from_dict(extra[str(data.pop('clube_visitante_id'))])
         return super(cls, cls).from_dict(data)
 
 
@@ -44,7 +63,7 @@ class Round(BaseModel):
         super(Round, self).__init__(param_defaults, **kwargs)
 
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data, extra=None):
         date_format = '%Y-%m-%d %H:%M:%S'
         data['inicio'] = datetime.strptime(data['inicio'], date_format)
         data['fim'] = datetime.strptime(data['fim'], date_format)
