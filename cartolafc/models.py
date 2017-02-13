@@ -96,3 +96,10 @@ class Status(BaseModel):
         data['status_mercado'] = status_mercado.get(data['status_mercado'], 'Desconhecido')
         data['fechamento'] = datetime.fromtimestamp(data['fechamento']['timestamp'])
         return super(cls, cls).from_dict(data)
+
+
+class Team(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('time_id', 'nome', 'nome_cartola', 'slug', 'facebook_id', 'url_escudo_png', 'url_escudo_svg',
+                          'foto_perfil', 'assinante')
+        super(Team, self).__init__(param_defaults, **kwargs)

@@ -4,7 +4,7 @@ import json
 import requests
 
 from cartolafc.error import CartolaFCError
-from cartolafc.models import Club, Highlight, Match, Round, Sponsor, Status
+from cartolafc.models import Club, Highlight, Match, Round, Sponsor, Status, Team
 
 
 class Api(object):
@@ -62,6 +62,14 @@ class Api(object):
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return [Club.from_dict(club) for club in data.values()]
+
+    def search_team_by_name(self, name):
+        url = '%s/times?q=%s' % (self.base_url, name)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return [Team.from_dict(team) for team in data]
 
     def _parse_and_check_cartolafc(self, json_data):
         """

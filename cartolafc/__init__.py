@@ -10,4 +10,4 @@
 
 from .api import Api
 from .error import CartolaFCError
-from .models import Club, Highlight, Match, Player, Round, Sponsor, Status
+from .models import Club, Highlight, Match, Player, Round, Sponsor, Status, Team
