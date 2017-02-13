@@ -10,7 +10,7 @@ class BaseModel(object):
             setattr(self, param, kwargs.get(param, getattr(self, param, None)))
 
     @classmethod
-    def from_dict(cls, data, extra=None):
+    def from_dict(cls, data, **kwargs):
         """
         Create a new instance based on a JSON dict. Any kwargs should be supplied by the inherited, calling class.
         Args:
@@ -19,6 +19,31 @@ class BaseModel(object):
 
         json_data = data.copy()
         return cls(**json_data)
+
+
+class Athlete(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'clube', 'posicao', 'status', 'pontos', 'preco',
+                          'variacao', 'media', 'jogos', 'scout')
+        super(Athlete, self).__init__(param_defaults, **kwargs)
+
+    @classmethod
+    def from_dict(cls, data, **kwargs):
+        data['clube'] = kwargs['clubs'][data['clube_id']]
+        data['posicao'] = kwargs['positions'][data['posicao_id']]
+        data['status'] = kwargs['status'][data['status_id']]['nome']
+        data['pontos'] = data['pontos_num']
+        data['preco'] = data['preco_num']
+        data['variacao'] = data['variacao_num']
+        data['media'] = data['media_num']
+        data['jogos'] = data['jogos_num']
+        return super(cls, cls).from_dict(data)
+
+
+class AthleteInfo(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'preco_editorial')
+        super(AthleteInfo, self).__init__(param_defaults, **kwargs)
 
 
 class Club(BaseModel):
@@ -33,8 +58,8 @@ class Highlight(BaseModel):
         super(Highlight, self).__init__(param_defaults, **kwargs)
 
     @classmethod
-    def from_dict(cls, data, extra=None):
-        data['atleta'] = Player.from_dict(data.pop('Atleta'))
+    def from_dict(cls, data, **kwargs):
+        data['atleta'] = AthleteInfo.from_dict(data['Atleta'])
         return super(cls, cls).from_dict(data)
 
 
@@ -45,16 +70,16 @@ class Match(BaseModel):
         super(Match, self).__init__(param_defaults, **kwargs)
 
     @classmethod
-    def from_dict(cls, data, extra=None):
-        data['clube_casa'] = Club.from_dict(extra[str(data.pop('clube_casa_id'))])
-        data['clube_visitante'] = Club.from_dict(extra[str(data.pop('clube_visitante_id'))])
+    def from_dict(cls, data, **kwargs):
+        data['clube_casa'] = kwargs['clubs'][data['clube_casa_id']]
+        data['clube_visitante'] = kwargs['clubs'][data['clube_visitante_id']]
         return super(cls, cls).from_dict(data)
 
 
-class Player(BaseModel):
+class Position(BaseModel):
     def __init__(self, **kwargs):
-        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'preco_editorial')
-        super(Player, self).__init__(param_defaults, **kwargs)
+        param_defaults = ('id', 'nome', 'abreviacao')
+        super(Position, self).__init__(param_defaults, **kwargs)
 
 
 class Round(BaseModel):
@@ -63,7 +88,7 @@ class Round(BaseModel):
         super(Round, self).__init__(param_defaults, **kwargs)
 
     @classmethod
-    def from_dict(cls, data, extra=None):
+    def from_dict(cls, data, **kwargs):
         date_format = '%Y-%m-%d %H:%M:%S'
         data['inicio'] = datetime.strptime(data['inicio'], date_format)
         data['fim'] = datetime.strptime(data['fim'], date_format)
@@ -96,3 +121,27 @@ class Status(BaseModel):
         data['status_mercado'] = status_mercado.get(data['status_mercado'], 'Desconhecido')
         data['fechamento'] = datetime.fromtimestamp(data['fechamento']['timestamp'])
         return super(cls, cls).from_dict(data)
+
+
+class Team(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('atletas', 'esquema_id', 'patrimonio', 'pontos', 'info', 'valor_time')
+        super(Team, self).__init__(param_defaults, **kwargs)
+
+    @classmethod
+    def from_dict(cls, data, **kwargs):
+        clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
+        positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
+        status = {status['id']: status for status in data['status'].values()}
+        data['atletas'] = [Athlete.from_dict(athlete, clubs=clubs, positions=positions, status=status) for athlete
+                           in data['atletas']]
+        data['info'] = TeamInfo.from_dict(data['time'])
+        return super(cls, cls).from_dict(data)
+
+
+class TeamInfo(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('time_id', 'clube_id', 'esquema_id', 'facebook_id', 'foto_perfil', 'nome', 'nome_cartola',
+                          'slug', 'url_escudo_png', 'url_escudo_svg', 'url_camisa_png', 'url_camisa_svg',
+                          'url_escudo_placeholder_png', 'url_escudo_placeholder_svg', 'assinante')
+        super(TeamInfo, self).__init__(param_defaults, **kwargs)

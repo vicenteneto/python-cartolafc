@@ -4,7 +4,7 @@ import json
 import requests
 
 from cartolafc.error import CartolaFCError
-from cartolafc.models import Club, Highlight, Match, Round, Sponsor, Status
+from cartolafc.models import Club, Highlight, Match, Round, Sponsor, Status, Team, TeamInfo
 
 
 class Api(object):
@@ -53,7 +53,8 @@ class Api(object):
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Match.from_dict(match, data['clubes']) for match in data['partidas']]
+        clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
+        return [Match.from_dict(match, clubs=clubs) for match in data['partidas']]
 
     def clubs(self):
         url = '%s/clubes' % (self.base_url,)
@@ -63,12 +64,31 @@ class Api(object):
 
         return [Club.from_dict(club) for club in data.values()]
 
+    def search_team_info_by_name(self, name):
+        url = '%s/times?q=%s' % (self.base_url, name)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return [TeamInfo.from_dict(team_info) for team_info in data]
+
+    def get_team(self, slug):
+        url = '%s/time/%s' % (self.base_url, slug)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return Team.from_dict(data)
+
     def _parse_and_check_cartolafc(self, json_data):
         """
         Try and parse the JSON returned from Cartola FC API and return an empty dictionary if there is any error.
         This is a purely defensive check because during some Cartola FC API network outages it can return an error page.
         """
         try:
-            return json.loads(json_data)
+            data = json.loads(json_data)
+            if 'mensagem' in data:
+                raise CartolaFCError(data['mensagem'])
+            return data
         except ValueError:
             raise CartolaFCError('Unknown error: {0}'.format(json_data))
