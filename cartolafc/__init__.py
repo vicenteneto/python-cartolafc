@@ -10,4 +10,3 @@
 
 from .api import Api
 from .error import CartolaFCError
-from .models import Athlete, AthleteInfo, Club, Highlight, Match, Position, Round, Sponsor, Status, Team, TeamInfo
