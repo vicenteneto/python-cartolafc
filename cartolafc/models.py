@@ -101,6 +101,17 @@ class Round(BaseModel):
         return super(cls, cls).from_dict(data)
 
 
+class RoundHighlights(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('media_cartoletas', 'media_pontos', 'mito_rodada')
+        super(RoundHighlights, self).__init__(param_defaults, **kwargs)
+
+    @classmethod
+    def from_dict(cls, data, **kwargs):
+        data['mito_rodada'] = TeamInfo.from_dict(data['mito_rodada'])
+        return super(cls, cls).from_dict(data)
+
+
 class Scheme(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('esquema_id', 'nome', 'posicoes')
@@ -155,5 +166,5 @@ class TeamInfo(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('time_id', 'clube_id', 'esquema_id', 'facebook_id', 'foto_perfil', 'nome', 'nome_cartola',
                           'slug', 'url_escudo_png', 'url_escudo_svg', 'url_camisa_png', 'url_camisa_svg',
-                          'url_escudo_placeholder_png', 'url_escudo_placeholder_svg', 'assinante')
+                          'url_escudo_placeholder_png', 'url_camisa_placeholder_png', 'assinante')
         super(TeamInfo, self).__init__(param_defaults, **kwargs)

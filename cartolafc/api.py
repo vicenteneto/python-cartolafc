@@ -4,7 +4,19 @@ import json
 import requests
 
 from cartolafc.error import CartolaFCError
-from cartolafc.models import Club, Highlight, LeagueInfo, Match, Round, Scheme, Sponsor, Status, Team, TeamInfo
+from cartolafc.models import (
+    Club,
+    Highlight,
+    LeagueInfo,
+    Match,
+    Round,
+    RoundHighlights,
+    Scheme,
+    Sponsor,
+    Status,
+    Team,
+    TeamInfo
+)
 
 
 class Api(object):
@@ -30,6 +42,14 @@ class Api(object):
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return [Highlight.from_dict(highlight) for highlight in data]
+
+    def round_highlights(self):
+        url = '%s/pos-rodada/destaques' % (self.base_url,)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return RoundHighlights.from_dict(data)
 
     def sponsors(self):
         url = '%s/patrocinadores' % (self.base_url,)
