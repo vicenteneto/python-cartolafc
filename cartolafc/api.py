@@ -5,10 +5,12 @@ import requests
 
 from cartolafc.error import CartolaFCError
 from cartolafc.models import (
+    Athlete,
     Club,
     Highlight,
     LeagueInfo,
     Match,
+    Position,
     Round,
     RoundHighlights,
     Scheme,
@@ -34,6 +36,18 @@ class Api(object):
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return Status.from_dict(data)
+
+    def market(self):
+        url = '%s/atletas/mercado' % (self.base_url,)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
+        positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
+        status = {status['id']: status for status in data['status'].values()}
+        return [Athlete.from_dict(athlete, clubs=clubs, positions=positions, status=status) for athlete
+                in data['atletas']]
 
     def highlights(self):
         url = '%s/mercado/destaques' % (self.base_url,)

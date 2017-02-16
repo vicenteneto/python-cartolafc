@@ -23,8 +23,8 @@ class BaseModel(object):
 
 class Athlete(BaseModel):
     def __init__(self, **kwargs):
-        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'clube', 'posicao', 'status', 'pontos', 'preco',
-                          'variacao', 'media', 'jogos', 'scout')
+        param_defaults = ('atleta_id', 'rodada_id', 'nome', 'apelido', 'foto', 'clube', 'posicao', 'status', 'pontos',
+                          'preco', 'variacao', 'media', 'jogos', 'scout')
         super(Athlete, self).__init__(param_defaults, **kwargs)
 
     @classmethod
