@@ -63,6 +63,12 @@ class Highlight(BaseModel):
         return super(cls, cls).from_dict(data)
 
 
+class LeagueInfo(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('liga_id', 'nome', 'descricao', 'slug', 'imagem', 'quantidade_times', 'mata_mata', 'tipo')
+        super(LeagueInfo, self).__init__(param_defaults, **kwargs)
+
+
 class Match(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('clube_casa', 'clube_casa_posicao', 'clube_visitante', 'clube_visitante_posicao',
