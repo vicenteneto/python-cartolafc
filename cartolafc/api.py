@@ -88,6 +88,14 @@ class Api(object):
 
         return Team.from_dict(data)
 
+    def get_team_by_round(self, slug, round_):
+        url = '%s/time/%s/%s' % (self.base_url, slug, round_)
+
+        resp = requests.get(url)
+        data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
+
+        return Team.from_dict(data)
+
     def _parse_and_check_cartolafc(self, json_data):
         """
         Try and parse the JSON returned from Cartola FC API and return an empty dictionary if there is any error.
