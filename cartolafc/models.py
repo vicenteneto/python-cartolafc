@@ -22,6 +22,20 @@ class BaseModel(object):
 
 
 class Athlete(BaseModel):
+    atleta_id = None
+    nome = None
+    apelido = None
+    foto = None
+    clube = None
+    posicao = None
+    status = None
+    pontos = None
+    preco = None
+    variacao = None
+    media = None
+    jogos = None
+    scout = None
+
     def __init__(self, **kwargs):
         param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'clube', 'posicao', 'status', 'pontos', 'preco',
                           'variacao', 'media', 'jogos', 'scout')
@@ -41,12 +55,25 @@ class Athlete(BaseModel):
 
 
 class AthleteInfo(BaseModel):
+    atleta_id = None
+    nome = None
+    apelido = None
+    foto = None
+    preco_editorial = None
+
     def __init__(self, **kwargs):
         param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'preco_editorial')
         super(AthleteInfo, self).__init__(param_defaults, **kwargs)
 
 
 class AthleteScore(BaseModel):
+    apelido = None
+    pontuacao = None
+    foto = None
+    clube = None
+    posicao = None
+    scout = None
+
     def __init__(self, **kwargs):
         param_defaults = ('apelido', 'pontuacao', 'foto', 'clube', 'posicao', 'scout')
         super(AthleteScore, self).__init__(param_defaults, **kwargs)
@@ -59,12 +86,24 @@ class AthleteScore(BaseModel):
 
 
 class Club(BaseModel):
+    id = None
+    nome = None
+    abreviacao = None
+    posicao = None
+    escudos = None
+
     def __init__(self, **kwargs):
         param_defaults = ('id', 'nome', 'abreviacao', 'posicao', 'escudos')
         super(Club, self).__init__(param_defaults, **kwargs)
 
 
 class Highlight(BaseModel):
+    atleta = None
+    escalacoes = None
+    clube = None
+    escudo_clube = None
+    posicao = None
+
     def __init__(self, **kwargs):
         param_defaults = ('atleta', 'escalacoes', 'clube', 'escudo_clube', 'posicao')
         super(Highlight, self).__init__(param_defaults, **kwargs)
@@ -76,12 +115,28 @@ class Highlight(BaseModel):
 
 
 class LeagueInfo(BaseModel):
+    liga_id = None
+    nome = None
+    descricao = None
+    slug = None
+    imagem = None
+    quantidade_times = None
+    mata_mata = None
+    tipo = None
+
     def __init__(self, **kwargs):
         param_defaults = ('liga_id', 'nome', 'descricao', 'slug', 'imagem', 'quantidade_times', 'mata_mata', 'tipo')
         super(LeagueInfo, self).__init__(param_defaults, **kwargs)
 
 
 class Match(BaseModel):
+    clube_casa = None
+    clube_casa_posicao = None
+    clube_visitante = None
+    clube_visitante_posicao = None
+    partida_data = None
+    local = None
+
     def __init__(self, **kwargs):
         param_defaults = ('clube_casa', 'clube_casa_posicao', 'clube_visitante', 'clube_visitante_posicao',
                           'partida_data', 'local')
@@ -95,12 +150,20 @@ class Match(BaseModel):
 
 
 class Position(BaseModel):
+    id = None
+    nome = None
+    abreviacao = None
+
     def __init__(self, **kwargs):
         param_defaults = ('id', 'nome', 'abreviacao')
         super(Position, self).__init__(param_defaults, **kwargs)
 
 
 class Round(BaseModel):
+    rodada_id = None
+    inicio = None
+    fim = None
+
     def __init__(self, **kwargs):
         param_defaults = ('rodada_id', 'inicio', 'fim')
         super(Round, self).__init__(param_defaults, **kwargs)
@@ -114,6 +177,10 @@ class Round(BaseModel):
 
 
 class RoundHighlights(BaseModel):
+    media_cartoletas = None
+    media_pontos = None
+    mito_rodada = None
+
     def __init__(self, **kwargs):
         param_defaults = ('media_cartoletas', 'media_pontos', 'mito_rodada')
         super(RoundHighlights, self).__init__(param_defaults, **kwargs)
@@ -125,12 +192,25 @@ class RoundHighlights(BaseModel):
 
 
 class Scheme(BaseModel):
+    esquema_id = None
+    nome = None
+    posicoes = None
+
     def __init__(self, **kwargs):
         param_defaults = ('esquema_id', 'nome', 'posicoes')
         super(Scheme, self).__init__(param_defaults, **kwargs)
 
 
 class Sponsor(BaseModel):
+    liga_editorial_id = None
+    liga_id = None
+    tipo_ranking = None
+    url_link = None
+    url_editoria_ge = None
+    img_background = None
+    img_marca_patrocinador = None
+    nome = None
+
     def __init__(self, **kwargs):
         param_defaults = ('liga_editorial_id', 'liga_id', 'tipo_ranking', 'url_link', 'url_editoria_ge',
                           'img_background', 'img_marca_patrocinador', 'nome')
@@ -138,6 +218,14 @@ class Sponsor(BaseModel):
 
 
 class Status(BaseModel):
+    rodada_atual = None
+    status_mercado = None
+    temporada = None
+    times_escalados = None
+    fechamento = None
+    mercado_pos_rodada = None
+    aviso = None
+
     def __init__(self, **kwargs):
         param_defaults = ('rodada_atual', 'status_mercado', 'temporada', 'times_escalados', 'fechamento',
                           'mercado_pos_rodada', 'aviso')
@@ -159,6 +247,13 @@ class Status(BaseModel):
 
 
 class Team(BaseModel):
+    atletas = None
+    esquema_id = None
+    patrimonio = None
+    pontos = None
+    info = None
+    valor_time = None
+
     def __init__(self, **kwargs):
         param_defaults = ('atletas', 'esquema_id', 'patrimonio', 'pontos', 'info', 'valor_time')
         super(Team, self).__init__(param_defaults, **kwargs)
@@ -175,6 +270,22 @@ class Team(BaseModel):
 
 
 class TeamInfo(BaseModel):
+    time_id = None
+    clube_id = None
+    esquema_id = None
+    facebook_id = None
+    foto_perfil = None
+    nome = None
+    nome_cartola = None
+    slug = None
+    url_escudo_png = None
+    url_escudo_svg = None
+    url_camisa_png = None
+    url_camisa_svg = None
+    url_escudo_placeholder_png = None
+    url_camisa_placeholder_svg = None
+    assinante = None
+
     def __init__(self, **kwargs):
         param_defaults = ('time_id', 'clube_id', 'esquema_id', 'facebook_id', 'foto_perfil', 'nome', 'nome_cartola',
                           'slug', 'url_escudo_png', 'url_escudo_svg', 'url_camisa_png', 'url_camisa_svg',
