@@ -95,6 +95,12 @@ class Round(BaseModel):
         return super(cls, cls).from_dict(data)
 
 
+class Scheme(BaseModel):
+    def __init__(self, **kwargs):
+        param_defaults = ('esquema_id', 'nome', 'posicoes')
+        super(Scheme, self).__init__(param_defaults, **kwargs)
+
+
 class Sponsor(BaseModel):
     def __init__(self, **kwargs):
         param_defaults = ('liga_editorial_id', 'liga_id', 'tipo_ranking', 'url_link', 'url_editoria_ge',
