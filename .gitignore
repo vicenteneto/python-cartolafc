@@ -15,3 +15,7 @@ pyEnv/
 # Coverage
 .coverage
 cover
+
+#PyPi
+Python_CartolaFC.egg-info/
+dist/
