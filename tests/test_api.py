@@ -48,6 +48,8 @@ class ApiTest(unittest.TestCase):
         SEARCH_TEAM_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/get_team.json', 'rb') as f:
         GET_TEAM_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/get_team_by_round.json', 'rb') as f:
+        GET_TEAM_BY_ROUND_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -435,6 +437,16 @@ class ApiTest(unittest.TestCase):
         # Arrange
         team_slug = 'falydos-fc'
         url = '%s/time/%s' % (self.base_url, team_slug)
+        escudos_dict = {
+            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png',
+            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png',
+            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_30x30.png'
+        }
+        scout_dict = {
+            'FC': 1,
+            'PE': 3,
+            'SG': 1
+        }
 
         # Act
         with requests_mock.mock() as m:
@@ -445,6 +457,28 @@ class ApiTest(unittest.TestCase):
         # Assert
         self.assertIsInstance(team, Team)
         self.assertIsInstance(first_athlete, Athlete)
+        self.assertEqual(52253, first_athlete.atleta_id)
+        self.assertEqual(u'R\xe9ver Humberto Alves Ara\xfajo', first_athlete.nome)
+        self.assertEqual(u'R\xe9ver', first_athlete.apelido)
+        self.assertEqual('https://s.glbimg.com/es/sde/f/2016/06/28/b3229ad78369684e9d9ac48e51678043_FORMATO.jpeg',
+                         first_athlete.foto)
+        self.assertIsInstance(first_athlete.clube, Club)
+        self.assertEqual(262, first_athlete.clube.id)
+        self.assertEqual('Flamengo', first_athlete.clube.nome)
+        self.assertEqual('FLA', first_athlete.clube.abreviacao)
+        self.assertEqual(3, first_athlete.clube.posicao)
+        self.assertDictEqual(escudos_dict, first_athlete.clube.escudos)
+        self.assertIsInstance(first_athlete.posicao, Position)
+        self.assertEqual(3, first_athlete.posicao.id)
+        self.assertEqual('Zagueiro', first_athlete.posicao.nome)
+        self.assertEqual('zag', first_athlete.posicao.abreviacao)
+        self.assertEqual(u'Prov\xe1vel', first_athlete.status)
+        self.assertEqual(3.6, first_athlete.pontos)
+        self.assertEqual(8.24, first_athlete.preco)
+        self.assertEqual(-0.25, first_athlete.variacao)
+        self.assertEqual(4.09, first_athlete.media)
+        self.assertEqual(29, first_athlete.jogos)
+        self.assertDictEqual(scout_dict, first_athlete.scout)
         self.assertEqual(3, team.esquema_id)
         self.assertEqual(0, team.patrimonio)
         self.assertEqual(48.889892578125, team.pontos)
@@ -486,3 +520,97 @@ class ApiTest(unittest.TestCase):
 
             with self.assertRaises(cartolafc.CartolaFCError):
                 self.api.get_team(team_slug)
+
+    def test_get_team_by_round(self):
+        """Test the cartolafc.Api get_team_by_round method"""
+
+        # Arrange
+        team_slug = 'falydos-fc'
+        round_ = 15
+        url = '%s/time/%s/%s' % (self.base_url, team_slug, round_)
+        escudos_dict = {
+            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png',
+            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png',
+            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_30x30.png'
+        }
+        scout_dict = {
+            'FF': 1,
+            'FS': 2,
+            'FT': 1,
+            'I': 1,
+            'PE': 4
+        }
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.GET_TEAM_BY_ROUND_SAMPLE_JSON)
+            team = self.api.get_team_by_round(team_slug, round_)
+            first_athlete = team.atletas[0]
+
+        # Assert
+        self.assertIsInstance(team, Team)
+        self.assertIsInstance(first_athlete, Athlete)
+        self.assertEqual(86759, first_athlete.atleta_id)
+        self.assertEqual('Luan Guilherme de Jesus Vieira', first_athlete.nome)
+        self.assertEqual('Luan', first_athlete.apelido)
+        self.assertEqual('https://s.glbimg.com/es/sde/f/2016/04/30/48dd7ee31224c5846fad2dbe7a73178c_FORMATO.png',
+                         first_athlete.foto)
+        self.assertIsInstance(first_athlete.clube, Club)
+        self.assertEqual(284, first_athlete.clube.id)
+        self.assertEqual(u'Gr\xeamio', first_athlete.clube.nome)
+        self.assertEqual('GRE', first_athlete.clube.abreviacao)
+        self.assertEqual(9, first_athlete.clube.posicao)
+        self.assertDictEqual(escudos_dict, first_athlete.clube.escudos)
+        self.assertIsInstance(first_athlete.posicao, Position)
+        self.assertEqual(5, first_athlete.posicao.id)
+        self.assertEqual('Atacante', first_athlete.posicao.nome)
+        self.assertEqual('ata', first_athlete.posicao.abreviacao)
+        self.assertEqual('Nulo', first_athlete.status)
+        self.assertEqual(3.5, first_athlete.pontos)
+        self.assertEqual(19.23, first_athlete.preco)
+        self.assertEqual(-0.45, first_athlete.variacao)
+        self.assertEqual(6.78, first_athlete.media)
+        self.assertEqual(14, first_athlete.jogos)
+        self.assertDictEqual(scout_dict, first_athlete.scout)
+        self.assertEqual(1, team.esquema_id)
+        self.assertEqual(0, team.patrimonio)
+        self.assertEqual(70.89013671875, team.pontos)
+        self.assertIsInstance(team.info, TeamInfo)
+        self.assertEqual(471815, team.info.time_id)
+        self.assertEqual(100000083906892, team.info.facebook_id)
+        self.assertEqual('https://graph.facebook.com/v2.2/100000083906892/picture?width=100&height=100',
+                         team.info.foto_perfil)
+        self.assertEqual('Falydos FC', team.info.nome)
+        self.assertEqual('Vicente Neto', team.info.nome_cartola)
+        self.assertEqual('falydos-fc', team.info.slug)
+        self.assertEqual('https://s2.glbimg.com/Hysm88FeHV4IxqX9E180IIEPUkA=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/escudo/29/22/08/004692352920160827072208',
+                         team.info.url_escudo_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/escudo/29/22/'
+                         '08/004692352920160827072208', team.info.url_escudo_svg)
+        self.assertEqual('https://s2.glbimg.com/JyYGSWyMFmHwzgL39uZIBJKEbTM=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/camisa/29/22/08/004692352920160827072208',
+                         team.info.url_camisa_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/camisa/29/22/'
+                         '08/004692352920160827072208', team.info.url_camisa_svg)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png',
+                         team.info.url_escudo_placeholder_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/camisa.png',
+                         team.info.url_camisa_placeholder_png)
+        self.assertFalse(team.info.assinante)
+        self.assertEqual(0, team.valor_time)
+
+    def test_get_inexistent_team_by_round(self):
+        """Test the cartolafc.Api get_team_by_round method"""
+
+        # Arrange
+        team_slug = 'inexistent-slug'
+        round_ = 15
+        url = '%s/time/%s/%s' % (self.base_url, team_slug, round_)
+
+        # Act and Assert
+        with requests_mock.mock() as m:
+            m.get(url, json={'mensagem': 'Time não encontrado'})
+
+            with self.assertRaises(cartolafc.CartolaFCError):
+                self.api.get_team_by_round(team_slug, round_)
