@@ -13,6 +13,7 @@ from cartolafc.models import (
     Highlight,
     Position,
     RoundHighlights,
+    Sponsor,
     Status,
     TeamInfo
 )
@@ -29,6 +30,8 @@ class ApiTest(unittest.TestCase):
         HIGHLIGHTS_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/round_highlights.json', 'rb') as f:
         ROUND_HIGHLIGHTS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/sponsors.json', 'rb') as f:
+        SPONSORS_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -219,3 +222,30 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/camisa.png',
                          round_highlights.mito_rodada.url_camisa_placeholder_png)
         self.assertFalse(round_highlights.mito_rodada.assinante)
+
+    def test_sponsors(self):
+        """Test the cartolafc.Api sponsors method"""
+
+        # Arrange
+        url = '%s/patrocinadores' % (self.base_url,)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.SPONSORS_SAMPLE_JSON)
+            sponsors = self.api.sponsors()
+            first_sponsor = sponsors[0]
+
+        # Assert
+        self.assertIsInstance(sponsors, list)
+        self.assertIsInstance(first_sponsor, Sponsor)
+        self.assertEqual(2, first_sponsor.liga_editorial_id)
+        self.assertEqual(62, first_sponsor.liga_id)
+        self.assertEqual('mes', first_sponsor.tipo_ranking)
+        self.assertEqual('http://www.listerine.com.br/', first_sponsor.url_link)
+        self.assertEqual('http://globoesporte.globo.com/cartola-fc/ep/monstros/listerine/monstro-listerine/',
+                         first_sponsor.url_editoria_ge)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/background-liga/'
+                         'header-liga-monstro-listerine.jpg', first_sponsor.img_background)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/patrocinador/'
+                         'marca-listerine.svg', first_sponsor.img_marca_patrocinador)
+        self.assertEqual('#SOLTAESSEMONSTRO', first_sponsor.nome)
