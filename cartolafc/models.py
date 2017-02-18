@@ -283,11 +283,11 @@ class TeamInfo(BaseModel):
     url_camisa_png = None
     url_camisa_svg = None
     url_escudo_placeholder_png = None
-    url_camisa_placeholder_svg = None
+    url_camisa_placeholder_png = None
     assinante = None
 
     def __init__(self, **kwargs):
         param_defaults = ('time_id', 'clube_id', 'esquema_id', 'facebook_id', 'foto_perfil', 'nome', 'nome_cartola',
                           'slug', 'url_escudo_png', 'url_escudo_svg', 'url_camisa_png', 'url_camisa_svg',
-                          'url_escudo_placeholder_png', 'url_camisa_placeholder_svg', 'assinante')
+                          'url_escudo_placeholder_png', 'url_camisa_placeholder_png', 'assinante')
         super(TeamInfo, self).__init__(param_defaults, **kwargs)
