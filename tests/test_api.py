@@ -12,7 +12,10 @@ from cartolafc.models import (
     Club,
     Highlight,
     Position,
-    Status
+    RoundHighlights,
+    Sponsor,
+    Status,
+    TeamInfo
 )
 
 
@@ -25,6 +28,10 @@ class ApiTest(unittest.TestCase):
         ROUND_SCORE_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/highlights.json', 'rb') as f:
         HIGHLIGHTS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/round_highlights.json', 'rb') as f:
+        ROUND_HIGHLIGHTS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/sponsors.json', 'rb') as f:
+        SPONSORS_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -174,3 +181,71 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('SPO', first_highlight.clube)
         self.assertEqual('https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png', first_highlight.escudo_clube)
         self.assertEqual('Meia', first_highlight.posicao)
+
+    def test_round_highlights(self):
+        """Test the cartolafc.Api round_highlights method"""
+
+        # Arrange
+        url = '%s/pos-rodada/destaques' % (self.base_url,)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.ROUND_HIGHLIGHTS_SAMPLE_JSON)
+            round_highlights = self.api.round_highlights()
+
+        # Assert
+        self.assertIsInstance(round_highlights, RoundHighlights)
+        self.assertEqual(128.04772232227782, round_highlights.media_cartoletas)
+        self.assertEqual(31.459999543855716, round_highlights.media_pontos)
+        self.assertIsInstance(round_highlights.mito_rodada, TeamInfo)
+        self.assertEqual(1549512, round_highlights.mito_rodada.time_id)
+        self.assertEqual(262, round_highlights.mito_rodada.clube_id)
+        self.assertEqual(3, round_highlights.mito_rodada.esquema_id)
+        self.assertIsNone(round_highlights.mito_rodada.facebook_id)
+        self.assertEqual('https://cartolafc.globo.com/static/img/placeholder_perfil.png',
+                         round_highlights.mito_rodada.foto_perfil)
+        self.assertEqual('MB2 F.C', round_highlights.mito_rodada.nome)
+        self.assertEqual(u'M\xe1rio Barreto', round_highlights.mito_rodada.nome_cartola)
+        self.assertEqual('mb2-f-c', round_highlights.mito_rodada.slug)
+        self.assertEqual('https://s2.glbimg.com/OdFgAz9xQCNxWwWoPQ2CzQlv0bs=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_22/escudo/64/58/51/004169596420160826015851',
+                         round_highlights.mito_rodada.url_escudo_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_22/escudo/64/58/'
+                         '51/004169596420160826015851', round_highlights.mito_rodada.url_escudo_svg)
+        self.assertEqual('https://s2.glbimg.com/UIUs5mFAyFMxyZ51ne8qAFjQyvI=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_22/camisa/64/58/51/004169596420160826015851',
+                         round_highlights.mito_rodada.url_camisa_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_22/camisa/64/58/'
+                         '51/004169596420160826015851', round_highlights.mito_rodada.url_camisa_svg)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png',
+                         round_highlights.mito_rodada.url_escudo_placeholder_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/camisa.png',
+                         round_highlights.mito_rodada.url_camisa_placeholder_png)
+        self.assertFalse(round_highlights.mito_rodada.assinante)
+
+    def test_sponsors(self):
+        """Test the cartolafc.Api sponsors method"""
+
+        # Arrange
+        url = '%s/patrocinadores' % (self.base_url,)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.SPONSORS_SAMPLE_JSON)
+            sponsors = self.api.sponsors()
+            first_sponsor = sponsors[0]
+
+        # Assert
+        self.assertIsInstance(sponsors, list)
+        self.assertIsInstance(first_sponsor, Sponsor)
+        self.assertEqual(2, first_sponsor.liga_editorial_id)
+        self.assertEqual(62, first_sponsor.liga_id)
+        self.assertEqual('mes', first_sponsor.tipo_ranking)
+        self.assertEqual('http://www.listerine.com.br/', first_sponsor.url_link)
+        self.assertEqual('http://globoesporte.globo.com/cartola-fc/ep/monstros/listerine/monstro-listerine/',
+                         first_sponsor.url_editoria_ge)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/background-liga/'
+                         'header-liga-monstro-listerine.jpg', first_sponsor.img_background)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/patrocinador/'
+                         'marca-listerine.svg', first_sponsor.img_marca_patrocinador)
+        self.assertEqual('#SOLTAESSEMONSTRO', first_sponsor.nome)
