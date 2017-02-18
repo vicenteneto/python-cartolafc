@@ -1,0 +1,3798 @@
+{
+  "rodada": 38,
+  "atletas": {
+    "36540": {
+      "apelido": "Juan",
+      "pontuacao": 2.9,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 2,
+        "PE": 2,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/cac9ebd94cc82a0b98f4055f9667d4e6_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 262
+    },
+    "36940": {
+      "apelido": "Oswaldo de Oliveira",
+      "pontuacao": 1.65,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/14/31b344fa2b6b3e64f99fb306adecf93a_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 264
+    },
+    "36943": {
+      "apelido": "Paulo Autuori",
+      "pontuacao": 2.44,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/02/b2a269f29451119f2d3811442679dc7a_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 293
+    },
+    "37281": {
+      "apelido": "Mano Menezes",
+      "pontuacao": 5.14,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/09/246730e80d7ef5af15c8b59b8491c289_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 283
+    },
+    "37424": {
+      "apelido": "Pintado",
+      "pontuacao": 10.54,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/11/23/3fd33e76d85e25fee894f0e74c85f4d9_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 276
+    },
+    "37604": {
+      "apelido": "Paulo André",
+      "pontuacao": 1.2,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/245b6785a7c26b5b1c667315f40b3768_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 293
+    },
+    "37608": {
+      "apelido": "Cristian",
+      "pontuacao": 1.6,
+      "scout": {
+        "FC": 3,
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/ef1d2a5ff504e9d69923adec9d7edfe3_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 264
+    },
+    "37673": {
+      "apelido": "Alecsandro",
+      "pontuacao": 5.9,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 2,
+        "G": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/30/1c83a2b2521974f5bd8599c7f316093a_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 275
+    },
+    "37694": {
+      "apelido": "Henrique",
+      "pontuacao": 9.4,
+      "scout": {
+        "FS": 3,
+        "PE": 2,
+        "RB": 5
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/3ee91a269e77c0defb08f1fee38c0aff_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 283
+    },
+    "37701": {
+      "apelido": "Léo Moura",
+      "pontuacao": -2.4,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 8
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/13/3c80bd862910177950643eb218b40870_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 344
+    },
+    "37798": {
+      "apelido": "Rafael Sobis",
+      "pontuacao": 3.9,
+      "scout": {
+        "FD": 2,
+        "FF": 1,
+        "FS": 3,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/06/9f448978203e98dc8d4f57f547ed8a44_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 283
+    },
+    "37917": {
+      "apelido": "Elano",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/c5eac32204a0124e851be34b9419f9db_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "37984": {
+      "apelido": "Aranha",
+      "pontuacao": 8,
+      "scout": {
+        "DD": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/b7fe2ef85ad1e78c78fb8fff624d527f_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 303
+    },
+    "38021": {
+      "apelido": "Wendel",
+      "pontuacao": 2.6,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "FS": 2,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/82b0cdf0b686f247ca4b6e49acc59a90_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 303
+    },
+    "38100": {
+      "apelido": "Durval",
+      "pontuacao": 7.2,
+      "scout": {
+        "A": 1,
+        "CA": 1,
+        "FC": 2,
+        "FS": 1,
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/ca4c8f110ce5a6969a820fa3ff17eb5f_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 292
+    },
+    "38219": {
+      "apelido": "Alex",
+      "pontuacao": -3.1,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "FS": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/d4e8412bf508df299340807940cfcb38_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "38311": {
+      "apelido": "Márcio Araújo",
+      "pontuacao": -0.1,
+      "scout": {
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/a9fe945df23da97fd8ba3c0574058bbf_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 262
+    },
+    "38394": {
+      "apelido": "Thiago Heleno",
+      "pontuacao": 4.1,
+      "scout": {
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/03/46f4db4d7b5db064ec7c2460f02a5b99_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 293
+    },
+    "38421": {
+      "apelido": "Rafinha",
+      "pontuacao": 3.8,
+      "scout": {
+        "FS": 2,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/13/b976295943670eb1a5e506d9381bc658_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 283
+    },
+    "38425": {
+      "apelido": "Fábio Ferreira",
+      "pontuacao": 4.7,
+      "scout": {
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/f9c95517b0a6cf130d7f84e6aab3bb68_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 303
+    },
+    "38515": {
+      "apelido": "Marquinhos",
+      "pontuacao": 2.7,
+      "scout": {
+        "FS": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/b0d8a0ac72e4282897d8e69e4c670c2b_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 316
+    },
+    "38530": {
+      "apelido": "Cleiton Xavier",
+      "pontuacao": -3.4,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/5cb6787323010c1ede0ce214b83bd2c9_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 275
+    },
+    "38852": {
+      "apelido": "Anderson",
+      "pontuacao": -1.8,
+      "scout": {
+        "FC": 4,
+        "FF": 1,
+        "FS": 2,
+        "PE": 5
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/782b68bfa6a0e5f34271aa9a00e550be_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "38908": {
+      "apelido": "Renato",
+      "pontuacao": -2.5,
+      "scout": {
+        "FC": 2,
+        "PE": 5
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/49909c7b610545598b92f0e07bdee08e_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "38910": {
+      "apelido": "Ricardo Oliveira",
+      "pontuacao": 10.6,
+      "scout": {
+        "FD": 3,
+        "FF": 1,
+        "FS": 1,
+        "G": 1,
+        "I": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/04f2207e667b88e15a5ccdc893894a1f_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 277
+    },
+    "38960": {
+      "apelido": "Zé Eduardo",
+      "pontuacao": -0.8,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FF": 1,
+        "FS": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/04/8d1ffcdb3f3a108225c6a284bba223f7_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 287
+    },
+    "39355": {
+      "apelido": "Carpegiani",
+      "pontuacao": 1.5,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/24/7b3b8de5c4b0d9383e86e787ec0b231b_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 294
+    },
+    "40990": {
+      "apelido": "Dorival Júnior",
+      "pontuacao": 3.89,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/a25c043c72cbfe64aa3f9e2a7d76cdc5_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 277
+    },
+    "41218": {
+      "apelido": "Magrão",
+      "pontuacao": 8,
+      "scout": {
+        "DD": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/92fb599635a635bc3681d6d69f04489c_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 292
+    },
+    "41929": {
+      "apelido": "Renato Gaúcho",
+      "pontuacao": 1.51,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/20/11389b106c935a0e20c5b557a4161683_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 284
+    },
+    "41946": {
+      "apelido": "Caio Júnior",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/06/20fe77af65a1ff75e00576f6ff3ed454_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 315
+    },
+    "42116": {
+      "apelido": "Willian",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/ebeec9645240ab968fdbbb15f61f93e6_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 283
+    },
+    "42411": {
+      "apelido": "Cuca",
+      "pontuacao": 1.08,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/ffe92c9e05e8100cdb59ce176a5352f5_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 275
+    },
+    "42499": {
+      "apelido": "Bruno",
+      "pontuacao": 4.8,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/d2edee13739b924fb1847c5369f28455_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 276
+    },
+    "42500": {
+      "apelido": "Fagner",
+      "pontuacao": 7.3,
+      "scout": {
+        "A": 1,
+        "FC": 1,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/5d7d807595168812606d2dcce7462db9_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 264
+    },
+    "49651": {
+      "apelido": "Ernando",
+      "pontuacao": 0.1,
+      "scout": {
+        "FF": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/4281780d649686f58d2350aa3f372023_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 285
+    },
+    "49673": {
+      "apelido": "Júlio César",
+      "pontuacao": -0.3,
+      "scout": {
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/88d18a6c7e76b53f49c068867e67a91b_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 266
+    },
+    "49674": {
+      "apelido": "Fabrício",
+      "pontuacao": -4.3,
+      "scout": {
+        "CA": 1,
+        "FC": 4,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/4bfcde55b9052618ae82d46dc33d27dd_FORMATO.jpeg",
+      "posicao_id": 2,
+      "clube_id": 275
+    },
+    "50294": {
+      "apelido": "Guilherme",
+      "pontuacao": 5.7,
+      "scout": {
+        "CA": 1,
+        "FC": 5,
+        "FS": 5,
+        "G": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/dffdad9720aa2f03053bdd0270fb8787_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 264
+    },
+    "50301": {
+      "apelido": "Everton",
+      "pontuacao": -0.8,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "FS": 3,
+        "FT": 1,
+        "I": 1,
+        "PE": 6
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/837d4d1c4d5f3460f897e9a3689ab070_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 262
+    },
+    "50313": {
+      "apelido": "Elicarlos",
+      "pontuacao": 3.7,
+      "scout": {
+        "FC": 2,
+        "FS": 1,
+        "PE": 3,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/c60e01cd155db8e33220d9f2a9027f44_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "50317": {
+      "apelido": "David Braz",
+      "pontuacao": 4.7,
+      "scout": {
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7bca046ddd8602f61aef411fe78c444b_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 277
+    },
+    "50439": {
+      "apelido": "Vilson",
+      "pontuacao": 1.1,
+      "scout": {
+        "CA": 1,
+        "FC": 2,
+        "FF": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/84ef11bf1e3dd175d1638cfb032e579c_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 264
+    },
+    "50459": {
+      "apelido": "Léo",
+      "pontuacao": 0.5,
+      "scout": {
+        "FC": 2,
+        "FS": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/442f1e513bf554cc4cbcce5ae7ace03b_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 283
+    },
+    "50856": {
+      "apelido": "Henrique",
+      "pontuacao": 1.6,
+      "scout": {
+        "FC": 1,
+        "FS": 2,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/a9d9178f59821bfca73d485e636ad040_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 266
+    },
+    "51042": {
+      "apelido": "Apodi",
+      "pontuacao": 3.2,
+      "scout": {
+        "FC": 3,
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/abd110c7fe07db71525b780c1fd05b63_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 292
+    },
+    "51175": {
+      "apelido": "Denis",
+      "pontuacao": 11,
+      "scout": {
+        "DD": 2,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/9e4d589b32947151072c21d1d5b71747_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 276
+    },
+    "51299": {
+      "apelido": "Emerson Silva",
+      "pontuacao": 4.4,
+      "scout": {
+        "CA": 1,
+        "PE": 1,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/32eec64b3753a7d9b1192df90028abc9_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 263
+    },
+    "51413": {
+      "apelido": "Walter",
+      "pontuacao": -3,
+      "scout": {
+        "DD": 1,
+        "GS": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/9520a016aaf4604a0c75d928046c8bd9_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 264
+    },
+    "51792": {
+      "apelido": "Kanu",
+      "pontuacao": 1,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/06/4faace6696532f4a33c9058a22fc4b00_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 287
+    },
+    "52253": {
+      "apelido": "Réver",
+      "pontuacao": 3.6,
+      "scout": {
+        "FC": 1,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/b3229ad78369684e9d9ac48e51678043_FORMATO.jpeg",
+      "posicao_id": 3,
+      "clube_id": 262
+    },
+    "60791": {
+      "apelido": "Derley",
+      "pontuacao": -0.7,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/06/0825d5f11a2ec998e11fb901297e2d90_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 344
+    },
+    "60852": {
+      "apelido": "Uendel",
+      "pontuacao": -0.8,
+      "scout": {
+        "FC": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/32ce15929c8ce3e8a780390968bf42cc_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 264
+    },
+    "61033": {
+      "apelido": "Rodriguinho",
+      "pontuacao": 3.5,
+      "scout": {
+        "A": 1,
+        "FC": 3,
+        "FS": 1,
+        "I": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/8d01a11770a124d6d1f9432e0d2cc9eb_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 264
+    },
+    "61188": {
+      "apelido": "Gilberto",
+      "pontuacao": 9.4,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FF": 1,
+        "FS": 1,
+        "G": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/18/6af48de27fa231f0a84e3301c9451cb9_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 276
+    },
+    "61238": {
+      "apelido": "Hélder",
+      "pontuacao": 1.8,
+      "scout": {
+        "FS": 2,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/13/7c461e147cdddb6e1af78ddb2319313c_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 327
+    },
+    "61985": {
+      "apelido": "Airton",
+      "pontuacao": -4.5,
+      "scout": {
+        "CV": 1,
+        "FC": 2,
+        "FS": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/19/53e1bd0759a8f98439752def04457e15_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 263
+    },
+    "61999": {
+      "apelido": "Ariel",
+      "pontuacao": 0.4,
+      "scout": {
+        "FC": 2,
+        "FD": 1,
+        "FS": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/12/b450ff3f74316c074bdb6f34d05fb513_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 285
+    },
+    "62009": {
+      "apelido": "Camilo",
+      "pontuacao": 4.4,
+      "scout": {
+        "FC": 1,
+        "FT": 1,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/8a03ee3ad9899f775f55818fc2c7e956_FORMATO.jpeg",
+      "posicao_id": 4,
+      "clube_id": 263
+    },
+    "62024": {
+      "apelido": "Edimar",
+      "pontuacao": -2.5,
+      "scout": {
+        "CA": 1,
+        "FC": 2,
+        "PE": 4,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/06/7cd7c8f13aeaaec177b96f9c905ae109_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 283
+    },
+    "62086": {
+      "apelido": "Pará",
+      "pontuacao": 3.9,
+      "scout": {
+        "FC": 2,
+        "PE": 6,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/5d1ebbea8911da836ce3d8d5750ed585_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 262
+    },
+    "62104": {
+      "apelido": "Robinho",
+      "pontuacao": 20.3,
+      "scout": {
+        "A": 2,
+        "FF": 1,
+        "FS": 1,
+        "G": 1,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/12/bca701933eaad8640785a2a634d5edf4_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 283
+    },
+    "62121": {
+      "apelido": "Vanderlei",
+      "pontuacao": 5,
+      "scout": {
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/82e0b04b2f7623a1d61ffaff2e36a59c_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 277
+    },
+    "62129": {
+      "apelido": "Wellington",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/a116ae1e36ff02160719ea8f1160f811_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 276
+    },
+    "62130": {
+      "apelido": "William Matheus",
+      "pontuacao": 5.4,
+      "scout": {
+        "FC": 1,
+        "FS": 4,
+        "PE": 4,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/30/c305f57716ad3736b7ff1a84ee695ab2_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 266
+    },
+    "62137": {
+      "apelido": "Enderson Moreira",
+      "pontuacao": 2.28,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/26/4ecd1c6310357503c0e157bd382205e3_FORMATO.jpeg",
+      "posicao_id": 6,
+      "clube_id": 327
+    },
+    "63058": {
+      "apelido": "Willian Farias",
+      "pontuacao": -1.6,
+      "scout": {
+        "FC": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/fe8756f5b1dadb24e5633729b39e9486_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 287
+    },
+    "63172": {
+      "apelido": "Paulão",
+      "pontuacao": -0.3,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/f19726285035dfcb3d3052e030335ebd_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 285
+    },
+    "68685": {
+      "apelido": "Alan Patrick",
+      "pontuacao": 2.6,
+      "scout": {
+        "FS": 3,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/01b3feceb08b420b3a5259bf8c157951_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 262
+    },
+    "68697": {
+      "apelido": "Bernardo",
+      "pontuacao": 1.6,
+      "scout": {
+        "FD": 2,
+        "FS": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/07/1cb1cfbf44f2ec43fe939fbf6868ea6f_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 294
+    },
+    "68698": {
+      "apelido": "Bruno Silva",
+      "pontuacao": 9.5,
+      "scout": {
+        "FC": 2,
+        "G": 1,
+        "PE": 3,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/473777983ee50165bf691b0f029cac11_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 263
+    },
+    "68725": {
+      "apelido": "Diego Renan",
+      "pontuacao": -0.6,
+      "scout": {
+        "FC": 2,
+        "FF": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/09f644d5efca4986858238e63fa860a5_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 287
+    },
+    "68770": {
+      "apelido": "Camacho",
+      "pontuacao": 0,
+      "scout": {
+        "FC": 1,
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/63b395a3843c141f9f8ddf86097db8fa_FORMATO.jpeg",
+      "posicao_id": 4,
+      "clube_id": 264
+    },
+    "68773": {
+      "apelido": "Henrique Almeida",
+      "pontuacao": 0.5,
+      "scout": {
+        "FC": 1,
+        "FD": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/03/30/da926e38870e22ac1b746e0114acf21f_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 284
+    },
+    "68808": {
+      "apelido": "Nino Paraíba",
+      "pontuacao": 8.1,
+      "scout": {
+        "A": 1,
+        "FC": 3,
+        "FS": 1,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/cbfc0d46083f35cde541d9aea35e3a5d_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 303
+    },
+    "68834": {
+      "apelido": "Rithely",
+      "pontuacao": 6.6,
+      "scout": {
+        "FC": 2,
+        "FS": 4,
+        "PE": 4,
+        "RB": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/c410c14470ebc6e02ab963212b89a17a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 292
+    },
+    "68893": {
+      "apelido": "André Lima",
+      "pontuacao": 1.1,
+      "scout": {
+        "FC": 3,
+        "FD": 1,
+        "FF": 1,
+        "FS": 3,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/13/b5a8462bf2d5aa77b26480fe3a466717_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 293
+    },
+    "68895": {
+      "apelido": "Wellington",
+      "pontuacao": 9.5,
+      "scout": {
+        "A": 1,
+        "FD": 1,
+        "FF": 1,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/24/e6322fbd5ae8c113adb3b3c0c5ecc578_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 266
+    },
+    "68901": {
+      "apelido": "Rodrigo Pimpão",
+      "pontuacao": 0.9,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 4,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/ec4f6b8012d2a0c2aedf4fe7d965eae7_FORMATO.jpeg",
+      "posicao_id": 5,
+      "clube_id": 263
+    },
+    "68904": {
+      "apelido": "Vítor",
+      "pontuacao": 1.7,
+      "scout": {
+        "FD": 2,
+        "FF": 1,
+        "FS": 1,
+        "PE": 5
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/bd08877b178e7710d61e0d39b377e6b8_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 344
+    },
+    "68910": {
+      "apelido": "Anselmo",
+      "pontuacao": -1.1,
+      "scout": {
+        "FC": 5,
+        "FD": 1,
+        "FS": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/30/2f8c0b4d1c1f63e92bcc75405c0d7b8b_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "68911": {
+      "apelido": "Diego Souza",
+      "pontuacao": 6.7,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FD": 1,
+        "FS": 1,
+        "G": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/4ca75c7b4c6ef9d48c9ffe43f89b8f78_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 292
+    },
+    "68917": {
+      "apelido": "Vinicius",
+      "pontuacao": -0.3,
+      "scout": {
+        "FC": 3,
+        "FF": 1,
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/9b55779f76950e1b35075c2e116c649e_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 294
+    },
+    "68928": {
+      "apelido": "Rafael",
+      "pontuacao": -4.3,
+      "scout": {
+        "GS": 2,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/43e8562bfd0ac31a9d9fd5bd5f87aee8_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 283
+    },
+    "68938": {
+      "apelido": "Giovanni Augusto",
+      "pontuacao": -1.3,
+      "scout": {
+        "FC": 1,
+        "I": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/9930f715c0d34977f60c416dc3311aca_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 264
+    },
+    "68950": {
+      "apelido": "Ronaldo Alves",
+      "pontuacao": 8.9,
+      "scout": {
+        "FC": 1,
+        "FS": 2,
+        "RB": 2,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/b5631b95dc105cd68b154bfaa21ecf74_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 292
+    },
+    "68952": {
+      "apelido": "Marinho",
+      "pontuacao": 13.8,
+      "scout": {
+        "FD": 1,
+        "FS": 5,
+        "FT": 1,
+        "G": 1,
+        "PE": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/fd249ecee00ebf56d13d770212e144b4_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 287
+    },
+    "68953": {
+      "apelido": "Leandro Damião",
+      "pontuacao": 2.1,
+      "scout": {
+        "FF": 2,
+        "FS": 2,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/14/d532ea9ded0a3ae3294ef61dab4d2630_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 262
+    },
+    "69014": {
+      "apelido": "Manoel",
+      "pontuacao": 2.1,
+      "scout": {
+        "FS": 2,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/34d00289aba9d71e705b5b7a470861b8_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 283
+    },
+    "69051": {
+      "apelido": "Danilo Fernandes",
+      "pontuacao": 13.7,
+      "scout": {
+        "DD": 3,
+        "DP": 1,
+        "GS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/30/8099f366cc8319b88e07c75b7f584000_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 285
+    },
+    "69138": {
+      "apelido": "Pablo",
+      "pontuacao": 1.7,
+      "scout": {
+        "FD": 1,
+        "FF": 2,
+        "FS": 2,
+        "I": 1,
+        "PE": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/13/dcbc1e5b5b31f9b10ace5cfafebf0281_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 293
+    },
+    "69177": {
+      "apelido": "Léo",
+      "pontuacao": 2.6,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 2,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/13/eac8265d35cda412d31cdfb857c0d6a8_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 293
+    },
+    "69705": {
+      "apelido": "Nikão",
+      "pontuacao": 2.6,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FS": 2,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/26/d9892427a9847031d633b2c4571cdabf_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 293
+    },
+    "70046": {
+      "apelido": "Victor Ferraz",
+      "pontuacao": 4.1,
+      "scout": {
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/58576d141c8216fac9dedb1df391d5e8_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 277
+    },
+    "70058": {
+      "apelido": "Tiago Real",
+      "pontuacao": 1.9,
+      "scout": {
+        "FS": 1,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/652325806fdb7634f63478c0f8dd9476_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 287
+    },
+    "70162": {
+      "apelido": "Jackson Caucaia",
+      "pontuacao": -2,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "FS": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/7508fb275c4f7e3c1c188cb14e6042ce_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "70222": {
+      "apelido": "Sidão",
+      "pontuacao": 13.7,
+      "scout": {
+        "DD": 3,
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/84bef351e001d5327882f9d3459753b6_FORMATO.jpeg",
+      "posicao_id": 1,
+      "clube_id": 263
+    },
+    "70874": {
+      "apelido": "Rhayner",
+      "pontuacao": -0.8,
+      "scout": {
+        "FC": 2,
+        "FF": 1,
+        "FS": 2,
+        "PE": 5
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/2001d7464e28233b6e75ad7438938946_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 303
+    },
+    "70916": {
+      "apelido": "Diogo Barbosa",
+      "pontuacao": 6.4,
+      "scout": {
+        "PE": 1,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/796d3a86989d174e93697441c578060a_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 263
+    },
+    "70929": {
+      "apelido": "Negueba",
+      "pontuacao": -1.1,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 4,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/13/42a0bf406c4f0b23b08edea3cded6132_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 284
+    },
+    "71043": {
+      "apelido": "Leo",
+      "pontuacao": 5,
+      "scout": {
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7bcc0c5b9e4c9b0a22e83d8c52382047_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 276
+    },
+    "71066": {
+      "apelido": "Mancuello",
+      "pontuacao": -5,
+      "scout": {
+        "CV": 1,
+        "FC": 2,
+        "FD": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/56c602db5b9e9e214d08e8ada1cbeac6_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 262
+    },
+    "71116": {
+      "apelido": "Roberto",
+      "pontuacao": -1.1,
+      "scout": {
+        "FC": 2,
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/23/bf2a41ba291c00b6fcda3fa89c47341d_FORMATO.jpeg",
+      "posicao_id": 2,
+      "clube_id": 344
+    },
+    "71117": {
+      "apelido": "Vander",
+      "pontuacao": -0.3,
+      "scout": {
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7867f0cf1aa4fe2d5dbaf18879a71d74_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 287
+    },
+    "71123": {
+      "apelido": "Thiago Mendes",
+      "pontuacao": 8,
+      "scout": {
+        "A": 1,
+        "FC": 3,
+        "FF": 1,
+        "FS": 2,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7bffad216f281ba79db7820b8448dae1_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 276
+    },
+    "71227": {
+      "apelido": "Maicon",
+      "pontuacao": 12.7,
+      "scout": {
+        "A": 1,
+        "FC": 1,
+        "FD": 1,
+        "FF": 2,
+        "PE": 3,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/f3000bd2b412a315dad8796d7080a492_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 276
+    },
+    "71479": {
+      "apelido": "Lucho González",
+      "pontuacao": 0.2,
+      "scout": {
+        "FC": 1,
+        "FF": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/09/16/2c2b101e592fd7959d11c1e2d04196e8_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 293
+    },
+    "71571": {
+      "apelido": "Fernando Miguel",
+      "pontuacao": -4,
+      "scout": {
+        "GS": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/244c756424bb69d9104ec60154e70104_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 287
+    },
+    "71631": {
+      "apelido": "Weverton",
+      "pontuacao": 8,
+      "scout": {
+        "DD": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/26/386ce16d188cfb28ca24b64d8b15c15c_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 293
+    },
+    "71778": {
+      "apelido": "Bady",
+      "pontuacao": 1,
+      "scout": {
+        "FC": 2,
+        "FF": 1,
+        "FS": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/86021128208f5dddbdf8cfee7d06b136_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "71892": {
+      "apelido": "Wellington Silva",
+      "pontuacao": 9.6,
+      "scout": {
+        "FC": 2,
+        "FS": 2,
+        "PE": 2,
+        "RB": 6
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/e5440de7bae253c68911195524c51b6a_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 266
+    },
+    "71915": {
+      "apelido": "Bruno Moraes",
+      "pontuacao": 3.1,
+      "scout": {
+        "FF": 1,
+        "FS": 2,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/f4731774096a0926ebfb7194d29f9ae8_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 344
+    },
+    "72290": {
+      "apelido": "Jailson",
+      "pontuacao": -4,
+      "scout": {
+        "CA": 1,
+        "GS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/eefe06604642d12c5a4a811575872536_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 275
+    },
+    "72362": {
+      "apelido": "Rodrigo Lindoso",
+      "pontuacao": -1.8,
+      "scout": {
+        "FC": 3,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/1cfe544293261682171b21a47393cd7a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 263
+    },
+    "72588": {
+      "apelido": "Lisca",
+      "pontuacao": 1.93,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/11/18/e74497698536f8ee842e9f3b14a7041f_FORMATO.jpeg",
+      "posicao_id": 6,
+      "clube_id": 285
+    },
+    "72603": {
+      "apelido": "William Menezes",
+      "pontuacao": -1,
+      "scout": {
+        "DD": 1,
+        "GS": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2015/10/30/1c660df5f3b044883c90029d2cfeef51_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 294
+    },
+    "72871": {
+      "apelido": "Cárdenas",
+      "pontuacao": 1.7,
+      "scout": {
+        "FF": 1,
+        "FS": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/23/9f4103e1e88a5d11336762a8a3f8a699_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 287
+    },
+    "72886": {
+      "apelido": "Luis Ruiz",
+      "pontuacao": 0.8,
+      "scout": {
+        "FC": 2,
+        "FF": 1,
+        "FS": 1,
+        "I": 1,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/a0ed8033b806b289cc95a27ed0c10e1c_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 292
+    },
+    "73317": {
+      "apelido": "Argel Fucks",
+      "pontuacao": 1.24,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/20/fbe575490ec070f3ffc9b1d09c954592_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 287
+    },
+    "73336": {
+      "apelido": "Rafael Martins",
+      "pontuacao": 9,
+      "scout": {
+        "DD": 3,
+        "FC": 1,
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/b61889a893aa25e31c1d09db95e190ab_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 294
+    },
+    "73344": {
+      "apelido": "Renatinho",
+      "pontuacao": 0.7,
+      "scout": {
+        "FD": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/18fc6fba34015748124139867c57db94_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 344
+    },
+    "73384": {
+      "apelido": "Samuel Xavier",
+      "pontuacao": 6.8,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FS": 1,
+        "PE": 3,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/02f546c1013f3369de8475d0bf247287_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 292
+    },
+    "73476": {
+      "apelido": "Marcão",
+      "pontuacao": 3.31,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/11/23/431e597cf4de6380e89e8dfcdf070066_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 266
+    },
+    "73515": {
+      "apelido": "Gabriel",
+      "pontuacao": 1.3,
+      "scout": {
+        "FS": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/43f762e9398936d399d42746fc9cfdd4_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 262
+    },
+    "73540": {
+      "apelido": "Rogério",
+      "pontuacao": 7.8,
+      "scout": {
+        "CA": 1,
+        "FC": 2,
+        "FD": 1,
+        "FF": 2,
+        "FS": 2,
+        "G": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/6340e77cb18143e838ae03747e59b459_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 292
+    },
+    "73620": {
+      "apelido": "Bruno Alves",
+      "pontuacao": 0.1,
+      "scout": {
+        "FC": 2,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/49e9429e3f444ef44bc9a03295902d5f_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 316
+    },
+    "73721": {
+      "apelido": "Marcos Vinícius",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/ab99a143750d322ad2aad71c76d7031c_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 283
+    },
+    "73800": {
+      "apelido": "Rodrigo Caio",
+      "pontuacao": 7.1,
+      "scout": {
+        "FC": 2,
+        "FD": 1,
+        "FF": 1,
+        "PE": 1,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/76c4acf534a1a01c922cb927acebb6e7_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 276
+    },
+    "73991": {
+      "apelido": "Walisson Maia",
+      "pontuacao": -3.3,
+      "scout": {
+        "CA": 1,
+        "FC": 2,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/918d1d4bb2f6863c25280a205740a148_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 294
+    },
+    "74075": {
+      "apelido": "Wallace Oliveira",
+      "pontuacao": 0.6,
+      "scout": {
+        "FC": 2,
+        "FS": 1,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/0a4ef48eb54897fc19994043260ef55f_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 284
+    },
+    "74078": {
+      "apelido": "Hernani ",
+      "pontuacao": 2.9,
+      "scout": {
+        "FC": 2,
+        "FD": 2,
+        "FF": 2,
+        "PE": 4,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/26/78e49316a8b765001fd3cbed43fb8b5a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 293
+    },
+    "75295": {
+      "apelido": "Paolo Guerrero",
+      "pontuacao": 2.3,
+      "scout": {
+        "FF": 1,
+        "FS": 1,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/b32111b86cb0b507eb672fbe6392e61a_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 262
+    },
+    "77777": {
+      "apelido": "João Schmidt ",
+      "pontuacao": 12.2,
+      "scout": {
+        "A": 1,
+        "FD": 2,
+        "FS": 2,
+        "PE": 3,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/5214f931543621b3d23666a103f23d6e_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 276
+    },
+    "77809": {
+      "apelido": "William Pottker",
+      "pontuacao": 12.2,
+      "scout": {
+        "FD": 1,
+        "FF": 2,
+        "FS": 2,
+        "G": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/b4c04abadeaeaac80fa7e9d660178aa8_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 303
+    },
+    "77959": {
+      "apelido": "Copete",
+      "pontuacao": 6.6,
+      "scout": {
+        "A": 1,
+        "FC": 1,
+        "FT": 1,
+        "I": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/05/51accf3c8cee0e903942afbe9b7990a7_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 277
+    },
+    "78371": {
+      "apelido": "Miller Bolaños",
+      "pontuacao": 2.4,
+      "scout": {
+        "FD": 2,
+        "FF": 1,
+        "FS": 1,
+        "I": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/10/e06dcc7c5fd2af9342d95cf318b5f431_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 284
+    },
+    "78435": {
+      "apelido": "Vitinho",
+      "pontuacao": 1.2,
+      "scout": {
+        "FF": 1,
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/3d3d6c56c09cbb3c5faabff10e811d39_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 285
+    },
+    "78445": {
+      "apelido": "Renê",
+      "pontuacao": 9.9,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FS": 2,
+        "RB": 2,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/1eac9f5c4053080a4a2e6359bd545014_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 292
+    },
+    "78478": {
+      "apelido": "Willian Arão",
+      "pontuacao": -1.7,
+      "scout": {
+        "CA": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/03bb5324d5512b7697e1020d78d05d2f_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 262
+    },
+    "78548": {
+      "apelido": "Jean Mota",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/314666b22831271d8ff5b2aab8e93ec2_FORMATO.jpeg",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "78605": {
+      "apelido": "Gabriel",
+      "pontuacao": 7.6,
+      "scout": {
+        "FS": 1,
+        "G": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/77d478fc6384356d3c3869a3d5688c99_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 275
+    },
+    "78855": {
+      "apelido": "Thiago Santos",
+      "pontuacao": -1.2,
+      "scout": {
+        "CA": 1,
+        "FC": 4,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/a0829f0801ed8f6ec3f080d37c905d4f_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 275
+    },
+    "78865": {
+      "apelido": "Rodrigo Dourado",
+      "pontuacao": 0.8,
+      "scout": {
+        "FC": 2,
+        "FS": 2,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/125a07d72be4705ac75309652609a92e_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "78968": {
+      "apelido": "Leandro Pereira",
+      "pontuacao": 6.9,
+      "scout": {
+        "FD": 2,
+        "FF": 1,
+        "FS": 3,
+        "FT": 1,
+        "I": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/24/51647e3523dec17c2d6313b3fdae28d7_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 275
+    },
+    "79066": {
+      "apelido": "Alex Muralha",
+      "pontuacao": 12,
+      "scout": {
+        "CA": 1,
+        "DD": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/12/23d3349f5e728db41d6ec8c7584ff0dd_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 262
+    },
+    "79578": {
+      "apelido": "Sassá",
+      "pontuacao": -0.4,
+      "scout": {
+        "CA": 1,
+        "FF": 2,
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/5c565cea17e3c15bc1b3b52893f19c4f_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 263
+    },
+    "79702": {
+      "apelido": "Antonio Carlos ",
+      "pontuacao": 4.9,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "PE": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/29/39237ad5dfc600e206b4e06a4d89792d_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 303
+    },
+    "80076": {
+      "apelido": "Zé Roberto",
+      "pontuacao": 4.2,
+      "scout": {
+        "FD": 2,
+        "FF": 1,
+        "FS": 2,
+        "PE": 4,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2015/05/05/c256c7bb8eaa471312899e7b00524ef0_FORMATO.jpeg",
+      "posicao_id": 5,
+      "clube_id": 303
+    },
+    "80188": {
+      "apelido": "Marcos Junior",
+      "pontuacao": -3.1,
+      "scout": {
+        "CA": 1,
+        "FC": 2,
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/05a4d91c1c469c1d8f7bc682c5eb8e11_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 266
+    },
+    "80318": {
+      "apelido": "Ezequiel ",
+      "pontuacao": 9.1,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 1,
+        "G": 1,
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/09/48330a010a4b1a70e9c96edd570456b5_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 283
+    },
+    "80337": {
+      "apelido": "Arthur ",
+      "pontuacao": 2.5,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FS": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/650ed6dcbbc7fac8feb6fdca3525c659_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 344
+    },
+    "80363": {
+      "apelido": "Ariel Cabral",
+      "pontuacao": 0.8,
+      "scout": {
+        "FC": 2,
+        "FF": 1,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/577df852683a65bd049469a520254155_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 283
+    },
+    "80370": {
+      "apelido": "Edson",
+      "pontuacao": 3.6,
+      "scout": {
+        "FC": 2,
+        "FD": 1,
+        "FS": 2,
+        "I": 1,
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/cbfa26086ef241df58aab4b320638112_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 266
+    },
+    "80537": {
+      "apelido": "Michael",
+      "pontuacao": 0.5,
+      "scout": {
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/02/3d517c1c2d45c31bf57594fe18f27380_FORMATO.jpeg",
+      "posicao_id": 5,
+      "clube_id": 327
+    },
+    "80552": {
+      "apelido": "Marquinhos Pedroso",
+      "pontuacao": -2.3,
+      "scout": {
+        "FC": 4,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/37de3a15f91ef726f1204ad48c4d31c4_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 316
+    },
+    "80576": {
+      "apelido": "Renato",
+      "pontuacao": 2.2,
+      "scout": {
+        "FS": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/13/bd54216efc31c2f3e48e38ae68a2b107_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "80583": {
+      "apelido": "Lucas Lima",
+      "pontuacao": 2.7,
+      "scout": {
+        "FD": 1,
+        "FS": 4,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/99227d881a9f127bce3c284290295f02_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "80913": {
+      "apelido": "Nixon",
+      "pontuacao": 0.5,
+      "scout": {
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/26/61c36ad6fff1d65b680d1d96613985a9_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 327
+    },
+    "80944": {
+      "apelido": "Marlone",
+      "pontuacao": 9.5,
+      "scout": {
+        "FD": 1,
+        "FS": 1,
+        "G": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/e9ebab6fd2406ef83d5358e1e50028db_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 264
+    },
+    "81031": {
+      "apelido": "Marquinhos Santos",
+      "pontuacao": 0.61,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/09/21/6823924331ab80828bd626023027914f_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 316
+    },
+    "81845": {
+      "apelido": "Alisson",
+      "pontuacao": 4.9,
+      "scout": {
+        "A": 1,
+        "FC": 2,
+        "FF": 2,
+        "FS": 1,
+        "I": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/3da1167b31ce1acf558f1cf1c25d0597_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 283
+    },
+    "81898": {
+      "apelido": "Osman",
+      "pontuacao": 1.4,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/a2bc2cdd8b33a4aaa476ae435462e576_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 327
+    },
+    "81905": {
+      "apelido": "Henrique Dourado",
+      "pontuacao": -1.1,
+      "scout": {
+        "FC": 2,
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/12/a84f91236d3555dc97552622df2f3ec0_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 266
+    },
+    "82128": {
+      "apelido": "Ferrugem",
+      "pontuacao": 0.8,
+      "scout": {
+        "FC": 2,
+        "FS": 2,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/690d34559cb8d9e8163e4ea19e69d556_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "82381": {
+      "apelido": "Juninho",
+      "pontuacao": 1.7,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "PE": 3,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/13/7091937e35b77851686cccfe56830278_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 327
+    },
+    "82411": {
+      "apelido": "Cueva",
+      "pontuacao": -4.2,
+      "scout": {
+        "CV": 1,
+        "FC": 1,
+        "FS": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/a68882f174b592bf4e78dbc9818a4465_FORMATO.jpeg",
+      "posicao_id": 5,
+      "clube_id": 276
+    },
+    "82463": {
+      "apelido": "Otávio",
+      "pontuacao": -0.8,
+      "scout": {
+        "FC": 3,
+        "FF": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/26/e6f18e8db36b5cd2a6dfdb55d33b54bb_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 293
+    },
+    "82627": {
+      "apelido": "Luiz Araújo",
+      "pontuacao": 12.2,
+      "scout": {
+        "A": 1,
+        "FC": 1,
+        "G": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/d04aecda981fb0bfc0a4ad62d633777c_FORMATO.jpeg",
+      "posicao_id": 4,
+      "clube_id": 276
+    },
+    "82767": {
+      "apelido": "Vinícius Araújo",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/ad2cb78ecf2e8ddb976e491438cc78f8_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 292
+    },
+    "82939": {
+      "apelido": "Ruy",
+      "pontuacao": 0.2,
+      "scout": {
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/d46da2e3d940bad03f67a1bbc17e4718_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 294
+    },
+    "83048": {
+      "apelido": "Rafael Thyere",
+      "pontuacao": 3.6,
+      "scout": {
+        "PE": 5,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/95ffa84036badf598890bde1fdacd802_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 284
+    },
+    "83615": {
+      "apelido": "Thiago Martins",
+      "pontuacao": 0.4,
+      "scout": {
+        "FC": 2,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/ee2bbc2d201da1f57fd63840dc837cc5_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 275
+    },
+    "84555": {
+      "apelido": "Glauco",
+      "pontuacao": 1,
+      "scout": {
+        "DD": 1,
+        "GS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/2cac99f5583c416743d60a51fb0d18f2_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 327
+    },
+    "84709": {
+      "apelido": "Nico López",
+      "pontuacao": 0.3,
+      "scout": {
+        "FC": 2,
+        "FD": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/23/237be6493558caa36f59b3a768f45110_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 285
+    },
+    "84847": {
+      "apelido": "Luan Peres ",
+      "pontuacao": 0.2,
+      "scout": {
+        "PE": 5,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/27/dd2390a796a155ff0c0f22c0b4aa4735_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 344
+    },
+    "84848": {
+      "apelido": "Erik",
+      "pontuacao": 1.4,
+      "scout": {
+        "FC": 1,
+        "FS": 5,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/9d77b7b8de884f6ca9e47e4af829f114_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 275
+    },
+    "84890": {
+      "apelido": "Euller ",
+      "pontuacao": 1,
+      "scout": {
+        "FC": 4,
+        "FS": 1,
+        "PE": 3,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/d699ce96a133a9a4277276ec939d0670_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 287
+    },
+    "85004": {
+      "apelido": "Marcos Felipe ",
+      "pontuacao": -2.3,
+      "scout": {
+        "GS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/62d23ea7816659aafaf60c6e6027764f_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 266
+    },
+    "85149": {
+      "apelido": "Ronaldo",
+      "pontuacao": 1.9,
+      "scout": {
+        "CA": 1,
+        "FC": 2,
+        "FF": 2,
+        "FS": 2,
+        "PE": 3,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/2e217ce29ea48d7d573c191fa21e67d5_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 292
+    },
+    "85241": {
+      "apelido": "Yerry Mina",
+      "pontuacao": -0.3,
+      "scout": {
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/24/8834d1e7244c79dd88aeaeb987bf5cce_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 275
+    },
+    "85400": {
+      "apelido": "Marcelo",
+      "pontuacao": -0.5,
+      "scout": {
+        "FC": 3,
+        "FS": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/246270cfb0d85a032e4cb806f0f4c2bf_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 287
+    },
+    "85423": {
+      "apelido": "Valdívia",
+      "pontuacao": 2.4,
+      "scout": {
+        "FF": 1,
+        "FS": 4,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/467a8f898eba5ed165e1db959364e376_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "86410": {
+      "apelido": "Victor Luis",
+      "pontuacao": 6.9,
+      "scout": {
+        "FC": 2,
+        "FS": 3,
+        "PE": 1,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/16287b6e878c3c3367da1636b16106f1_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 263
+    },
+    "86411": {
+      "apelido": "Breno Lopes",
+      "pontuacao": 5,
+      "scout": {
+        "FC": 3,
+        "FD": 1,
+        "FF": 2,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/0013a5c3c1ec2b838179ee8e75aad2ff_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 303
+    },
+    "86519": {
+      "apelido": "Everton Felipe",
+      "pontuacao": 2.4,
+      "scout": {
+        "CA": 1,
+        "FC": 4,
+        "FF": 2,
+        "FS": 1,
+        "PE": 2,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7c68f11162db883d1bca790a596547c2_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 292
+    },
+    "86588": {
+      "apelido": "Ícaro",
+      "pontuacao": -1.2,
+      "scout": {
+        "FC": 2,
+        "FD": 1,
+        "PE": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/5da0c1d61541ac587e45378832b17aab_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 294
+    },
+    "86686": {
+      "apelido": "Tchê Tchê",
+      "pontuacao": 4.6,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "FS": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/2b96e76d6b1e3f8fc29f37d9dfe90206_FORMATO.jpeg",
+      "posicao_id": 4,
+      "clube_id": 275
+    },
+    "86757": {
+      "apelido": "Everton",
+      "pontuacao": 7.2,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 1,
+        "RB": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/58142c7fcee7f7bbfc6d8a343b2a103f_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 284
+    },
+    "86764": {
+      "apelido": "Sidcley",
+      "pontuacao": 3.6,
+      "scout": {
+        "FC": 1,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/76b9cb2942f6965ee20898d648090291_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 293
+    },
+    "86935": {
+      "apelido": "Rodrigo",
+      "pontuacao": -0.8,
+      "scout": {
+        "FC": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/0f8beb8328a953a76f62128657f0c463_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 275
+    },
+    "86972": {
+      "apelido": "Emerson Santos",
+      "pontuacao": 7.3,
+      "scout": {
+        "FC": 1,
+        "PE": 2,
+        "RB": 2,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/7743ec4420461e770a65425100024972_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 263
+    },
+    "87008": {
+      "apelido": "Léo",
+      "pontuacao": -2,
+      "scout": {
+        "GS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/e393c92239428f76920973cf24b82073_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 284
+    },
+    "87192": {
+      "apelido": "Zeca",
+      "pontuacao": 5.9,
+      "scout": {
+        "FF": 1,
+        "PE": 5,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/b75497cbd7fdf4e7cc56e0a77979a9f7_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 277
+    },
+    "87228": {
+      "apelido": "Guilherme Arana",
+      "pontuacao": -1.1,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/791584b7c8c0a16ed8c52dc6c6821a90_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 264
+    },
+    "87342": {
+      "apelido": "Kannemann",
+      "pontuacao": -0.1,
+      "scout": {
+        "FC": 2,
+        "FF": 1,
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/09/05/9af7e5e845e7fbff490039fd469f1c19_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 284
+    },
+    "87350": {
+      "apelido": "Buffarini",
+      "pontuacao": 5.5,
+      "scout": {
+        "FC": 1,
+        "FF": 2,
+        "FS": 1,
+        "I": 1,
+        "PE": 7,
+        "RB": 1,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/18/4be0e28d27402ead434d4b7dae9ea797_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 276
+    },
+    "87402": {
+      "apelido": "Messias",
+      "pontuacao": -0.1,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/6068d0d51d95cf9603bbaf09042e0580_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 327
+    },
+    "87552": {
+      "apelido": "Vitor Bueno",
+      "pontuacao": -0.6,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FF": 1,
+        "FS": 1,
+        "I": 1,
+        "PE": 6
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/6a51ac71a5e8a928c9cf1b71c2db243b_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "87742": {
+      "apelido": "Neto Moura",
+      "pontuacao": 4.7,
+      "scout": {
+        "A": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/60b2f9caebf7a6d399c1ba73dff47b84_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 292
+    },
+    "87863": {
+      "apelido": "Arrascaeta",
+      "pontuacao": 8.5,
+      "scout": {
+        "FF": 2,
+        "FS": 2,
+        "G": 1,
+        "I": 2,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/34e8365db550908af5ae08bc890c103c_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 283
+    },
+    "87887": {
+      "apelido": "Balbuena",
+      "pontuacao": -3.8,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/46ed32bd9a832044312ff5fad5d41e2e_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 264
+    },
+    "87999": {
+      "apelido": "Gustavo Scarpa",
+      "pontuacao": 3.8,
+      "scout": {
+        "FD": 2,
+        "FF": 1,
+        "FS": 3,
+        "PE": 7,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/6e433eb3cd2ccb3fe639c110479ebf7c_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 266
+    },
+    "88002": {
+      "apelido": "Serginho",
+      "pontuacao": 0.5,
+      "scout": {
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/09/05/a02f502eafdfb36ebe65b54d4f7e2979_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 287
+    },
+    "88065": {
+      "apelido": "Jorge",
+      "pontuacao": 2.1,
+      "scout": {
+        "CA": 1,
+        "FC": 3,
+        "FF": 1,
+        "FS": 1,
+        "PE": 2,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/fcce4bf95de7ba74ee7d3cee0dc27bd2_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 262
+    },
+    "88087": {
+      "apelido": "Ramon",
+      "pontuacao": -0.8,
+      "scout": {
+        "FC": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/bf444d7eaf1a2853f33faef276c4a9a0_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 287
+    },
+    "88136": {
+      "apelido": "Ivan",
+      "pontuacao": 5,
+      "scout": {
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/29/594cebf37dac85d7da49c4c7d49d166a_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 303
+    },
+    "88323": {
+      "apelido": "Ángel Romero",
+      "pontuacao": -0.6,
+      "scout": {
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/23/7903fe7f2298b69880a189fc96ca0f0c_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 264
+    },
+    "88417": {
+      "apelido": "Iago",
+      "pontuacao": 1,
+      "scout": {
+        "FD": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/2e85b7ebd77a08a7b2652294f4b38b7c_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 294
+    },
+    "88848": {
+      "apelido": "Júnior Oliveira",
+      "pontuacao": -1.6,
+      "scout": {
+        "DD": 1,
+        "GS": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/25/1292ee827e916cf85996f638132cb5ed_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 316
+    },
+    "89275": {
+      "apelido": "William",
+      "pontuacao": -1.7,
+      "scout": {
+        "FC": 2,
+        "FS": 1,
+        "PE": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/75e4a80e8152cf2e721dea24b7b7b180_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 285
+    },
+    "89285": {
+      "apelido": "Matheus Sales",
+      "pontuacao": -0.9,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 1,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/472f14cf9165dd0469cf6e9346dd669f_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 275
+    },
+    "89339": {
+      "apelido": "Adriano Teixeira",
+      "pontuacao": 0.86,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/26/b22cf076c421ba1574e0ba4d40a631b3_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 344
+    },
+    "89637": {
+      "apelido": "Thiago Maia",
+      "pontuacao": 5.4,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FF": 1,
+        "PE": 3,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/1b2976ce2cacc26f8141ace470b05928_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "89815": {
+      "apelido": "Gustavo Ferrareis",
+      "pontuacao": 7.2,
+      "scout": {
+        "FC": 1,
+        "G": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/30/581e9d6f1052ed1c3bc00c0fb1bab53a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "89839": {
+      "apelido": "Andres Chavez",
+      "pontuacao": 18.9,
+      "scout": {
+        "A": 1,
+        "CA": 1,
+        "FC": 1,
+        "FD": 1,
+        "G": 2,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/18/9b7fee1b9878c569ab7eab653ef62fd1_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 276
+    },
+    "89930": {
+      "apelido": "Andrigo",
+      "pontuacao": 3.1,
+      "scout": {
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/03/3ebd9ed86862cc224d7f138b75e64119_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 285
+    },
+    "90290": {
+      "apelido": "Jailson",
+      "pontuacao": -1.5,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 1,
+        "PE": 4,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/27/3e188c20efad841496876cbe0bf752bb_FORMATO.jpeg",
+      "posicao_id": 4,
+      "clube_id": 284
+    },
+    "90309": {
+      "apelido": "David",
+      "pontuacao": 2.3,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "I": 1,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/f0a005c33b60cc205cdc6bd87876db75_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 287
+    },
+    "90532": {
+      "apelido": "Arthur",
+      "pontuacao": 0.2,
+      "scout": {
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/c66920f75ffae5c4ae70d98ce74fc92e_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 284
+    },
+    "90566": {
+      "apelido": "Rafael Longuine",
+      "pontuacao": 1,
+      "scout": {
+        "FD": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/1f935974fecf9ac7b30cbc7c4a5e4c7a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "90569": {
+      "apelido": "Yuri",
+      "pontuacao": -0.1,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 6,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/05/6918c687f15258af809e99a14e04318e_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 277
+    },
+    "90635": {
+      "apelido": "Guilherme Xavier",
+      "pontuacao": 4.9,
+      "scout": {
+        "FC": 1,
+        "FF": 1,
+        "FS": 1,
+        "PE": 3,
+        "RB": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/8107ae25a5591cc30dac164e0330ce30_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 327
+    },
+    "90637": {
+      "apelido": "Renato Bruno",
+      "pontuacao": -0.4,
+      "scout": {
+        "FC": 3,
+        "PE": 2,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/0e935a35d387a89b9fb03da1981a4faf_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 327
+    },
+    "90703": {
+      "apelido": "Matheusinho",
+      "pontuacao": 4.4,
+      "scout": {
+        "FC": 2,
+        "FS": 4,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/01/07/8081123abcdfd8c3dce8254dc4c66622_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "90899": {
+      "apelido": "Lucas Fernandes",
+      "pontuacao": 0.5,
+      "scout": {
+        "FS": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/26/3d0e015f8863fe29f61325cb524a6068_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 293
+    },
+    "90942": {
+      "apelido": "Walter Guimarães",
+      "pontuacao": 1.4,
+      "scout": {
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/69434d017d491957ec4dac9c8e885c72_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 344
+    },
+    "91649": {
+      "apelido": "Pilar",
+      "pontuacao": 1,
+      "scout": {
+        "FD": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2015/04/02/3d431703446e1cca04a970b31574ce60_FORMATO.jpeg",
+      "posicao_id": 5,
+      "clube_id": 327
+    },
+    "91687": {
+      "apelido": "João Pedro",
+      "pontuacao": -0.9,
+      "scout": {
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/26/2bd76d163ae9eb94cd86282749895a79_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 293
+    },
+    "91815": {
+      "apelido": "Ygor Nogueira",
+      "pontuacao": -0.6,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/30/7475a33329d212b5519734b354c01a71_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 266
+    },
+    "91920": {
+      "apelido": "Henrique Trevisan",
+      "pontuacao": -0.6,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/09ee3a91f794b4b7e9a81b639d7f1d88_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 316
+    },
+    "91928": {
+      "apelido": "Christian Sávio",
+      "pontuacao": 6.6,
+      "scout": {
+        "FF": 1,
+        "PE": 3,
+        "RB": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/01f735a126510bb7577f5c20f3873cfe_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 327
+    },
+    "92054": {
+      "apelido": "Alemão",
+      "pontuacao": 12.9,
+      "scout": {
+        "PE": 2,
+        "RB": 5,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/25/662fd2e98771df2a4b422fe69ccbda86_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 263
+    },
+    "92081": {
+      "apelido": "Richarlison ",
+      "pontuacao": -0.7,
+      "scout": {
+        "FC": 3,
+        "FF": 2,
+        "FS": 3,
+        "PE": 1,
+        "PP": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/f6f08e1efa5ce7033db704164ac007f7_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 266
+    },
+    "92180": {
+      "apelido": "Jair Ventura",
+      "pontuacao": 6.27,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/24/4c5a444125fec768a7561de4e92fb32b_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 263
+    },
+    "92191": {
+      "apelido": "Léo Jabá",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/09/25/6ac30edc5ea6506d76c843dc27b688cb_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 264
+    },
+    "92193": {
+      "apelido": "Ravanelli",
+      "pontuacao": 10.7,
+      "scout": {
+        "FC": 2,
+        "FD": 2,
+        "G": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7f36b1972a4a471d650cea3bce5c3544_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 303
+    },
+    "92497": {
+      "apelido": "Douglas",
+      "pontuacao": 12.1,
+      "scout": {
+        "FC": 1,
+        "FS": 3,
+        "G": 1,
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/8612e800a41c6399f2e6910886f19110_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 266
+    },
+    "92504": {
+      "apelido": "Batista",
+      "pontuacao": 1,
+      "scout": {
+        "FD": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/89e0d630df160e2b31dc716d1ffa3c2d_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 284
+    },
+    "92518": {
+      "apelido": "Marcílio",
+      "pontuacao": -0.3,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/773e6d075f97446aaa6713cadcb1214a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 344
+    },
+    "92574": {
+      "apelido": "Kaio",
+      "pontuacao": 4.8,
+      "scout": {
+        "FF": 1,
+        "FS": 2,
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/a83b6e7bb6661dbbb2b8c85d3afc4b48_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 284
+    },
+    "92702": {
+      "apelido": "Daniel Paulista",
+      "pontuacao": 6.81,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/20/0d4249af96be564e80556994f2f1c194_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 292
+    },
+    "92901": {
+      "apelido": "Felipe Moreira",
+      "pontuacao": 6.02,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/12/05/a828e2114743653e18bde98f5c18f381_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 303
+    },
+    "93317": {
+      "apelido": "Diogo Giacomini",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/11/24/fb113dd796ec25feea82a4d8a2177756_FORMATO.png",
+      "posicao_id": 6,
+      "clube_id": 282
+    },
+    "93414": {
+      "apelido": "Joel Carli",
+      "pontuacao": 9.3,
+      "scout": {
+        "A": 1,
+        "FC": 1,
+        "FF": 1,
+        "PE": 3,
+        "SG": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 263
+    },
+    "93883": {
+      "apelido": "Roger",
+      "pontuacao": -1.1,
+      "scout": {
+        "FC": 1,
+        "PE": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/09/fa348aaee3689338060f59ba8b89de3f_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 327
+    },
+    "94138": {
+      "apelido": "Felipe Vizeu",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/f969d90dae6aa636d5e07326a7cb3c9c_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 262
+    },
+    "94143": {
+      "apelido": "Luiz Miller",
+      "pontuacao": 2.2,
+      "scout": {
+        "DD": 4,
+        "FS": 1,
+        "GS": 5,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/07a0c81156c35ffc3aa26adc06a9a5e2_FORMATO.png",
+      "posicao_id": 1,
+      "clube_id": 344
+    },
+    "94207": {
+      "apelido": "Guilherme",
+      "pontuacao": 0.3,
+      "scout": {
+        "FF": 1,
+        "FS": 1,
+        "PE": 3
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/26/98624589da248493bd56a490ce4f5ca4_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 284
+    },
+    "94228": {
+      "apelido": "Iago",
+      "pontuacao": 0.7,
+      "scout": {
+        "FF": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/27/150290301c0430d874cbf7cea57b3cf8_FORMATO.jpeg",
+      "posicao_id": 2,
+      "clube_id": 284
+    },
+    "94583": {
+      "apelido": "Pedro",
+      "pontuacao": -1.1,
+      "scout": {
+        "FC": 3,
+        "FF": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/31/cc529c4635dff5480a1942b488a045b8_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 266
+    },
+    "94985": {
+      "apelido": "Dodô",
+      "pontuacao": -0.3,
+      "scout": {
+        "FC": 1,
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/07/db1e5a2c9cffd51d57211909936a7953_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 294
+    },
+    "95335": {
+      "apelido": "Matheus Jesus",
+      "pontuacao": 1.9,
+      "scout": {
+        "FD": 1,
+        "FS": 2,
+        "PE": 6,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/861e63537ee390314861e3d9e8f3e2f6_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 303
+    },
+    "95337": {
+      "apelido": "Léo Cereja",
+      "pontuacao": -0.3,
+      "scout": {
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/8e2be41e6ff47c7f43ca6cfc5566242a_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 303
+    },
+    "95780": {
+      "apelido": "Zé Ricardo",
+      "pontuacao": 2.29,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/14/6bfb2dd930a89bee8175af0b5545f03d_FORMATO.jpeg",
+      "posicao_id": 6,
+      "clube_id": 262
+    },
+    "95799": {
+      "apelido": "Artur",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/0a1a8bac3a7b8bc526958b35ff2a32be_FORMATO.jpeg",
+      "posicao_id": 5,
+      "clube_id": 275
+    },
+    "96055": {
+      "apelido": "Yan",
+      "pontuacao": 1.9,
+      "scout": {
+        "FC": 1,
+        "FS": 2,
+        "PE": 1,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/16/5ba6d6106996750212d4633416d3b814_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 294
+    },
+    "96201": {
+      "apelido": "Marcus Índio",
+      "pontuacao": -0.1,
+      "scout": {
+        "FC": 2,
+        "FD": 1,
+        "FS": 1,
+        "PE": 2
+      },
+      "foto": null,
+      "posicao_id": 5,
+      "clube_id": 316
+    },
+    "96349": {
+      "apelido": "Geovane",
+      "pontuacao": 3.6,
+      "scout": {
+        "FC": 1,
+        "FS": 2,
+        "PE": 1,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/08/16/5e108d908d3e7ac657817fc8715af100_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 294
+    },
+    "96558": {
+      "apelido": "David Neres",
+      "pontuacao": 13.3,
+      "scout": {
+        "FC": 1,
+        "FD": 3,
+        "FF": 1,
+        "FS": 1,
+        "G": 1,
+        "PE": 6,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/10/24/74c3cb547ac1889cb4da9ddd9a0e13d2_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 276
+    },
+    "97133": {
+      "apelido": "Dudu",
+      "pontuacao": -2.6,
+      "scout": {
+        "CA": 1,
+        "FC": 1,
+        "FS": 2,
+        "I": 1,
+        "PE": 2
+      },
+      "foto": null,
+      "posicao_id": 2,
+      "clube_id": 316
+    },
+    "97317": {
+      "apelido": "Zé Ricardo",
+      "pontuacao": 1.7,
+      "scout": {
+        "RB": 1
+      },
+      "foto": null,
+      "posicao_id": 4,
+      "clube_id": 327
+    },
+    "97342": {
+      "apelido": "João Pedro",
+      "pontuacao": 1,
+      "scout": {
+        "FS": 2
+      },
+      "foto": null,
+      "posicao_id": 4,
+      "clube_id": 316
+    },
+    "97352": {
+      "apelido": "Pachu",
+      "pontuacao": 0,
+      "scout": {},
+      "foto": null,
+      "posicao_id": 4,
+      "clube_id": 263
+    },
+    "97431": {
+      "apelido": "Diego",
+      "pontuacao": 5.6,
+      "scout": {
+        "PE": 4,
+        "RB": 4
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/12/06/79803f2e2286bda17563a4f7ebd46e17_FORMATO.png",
+      "posicao_id": 2,
+      "clube_id": 327
+    },
+    "97442": {
+      "apelido": "Léo Cotia",
+      "pontuacao": 0.2,
+      "scout": {
+        "FS": 1,
+        "PE": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/12/09/b4d4b1c97ed6fa304fe405349960ee50_FORMATO.png",
+      "posicao_id": 5,
+      "clube_id": 344
+    },
+    "97443": {
+      "apelido": "Romercio",
+      "pontuacao": 2.3,
+      "scout": {
+        "FC": 1,
+        "PE": 2,
+        "RB": 2
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/12/09/00fc2d38f4d161cac8c60df8b69dec19_FORMATO.png",
+      "posicao_id": 3,
+      "clube_id": 294
+    },
+    "97444": {
+      "apelido": "Julio Rusch",
+      "pontuacao": 0.3,
+      "scout": {
+        "FC": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": "https://s.glbimg.com/es/sde/f/2016/12/09/19457cc44febe78accb04cd52bf97a2e_FORMATO.png",
+      "posicao_id": 4,
+      "clube_id": 294
+    },
+    "97449": {
+      "apelido": "Carvalho",
+      "pontuacao": 2.7,
+      "scout": {
+        "FS": 2,
+        "RB": 1
+      },
+      "foto": null,
+      "posicao_id": 4,
+      "clube_id": 294
+    },
+    "97460": {
+      "apelido": "João Victor",
+      "pontuacao": 2,
+      "scout": {
+        "FC": 1,
+        "FD": 1,
+        "FF": 1,
+        "PE": 3,
+        "RB": 1
+      },
+      "foto": null,
+      "posicao_id": 4,
+      "clube_id": 344
+    }
+  },
+  "clubes": {
+    "1": {
+      "id": 1,
+      "nome": "Outros",
+      "abreviacao": "OUT",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "1349": {
+      "id": 1349,
+      "nome": "Ipatinga",
+      "abreviacao": "IPA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "1390": {
+      "id": 1390,
+      "nome": "Icasa",
+      "abreviacao": "ICA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "2190": {
+      "id": 2190,
+      "nome": "Oeste",
+      "abreviacao": "OES",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "2193": {
+      "id": 2193,
+      "nome": "Duque de Caxias",
+      "abreviacao": "DUQ",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "2197": {
+      "id": 2197,
+      "nome": "Americana",
+      "abreviacao": "AME",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "2554": {
+      "id": 2554,
+      "nome": "Grêmio Prudente",
+      "abreviacao": "PRU",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "2565": {
+      "id": 2565,
+      "nome": "Luverdense",
+      "abreviacao": "LUV",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "262": {
+      "id": 262,
+      "nome": "Flamengo",
+      "abreviacao": "FLA",
+      "posicao": 3,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_30x30.png"
+      }
+    },
+    "263": {
+      "id": 263,
+      "nome": "Botafogo",
+      "abreviacao": "BOT",
+      "posicao": 5,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_30x30.png"
+      }
+    },
+    "264": {
+      "id": 264,
+      "nome": "Corinthians",
+      "abreviacao": "COR",
+      "posicao": 7,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/corinthians_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_30x30.png"
+      }
+    },
+    "265": {
+      "id": 265,
+      "nome": "Bahia",
+      "abreviacao": "BAH",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "266": {
+      "id": 266,
+      "nome": "Fluminense",
+      "abreviacao": "FLU",
+      "posicao": 13,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/Fluminense-escudo.png"
+      }
+    },
+    "267": {
+      "id": 267,
+      "nome": "Vasco",
+      "abreviacao": "VAS",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "275": {
+      "id": 275,
+      "nome": "Palmeiras",
+      "abreviacao": "PAL",
+      "posicao": 1,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/palmeiras_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_30x30.png"
+      }
+    },
+    "276": {
+      "id": 276,
+      "nome": "São Paulo",
+      "abreviacao": "SAO",
+      "posicao": 9,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_30x30.png"
+      }
+    },
+    "277": {
+      "id": 277,
+      "nome": "Santos",
+      "abreviacao": "SAN",
+      "posicao": 2,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_30x30.png"
+      }
+    },
+    "278": {
+      "id": 278,
+      "nome": "Portuguesa",
+      "abreviacao": "POR",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "279": {
+      "id": 279,
+      "nome": "Guarani",
+      "abreviacao": "GUA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "280": {
+      "id": 280,
+      "nome": "Bragantino",
+      "abreviacao": "BRA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "282": {
+      "id": 282,
+      "nome": "Atlético-MG",
+      "abreviacao": "ATL",
+      "posicao": 4,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/atletico_mg_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_30x30.png"
+      }
+    },
+    "283": {
+      "id": 283,
+      "nome": "Cruzeiro",
+      "abreviacao": "CRU",
+      "posicao": 11,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_30.png"
+      }
+    },
+    "284": {
+      "id": 284,
+      "nome": "Grêmio",
+      "abreviacao": "GRE",
+      "posicao": 8,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_30x30.png"
+      }
+    },
+    "285": {
+      "id": 285,
+      "nome": "Internacional",
+      "abreviacao": "INT",
+      "posicao": 17,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter30.png"
+      }
+    },
+    "286": {
+      "id": 286,
+      "nome": "Juventude",
+      "abreviacao": "JUV",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "287": {
+      "id": 287,
+      "nome": "Vitória",
+      "abreviacao": "VIT",
+      "posicao": 16,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/vitoria_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_30x30.png"
+      }
+    },
+    "288": {
+      "id": 288,
+      "nome": "Criciúma",
+      "abreviacao": "CRI",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "289": {
+      "id": 289,
+      "nome": "Paraná",
+      "abreviacao": "PAR",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "290": {
+      "id": 290,
+      "nome": "Goiás",
+      "abreviacao": "GOI",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "292": {
+      "id": 292,
+      "nome": "Sport",
+      "abreviacao": "SPO",
+      "posicao": 14,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport30.png"
+      }
+    },
+    "293": {
+      "id": 293,
+      "nome": "Atlético-PR",
+      "abreviacao": "ATL",
+      "posicao": 6,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_30.png"
+      }
+    },
+    "294": {
+      "id": 294,
+      "nome": "Coritiba",
+      "abreviacao": "COR",
+      "posicao": 15,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/coritiba_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/coritiba_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/coritiba_30x30.png"
+      }
+    },
+    "303": {
+      "id": 303,
+      "nome": "Ponte Preta",
+      "abreviacao": "PON",
+      "posicao": 12,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/ponte_preta_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_30x30.png"
+      }
+    },
+    "3057": {
+      "id": 3057,
+      "nome": "Boa Esporte",
+      "abreviacao": "BEC",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "306": {
+      "id": 306,
+      "nome": "Santo André",
+      "abreviacao": "SAN",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "314": {
+      "id": 314,
+      "nome": "Avaí",
+      "abreviacao": "AVA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "315": {
+      "id": 315,
+      "nome": "Chapecoense",
+      "abreviacao": "CHA",
+      "posicao": 10,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-165.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-145.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-130.png"
+      }
+    },
+    "316": {
+      "id": 316,
+      "nome": "Figueirense",
+      "abreviacao": "FIG",
+      "posicao": 18,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/figueirense_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/figueirense_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/figueirense_30x30.png"
+      }
+    },
+    "317": {
+      "id": 317,
+      "nome": "Joinville",
+      "abreviacao": "JEC",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "327": {
+      "id": 327,
+      "nome": "América-MG",
+      "abreviacao": "AME",
+      "posicao": 20,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_65_YAXGu0v.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_45_10JJfa5.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_30_Dp4rFYO.png"
+      }
+    },
+    "342": {
+      "id": 342,
+      "nome": "ASA Arapiraca",
+      "abreviacao": "ASA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "343": {
+      "id": 343,
+      "nome": "Náutico",
+      "abreviacao": "NAU",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "344": {
+      "id": 344,
+      "nome": "Santa Cruz",
+      "abreviacao": "STC",
+      "posicao": 19,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_30x30.png"
+      }
+    },
+    "350": {
+      "id": 350,
+      "nome": "ABC",
+      "abreviacao": "ABC",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "351": {
+      "id": 351,
+      "nome": "América-RN",
+      "abreviacao": "AME",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "354": {
+      "id": 354,
+      "nome": "Ceará",
+      "abreviacao": "CEA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "363": {
+      "id": 363,
+      "nome": "Sampaio Corrêa",
+      "abreviacao": "SAM",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "373": {
+      "id": 373,
+      "nome": "Atlético-GO",
+      "abreviacao": "ATL",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "375": {
+      "id": 375,
+      "nome": "Vila Nova",
+      "abreviacao": "VIL",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "386": {
+      "id": 386,
+      "nome": "São Caetano",
+      "abreviacao": "SAO",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    },
+    "388": {
+      "id": 388,
+      "nome": "Brasiliense",
+      "abreviacao": "BRA",
+      "escudos": {
+        "60x60": "",
+        "45x45": "",
+        "30x30": ""
+      }
+    }
+  },
+  "posicoes": {
+    "1": {
+      "id": 1,
+      "nome": "Goleiro",
+      "abreviacao": "gol"
+    },
+    "2": {
+      "id": 2,
+      "nome": "Lateral",
+      "abreviacao": "lat"
+    },
+    "3": {
+      "id": 3,
+      "nome": "Zagueiro",
+      "abreviacao": "zag"
+    },
+    "4": {
+      "id": 4,
+      "nome": "Meia",
+      "abreviacao": "mei"
+    },
+    "5": {
+      "id": 5,
+      "nome": "Atacante",
+      "abreviacao": "ata"
+    },
+    "6": {
+      "id": 6,
+      "nome": "Técnico",
+      "abreviacao": "tec"
+    }
+  },
+  "total_atletas": 269
+}
