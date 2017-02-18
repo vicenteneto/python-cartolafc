@@ -43,6 +43,8 @@ class ApiTest(unittest.TestCase):
         MATCHES_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/clubs.json', 'rb') as f:
         CLUBS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/search_team.json', 'rb') as f:
+        SEARCH_TEAM_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -377,3 +379,49 @@ class ApiTest(unittest.TestCase):
         self.assertEqual(1, first_scheme.esquema_id)
         self.assertEqual('3-4-3', first_scheme.nome)
         self.assertDictEqual(posicoes_dict, first_scheme.posicoes)
+
+    def test_search_team(self):
+        """Test the cartolafc.Api search_team_info_by_name method"""
+
+        # Arrange
+        team_name = 'Falydos FC'
+        url = '%s/times?q=%s' % (self.base_url, team_name)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.SEARCH_TEAM_SAMPLE_JSON)
+            teams_found = self.api.search_team_info_by_name(team_name)
+            first_team = teams_found[0]
+
+        # Assert
+        self.assertIsInstance(teams_found, list)
+        self.assertIsInstance(first_team, TeamInfo)
+        self.assertEqual(471815, first_team.time_id)
+        self.assertEqual(100000083906892, first_team.facebook_id)
+        self.assertEqual('https://graph.facebook.com/v2.2/100000083906892/picture?width=100&height=100',
+                         first_team.foto_perfil)
+        self.assertEqual('Falydos FC', first_team.nome)
+        self.assertEqual('Vicente Neto', first_team.nome_cartola)
+        self.assertEqual('falydos-fc', first_team.slug)
+        self.assertEqual('https://s2.glbimg.com/Hysm88FeHV4IxqX9E180IIEPUkA=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/escudo/29/22/08/004692352920160827072208',
+                         first_team.url_escudo_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/escudo/29/22/'
+                         '08/004692352920160827072208', first_team.url_escudo_svg)
+        self.assertFalse(first_team.assinante)
+
+    def test_search_team_empty(self):
+        """Test the cartolafc.Api search_team_info_by_name method"""
+
+        # Arrange
+        team_name = 'Inexistent team'
+        url = '%s/times?q=%s' % (self.base_url, team_name)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, json=[])
+            teams_found = self.api.search_team_info_by_name(team_name)
+
+        # Assert
+        self.assertIsInstance(teams_found, list)
+        self.assertEqual(0, len(teams_found))
