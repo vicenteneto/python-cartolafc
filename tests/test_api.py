@@ -7,6 +7,7 @@ import requests_mock
 import cartolafc
 from cartolafc.models import (
     Athlete,
+    AthleteScore,
     Club,
     Position,
     Status
@@ -18,6 +19,8 @@ class ApiTest(unittest.TestCase):
         STATUS_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/market.json', 'rb') as f:
         MARKET_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/round_score.json', 'rb') as f:
+        ROUND_SCORE_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -98,4 +101,45 @@ class ApiTest(unittest.TestCase):
         self.assertEqual(-0.59, first_athlete.variacao)
         self.assertEqual(2.35, first_athlete.media)
         self.assertEqual(28, first_athlete.jogos)
+        self.assertDictEqual(scout_dict, first_athlete.scout)
+
+    def test_round_score(self):
+        """Test the cartolafc.Api round_score method"""
+
+        # Arrange
+        url = '%s/atletas/pontuados' % (self.base_url,)
+        escudos_dict = {
+            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter65.png',
+            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter45.png',
+            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter30.png'
+        }
+        scout_dict = {
+            'FC': 1,
+            'G': 1,
+            'PE': 1
+        }
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.ROUND_SCORE_SAMPLE_JSON)
+            round_score = self.api.round_score()
+            first_athlete = round_score[0]
+
+        # Assert
+        self.assertIsInstance(round_score, list)
+        self.assertIsInstance(first_athlete, AthleteScore)
+        self.assertEqual('Gustavo Ferrareis', first_athlete.apelido)
+        self.assertEqual(7.2, first_athlete.pontuacao)
+        self.assertEqual('https://s.glbimg.com/es/sde/f/2016/05/30/581e9d6f1052ed1c3bc00c0fb1bab53a_FORMATO.png',
+                         first_athlete.foto)
+        self.assertIsInstance(first_athlete.clube, Club)
+        self.assertEqual(285, first_athlete.clube.id)
+        self.assertEqual('Internacional', first_athlete.clube.nome)
+        self.assertEqual('INT', first_athlete.clube.abreviacao)
+        self.assertEqual(17, first_athlete.clube.posicao)
+        self.assertDictEqual(escudos_dict, first_athlete.clube.escudos)
+        self.assertIsInstance(first_athlete.posicao, Position)
+        self.assertEqual(4, first_athlete.posicao.id)
+        self.assertEqual('Meia', first_athlete.posicao.nome)
+        self.assertEqual('mei', first_athlete.posicao.abreviacao)
         self.assertDictEqual(scout_dict, first_athlete.scout)
