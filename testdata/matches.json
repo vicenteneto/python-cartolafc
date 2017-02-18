@@ -1,0 +1,497 @@
+{
+  "partidas": [
+    {
+      "clube_casa_id": 287,
+      "clube_casa_posicao": 16,
+      "clube_visitante_id": 275,
+      "aproveitamento_mandante": [
+        "v",
+        "d",
+        "v",
+        "v",
+        "d"
+      ],
+      "aproveitamento_visitante": [
+        "v",
+        "e",
+        "v",
+        "v",
+        "v"
+      ],
+      "clube_visitante_posicao": 1,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Barradão",
+      "valida": true,
+      "placar_oficial_mandante": 1,
+      "placar_oficial_visitante": 2,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 266,
+      "clube_casa_posicao": 13,
+      "clube_visitante_id": 285,
+      "aproveitamento_mandante": [
+        "d",
+        "e",
+        "d",
+        "d",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "e",
+        "d",
+        "v",
+        "e"
+      ],
+      "clube_visitante_posicao": 17,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Giulite Coutinho",
+      "valida": true,
+      "placar_oficial_mandante": 1,
+      "placar_oficial_visitante": 1,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 276,
+      "clube_casa_posicao": 10,
+      "clube_visitante_id": 344,
+      "aproveitamento_mandante": [
+        "v",
+        "e",
+        "d",
+        "v",
+        "v"
+      ],
+      "aproveitamento_visitante": [
+        "v",
+        "d",
+        "e",
+        "v",
+        "d"
+      ],
+      "clube_visitante_posicao": 19,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Pacaembu",
+      "valida": true,
+      "placar_oficial_mandante": 5,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 277,
+      "clube_casa_posicao": 2,
+      "clube_visitante_id": 327,
+      "aproveitamento_mandante": [
+        "v",
+        "v",
+        "e",
+        "d",
+        "v"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "d",
+        "d",
+        "e",
+        "d"
+      ],
+      "clube_visitante_posicao": 20,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Vila Belmiro",
+      "valida": true,
+      "placar_oficial_mandante": 1,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 283,
+      "clube_casa_posicao": 12,
+      "clube_visitante_id": 264,
+      "aproveitamento_mandante": [
+        "v",
+        "v",
+        "e",
+        "d",
+        "v"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "e",
+        "v",
+        "e",
+        "d"
+      ],
+      "clube_visitante_posicao": 7,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Mineirão",
+      "valida": true,
+      "placar_oficial_mandante": 3,
+      "placar_oficial_visitante": 2,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 284,
+      "clube_casa_posicao": 9,
+      "clube_visitante_id": 263,
+      "aproveitamento_mandante": [
+        "d",
+        "e",
+        "v",
+        "d",
+        "d"
+      ],
+      "aproveitamento_visitante": [
+        "e",
+        "d",
+        "d",
+        "e",
+        "v"
+      ],
+      "clube_visitante_posicao": 5,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Arena do Grêmio",
+      "valida": true,
+      "placar_oficial_mandante": 0,
+      "placar_oficial_visitante": 1,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 293,
+      "clube_casa_posicao": 6,
+      "clube_visitante_id": 262,
+      "aproveitamento_mandante": [
+        "d",
+        "e",
+        "v",
+        "e",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "e",
+        "v",
+        "e",
+        "v",
+        "e"
+      ],
+      "clube_visitante_posicao": 3,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Arena da Baixada",
+      "valida": true,
+      "placar_oficial_mandante": 0,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 315,
+      "clube_casa_posicao": 11,
+      "clube_visitante_id": 282,
+      "aproveitamento_mandante": [
+        "v",
+        "v",
+        "v",
+        "d",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "e",
+        "e",
+        "d",
+        "e"
+      ],
+      "clube_visitante_posicao": 4,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Arena Condá",
+      "valida": false,
+      "placar_oficial_mandante": null,
+      "placar_oficial_visitante": null,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 303,
+      "clube_casa_posicao": 8,
+      "clube_visitante_id": 294,
+      "aproveitamento_mandante": [
+        "d",
+        "e",
+        "v",
+        "e",
+        "v"
+      ],
+      "aproveitamento_visitante": [
+        "v",
+        "v",
+        "e",
+        "d",
+        "d"
+      ],
+      "clube_visitante_posicao": 15,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Moisés Lucarelli",
+      "valida": true,
+      "placar_oficial_mandante": 2,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 292,
+      "clube_casa_posicao": 14,
+      "clube_visitante_id": 316,
+      "aproveitamento_mandante": [
+        "v",
+        "d",
+        "d",
+        "e",
+        "v"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "e",
+        "d",
+        "v",
+        "d"
+      ],
+      "clube_visitante_posicao": 18,
+      "partida_data": "2016-12-11 17:00:00",
+      "local": "Ilha do Retiro",
+      "valida": true,
+      "placar_oficial_mandante": 2,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    }
+  ],
+  "clubes": {
+    "262": {
+      "id": 262,
+      "nome": "Flamengo",
+      "abreviacao": "FLA",
+      "posicao": 3,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_30x30.png"
+      }
+    },
+    "263": {
+      "id": 263,
+      "nome": "Botafogo",
+      "abreviacao": "BOT",
+      "posicao": 5,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_30x30.png"
+      }
+    },
+    "264": {
+      "id": 264,
+      "nome": "Corinthians",
+      "abreviacao": "COR",
+      "posicao": 7,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/corinthians_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_30x30.png"
+      }
+    },
+    "266": {
+      "id": 266,
+      "nome": "Fluminense",
+      "abreviacao": "FLU",
+      "posicao": 13,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/Fluminense-escudo.png"
+      }
+    },
+    "275": {
+      "id": 275,
+      "nome": "Palmeiras",
+      "abreviacao": "PAL",
+      "posicao": 1,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/palmeiras_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_30x30.png"
+      }
+    },
+    "276": {
+      "id": 276,
+      "nome": "São Paulo",
+      "abreviacao": "SAO",
+      "posicao": 10,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_30x30.png"
+      }
+    },
+    "277": {
+      "id": 277,
+      "nome": "Santos",
+      "abreviacao": "SAN",
+      "posicao": 2,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_30x30.png"
+      }
+    },
+    "282": {
+      "id": 282,
+      "nome": "Atlético-MG",
+      "abreviacao": "ATL",
+      "posicao": 4,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/atletico_mg_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_30x30.png"
+      }
+    },
+    "283": {
+      "id": 283,
+      "nome": "Cruzeiro",
+      "abreviacao": "CRU",
+      "posicao": 12,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_30.png"
+      }
+    },
+    "284": {
+      "id": 284,
+      "nome": "Grêmio",
+      "abreviacao": "GRE",
+      "posicao": 9,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_30x30.png"
+      }
+    },
+    "285": {
+      "id": 285,
+      "nome": "Internacional",
+      "abreviacao": "INT",
+      "posicao": 17,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter30.png"
+      }
+    },
+    "287": {
+      "id": 287,
+      "nome": "Vitória",
+      "abreviacao": "VIT",
+      "posicao": 16,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/vitoria_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_30x30.png"
+      }
+    },
+    "292": {
+      "id": 292,
+      "nome": "Sport",
+      "abreviacao": "SPO",
+      "posicao": 14,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport30.png"
+      }
+    },
+    "293": {
+      "id": 293,
+      "nome": "Atlético-PR",
+      "abreviacao": "ATL",
+      "posicao": 6,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_30.png"
+      }
+    },
+    "294": {
+      "id": 294,
+      "nome": "Coritiba",
+      "abreviacao": "COR",
+      "posicao": 15,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/coritiba_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/coritiba_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/coritiba_30x30.png"
+      }
+    },
+    "303": {
+      "id": 303,
+      "nome": "Ponte Preta",
+      "abreviacao": "PON",
+      "posicao": 8,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/ponte_preta_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_30x30.png"
+      }
+    },
+    "315": {
+      "id": 315,
+      "nome": "Chapecoense",
+      "abreviacao": "CHA",
+      "posicao": 11,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-165.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-145.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-130.png"
+      }
+    },
+    "316": {
+      "id": 316,
+      "nome": "Figueirense",
+      "abreviacao": "FIG",
+      "posicao": 18,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/figueirense_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/figueirense_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/figueirense_30x30.png"
+      }
+    },
+    "327": {
+      "id": 327,
+      "nome": "América-MG",
+      "abreviacao": "AME",
+      "posicao": 20,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_65_YAXGu0v.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_45_10JJfa5.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_30_Dp4rFYO.png"
+      }
+    },
+    "344": {
+      "id": 344,
+      "nome": "Santa Cruz",
+      "abreviacao": "STC",
+      "posicao": 19,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_30x30.png"
+      }
+    }
+  },
+  "rodada": 38
+}

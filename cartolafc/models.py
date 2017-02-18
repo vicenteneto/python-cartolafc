@@ -144,8 +144,10 @@ class Match(BaseModel):
 
     @classmethod
     def from_dict(cls, data, **kwargs):
+        date_format = '%Y-%m-%d %H:%M:%S'
         data['clube_casa'] = kwargs['clubs'][data['clube_casa_id']]
         data['clube_visitante'] = kwargs['clubs'][data['clube_visitante_id']]
+        data['partida_data'] = datetime.strptime(data['partida_data'], date_format)
         return super(cls, cls).from_dict(data)
 
 

@@ -11,6 +11,7 @@ from cartolafc.models import (
     AthleteScore,
     Club,
     Highlight,
+    Match,
     Position,
     Round,
     RoundHighlights,
@@ -38,6 +39,8 @@ class ApiTest(unittest.TestCase):
         SCHEMES_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/rounds.json', 'rb') as f:
         ROUNDS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/matches.json', 'rb') as f:
+        MATCHES_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -258,7 +261,7 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('#SOLTAESSEMONSTRO', first_sponsor.nome)
 
     def test_rounds(self):
-        """Test the cartolafc.Api sponsors method"""
+        """Test the cartolafc.Api rounds method"""
 
         # Arrange
         url = '%s/rodadas' % (self.base_url,)
@@ -277,6 +280,49 @@ class ApiTest(unittest.TestCase):
         self.assertEqual(datetime(2016, 5, 14, 16), first_round.inicio)
         self.assertIsInstance(first_round.fim, datetime)
         self.assertEqual(datetime(2016, 5, 15, 18, 30), first_round.fim)
+
+    def test_matches(self):
+        """Test the cartolafc.Api matches method"""
+
+        # Arrange
+        url = '%s/partidas' % (self.base_url,)
+        clube_casa_escudos_dict = {
+            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/vitoria_60x60.png',
+            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_45x45.png',
+            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_30x30.png'
+        }
+        clube_visitante_escudos_dict = {
+            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/palmeiras_60x60.png',
+            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_45x45.png',
+            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_30x30.png'
+        }
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.MATCHES_SAMPLE_JSON)
+            matches = self.api.matches()
+            first_match = matches[0]
+
+        # Assert
+        self.assertIsInstance(matches, list)
+        self.assertIsInstance(first_match, Match)
+        self.assertIsInstance(first_match.clube_casa, Club)
+        self.assertEqual(287, first_match.clube_casa.id)
+        self.assertEqual(u'Vit\xf3ria', first_match.clube_casa.nome)
+        self.assertEqual('VIT', first_match.clube_casa.abreviacao)
+        self.assertEqual(16, first_match.clube_casa.posicao)
+        self.assertDictEqual(clube_casa_escudos_dict, first_match.clube_casa.escudos)
+        self.assertEqual(16, first_match.clube_casa_posicao)
+        self.assertIsInstance(first_match.clube_visitante, Club)
+        self.assertEqual(275, first_match.clube_visitante.id)
+        self.assertEqual('Palmeiras', first_match.clube_visitante.nome)
+        self.assertEqual('PAL', first_match.clube_visitante.abreviacao)
+        self.assertEqual(1, first_match.clube_visitante.posicao)
+        self.assertDictEqual(clube_visitante_escudos_dict, first_match.clube_visitante.escudos)
+        self.assertEqual(1, first_match.clube_visitante_posicao)
+        self.assertIsInstance(first_match.partida_data, datetime)
+        self.assertEqual(datetime(2016, 12, 11, 17), first_match.partida_data)
+        self.assertEqual(u'Barrad\xe3o', first_match.local)
 
     def test_schemes(self):
         """Test the cartolafc.Api schemes method"""
