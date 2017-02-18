@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/vicenteneto/python-cartolafc-api.svg?branch=master)](https://travis-ci.org/vicenteneto/python-cartolafc-api)
 [![Coverage Status](https://coveralls.io/repos/github/vicenteneto/python-cartolafc-api/badge.svg?branch=master)](https://coveralls.io/github/vicenteneto/python-cartolafc-api?branch=master)
 [![Requirements Status](https://requires.io/github/vicenteneto/python-cartolafc-api/requirements.svg?branch=master)](https://requires.io/github/vicenteneto/python-cartolafc-api/requirements/?branch=master)
-[![Development Status](http://img.shields.io/:status-pre alpha-yellowgren.svg)](https://github.com/vicenteneto/python-cartolafc-api)
+[![Development Status](http://img.shields.io/:status-alpha-yellowgren.svg)](https://github.com/vicenteneto/python-cartolafc-api)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vicenteneto/python-cartolafc-api/blob/master/LICENSE)
 
 ...
