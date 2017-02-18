@@ -12,6 +12,7 @@ from cartolafc.models import (
     Club,
     Highlight,
     Position,
+    Round,
     RoundHighlights,
     Scheme,
     Sponsor,
@@ -35,6 +36,8 @@ class ApiTest(unittest.TestCase):
         SPONSORS_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/schemes.json', 'rb') as f:
         SCHEMES_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/rounds.json', 'rb') as f:
+        ROUNDS_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -57,6 +60,7 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('Encerrado', status.status_mercado)
         self.assertEqual(2016, status.temporada)
         self.assertEqual(1702092, status.times_escalados)
+        self.assertIsInstance(status.fechamento, datetime)
         self.assertEqual(datetime.fromtimestamp(1481475600), status.fechamento)
         self.assertEqual(False, status.mercado_pos_rodada)
         self.assertEqual('', status.aviso)
@@ -252,6 +256,27 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/patrocinador/'
                          'marca-listerine.svg', first_sponsor.img_marca_patrocinador)
         self.assertEqual('#SOLTAESSEMONSTRO', first_sponsor.nome)
+
+    def test_rounds(self):
+        """Test the cartolafc.Api sponsors method"""
+
+        # Arrange
+        url = '%s/rodadas' % (self.base_url,)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.ROUNDS_SAMPLE_JSON)
+            rounds = self.api.rounds()
+            first_round = rounds[0]
+
+        # Assert
+        self.assertIsInstance(rounds, list)
+        self.assertIsInstance(first_round, Round)
+        self.assertEqual(1, first_round.rodada_id)
+        self.assertIsInstance(first_round.inicio, datetime)
+        self.assertEqual(datetime(2016, 5, 14, 16), first_round.inicio)
+        self.assertIsInstance(first_round.fim, datetime)
+        self.assertEqual(datetime(2016, 5, 15, 18, 30), first_round.fim)
 
     def test_schemes(self):
         """Test the cartolafc.Api schemes method"""
