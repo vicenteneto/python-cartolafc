@@ -1,0 +1,86 @@
+[
+  {
+    "esquema_id": 1,
+    "nome": "3-4-3",
+    "posicoes": {
+      "ata": 3,
+      "gol": 1,
+      "lat": 0,
+      "mei": 4,
+      "tec": 1,
+      "zag": 3
+    }
+  },
+  {
+    "esquema_id": 2,
+    "nome": "3-5-2",
+    "posicoes": {
+      "ata": 2,
+      "gol": 1,
+      "lat": 0,
+      "mei": 5,
+      "tec": 1,
+      "zag": 3
+    }
+  },
+  {
+    "esquema_id": 3,
+    "nome": "4-3-3",
+    "posicoes": {
+      "ata": 3,
+      "gol": 1,
+      "lat": 2,
+      "mei": 3,
+      "tec": 1,
+      "zag": 2
+    }
+  },
+  {
+    "esquema_id": 4,
+    "nome": "4-4-2",
+    "posicoes": {
+      "ata": 2,
+      "gol": 1,
+      "lat": 2,
+      "mei": 4,
+      "tec": 1,
+      "zag": 2
+    }
+  },
+  {
+    "esquema_id": 5,
+    "nome": "4-5-1",
+    "posicoes": {
+      "ata": 1,
+      "gol": 1,
+      "lat": 2,
+      "mei": 5,
+      "tec": 1,
+      "zag": 2
+    }
+  },
+  {
+    "esquema_id": 6,
+    "nome": "5-3-2",
+    "posicoes": {
+      "ata": 2,
+      "gol": 1,
+      "lat": 2,
+      "mei": 3,
+      "tec": 1,
+      "zag": 3
+    }
+  },
+  {
+    "esquema_id": 7,
+    "nome": "5-4-1",
+    "posicoes": {
+      "ata": 1,
+      "gol": 1,
+      "lat": 2,
+      "mei": 4,
+      "tec": 1,
+      "zag": 3
+    }
+  }
+]
