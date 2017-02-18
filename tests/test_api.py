@@ -13,6 +13,7 @@ from cartolafc.models import (
     Highlight,
     Position,
     RoundHighlights,
+    Scheme,
     Sponsor,
     Status,
     TeamInfo
@@ -32,6 +33,8 @@ class ApiTest(unittest.TestCase):
         ROUND_HIGHLIGHTS_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/sponsors.json', 'rb') as f:
         SPONSORS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/schemes.json', 'rb') as f:
+        SCHEMES_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -249,3 +252,30 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/patrocinador/'
                          'marca-listerine.svg', first_sponsor.img_marca_patrocinador)
         self.assertEqual('#SOLTAESSEMONSTRO', first_sponsor.nome)
+
+    def test_schemes(self):
+        """Test the cartolafc.Api schemes method"""
+
+        # Arrange
+        url = '%s/esquemas' % (self.base_url,)
+        posicoes_dict = {
+            'ata': 3,
+            'gol': 1,
+            'lat': 0,
+            'mei': 4,
+            'tec': 1,
+            'zag': 3
+        }
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.SCHEMES_SAMPLE_JSON)
+            schemes = self.api.schemes()
+            first_scheme = schemes[0]
+
+        # Assert
+        self.assertIsInstance(schemes, list)
+        self.assertIsInstance(first_scheme, Scheme)
+        self.assertEqual(1, first_scheme.esquema_id)
+        self.assertEqual('3-4-3', first_scheme.nome)
+        self.assertDictEqual(posicoes_dict, first_scheme.posicoes)
