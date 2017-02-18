@@ -18,6 +18,7 @@ from cartolafc.models import (
     Scheme,
     Sponsor,
     Status,
+    Team,
     TeamInfo
 )
 
@@ -45,6 +46,8 @@ class ApiTest(unittest.TestCase):
         CLUBS_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/search_team.json', 'rb') as f:
         SEARCH_TEAM_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/get_team.json', 'rb') as f:
+        GET_TEAM_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -425,3 +428,61 @@ class ApiTest(unittest.TestCase):
         # Assert
         self.assertIsInstance(teams_found, list)
         self.assertEqual(0, len(teams_found))
+
+    def test_get_team(self):
+        """Test the cartolafc.Api get_team method"""
+
+        # Arrange
+        team_slug = 'falydos-fc'
+        url = '%s/time/%s' % (self.base_url, team_slug)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.GET_TEAM_SAMPLE_JSON)
+            team = self.api.get_team(team_slug)
+            first_athlete = team.atletas[0]
+
+        # Assert
+        self.assertIsInstance(team, Team)
+        self.assertIsInstance(first_athlete, Athlete)
+        self.assertEqual(3, team.esquema_id)
+        self.assertEqual(0, team.patrimonio)
+        self.assertEqual(48.889892578125, team.pontos)
+        self.assertIsInstance(team.info, TeamInfo)
+        self.assertEqual(471815, team.info.time_id)
+        self.assertEqual(100000083906892, team.info.facebook_id)
+        self.assertEqual('https://graph.facebook.com/v2.2/100000083906892/picture?width=100&height=100',
+                         team.info.foto_perfil)
+        self.assertEqual('Falydos FC', team.info.nome)
+        self.assertEqual('Vicente Neto', team.info.nome_cartola)
+        self.assertEqual('falydos-fc', team.info.slug)
+        self.assertEqual('https://s2.glbimg.com/Hysm88FeHV4IxqX9E180IIEPUkA=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/escudo/29/22/08/004692352920160827072208',
+                         team.info.url_escudo_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/escudo/29/22/'
+                         '08/004692352920160827072208', team.info.url_escudo_svg)
+        self.assertEqual('https://s2.glbimg.com/JyYGSWyMFmHwzgL39uZIBJKEbTM=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/camisa/29/22/08/004692352920160827072208',
+                         team.info.url_camisa_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_27/camisa/29/22/'
+                         '08/004692352920160827072208', team.info.url_camisa_svg)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png',
+                         team.info.url_escudo_placeholder_png)
+        self.assertEqual('https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/camisa.png',
+                         team.info.url_camisa_placeholder_png)
+        self.assertFalse(team.info.assinante)
+        self.assertEqual(0, team.valor_time)
+
+    def test_get_inexistent_team(self):
+        """Test the cartolafc.Api get_team method"""
+
+        # Arrange
+        team_slug = 'inexistent-slug'
+        url = '%s/time/%s' % (self.base_url, team_slug)
+
+        # Act and Assert
+        with requests_mock.mock() as m:
+            m.get(url, json={'mensagem': 'Time não encontrado'})
+
+            with self.assertRaises(cartolafc.CartolaFCError):
+                self.api.get_team(team_slug)
