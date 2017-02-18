@@ -1,0 +1,262 @@
+[
+  {
+    "Atleta": {
+      "atleta_id": 68911,
+      "nome": "Diego Souza de Andrade",
+      "apelido": "Diego Souza",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/4ca75c7b4c6ef9d48c9ffe43f89b8f78_FORMATO.png",
+      "preco_editorial": 21
+    },
+    "escalacoes": 843626,
+    "clube": "SPO",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+    "posicao": "Meia"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 68952,
+      "nome": "Mário Sérgio Santos Costa",
+      "apelido": "Marinho",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/fd249ecee00ebf56d13d770212e144b4_FORMATO.png",
+      "preco_editorial": 15
+    },
+    "escalacoes": 748292,
+    "clube": "VIT",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/vitoria_60x60.png",
+    "posicao": "Atacante"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 87552,
+      "nome": "Vitor Frezarin Bueno",
+      "apelido": "Vitor Bueno",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/6a51ac71a5e8a928c9cf1b71c2db243b_FORMATO.png",
+      "preco_editorial": 9
+    },
+    "escalacoes": 730857,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Meia"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 38910,
+      "nome": "Ricardo de Oliveira",
+      "apelido": "Ricardo Oliveira",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/04f2207e667b88e15a5ccdc893894a1f_FORMATO.png",
+      "preco_editorial": 28
+    },
+    "escalacoes": 704475,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Atacante"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 82411,
+      "nome": "Christian Alberto Cueva Bravo",
+      "apelido": "Cueva",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/06/28/a68882f174b592bf4e78dbc9818a4465_FORMATO.jpeg",
+      "preco_editorial": 8
+    },
+    "escalacoes": 635548,
+    "clube": "SAO",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+    "posicao": "Atacante"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 40990,
+      "nome": "Dorival Silvestre Júnior",
+      "apelido": "Dorival Júnior",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/a25c043c72cbfe64aa3f9e2a7d76cdc5_FORMATO.png",
+      "preco_editorial": 11
+    },
+    "escalacoes": 578240,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Técnico"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 77959,
+      "nome": "Jonathan Copete Valencia",
+      "apelido": "Copete",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/05/51accf3c8cee0e903942afbe9b7990a7_FORMATO.png",
+      "preco_editorial": 7
+    },
+    "escalacoes": 543621,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Atacante"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 50317,
+      "nome": "David Braz de Oliveira Filho",
+      "apelido": "David Braz",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/7bca046ddd8602f61aef411fe78c444b_FORMATO.png",
+      "preco_editorial": 8
+    },
+    "escalacoes": 504137,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Zagueiro"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 73800,
+      "nome": "Rodrigo Caio Roquette Russo",
+      "apelido": "Rodrigo Caio",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/76c4acf534a1a01c922cb927acebb6e7_FORMATO.png",
+      "preco_editorial": 15
+    },
+    "escalacoes": 446388,
+    "clube": "SAO",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+    "posicao": "Zagueiro"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 71227,
+      "nome": "Maicon Pereira Roque",
+      "apelido": "Maicon",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/f3000bd2b412a315dad8796d7080a492_FORMATO.png",
+      "preco_editorial": 7
+    },
+    "escalacoes": 427462,
+    "clube": "SAO",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+    "posicao": "Zagueiro"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 87192,
+      "nome": "José Carlos Cracco Neto",
+      "apelido": "Zeca",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/b75497cbd7fdf4e7cc56e0a77979a9f7_FORMATO.png",
+      "preco_editorial": 11
+    },
+    "escalacoes": 426938,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Lateral"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 62121,
+      "nome": "Vanderlei Farias da Silva",
+      "apelido": "Vanderlei",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/82e0b04b2f7623a1d61ffaff2e36a59c_FORMATO.png",
+      "preco_editorial": 15
+    },
+    "escalacoes": 421787,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Goleiro"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 70046,
+      "nome": "Victor Ferraz Macedo",
+      "apelido": "Victor Ferraz",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/58576d141c8216fac9dedb1df391d5e8_FORMATO.png",
+      "preco_editorial": 10
+    },
+    "escalacoes": 408923,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Lateral"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 87999,
+      "nome": "Gustavo Henrique Furtado Scarpa",
+      "apelido": "Gustavo Scarpa",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/29/6e433eb3cd2ccb3fe639c110479ebf7c_FORMATO.png",
+      "preco_editorial": 12
+    },
+    "escalacoes": 353457,
+    "clube": "FLU",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+    "posicao": "Meia"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 80583,
+      "nome": "Lucas Rafael Araujo Lima",
+      "apelido": "Lucas Lima",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/99227d881a9f127bce3c284290295f02_FORMATO.png",
+      "preco_editorial": 26
+    },
+    "escalacoes": 304667,
+    "clube": "SAN",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+    "posicao": "Meia"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 80944,
+      "nome": "Johnath Marlone Azevedo da Silva",
+      "apelido": "Marlone",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/e9ebab6fd2406ef83d5358e1e50028db_FORMATO.png",
+      "preco_editorial": 4
+    },
+    "escalacoes": 279157,
+    "clube": "COR",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/corinthians_60x60.png",
+    "posicao": "Meia"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 87863,
+      "nome": "Giorgian Daniel de Arrascaeta Benedetti",
+      "apelido": "Arrascaeta",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/28/34e8365db550908af5ae08bc890c103c_FORMATO.png",
+      "preco_editorial": 17
+    },
+    "escalacoes": 273998,
+    "clube": "CRU",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+    "posicao": "Meia"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 75295,
+      "nome": "José Paolo Guerrero Gonzales",
+      "apelido": "Paolo Guerrero",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/04/20/b32111b86cb0b507eb672fbe6392e61a_FORMATO.png",
+      "preco_editorial": 21
+    },
+    "escalacoes": 250711,
+    "clube": "FLA",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png",
+    "posicao": "Atacante"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 68950,
+      "nome": "Ronaldo Luiz Alves",
+      "apelido": "Ronaldo Alves",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/07/08/b5631b95dc105cd68b154bfaa21ecf74_FORMATO.png",
+      "preco_editorial": 6
+    },
+    "escalacoes": 249979,
+    "clube": "SPO",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+    "posicao": "Zagueiro"
+  },
+  {
+    "Atleta": {
+      "atleta_id": 78445,
+      "nome": "Renê Rodrigues Martins",
+      "apelido": "Renê",
+      "foto": "https://s.glbimg.com/es/sde/f/2016/05/01/1eac9f5c4053080a4a2e6359bd545014_FORMATO.png",
+      "preco_editorial": 14
+    },
+    "escalacoes": 237837,
+    "clube": "SPO",
+    "escudo_clube": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+    "posicao": "Lateral"
+  }
+]
