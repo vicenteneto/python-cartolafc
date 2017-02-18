@@ -1,5 +1,7 @@
 # Python Cartola FC API
 
+[![PyPi Version](https://img.shields.io/pypi/v/python-cartolafc.svg)](https://pypi.python.org/pypi/python-cartolafc)
+[![Downloads](https://img.shields.io/pypi/dm/python-cartolafc.svg)](https://pypi.python.org/pypi/python-cartolafc)
 [![Build Status](https://travis-ci.org/vicenteneto/python-cartolafc.svg?branch=master)](https://travis-ci.org/vicenteneto/python-cartolafc)
 [![Coverage Status](https://coveralls.io/repos/github/vicenteneto/python-cartolafc/badge.svg?branch=master)](https://coveralls.io/github/vicenteneto/python-cartolafc?branch=master)
 [![Requirements Status](https://requires.io/github/vicenteneto/python-cartolafc/requirements.svg?branch=master)](https://requires.io/github/vicenteneto/python-cartolafc/requirements/?branch=master)
