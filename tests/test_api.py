@@ -7,8 +7,10 @@ import requests_mock
 import cartolafc
 from cartolafc.models import (
     Athlete,
+    AthleteInfo,
     AthleteScore,
     Club,
+    Highlight,
     Position,
     Status
 )
@@ -21,6 +23,8 @@ class ApiTest(unittest.TestCase):
         MARKET_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/round_score.json', 'rb') as f:
         ROUND_SCORE_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/highlights.json', 'rb') as f:
+        HIGHLIGHTS_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -143,3 +147,30 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('Meia', first_athlete.posicao.nome)
         self.assertEqual('mei', first_athlete.posicao.abreviacao)
         self.assertDictEqual(scout_dict, first_athlete.scout)
+
+    def test_highlights(self):
+        """Test the cartolafc.Api highlights method"""
+
+        # Arrange
+        url = '%s/mercado/destaques' % (self.base_url,)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.HIGHLIGHTS_SAMPLE_JSON)
+            highlights = self.api.highlights()
+            first_highlight = highlights[0]
+
+        # Assert
+        self.assertIsInstance(highlights, list)
+        self.assertIsInstance(first_highlight, Highlight)
+        self.assertIsInstance(first_highlight.atleta, AthleteInfo)
+        self.assertEqual(68911, first_highlight.atleta.atleta_id)
+        self.assertEqual('Diego Souza de Andrade', first_highlight.atleta.nome)
+        self.assertEqual('Diego Souza', first_highlight.atleta.apelido)
+        self.assertEqual('https://s.glbimg.com/es/sde/f/2016/05/01/4ca75c7b4c6ef9d48c9ffe43f89b8f78_FORMATO.png',
+                         first_highlight.atleta.foto)
+        self.assertEqual(21, first_highlight.atleta.preco_editorial)
+        self.assertEqual(843626, first_highlight.escalacoes)
+        self.assertEqual('SPO', first_highlight.clube)
+        self.assertEqual('https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png', first_highlight.escudo_clube)
+        self.assertEqual('Meia', first_highlight.posicao)
