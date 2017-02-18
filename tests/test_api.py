@@ -11,6 +11,7 @@ from cartolafc.models import (
     AthleteScore,
     Club,
     Highlight,
+    LeagueInfo,
     Match,
     Position,
     Round,
@@ -50,6 +51,8 @@ class ApiTest(unittest.TestCase):
         GET_TEAM_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/get_team_by_round.json', 'rb') as f:
         GET_TEAM_BY_ROUND_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/search_league.json', 'rb') as f:
+        SEARCH_LEAGUE_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -614,3 +617,47 @@ class ApiTest(unittest.TestCase):
 
             with self.assertRaises(cartolafc.CartolaFCError):
                 self.api.get_team_by_round(team_slug, round_)
+
+    def test_search_league_info_by_name(self):
+        """Test the cartolafc.Api search_league_info_by_name method"""
+
+        # Arrange
+        league_name = 'Virtus Premier League'
+        url = '%s/ligas?q=%s' % (self.base_url, league_name)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.SEARCH_LEAGUE_SAMPLE_JSON)
+            leagues_found = self.api.search_league_info_by_name(league_name)
+            first_league = leagues_found[0]
+
+        # Assert
+        self.assertIsInstance(leagues_found, list)
+        self.assertIsInstance(first_league, LeagueInfo)
+        self.assertEqual(262881, first_league.liga_id)
+        self.assertEqual('Virtus Premier League', first_league.nome)
+        self.assertEqual(u'Pr\xeamio:\n- O melhor de cada turno ganha R$65,00.\n- 1\xba Lugar geral  ganha a  Camisa '
+                         u'Oficial do time do Cora\xe7\xe3o.', first_league.descricao)
+        self.assertEqual('virtus-premier-league', first_league.slug)
+        self.assertEqual('https://s2.glbimg.com/7r-JR3GCpYmIZLbcBIM1xZF1pyg=/https://s3.glbimg.com/v1/AUTH_'
+                         '58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/81/51/44/0026288120160726165144',
+                         first_league.imagem)
+        self.assertEqual(0, first_league.quantidade_times)
+        self.assertFalse(first_league.mata_mata)
+        self.assertEqual('Fechada', first_league.tipo)
+
+    def test_search_league_info_by_name_empty(self):
+        """Test the cartolafc.Api search_league_info_by_name method"""
+
+        # Arrange
+        league_name = 'Inexistent league'
+        url = '%s/ligas?q=%s' % (self.base_url, league_name)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, json=[])
+            leagues_found = self.api.search_league_info_by_name(league_name)
+
+        # Assert
+        self.assertIsInstance(leagues_found, list)
+        self.assertEqual(0, len(leagues_found))
