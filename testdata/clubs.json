@@ -1,0 +1,532 @@
+{
+  "1": {
+    "id": 1,
+    "nome": "Outros",
+    "abreviacao": "OUT",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "1349": {
+    "id": 1349,
+    "nome": "Ipatinga",
+    "abreviacao": "IPA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "1390": {
+    "id": 1390,
+    "nome": "Icasa",
+    "abreviacao": "ICA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "2190": {
+    "id": 2190,
+    "nome": "Oeste",
+    "abreviacao": "OES",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "2193": {
+    "id": 2193,
+    "nome": "Duque de Caxias",
+    "abreviacao": "DUQ",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "2197": {
+    "id": 2197,
+    "nome": "Americana",
+    "abreviacao": "AME",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "2554": {
+    "id": 2554,
+    "nome": "Grêmio Prudente",
+    "abreviacao": "PRU",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "2565": {
+    "id": 2565,
+    "nome": "Luverdense",
+    "abreviacao": "LUV",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "262": {
+    "id": 262,
+    "nome": "Flamengo",
+    "abreviacao": "FLA",
+    "posicao": 3,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_30x30.png"
+    }
+  },
+  "263": {
+    "id": 263,
+    "nome": "Botafogo",
+    "abreviacao": "BOT",
+    "posicao": 5,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_30x30.png"
+    }
+  },
+  "264": {
+    "id": 264,
+    "nome": "Corinthians",
+    "abreviacao": "COR",
+    "posicao": 7,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/corinthians_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_30x30.png"
+    }
+  },
+  "265": {
+    "id": 265,
+    "nome": "Bahia",
+    "abreviacao": "BAH",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "266": {
+    "id": 266,
+    "nome": "Fluminense",
+    "abreviacao": "FLU",
+    "posicao": 13,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/Fluminense-escudo.png"
+    }
+  },
+  "267": {
+    "id": 267,
+    "nome": "Vasco",
+    "abreviacao": "VAS",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "275": {
+    "id": 275,
+    "nome": "Palmeiras",
+    "abreviacao": "PAL",
+    "posicao": 1,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/palmeiras_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_30x30.png"
+    }
+  },
+  "276": {
+    "id": 276,
+    "nome": "São Paulo",
+    "abreviacao": "SAO",
+    "posicao": 10,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_30x30.png"
+    }
+  },
+  "277": {
+    "id": 277,
+    "nome": "Santos",
+    "abreviacao": "SAN",
+    "posicao": 2,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_30x30.png"
+    }
+  },
+  "278": {
+    "id": 278,
+    "nome": "Portuguesa",
+    "abreviacao": "POR",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "279": {
+    "id": 279,
+    "nome": "Guarani",
+    "abreviacao": "GUA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "280": {
+    "id": 280,
+    "nome": "Bragantino",
+    "abreviacao": "BRA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "282": {
+    "id": 282,
+    "nome": "Atlético-MG",
+    "abreviacao": "ATL",
+    "posicao": 4,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/atletico_mg_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_30x30.png"
+    }
+  },
+  "283": {
+    "id": 283,
+    "nome": "Cruzeiro",
+    "abreviacao": "CRU",
+    "posicao": 12,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_30.png"
+    }
+  },
+  "284": {
+    "id": 284,
+    "nome": "Grêmio",
+    "abreviacao": "GRE",
+    "posicao": 9,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_30x30.png"
+    }
+  },
+  "285": {
+    "id": 285,
+    "nome": "Internacional",
+    "abreviacao": "INT",
+    "posicao": 17,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter65.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter30.png"
+    }
+  },
+  "286": {
+    "id": 286,
+    "nome": "Juventude",
+    "abreviacao": "JUV",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "287": {
+    "id": 287,
+    "nome": "Vitória",
+    "abreviacao": "VIT",
+    "posicao": 16,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/vitoria_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_30x30.png"
+    }
+  },
+  "288": {
+    "id": 288,
+    "nome": "Criciúma",
+    "abreviacao": "CRI",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "289": {
+    "id": 289,
+    "nome": "Paraná",
+    "abreviacao": "PAR",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "290": {
+    "id": 290,
+    "nome": "Goiás",
+    "abreviacao": "GOI",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "292": {
+    "id": 292,
+    "nome": "Sport",
+    "abreviacao": "SPO",
+    "posicao": 14,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport30.png"
+    }
+  },
+  "293": {
+    "id": 293,
+    "nome": "Atlético-PR",
+    "abreviacao": "ATL",
+    "posicao": 6,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_65.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_30.png"
+    }
+  },
+  "294": {
+    "id": 294,
+    "nome": "Coritiba",
+    "abreviacao": "COR",
+    "posicao": 15,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/coritiba_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/coritiba_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/coritiba_30x30.png"
+    }
+  },
+  "303": {
+    "id": 303,
+    "nome": "Ponte Preta",
+    "abreviacao": "PON",
+    "posicao": 8,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/ponte_preta_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_30x30.png"
+    }
+  },
+  "3057": {
+    "id": 3057,
+    "nome": "Boa Esporte",
+    "abreviacao": "BEC",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "306": {
+    "id": 306,
+    "nome": "Santo André",
+    "abreviacao": "SAN",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "314": {
+    "id": 314,
+    "nome": "Avaí",
+    "abreviacao": "AVA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "315": {
+    "id": 315,
+    "nome": "Chapecoense",
+    "abreviacao": "CHA",
+    "posicao": 11,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-165.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-145.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-130.png"
+    }
+  },
+  "316": {
+    "id": 316,
+    "nome": "Figueirense",
+    "abreviacao": "FIG",
+    "posicao": 18,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/figueirense_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/figueirense_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/figueirense_30x30.png"
+    }
+  },
+  "317": {
+    "id": 317,
+    "nome": "Joinville",
+    "abreviacao": "JEC",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "327": {
+    "id": 327,
+    "nome": "América-MG",
+    "abreviacao": "AME",
+    "posicao": 20,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_65_YAXGu0v.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_45_10JJfa5.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/06/08/America-MG_30_Dp4rFYO.png"
+    }
+  },
+  "342": {
+    "id": 342,
+    "nome": "ASA Arapiraca",
+    "abreviacao": "ASA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "343": {
+    "id": 343,
+    "nome": "Náutico",
+    "abreviacao": "NAU",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "344": {
+    "id": 344,
+    "nome": "Santa Cruz",
+    "abreviacao": "STC",
+    "posicao": 19,
+    "escudos": {
+      "60x60": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_60x60.png",
+      "45x45": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_45x45.png",
+      "30x30": "https://s.glbimg.com/es/sde/f/organizacoes/2014/04/14/santa_cruz_30x30.png"
+    }
+  },
+  "350": {
+    "id": 350,
+    "nome": "ABC",
+    "abreviacao": "ABC",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "351": {
+    "id": 351,
+    "nome": "América-RN",
+    "abreviacao": "AME",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "354": {
+    "id": 354,
+    "nome": "Ceará",
+    "abreviacao": "CEA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "363": {
+    "id": 363,
+    "nome": "Sampaio Corrêa",
+    "abreviacao": "SAM",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "373": {
+    "id": 373,
+    "nome": "Atlético-GO",
+    "abreviacao": "ATL",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "375": {
+    "id": 375,
+    "nome": "Vila Nova",
+    "abreviacao": "VIL",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "386": {
+    "id": 386,
+    "nome": "São Caetano",
+    "abreviacao": "SAO",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  },
+  "388": {
+    "id": 388,
+    "nome": "Brasiliense",
+    "abreviacao": "BRA",
+    "escudos": {
+      "60x60": "",
+      "45x45": "",
+      "30x30": ""
+    }
+  }
+}

@@ -41,6 +41,8 @@ class ApiTest(unittest.TestCase):
         ROUNDS_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/matches.json', 'rb') as f:
         MATCHES_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/clubs.json', 'rb') as f:
+        CLUBS_SAMPLE_JSON = f.read().decode('utf8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -323,6 +325,31 @@ class ApiTest(unittest.TestCase):
         self.assertIsInstance(first_match.partida_data, datetime)
         self.assertEqual(datetime(2016, 12, 11, 17), first_match.partida_data)
         self.assertEqual(u'Barrad\xe3o', first_match.local)
+
+    def test_clubs(self):
+        """Test the cartolafc.Api clubs method"""
+
+        # Arrange
+        url = '%s/clubes' % (self.base_url,)
+        escudos_dict = {
+            '60x60': '',
+            '45x45': '',
+            '30x30': ''
+        }
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.CLUBS_SAMPLE_JSON)
+            clubs = self.api.clubs()
+            first_club = clubs[0]
+
+        # Assert
+        self.assertIsInstance(clubs, list)
+        self.assertIsInstance(first_club, Club)
+        self.assertEqual(1349, first_club.id)
+        self.assertEqual('Ipatinga', first_club.nome)
+        self.assertEqual('IPA', first_club.abreviacao)
+        self.assertDictEqual(escudos_dict, first_club.escudos)
 
     def test_schemes(self):
         """Test the cartolafc.Api schemes method"""
