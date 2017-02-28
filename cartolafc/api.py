@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+from collections import OrderedDict
 
 import requests
 
@@ -58,8 +59,9 @@ class Api(object):
 
         clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
         positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
+
         return [AthleteScore.from_dict(athlete, clubs=clubs, positions=positions) for athlete in
-                data['atletas'].values()]
+                OrderedDict(sorted(data['atletas'].items())).values()]
 
     def highlights(self):
         url = '%s/mercado/destaques' % (self.base_url,)
@@ -108,7 +110,7 @@ class Api(object):
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Club.from_dict(club) for club in data.values()]
+        return [Club.from_dict(club) for club in OrderedDict(sorted(data.items())).values()]
 
     def schemes(self):
         url = '%s/esquemas' % (self.base_url,)

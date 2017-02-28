@@ -1,12 +1,18 @@
 sudo: false
 language: python
 
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
 install:
- - pip install -r requirements/common.txt
- - pip install -r requirements/development.txt
+  - pip install tox-travis
 
 script:
- - nosetests --with-coverage --cover-html --cover-branches --cover-erase --cover-package=cartolafc
+  - tox
 
 after_success:
   - coveralls

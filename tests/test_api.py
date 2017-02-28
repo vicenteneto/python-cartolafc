@@ -142,14 +142,16 @@ class ApiTest(unittest.TestCase):
         # Arrange
         url = '%s/atletas/pontuados' % (self.base_url,)
         escudos_dict = {
-            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter65.png',
-            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter45.png',
-            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2016/05/03/inter30.png'
+            '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png',
+            '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png',
+            '30x30': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_30x30.png'
         }
         scout_dict = {
+            'CA': 1,
             'FC': 1,
-            'G': 1,
-            'PE': 1
+            'FS': 2,
+            'PE': 2,
+            'SG': 1
         }
 
         # Act
@@ -161,20 +163,20 @@ class ApiTest(unittest.TestCase):
         # Assert
         self.assertIsInstance(round_score, list)
         self.assertIsInstance(first_athlete, AthleteScore)
-        self.assertEqual('Gustavo Ferrareis', first_athlete.apelido)
-        self.assertEqual(7.2, first_athlete.pontuacao)
-        self.assertEqual('https://s.glbimg.com/es/sde/f/2016/05/30/581e9d6f1052ed1c3bc00c0fb1bab53a_FORMATO.png',
+        self.assertEqual('Juan', first_athlete.apelido)
+        self.assertEqual(2.9, first_athlete.pontuacao)
+        self.assertEqual('https://s.glbimg.com/es/sde/f/2016/04/20/cac9ebd94cc82a0b98f4055f9667d4e6_FORMATO.png',
                          first_athlete.foto)
         self.assertIsInstance(first_athlete.clube, Club)
-        self.assertEqual(285, first_athlete.clube.id)
-        self.assertEqual('Internacional', first_athlete.clube.nome)
-        self.assertEqual('INT', first_athlete.clube.abreviacao)
-        self.assertEqual(17, first_athlete.clube.posicao)
+        self.assertEqual(262, first_athlete.clube.id)
+        self.assertEqual('Flamengo', first_athlete.clube.nome)
+        self.assertEqual('FLA', first_athlete.clube.abreviacao)
+        self.assertEqual(3, first_athlete.clube.posicao)
         self.assertDictEqual(escudos_dict, first_athlete.clube.escudos)
         self.assertIsInstance(first_athlete.posicao, Position)
-        self.assertEqual(4, first_athlete.posicao.id)
-        self.assertEqual('Meia', first_athlete.posicao.nome)
-        self.assertEqual('mei', first_athlete.posicao.abreviacao)
+        self.assertEqual(3, first_athlete.posicao.id)
+        self.assertEqual('Zagueiro', first_athlete.posicao.nome)
+        self.assertEqual('zag', first_athlete.posicao.abreviacao)
         self.assertDictEqual(scout_dict, first_athlete.scout)
 
     def test_highlights(self):
@@ -356,9 +358,9 @@ class ApiTest(unittest.TestCase):
         # Assert
         self.assertIsInstance(clubs, list)
         self.assertIsInstance(first_club, Club)
-        self.assertEqual(1349, first_club.id)
-        self.assertEqual('Ipatinga', first_club.nome)
-        self.assertEqual('IPA', first_club.abreviacao)
+        self.assertEqual(1, first_club.id)
+        self.assertEqual('Outros', first_club.nome)
+        self.assertEqual('OUT', first_club.abreviacao)
         self.assertDictEqual(escudos_dict, first_club.escudos)
 
     def test_schemes(self):
