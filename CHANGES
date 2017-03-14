@@ -1,0 +1,56 @@
+Changelog
+=========
+
+Here you can see the full list of changes between each release.
+
+
+Version 0.3.13
+--------------
+
+Released on Mar 13th 2017.
+
+- ``#29`` Setting up tox to perform tests in Python versions 2.7, 3.3, 3.4, 3.5 and 3.6
+- Changed development status to ``Beta``
+- Updating README with information on how to install and examples
+
+
+Version 0.2.19
+--------------
+
+Released on Feb 19th 2017.
+
+- ``#28`` Releasing version 0.2.19
+- ``#27`` Creating tests to the ``cartolafc.Api.search_league_info_by_name`` method
+- ``#26`` Creating tests to the ``cartolafc.Api.get_team`` and ``cartolafc.Api.get_team_by_round`` methods
+- ``#25`` Creating tests to the ``cartolafc.Api.search_team_info_by_name`` method
+- ``#24`` Creating tests to the ``cartolafc.Api.clubs`` method
+- ``#23`` Creating tests to the ``cartolafc.Api.matches`` method
+- ``#22`` Creating tests to the ``cartolafc.Api.rounds`` method
+- ``#21`` Adding and configuring Sphinx to generate project documentation
+- ``#20`` Creating tests to the ``cartolafc.Api.schemes`` method
+- ``#19`` Creating tests to the ``cartolafc.Api.round_highlights`` and ``cartolafc.Api.sponsors`` methods
+- ``#18`` Creating tests to the ``cartolafc.Api.highlights`` method
+- ``#17`` Creating tests to the ``cartolafc.Api.round_score`` method
+- ``#16`` Creating tests to the ``cartolafc.Api.market`` method
+- ``#15`` Changing repository name from python-cartolafc-api to python-cartolafc
+
+
+Version 0.2.18
+--------------
+
+Released on Feb 18th 2017.
+
+- ``#14`` Creating PyPi setup file and sample examples directory
+- ``#13`` Creating tests to the ``cartolafc.Api.status`` method
+- ``#12`` Adding service to get the market and round score
+- ``#11`` Adding service to get the last round highlights
+- ``#10`` Adding service to search leagues by its name
+- ``#9`` Adding service to get team info in a specific round
+- ``#8`` Adding service to list schemes
+- ``#7`` Adding service to search teams by its name and slugs
+- ``#6`` Adding service to list the championship clubs
+- ``#5`` Adding service to list the upcomings championship matches
+- ``#4`` Adding service to list the championship rounds
+- ``#3`` Creating service to list sponsors
+- ``#2`` Creating service to list the most scaled players
+- ``#1`` Added service to check market status
