@@ -1,4 +1,4 @@
-.. _installation
+.. _installation:
 
 Installation
 ============
@@ -22,6 +22,7 @@ Download the source files and run::
 Development version
 -------------------
 
-If you want to work with the latest version of Flask, you can either let ``pip`` pull in the development version::
+If you want to work with the latest version of Python CartolaFC's, you can either let ``pip`` pull in the development
+version::
 
     $ pip install git+https://github.com/vicenteneto/python-cartolafc.git#egg=Python-CartolaFC

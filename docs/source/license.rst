@@ -1,4 +1,4 @@
-.. _license
+.. _license:
 
 Copyright and license
 =====================

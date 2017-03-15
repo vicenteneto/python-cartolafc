@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-    Python Cartola FC API
-    ~~~~~
+    cartolafc
+    ~~~~~~~~~
+
     A python interface into the Cartola FC API.
 
-    :copyright: (c) 2017 by Vicente Neto.
+    :copyright: \(c\) 2017 by Vicente Neto.
     :license: MIT, see LICENSE for more details.
 """
 
