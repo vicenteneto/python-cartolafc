@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+import re
 from collections import OrderedDict
 
 import requests
@@ -91,7 +92,7 @@ class Api(object):
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Sponsor.from_dict(sponsor) for sponsor in data]
+        return [Sponsor.from_dict(sponsor) for sponsor in data.values()]
 
     def rounds(self):
         """ rounds. """
@@ -139,18 +140,20 @@ class Api(object):
 
         return [TeamInfo.from_dict(team_info) for team_info in data]
 
-    def get_team(self, slug):
+    def get_team(self, name, is_slug=False):
         """ get_team. """
-        url = '%s/time/%s' % (self.base_url, slug)
+        slug = name if is_slug else self._convert_team_name_to_slug(name)
+        url = '%s/time/slug/%s' % (self.base_url, slug)
 
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return Team.from_dict(data)
 
-    def get_team_by_round(self, slug, round_):
+    def get_team_by_round(self, name, round_, is_slug=False):
         """ get_team_by_round. """
-        url = '%s/time/%s/%s' % (self.base_url, slug, round_)
+        slug = name if is_slug else self._convert_team_name_to_slug(name)
+        url = '%s/time/slug/%s/%s' % (self.base_url, slug, round_)
 
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
@@ -178,3 +181,6 @@ class Api(object):
             return data
         except ValueError:
             raise CartolaFCError('Unknown error: {0}'.format(json_data))
+
+    def _convert_team_name_to_slug(self, name):
+        return re.sub(r'[^a-zA-Z]', '-', name)

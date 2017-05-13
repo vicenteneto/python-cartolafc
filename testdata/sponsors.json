@@ -1,5 +1,5 @@
-[
-  {
+{
+  "62": {
     "liga_editorial_id": 2,
     "liga_id": 62,
     "servico_cadun": 6488,
@@ -14,7 +14,7 @@
     "img_marca_patrocinador": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/patrocinador/marca-listerine.svg",
     "nome": "#SOLTAESSEMONSTRO"
   },
-  {
+  "63": {
     "liga_editorial_id": 3,
     "liga_id": 63,
     "servico_cadun": 6490,
@@ -29,4 +29,4 @@
     "img_marca_patrocinador": "https://cartolafc.globo.com/static/img/logo-globoplay-branco.svg",
     "nome": "Liga Globoplay"
   }
-]
+}

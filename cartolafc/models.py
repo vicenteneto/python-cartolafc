@@ -209,7 +209,8 @@ class RoundHighlights(BaseModel):
 
     @classmethod
     def from_dict(cls, data, **kwargs):
-        data['mito_rodada'] = TeamInfo.from_dict(data['mito_rodada'])
+        if data['mito_rodada']:
+            data['mito_rodada'] = TeamInfo.from_dict(data['mito_rodada'])
         return super(cls, cls).from_dict(data)
 
 

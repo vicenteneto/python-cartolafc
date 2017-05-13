@@ -440,8 +440,9 @@ class ApiTest(unittest.TestCase):
         """Test the cartolafc.Api get_team method"""
 
         # Arrange
+        team_name = 'Falydos FC'
         team_slug = 'falydos-fc'
-        url = '%s/time/%s' % (self.base_url, team_slug)
+        url = '%s/time/slug/%s' % (self.base_url, team_slug)
         escudos_dict = {
             '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png',
             '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png',
@@ -456,7 +457,7 @@ class ApiTest(unittest.TestCase):
         # Act
         with requests_mock.mock() as m:
             m.get(url, text=self.GET_TEAM_SAMPLE_JSON)
-            team = self.api.get_team(team_slug)
+            team = self.api.get_team(team_name)
             first_athlete = team.atletas[0]
 
         # Assert
@@ -512,12 +513,29 @@ class ApiTest(unittest.TestCase):
         self.assertFalse(team.info.assinante)
         self.assertEqual(0, team.valor_time)
 
+    def test_get_team_using_slug(self):
+        """Test the cartolafc.Api get_team method"""
+
+        # Arrange
+        team_slug = 'falydos-fc'
+        url = '%s/time/slug/%s' % (self.base_url, team_slug)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.GET_TEAM_SAMPLE_JSON)
+            team = self.api.get_team(team_slug, is_slug=True)
+            first_athlete = team.atletas[0]
+
+        # Assert
+        self.assertIsInstance(team, Team)
+        self.assertIsInstance(first_athlete, Athlete)
+
     def test_get_inexistent_team(self):
         """Test the cartolafc.Api get_team method"""
 
         # Arrange
         team_slug = 'inexistent-slug'
-        url = '%s/time/%s' % (self.base_url, team_slug)
+        url = '%s/time/slug/%s' % (self.base_url, team_slug)
 
         # Act and Assert
         with requests_mock.mock() as m:
@@ -530,9 +548,10 @@ class ApiTest(unittest.TestCase):
         """Test the cartolafc.Api get_team_by_round method"""
 
         # Arrange
+        team_name = 'Falydos FC'
         team_slug = 'falydos-fc'
         round_ = 15
-        url = '%s/time/%s/%s' % (self.base_url, team_slug, round_)
+        url = '%s/time/slug/%s/%s' % (self.base_url, team_slug, round_)
         escudos_dict = {
             '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png',
             '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png',
@@ -549,7 +568,7 @@ class ApiTest(unittest.TestCase):
         # Act
         with requests_mock.mock() as m:
             m.get(url, text=self.GET_TEAM_BY_ROUND_SAMPLE_JSON)
-            team = self.api.get_team_by_round(team_slug, round_)
+            team = self.api.get_team_by_round(team_name, round_)
             first_athlete = team.atletas[0]
 
         # Assert
@@ -605,13 +624,31 @@ class ApiTest(unittest.TestCase):
         self.assertFalse(team.info.assinante)
         self.assertEqual(0, team.valor_time)
 
+    def test_get_team_by_round_using_slug(self):
+        """Test the cartolafc.Api get_team_by_round method"""
+
+        # Arrange
+        team_slug = 'falydos-fc'
+        round_ = 15
+        url = '%s/time/slug/%s/%s' % (self.base_url, team_slug, round_)
+
+        # Act
+        with requests_mock.mock() as m:
+            m.get(url, text=self.GET_TEAM_BY_ROUND_SAMPLE_JSON)
+            team = self.api.get_team_by_round(team_slug, round_, is_slug=True)
+            first_athlete = team.atletas[0]
+
+        # Assert
+        self.assertIsInstance(team, Team)
+        self.assertIsInstance(first_athlete, Athlete)
+
     def test_get_inexistent_team_by_round(self):
         """Test the cartolafc.Api get_team_by_round method"""
 
         # Arrange
         team_slug = 'inexistent-slug'
         round_ = 15
-        url = '%s/time/%s/%s' % (self.base_url, team_slug, round_)
+        url = '%s/time/slug/%s/%s' % (self.base_url, team_slug, round_)
 
         # Act and Assert
         with requests_mock.mock() as m:
