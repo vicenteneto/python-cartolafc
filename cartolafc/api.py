@@ -92,7 +92,7 @@ class Api(object):
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Sponsor.from_dict(sponsor) for sponsor in data.values()]
+        return [Sponsor.from_dict(sponsor) for sponsor in OrderedDict(sorted(data.items())).values()]
 
     def rounds(self):
         """ rounds. """
