@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class BaseModel(object):
-    """ Base class from which all Cartola FC models will inherit. """
+    """  Base class from which all Cartola FC models will inherit. """
 
     def __init__(self, param_defaults, **kwargs):
         for param in param_defaults:
@@ -22,6 +22,8 @@ class BaseModel(object):
 
 
 class Athlete(BaseModel):
+    """  Athlete. """
+
     atleta_id = None
     nome = None
     apelido = None
@@ -55,6 +57,8 @@ class Athlete(BaseModel):
 
 
 class AthleteInfo(BaseModel):
+    """  AthleteInfo. """
+
     atleta_id = None
     nome = None
     apelido = None
@@ -67,6 +71,8 @@ class AthleteInfo(BaseModel):
 
 
 class AthleteScore(BaseModel):
+    """ AthleteScore. """
+
     apelido = None
     pontuacao = None
     foto = None
@@ -86,6 +92,8 @@ class AthleteScore(BaseModel):
 
 
 class Club(BaseModel):
+    """ Club. """
+
     id = None
     nome = None
     abreviacao = None
@@ -98,6 +106,8 @@ class Club(BaseModel):
 
 
 class Highlight(BaseModel):
+    """ Highlight. """
+
     atleta = None
     escalacoes = None
     clube = None
@@ -115,6 +125,8 @@ class Highlight(BaseModel):
 
 
 class LeagueInfo(BaseModel):
+    """ LeagueInfo. """
+
     liga_id = None
     nome = None
     descricao = None
@@ -130,6 +142,8 @@ class LeagueInfo(BaseModel):
 
 
 class Match(BaseModel):
+    """ Match. """
+
     clube_casa = None
     clube_casa_posicao = None
     clube_visitante = None
@@ -152,6 +166,8 @@ class Match(BaseModel):
 
 
 class Position(BaseModel):
+    """ Position. """
+
     id = None
     nome = None
     abreviacao = None
@@ -162,6 +178,8 @@ class Position(BaseModel):
 
 
 class Round(BaseModel):
+    """ Round. """
+
     rodada_id = None
     inicio = None
     fim = None
@@ -179,6 +197,8 @@ class Round(BaseModel):
 
 
 class RoundHighlights(BaseModel):
+    """ RoundHighlights. """
+
     media_cartoletas = None
     media_pontos = None
     mito_rodada = None
@@ -189,11 +209,14 @@ class RoundHighlights(BaseModel):
 
     @classmethod
     def from_dict(cls, data, **kwargs):
-        data['mito_rodada'] = TeamInfo.from_dict(data['mito_rodada'])
+        if data['mito_rodada']:
+            data['mito_rodada'] = TeamInfo.from_dict(data['mito_rodada'])
         return super(cls, cls).from_dict(data)
 
 
 class Scheme(BaseModel):
+    """ Scheme. """
+
     esquema_id = None
     nome = None
     posicoes = None
@@ -204,6 +227,8 @@ class Scheme(BaseModel):
 
 
 class Sponsor(BaseModel):
+    """ Sponsor. """
+
     liga_editorial_id = None
     liga_id = None
     tipo_ranking = None
@@ -220,6 +245,8 @@ class Sponsor(BaseModel):
 
 
 class Status(BaseModel):
+    """ Status. """
+
     rodada_atual = None
     status_mercado = None
     temporada = None
@@ -249,6 +276,8 @@ class Status(BaseModel):
 
 
 class Team(BaseModel):
+    """ Team. """
+
     atletas = None
     esquema_id = None
     patrimonio = None
@@ -272,6 +301,8 @@ class Team(BaseModel):
 
 
 class TeamInfo(BaseModel):
+    """ TeamInfo. """
+
     time_id = None
     clube_id = None
     esquema_id = None

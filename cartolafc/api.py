@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+import re
 from collections import OrderedDict
 
 import requests
@@ -32,6 +33,7 @@ class Api(object):
         self.base_url = 'https://api.cartolafc.globo.com'
 
     def status(self):
+        """ status. """
         url = '%s/mercado/status' % (self.base_url,)
 
         resp = requests.get(url)
@@ -40,6 +42,7 @@ class Api(object):
         return Status.from_dict(data)
 
     def market(self):
+        """ market. """
         url = '%s/atletas/mercado' % (self.base_url,)
 
         resp = requests.get(url)
@@ -52,6 +55,7 @@ class Api(object):
                 in data['atletas']]
 
     def round_score(self):
+        """ round_score. """
         url = '%s/atletas/pontuados' % (self.base_url,)
 
         resp = requests.get(url)
@@ -64,6 +68,7 @@ class Api(object):
                 OrderedDict(sorted(data['atletas'].items())).values()]
 
     def highlights(self):
+        """ highlights. """
         url = '%s/mercado/destaques' % (self.base_url,)
 
         resp = requests.get(url)
@@ -72,6 +77,7 @@ class Api(object):
         return [Highlight.from_dict(highlight) for highlight in data]
 
     def round_highlights(self):
+        """ round_highlights. """
         url = '%s/pos-rodada/destaques' % (self.base_url,)
 
         resp = requests.get(url)
@@ -80,14 +86,16 @@ class Api(object):
         return RoundHighlights.from_dict(data)
 
     def sponsors(self):
+        """ sponsors. """
         url = '%s/patrocinadores' % (self.base_url,)
 
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Sponsor.from_dict(sponsor) for sponsor in data]
+        return [Sponsor.from_dict(sponsor) for sponsor in OrderedDict(sorted(data.items())).values()]
 
     def rounds(self):
+        """ rounds. """
         url = '%s/rodadas' % (self.base_url,)
 
         resp = requests.get(url)
@@ -96,6 +104,7 @@ class Api(object):
         return [Round.from_dict(round_) for round_ in data]
 
     def matches(self):
+        """ matches. """
         url = '%s/partidas' % (self.base_url,)
 
         resp = requests.get(url)
@@ -105,6 +114,7 @@ class Api(object):
         return [Match.from_dict(match, clubs=clubs) for match in data['partidas']]
 
     def clubs(self):
+        """ clubs. """
         url = '%s/clubes' % (self.base_url,)
 
         resp = requests.get(url)
@@ -113,6 +123,7 @@ class Api(object):
         return [Club.from_dict(club) for club in OrderedDict(sorted(data.items())).values()]
 
     def schemes(self):
+        """ schemes. """
         url = '%s/esquemas' % (self.base_url,)
 
         resp = requests.get(url)
@@ -121,6 +132,7 @@ class Api(object):
         return [Scheme.from_dict(scheme) for scheme in data]
 
     def search_team_info_by_name(self, name):
+        """ search_team_info_by_name. """
         url = '%s/times?q=%s' % (self.base_url, name)
 
         resp = requests.get(url)
@@ -128,16 +140,20 @@ class Api(object):
 
         return [TeamInfo.from_dict(team_info) for team_info in data]
 
-    def get_team(self, slug):
-        url = '%s/time/%s' % (self.base_url, slug)
+    def get_team(self, name, is_slug=False):
+        """ get_team. """
+        slug = name if is_slug else self._convert_team_name_to_slug(name)
+        url = '%s/time/slug/%s' % (self.base_url, slug)
 
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
         return Team.from_dict(data)
 
-    def get_team_by_round(self, slug, round_):
-        url = '%s/time/%s/%s' % (self.base_url, slug, round_)
+    def get_team_by_round(self, name, round_, is_slug=False):
+        """ get_team_by_round. """
+        slug = name if is_slug else self._convert_team_name_to_slug(name)
+        url = '%s/time/slug/%s/%s' % (self.base_url, slug, round_)
 
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
@@ -145,6 +161,7 @@ class Api(object):
         return Team.from_dict(data)
 
     def search_league_info_by_name(self, name):
+        """ search_league_info_by_name. """
         url = '%s/ligas?q=%s' % (self.base_url, name)
 
         resp = requests.get(url)
@@ -164,3 +181,6 @@ class Api(object):
             return data
         except ValueError:
             raise CartolaFCError('Unknown error: {0}'.format(json_data))
+
+    def _convert_team_name_to_slug(self, name):
+        return re.sub(r'[^a-zA-Z]', '-', name)
