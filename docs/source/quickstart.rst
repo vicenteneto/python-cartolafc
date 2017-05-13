@@ -18,7 +18,7 @@ A minimal Python Cartola FC API usage looks something like this::
 
 
     api = Api()
-    team = api.get_team('falydos-fc')
+    team = api.get_team('Falydos FC')
 
 
 So what did that code do?

@@ -3,6 +3,16 @@ Changelog
 
 Here you can see the full list of changes between each release.
 
+Version 0.5.13
+--------------
+
+Released on May 13th 2017.
+
+- ``#30`` Improving installation and quickstart documentation and updating api for the 2017 version
+- Changed development status to ``Alpha``
+- Updating api for the 2017 version
+- Enabling team search by slug or by name
+
 
 Version 0.3.13
 --------------
