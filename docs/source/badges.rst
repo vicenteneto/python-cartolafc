@@ -10,7 +10,7 @@
    :target: https://coveralls.io/github/vicenteneto/python-cartolafc?branch=master
 .. |Requirements Status| image:: https://requires.io/github/vicenteneto/python-cartolafc/requirements.svg?branch=master
    :target: https://requires.io/github/vicenteneto/python-cartolafc/requirements/?branch=master
-.. |Development Status| image:: http://img.shields.io/:status-alpha-green.svg
+.. |Development Status| image:: http://img.shields.io/:status-beta-green.svg
    :target: https://github.com/vicenteneto/python-cartolafc
 .. |License| image:: http://img.shields.io/:license-mit-blue.svg
    :target: https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE

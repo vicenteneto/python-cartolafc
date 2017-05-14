@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/vicenteneto/python-cartolafc.svg?branch=master)](https://travis-ci.org/vicenteneto/python-cartolafc)
 [![Coverage Status](https://coveralls.io/repos/github/vicenteneto/python-cartolafc/badge.svg?branch=master)](https://coveralls.io/github/vicenteneto/python-cartolafc?branch=master)
 [![Requirements Status](https://requires.io/github/vicenteneto/python-cartolafc/requirements.svg?branch=master)](https://requires.io/github/vicenteneto/python-cartolafc/requirements/?branch=master)
-[![Development Status](http://img.shields.io/:status-alpha-green.svg)](https://github.com/vicenteneto/python-cartolafc)
+[![Development Status](http://img.shields.io/:status-beta-green.svg)](https://github.com/vicenteneto/python-cartolafc)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE)
 
 A python interface into the Cartola FC API.

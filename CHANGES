@@ -8,8 +8,7 @@ Version 0.5.13
 
 Released on May 13th 2017.
 
-- ``#30`` Improving installation and quickstart documentation and updating api for the 2017 version
-- Changed development status to ``Alpha``
+- ``#31`` Improving installation and quickstart documentation and updating api for the 2017 version
 - Updating api for the 2017 version
 - Enabling team search by slug or by name
 
