@@ -3,6 +3,14 @@ Changelog
 
 Here you can see the full list of changes between each release.
 
+Version 0.5.14
+--------------
+
+Released on May 14th 2017.
+
+- ``#33`` Returning clubs and athletes as dictionaries to facilitate searching
+
+
 Version 0.5.13
 --------------
 

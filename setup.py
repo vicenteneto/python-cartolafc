@@ -14,7 +14,7 @@
 """
 from setuptools import setup
 
-version = '0.5.13'
+version = '0.5.14'
 packages = ['cartolafc']
 install_requires = ['requests']
 python_cartolafc_pkg_data = []
@@ -33,7 +33,7 @@ setup(
     zip_safe=False,
     keywords=['python', 'cartolafc', 'api'],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
