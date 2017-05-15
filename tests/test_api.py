@@ -158,10 +158,10 @@ class ApiTest(unittest.TestCase):
         with requests_mock.mock() as m:
             m.get(url, text=self.ROUND_SCORE_SAMPLE_JSON)
             round_score = self.api.round_score()
-            first_athlete = round_score[0]
+            first_athlete = round_score['36540']
 
         # Assert
-        self.assertIsInstance(round_score, list)
+        self.assertIsInstance(round_score, dict)
         self.assertIsInstance(first_athlete, AthleteScore)
         self.assertEqual('Juan', first_athlete.apelido)
         self.assertEqual(2.9, first_athlete.pontuacao)
@@ -257,10 +257,10 @@ class ApiTest(unittest.TestCase):
         with requests_mock.mock() as m:
             m.get(url, text=self.SPONSORS_SAMPLE_JSON)
             sponsors = self.api.sponsors()
-            first_sponsor = sponsors[0]
+            first_sponsor = sponsors['62']
 
         # Assert
-        self.assertIsInstance(sponsors, list)
+        self.assertIsInstance(sponsors, dict)
         self.assertIsInstance(first_sponsor, Sponsor)
         self.assertEqual(2, first_sponsor.liga_editorial_id)
         self.assertEqual(62, first_sponsor.liga_id)
@@ -353,10 +353,10 @@ class ApiTest(unittest.TestCase):
         with requests_mock.mock() as m:
             m.get(url, text=self.CLUBS_SAMPLE_JSON)
             clubs = self.api.clubs()
-            first_club = clubs[0]
+            first_club = clubs['1']
 
         # Assert
-        self.assertIsInstance(clubs, list)
+        self.assertIsInstance(clubs, dict)
         self.assertIsInstance(first_club, Club)
         self.assertEqual(1, first_club.id)
         self.assertEqual('Outros', first_club.nome)
@@ -700,3 +700,16 @@ class ApiTest(unittest.TestCase):
         # Assert
         self.assertIsInstance(leagues_found, list)
         self.assertEqual(0, len(leagues_found))
+
+    def test_overloaded_servers(self):
+        """Test the cartolafc.Api with overloaded services"""
+
+        # Arrange
+        url = '%s/mercado/status' % (self.base_url,)
+
+        # Act and Assert
+        with requests_mock.mock() as m:
+            m.get(url)
+
+            with self.assertRaises(cartolafc.CartolaFCError):
+                self.api.status()

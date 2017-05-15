@@ -45,9 +45,18 @@ class Athlete(BaseModel):
 
     @classmethod
     def from_dict(cls, data, **kwargs):
-        data['clube'] = kwargs['clubs'][data['clube_id']]
-        data['posicao'] = kwargs['positions'][data['posicao_id']]
-        data['status'] = kwargs['status'][data['status_id']]['nome']
+        try:
+            data['clube'] = kwargs['clubs'][data['clube_id']]
+        except KeyError:
+            pass
+        try:
+            data['posicao'] = kwargs['positions'][data['posicao_id']]
+        except KeyError:
+            pass
+        try:
+            data['status'] = kwargs['status'][data['status_id']]['nome']
+        except KeyError:
+            pass
         data['pontos'] = data['pontos_num']
         data['preco'] = data['preco_num']
         data['variacao'] = data['variacao_num']
@@ -86,8 +95,14 @@ class AthleteScore(BaseModel):
 
     @classmethod
     def from_dict(cls, data, **kwargs):
-        data['clube'] = kwargs['clubs'][data['clube_id']]
-        data['posicao'] = kwargs['positions'][data['posicao_id']]
+        try:
+            data['clube'] = kwargs['clubs'][data['clube_id']]
+        except KeyError:
+            pass
+        try:
+            data['posicao'] = kwargs['positions'][data['posicao_id']]
+        except KeyError:
+            pass
         return super(cls, cls).from_dict(data)
 
 
@@ -159,8 +174,14 @@ class Match(BaseModel):
     @classmethod
     def from_dict(cls, data, **kwargs):
         date_format = '%Y-%m-%d %H:%M:%S'
-        data['clube_casa'] = kwargs['clubs'][data['clube_casa_id']]
-        data['clube_visitante'] = kwargs['clubs'][data['clube_visitante_id']]
+        try:
+            data['clube_casa'] = kwargs['clubs'][data['clube_casa_id']]
+        except KeyError:
+            pass
+        try:
+            data['clube_visitante'] = kwargs['clubs'][data['clube_visitante_id']]
+        except KeyError:
+            pass
         data['partida_data'] = datetime.strptime(data['partida_data'], date_format)
         return super(cls, cls).from_dict(data)
 

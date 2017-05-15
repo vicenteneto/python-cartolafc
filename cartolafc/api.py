@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
+import logging
 import re
-from collections import OrderedDict
 
 import requests
 
@@ -22,6 +22,9 @@ from cartolafc.models import (
     Team,
     TeamInfo
 )
+
+FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+logging.basicConfig(format=FORMAT, level=logging.INFO)
 
 
 class Api(object):
@@ -64,8 +67,8 @@ class Api(object):
         clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
         positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
 
-        return [AthleteScore.from_dict(athlete, clubs=clubs, positions=positions) for athlete in
-                OrderedDict(sorted(data['atletas'].items())).values()]
+        return {athlete_id: AthleteScore.from_dict(athlete, clubs=clubs, positions=positions) for
+                athlete_id, athlete in data['atletas'].items()}
 
     def highlights(self):
         """ highlights. """
@@ -92,7 +95,7 @@ class Api(object):
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Sponsor.from_dict(sponsor) for sponsor in OrderedDict(sorted(data.items())).values()]
+        return {sponsor_id: Sponsor.from_dict(sponsor) for sponsor_id, sponsor in data.items()}
 
     def rounds(self):
         """ rounds. """
@@ -120,7 +123,7 @@ class Api(object):
         resp = requests.get(url)
         data = self._parse_and_check_cartolafc(resp.content.decode('utf-8'))
 
-        return [Club.from_dict(club) for club in OrderedDict(sorted(data.items())).values()]
+        return {club_id: Club.from_dict(club) for club_id, club in data.items()}
 
     def schemes(self):
         """ schemes. """
@@ -177,10 +180,13 @@ class Api(object):
         try:
             data = json.loads(json_data)
             if 'mensagem' in data:
+                logging.error(data)
                 raise CartolaFCError(data['mensagem'])
             return data
-        except ValueError:
-            raise CartolaFCError('Unknown error: {0}'.format(json_data))
+        except ValueError as error:
+            logging.error('Error parsing and checking json data: %s', json_data)
+            logging.error(error)
+            raise CartolaFCError('Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados.')
 
     def _convert_team_name_to_slug(self, name):
         return re.sub(r'[^a-zA-Z]', '-', name)
