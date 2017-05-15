@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import json
 import logging
-import re
+import sys
 
 import requests
+import requests.packages.urllib3
 
 from cartolafc.error import CartolaFCError
 from cartolafc.models import (
@@ -22,9 +23,13 @@ from cartolafc.models import (
     Team,
     TeamInfo
 )
+from cartolafc.util import convert_team_name_to_slug
 
 FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
+
+if sys.version_info < (2, 7, 9):
+    requests.packages.urllib3.disable_warnings()
 
 
 class Api(object):
@@ -145,7 +150,7 @@ class Api(object):
 
     def get_team(self, name, is_slug=False):
         """ get_team. """
-        slug = name if is_slug else self._convert_team_name_to_slug(name)
+        slug = name if is_slug else convert_team_name_to_slug(name)
         url = '%s/time/slug/%s' % (self.base_url, slug)
 
         resp = requests.get(url)
@@ -155,7 +160,7 @@ class Api(object):
 
     def get_team_by_round(self, name, round_, is_slug=False):
         """ get_team_by_round. """
-        slug = name if is_slug else self._convert_team_name_to_slug(name)
+        slug = name if is_slug else convert_team_name_to_slug(name)
         url = '%s/time/slug/%s/%s' % (self.base_url, slug, round_)
 
         resp = requests.get(url)
@@ -187,6 +192,3 @@ class Api(object):
             logging.error('Error parsing and checking json data: %s', json_data)
             logging.error(error)
             raise CartolaFCError('Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados.')
-
-    def _convert_team_name_to_slug(self, name):
-        return re.sub(r'[^a-zA-Z]', '-', name)
