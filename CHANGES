@@ -3,6 +3,14 @@ Changelog
 
 Here you can see the full list of changes between each release.
 
+Version 0.5.15
+--------------
+
+Released on May 15th 2017.
+
+- ``#34`` Fixing team name to slug convertion
+
+
 Version 0.5.14
 --------------
 
