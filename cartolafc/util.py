@@ -32,5 +32,5 @@ def convert_team_name_to_slug(name):
     :rtype: String.
     """
     slug = _strip_accents(name.lower())
-    slug = re.sub(r'--', '-', re.sub(r'[^a-z]', '-', slug))
+    slug = re.sub(r'--', '-', re.sub(r'[^a-z0-9]', '-', slug))
     return slug[:-1] if slug.endswith('-') else slug
