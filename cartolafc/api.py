@@ -62,7 +62,7 @@ class Api(object):
         """ round_score. """
         url = '%s/atletas/pontuados' % (self.base_url,)
 
-        if self.status().status_mercado != 'Mercado em manutenção':
+        if self.status().status_mercado == 'Mercado fechado':
             data = self._request(url)
 
             clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
@@ -71,7 +71,7 @@ class Api(object):
             return {athlete_id: AthleteScore.from_dict(athlete, clubs=clubs, positions=positions) for
                     athlete_id, athlete in data['atletas'].items()}
 
-        raise CartolaFCError('A pontuação não fica disponível com o mercado em manutenção.')
+        raise CartolaFCError('A pontuação parcial só fica disponível com o mercado fechado.')
 
     def highlights(self):
         """ highlights. """
