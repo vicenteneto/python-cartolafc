@@ -72,7 +72,7 @@ class ApiTest(unittest.TestCase):
         # Assert
         self.assertIsInstance(status, Status)
         self.assertEqual(38, status.rodada_atual)
-        self.assertEqual('Encerrado', status.status_mercado)
+        self.assertEqual('Mercado encerrado', status.status_mercado)
         self.assertEqual(2016, status.temporada)
         self.assertEqual(1702092, status.times_escalados)
         self.assertIsInstance(status.fechamento, datetime)
