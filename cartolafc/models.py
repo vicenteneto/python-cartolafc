@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from datetime import datetime
 
 
@@ -284,11 +285,11 @@ class Status(BaseModel):
     @classmethod
     def from_dict(cls, data, **kwargs):
         status_mercado = {
-            1: 'Aberto',
-            2: 'Fechado',
-            3: 'Atualização',
-            4: 'Manutenção',
-            6: 'Encerrado'
+            1: 'Mercado aberto',
+            2: 'Mercado fechado',
+            3: 'Mercado em atualização',
+            4: 'Mercado em manutenção',
+            6: 'Mercado encerrado'
         }
 
         data['status_mercado'] = status_mercado.get(data['status_mercado'], 'Desconhecido')

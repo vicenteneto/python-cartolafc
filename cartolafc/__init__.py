@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
     cartolafc
     ~~~~~~~~~
@@ -10,4 +11,4 @@
 """
 
 from .api import Api
-from .error import CartolaFCError
+from .error import CartolaFCError, CartolaFCOverloadError

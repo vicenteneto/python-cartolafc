@@ -1,5 +1,11 @@
+# -*- coding: utf-8 -*-
+
+import json
+import logging
 import re
 import unicodedata
+
+from cartolafc.error import CartolaFCError, CartolaFCOverloadError
 
 
 def _strip_accents(text):
@@ -32,5 +38,22 @@ def convert_team_name_to_slug(name):
     :rtype: String.
     """
     slug = _strip_accents(name.lower())
-    slug = re.sub(r'--', '-', re.sub(r'[^a-z]', '-', slug))
+    slug = re.sub(r'--', '-', re.sub(r'[^a-z0-9]', '-', slug))
     return slug[:-1] if slug.endswith('-') else slug
+
+
+def parse_and_check_cartolafc(json_data):
+    """
+    Try and parse the JSON returned from Cartola FC API and return an empty dictionary if there is any error.
+    This is a purely defensive check because during some Cartola FC API network outages it can return an error page.
+    """
+    try:
+        data = json.loads(json_data)
+        if 'mensagem' in data:
+            logging.error(data)
+            raise CartolaFCError(data['mensagem'])
+        return data
+    except ValueError as error:
+        logging.error('Error parsing and checking json data: %s', json_data)
+        logging.error(error)
+        raise CartolaFCOverloadError('Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados.')

@@ -25,8 +25,10 @@ from cartolafc.models import (
 
 
 class ApiTest(unittest.TestCase):
-    with open('testdata/status.json', 'rb') as f:
-        STATUS_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/status_closed.json', 'rb') as f:
+        STATUS_CLOSED_SAMPLE_JSON = f.read().decode('utf8')
+    with open('testdata/status_opened.json', 'rb') as f:
+        STATUS_OPENED_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/market.json', 'rb') as f:
         MARKET_SAMPLE_JSON = f.read().decode('utf8')
     with open('testdata/round_score.json', 'rb') as f:
@@ -66,13 +68,13 @@ class ApiTest(unittest.TestCase):
 
         # Act
         with requests_mock.mock() as m:
-            m.get(url, text=self.STATUS_SAMPLE_JSON)
+            m.get(url, text=self.STATUS_OPENED_SAMPLE_JSON)
             status = self.api.status()
 
         # Assert
         self.assertIsInstance(status, Status)
         self.assertEqual(38, status.rodada_atual)
-        self.assertEqual('Encerrado', status.status_mercado)
+        self.assertEqual('Mercado aberto', status.status_mercado)
         self.assertEqual(2016, status.temporada)
         self.assertEqual(1702092, status.times_escalados)
         self.assertIsInstance(status.fechamento, datetime)
@@ -140,7 +142,8 @@ class ApiTest(unittest.TestCase):
         """Test the cartolafc.Api round_score method"""
 
         # Arrange
-        url = '%s/atletas/pontuados' % (self.base_url,)
+        status_url = '%s/mercado/status' % (self.base_url,)
+        round_score_url = '%s/atletas/pontuados' % (self.base_url,)
         escudos_dict = {
             '60x60': 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png',
             '45x45': 'https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png',
@@ -156,7 +159,8 @@ class ApiTest(unittest.TestCase):
 
         # Act
         with requests_mock.mock() as m:
-            m.get(url, text=self.ROUND_SCORE_SAMPLE_JSON)
+            m.get(status_url, text=self.STATUS_CLOSED_SAMPLE_JSON)
+            m.get(round_score_url, text=self.ROUND_SCORE_SAMPLE_JSON)
             round_score = self.api.round_score()
             first_athlete = round_score['36540']
 
@@ -178,6 +182,18 @@ class ApiTest(unittest.TestCase):
         self.assertEqual('Zagueiro', first_athlete.posicao.nome)
         self.assertEqual('zag', first_athlete.posicao.abreviacao)
         self.assertDictEqual(scout_dict, first_athlete.scout)
+
+    def test_round_score_with_opened_market(self):
+        """Test the cartolafc.Api round_score method"""
+
+        # Arrange
+        url = '%s/mercado/status' % (self.base_url,)
+
+        # Act and Assert
+        with requests_mock.mock() as m:
+            m.get(url, text=self.STATUS_OPENED_SAMPLE_JSON)
+            with self.assertRaises(cartolafc.CartolaFCError):
+                self.api.round_score()
 
     def test_highlights(self):
         """Test the cartolafc.Api highlights method"""
@@ -711,5 +727,5 @@ class ApiTest(unittest.TestCase):
         with requests_mock.mock() as m:
             m.get(url)
 
-            with self.assertRaises(cartolafc.CartolaFCError):
+            with self.assertRaises(cartolafc.CartolaFCOverloadError):
                 self.api.status()

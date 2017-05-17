@@ -1,6 +1,6 @@
 import cartolafc
 
-api = cartolafc.Api()
+api = cartolafc.Api(attempts=5)
 print api.status()
 print api.market()
 print api.round_score()
