@@ -13,16 +13,11 @@ from cartolafc.models import (
     Highlight,
     LeagueInfo,
     Liga,
-    Match,
     Position,
-    Round,
-    RoundHighlights,
     Scheme,
-    Sponsor,
     Status,
-    Team,
-    TeamInfo,
-    Time
+    Time,
+    TimeInfo
 )
 from cartolafc.util import convert_team_name_to_slug, parse_and_check_cartolafc
 
@@ -38,12 +33,23 @@ class Api(object):
     A python interface into the Cartola FC API.
     """
 
-    def __init__(self, email=None, password=None, as_json=False, attempts=1):
+    def __init__(self, email=None, password=None, attempts=1):
+        """ Instancia um novo objeto de cartolafc.Api.
+
+        Args:
+            email (str, opcional): O e-mail da sua conta no CartolaFC. Requerido se o password for informado.
+            password (str, opcional): A senha da sua conta no CartolaFC. Requerido se o email for informado.
+            attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
+            
+        raises:
+            cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos 
+            dois argumentos (email e password) for informado.
+        """
+
         self._base_url = 'https://api.cartolafc.globo.com'
         self._email = email
         self._password = password
         self._glb_id = None
-        self._as_json = bool(as_json)
         self.attempts = attempts if isinstance(attempts, int) and attempts > 0 else 1
 
         if bool(email) != bool(password):
@@ -52,6 +58,16 @@ class Api(object):
             self.set_credentials(email, password)
 
     def set_credentials(self, email, password):
+        """ Realiza a autenticação no sistema do CartolaFC utilizando o email e password informados.
+
+        Args:
+            email (str): O email do usuário
+            password (str): A senha do usuário
+          
+        Raises:
+            cartolafc.CartolaFCError: Se o conjunto (email, password) não conseguiu realizar a autenticação com sucesso.
+        """
+
         self._email = email
         self._password = password
         response = requests.post('https://login.globo.com/api/authentication',
@@ -62,33 +78,61 @@ class Api(object):
         else:
             raise CartolaFCError(body['userMessage'])
 
-    def time(self):
-        """ time """
-        if not self._glb_id:
-            raise CartolaFCError('Este serviço requer autenticação')
+    def status(self):
+        """ Obtém o status do mercado na rodada atual. 
 
-        url = '{base_url}/auth/time'.format(base_url=self._base_url)
+        Returns:
+            Uma instância de cartolafc.Status representando o status do mercado na rodada atual.
+        """
+        url = '{base_url}/mercado/status'.format(base_url=self._base_url)
         data = self._request(url)
 
-        return data if self._as_json else Time.from_dict(data)
+        return Status.from_dict(data)
+
+    def time(self, nome=None, slug=None):
+        """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
+        Ao menos um dos dois devem ser informado. 
+
+        Args:
+            nome (str, opcional): Nome do time que se deseja obter. Requerido se o slug não for informado.
+            slug (str, opcional): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
+
+        Returns:
+            Uma instância de cartolafc.Time se o time foi encontrado.
+            
+        Raises:
+            cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
+        """
+        if not any((nome, slug)):
+            raise CartolaFCError('Você precisa informar o nome ou o slug do time que deseja buscar')
+
+        url = '{base_url}/time/slug/{slug}'.format(base_url=self._base_url,
+                                                   slug=slug if slug else convert_team_name_to_slug(nome))
+        data = self._request(url)
+
+        return Time.from_dict(data)
+
+    def busca_times(self, term):
+        """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa. 
+
+        Args:
+            term (str): Termo para utilizar na busca.
+
+        Returns:
+            Uma lista de instâncias de cartolafc.TimeInfo, uma para cada time contento o termo utilizado na busca.
+        """
+        url = '{base_url}/times?q={term}'.format(base_url=self._base_url, term=term)
+        data = self._request(url)
+
+        return [TimeInfo.from_dict(time_info) for time_info in data]
 
     def liga(self, name, is_slug=False):
         """ check_slug_liga """
-        if not self._glb_id:
-            raise CartolaFCError('Este serviço requer autenticação')
-
         slug = name if is_slug else convert_team_name_to_slug(name)
         url = '{base_url}/auth/liga/{slug}'.format(base_url=self._base_url, slug=slug)
         data = self._request(url)
 
-        return data if self._as_json else Liga.from_dict(data)
-
-    def status(self):
-        """ status. """
-        url = '%s/mercado/status' % (self._base_url,)
-        data = self._request(url)
-
-        return Status.from_dict(data)
+        return Liga.from_dict(data)
 
     def market(self):
         """ market. """
@@ -123,71 +167,12 @@ class Api(object):
 
         return [Highlight.from_dict(highlight) for highlight in data]
 
-    def round_highlights(self):
-        """ round_highlights. """
-        url = '%s/pos-rodada/destaques' % (self._base_url,)
-        data = self._request(url)
-
-        return RoundHighlights.from_dict(data)
-
-    def sponsors(self):
-        """ sponsors. """
-        url = '%s/patrocinadores' % (self._base_url,)
-        data = self._request(url)
-
-        return {sponsor_id: Sponsor.from_dict(sponsor) for sponsor_id, sponsor in data.items()}
-
-    def rounds(self):
-        """ rounds. """
-        url = '%s/rodadas' % (self._base_url,)
-        data = self._request(url)
-
-        return [Round.from_dict(round_) for round_ in data]
-
-    def matches(self):
-        """ matches. """
-        url = '%s/partidas' % (self._base_url,)
-        data = self._request(url)
-
-        clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
-        return [Match.from_dict(match, clubs=clubs) for match in data['partidas']]
-
-    def clubs(self):
-        """ clubs. """
-        url = '%s/clubes' % (self._base_url,)
-        data = self._request(url)
-
-        return {club_id: Club.from_dict(club) for club_id, club in data.items()}
-
     def schemes(self):
         """ schemes. """
         url = '%s/esquemas' % (self._base_url,)
         data = self._request(url)
 
         return [Scheme.from_dict(scheme) for scheme in data]
-
-    def search_team_info_by_name(self, name):
-        """ search_team_info_by_name. """
-        url = '%s/times?q=%s' % (self._base_url, name)
-        data = self._request(url)
-
-        return [TeamInfo.from_dict(team_info) for team_info in data]
-
-    def get_team(self, name, is_slug=False):
-        """ get_team. """
-        slug = name if is_slug else convert_team_name_to_slug(name)
-        url = '%s/time/slug/%s' % (self._base_url, slug)
-        data = self._request(url)
-
-        return Team.from_dict(data)
-
-    def get_team_by_round(self, name, round_, is_slug=False):
-        """ get_team_by_round. """
-        slug = name if is_slug else convert_team_name_to_slug(name)
-        url = '%s/time/slug/%s/%s' % (self._base_url, slug, round_)
-        data = self._request(url)
-
-        return Team.from_dict(data)
 
     def search_league_info_by_name(self, name):
         """ search_league_info_by_name. """
