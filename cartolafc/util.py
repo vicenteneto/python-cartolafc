@@ -20,7 +20,7 @@ def _strip_accents(text):
     """
     try:
         text = unicode(text, 'utf-8')
-    except NameError:  # unicode is a default on python 3
+    except (NameError, TypeError):  # unicode is a default on python 3
         pass
 
     text = unicodedata.normalize('NFD', text)
@@ -50,8 +50,8 @@ def parse_and_check_cartolafc(json_data):
     try:
         data = json.loads(json_data)
         if 'mensagem' in data:
-            logging.error(data)
-            raise CartolaFCError(data['mensagem'])
+            logging.error(data['mensagem'])
+            raise CartolaFCError(data['mensagem'].encode('utf-8'))
         return data
     except ValueError as error:
         logging.error('Error parsing and checking json data: %s', json_data)

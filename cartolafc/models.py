@@ -346,3 +346,94 @@ class TeamInfo(BaseModel):
                           'slug', 'url_escudo_png', 'url_escudo_svg', 'url_camisa_png', 'url_camisa_svg',
                           'url_escudo_placeholder_png', 'url_camisa_placeholder_png', 'assinante')
         super(TeamInfo, self).__init__(param_defaults, **kwargs)
+
+
+class Atleta(object):
+    """ Atleta. """
+
+    def __init__(self, id_, apelido, posicao, clube, pontos, scout):
+        self.id = id_
+        self.apelido = apelido
+        self.posicao = posicao
+        self.clube = clube
+        self.pontos = pontos
+        self.scout = scout
+
+    @classmethod
+    def from_dict(cls, data, posicoes, clubes):
+        posicao = Posicao.from_dict(posicoes[str(data['posicao_id'])])
+        clube = Clube.from_dict(clubes[str(data['clube_id'])])
+        return cls(data['atleta_id'], data['apelido'], posicao, clube, data['pontos_num'], data['scout'])
+
+
+class Clube(object):
+    """ Clube. """
+
+    def __init__(self, id_, nome, abreviacao):
+        self.id = id_
+        self.nome = nome
+        self.abreviacao = abreviacao
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['id'], data['nome'], data['abreviacao'])
+
+
+class Info(object):
+    """ Info. """
+
+    def __init__(self, id_, nome, cartola, slug, esquema_id):
+        self.id = id_
+        self.nome = nome
+        self.cartola = cartola
+        self.slug = slug
+        self.esquema_id = esquema_id
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['time_id'], data['nome'], data['nome_cartola'], data['slug'], data['esquema_id'])
+
+
+class Liga(object):
+    """ Liga. """
+
+    def __init__(self, id_, nome, slug, times):
+        self.id = id_
+        self.nome = nome
+        self.slug = slug
+        self.times = times
+
+    @classmethod
+    def from_dict(cls, data):
+        times = [Info.from_dict(time) for time in data['times']]
+        return cls(data['liga']['liga_id'], data['liga']['nome'], data['liga']['slug'], times)
+
+
+class Posicao(object):
+    """ Posição. """
+
+    def __init__(self, id_, nome, abreviacao):
+        self.id = id_
+        self.nome = nome
+        self.abreviavao = abreviacao
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['id'], data['nome'], data['abreviacao'])
+
+
+class Time(object):
+    """ Time. """
+
+    def __init__(self, patrimonio, valor_time, ultima_pontuacao, atletas, info):
+        self.patrimonio = patrimonio
+        self.valor_time = valor_time
+        self.ultima_pontuacao = ultima_pontuacao
+        self.atletas = atletas
+        self.info = info
+
+    @classmethod
+    def from_dict(cls, data):
+        atletas = [Atleta.from_dict(atleta, data['posicoes'], data['clubes']) for atleta in data['atletas']]
+        info = Info.from_dict(data['time'])
+        return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
