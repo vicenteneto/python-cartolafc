@@ -2,10 +2,10 @@
     cartolafc
     ~~~~~~~~~
 
-    A python interface into the Cartola FC API.
+    Uma API em Python para o Cartola FC.
 
-    :copyright: \(c\) 2017 by Vicente Neto.
-    :license: MIT, see LICENSE for more details.
+    :copyright: \(c\) 2017 por Vicente Neto.
+    :license: MIT, veja LICENSE para mais detalhes.
 """
 
 from .api import Api

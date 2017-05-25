@@ -3,27 +3,27 @@
 API
 ===
 
-This part of the documentation covers all the interfaces of CartolaFC API.
+Esta parte da documentação cobre todas as interfaces desta API.
 
 .. automodule:: cartolafc
     :members:
 
 
-API Object
-----------
+API
+---
 
 .. autoclass:: cartolafc.Api
     :members:
 
 
-Errors
-------
+Erros
+-----
 
 .. autoclass:: cartolafc.CartolaFCError
 
 
-Models
-------
+Modelos
+-------
 
 .. autoclass:: cartolafc.models.BaseModel
 .. autoclass:: cartolafc.models.Athlete

@@ -29,8 +29,28 @@ if sys.version_info < (2, 7, 9):
 
 
 class Api(object):
-    """
-    A python interface into the Cartola FC API.
+    """ Uma API em Python para o Cartola FC
+
+    Exemplo de uso:
+        Para criar uma instância da classe cartolafc.Api, sem autenticação:
+            >>> import cartolafc
+            >>> api = cartolafc.Api()
+        
+        Para obter o status atual do mercado
+            >>> status = api.status()
+            >>> print(status.rodada_atual, status.status_mercado)
+        
+        Para utilizar autenticação, é necessário instancias a classe cartolafc.Api com os argumentos email e senha.
+            >>> api =  cartolafc.Api(email='usuario@email.com', password='s3nha')
+            
+        Para obter os dados de uma liga (após se autenticar), onde "nome" é o nome da liga que deseja buscar:
+            >>> liga = api.liga(nome)
+            >>> print(liga.nome)
+
+        python-cartolafc é massa!!! E possui muitos outros métodos, como:
+            >>> api.status()
+            >>> api.time(nome, slug)
+            >>> api.busca_times(termo)
     """
 
     def __init__(self, email=None, password=None, attempts=1):
@@ -112,16 +132,16 @@ class Api(object):
 
         return Time.from_dict(data)
 
-    def busca_times(self, term):
+    def busca_times(self, termo):
         """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa. 
 
         Args:
-            term (str): Termo para utilizar na busca.
+            termo (str): Termo para utilizar na busca.
 
         Returns:
             Uma lista de instâncias de cartolafc.TimeInfo, uma para cada time contento o termo utilizado na busca.
         """
-        url = '{base_url}/times?q={term}'.format(base_url=self._base_url, term=term)
+        url = '{base_url}/times?q={term}'.format(base_url=self._base_url, term=termo)
         data = self._request(url)
 
         return [TimeInfo.from_dict(time_info) for time_info in data]

@@ -3,33 +3,34 @@
 Quickstart
 ==========
 
-Eager to get started?  This page gives a good introduction to Python CartolaFC API. It assumes you already have Python
-CartolaFC installed.  If you do not, head over to the :ref:`installation` section.
+Ansioso para começar? Esta página fornece uma boa introdução ao CartolaFC API. Ele assume que você já tem o projeto
+instalado. Se não o fizer, dirija-se à sessão :ref:`installation`.
 
-Python-CartolaFC API is intended to map the objects in CartolaFC (e.g. Athlete, Club, League, Team) into easily managed
-Python objects.
+Este projeto destina-se a mapear os objetos no CartolaFC (por exemplo, Atleta, Clube, Liga, Equipe) em objetos Python
+facilmente gerenciados.
 
-A Minimal Usage
----------------
 
-A minimal Python Cartola FC API usage looks something like this::
+Um exemplo básico
+-----------------
+
+Um uso mínimo desta biblioteca se parece com algo assim::
 
     from cartolafc import Api
 
 
     api = Api()
-    team = api.get_team('Falydos FC')
+    time = api.time('Falydos FC')
 
 
-So what did that code do?
+Então, o que este código faz?
 
-1. First we imported the :class:`~cartolafc.Api` class. An instance of this class will be our interface into the
-   CartolaFC API.
-2. Next we create an instance of this class.
-3. We then use the :meth:`~cartolafc.Api.get_team`. For more information have a look at the documentation.
+1. Primeiro importamos a classe :class:`~cartolafc.Api`. Uma instância desta classe será a nossa interface para a API do
+CartolaFC.
+2. Em seguida, criamos uma instância dessa classe.
+3. Em seguida, usamos o método :meth:`~cartolafc.Api.time`. Para obter mais informações, consulte a documentação.
 
 
-More examples
+Mais exemplos
 -------------
 
-More examples available on `Github <https://github.com/vicenteneto/python-cartolafc/tree/master/examples>`__.
+Mais exemplos disponíveis no `Github <https://github.com/vicenteneto/python-cartolafc/tree/master/examples>`__.

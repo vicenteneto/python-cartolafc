@@ -1,10 +1,10 @@
 """
     Python Cartola FC API
     ---------------------
-    A python interface into the Cartola FC API.
+    Uma interface em Python para a API Rest do Cartola FC.
 
-    :copyright: (c) 2017 by Vicente Neto.
-    :license: MIT, see LICENSE for more details.
+    :copyright: (c) 2017 por Vicente Neto.
+    :license: MIT, veja LICENSE para mais detalhes.
 
     Links
     `````
@@ -14,7 +14,7 @@
 """
 from setuptools import setup
 
-version = '0.5.17'
+version = '0.5.26'
 packages = ['cartolafc']
 install_requires = ['requests']
 python_cartolafc_pkg_data = []
@@ -22,7 +22,7 @@ python_cartolafc_pkg_data = []
 setup(
     name='Python-CartolaFC',
     version=version,
-    description='A python interface into the Cartola FC API',
+    description='Uma interface em Python para a API Rest do Cartola FC',
     url='https://github.com/vicenteneto/python-cartolafc',
     author='Vicente Neto',
     author_email='sneto.vicente@gmail.com',
