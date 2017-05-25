@@ -27,7 +27,7 @@ def convert_team_name_to_slug(name):
 def parse_and_check_cartolafc(json_data):
     try:
         data = json.loads(json_data)
-        if 'mensagem' in data:
+        if 'mensagem' in data and data['mensagem']:
             logging.error(data['mensagem'])
             raise CartolaFCError(data['mensagem'].encode('utf-8'))
         return data

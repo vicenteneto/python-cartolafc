@@ -5,6 +5,7 @@ import sys
 
 import requests
 
+from cartolafc.decorators import RequiresAuthentication
 from cartolafc.error import CartolaFCError, CartolaFCOverloadError
 from cartolafc.models import (
     Athlete,
@@ -97,6 +98,12 @@ class Api(object):
             self._glb_id = body['glbId']
         else:
             raise CartolaFCError(body['userMessage'])
+
+    @RequiresAuthentication
+    def amigos(self):
+        url = '{base_url}/auth/amigos'.format(base_url=self._base_url)
+        data = self._request(url)
+        return data
 
     def status(self):
         """ Obtém o status do mercado na rodada atual. 
