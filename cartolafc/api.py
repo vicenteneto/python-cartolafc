@@ -176,11 +176,12 @@ class Api(object):
         data = self._request(url)
         return [PontuacaoInfo.from_dict(pontuacao_info) for pontuacao_info in data]
 
-    def time(self, nome=None, slug=None):
+    def time(self, id=None, nome=None, slug=None):
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
         Ao menos um dos dois devem ser informado. 
 
         Args:
+            id (int, opcional): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
             nome (str, opcional): Nome do time que se deseja obter. Requerido se o slug não for informado.
             slug (str, opcional): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
 
@@ -190,11 +191,12 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
-        if not any((nome, slug)):
+        if not any((id, nome, slug)):
             raise CartolaFCError('Você precisa informar o nome ou o slug do time que deseja obter')
 
-        slug = slug if slug else convert_team_name_to_slug(nome)
-        url = '{base_url}/time/slug/{slug}'.format(base_url=self._base_url, slug=slug)
+        param = 'id' if id else 'slug'
+        value = id if id else (slug if slug else convert_team_name_to_slug(nome))
+        url = '{base_url}/time/{param}/{value}'.format(base_url=self._base_url, param=param, value=value)
         data = self._request(url)
 
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
