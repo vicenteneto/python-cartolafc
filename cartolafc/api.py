@@ -13,6 +13,7 @@ from cartolafc.models import (
     Liga,
     LigaInfo,
     Mercado,
+    Patrocinador,
     PontuacaoAtleta,
     PontuacaoInfo,
     Posicao,
@@ -162,6 +163,12 @@ class Api(object):
                     athlete_id, athlete in data['atletas'].items()}
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
+
+    def patrocinadores(self):
+        url = '{base_url}/patrocinadores'.format(base_url=self._base_url)
+        data = self._request(url)
+
+        return {patrocinador_id: Patrocinador.from_dict(patrocinador) for patrocinador_id, patrocinador in data.items()}
 
     @RequiresAuthentication
     def pontuacao_atleta(self, id_):

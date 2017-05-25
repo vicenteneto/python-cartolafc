@@ -93,6 +93,19 @@ class Mercado(object):
         return cls(data['rodada_atual'], status_mercado, data['times_escalados'], fechamento, data['aviso'])
 
 
+class Patrocinador(object):
+    """ Patrocinador """
+
+    def __init__(self, liga_id, nome, url_link):
+        self.liga_id = liga_id
+        self.nome = nome
+        self.url_link = url_link
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['liga_id'], data['nome'], data['url_link'])
+
+
 class PontuacaoAtleta(object):
     """ Pontuação Atleta """
 
