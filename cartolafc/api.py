@@ -8,14 +8,14 @@ import requests
 from cartolafc.decorators import RequiresAuthentication
 from cartolafc.error import CartolaFCError, CartolaFCOverloadError
 from cartolafc.models import (
-    Athlete,
-    AthleteScore,
-    Club,
-    Highlight,
-    LeagueInfo,
+    Atleta,
+    Clube,
     Liga,
-    Position,
-    Scheme,
+    LigaInfo,
+    Mercado,
+    PontuacaoAtleta,
+    PontuacaoInfo,
+    Posicao,
     Status,
     Time,
     TimeInfo
@@ -27,6 +27,11 @@ logging.basicConfig(format=FORMAT, level=logging.INFO)
 
 if sys.version_info < (2, 7, 9):
     requests.packages.urllib3.disable_warnings()
+
+_posicoes = {1: Posicao(1, 'Goleiro', 'gol'), 2: Posicao(2, 'Lateral', 'lat'), 3: Posicao(3, 'Zagueiro', 'zag'),
+             4: Posicao(4, 'Meia', 'mei'), 5: Posicao(5, 'Atacante', 'ata'), 6: Posicao(6, 'Técnico', 'tec')}
+_mercado_status = {2: Status(2, 'Dúvida'), 3: Status(3, 'Suspenso'), 5: Status(5, 'Contundido'), 6: Status(6, 'Nulo'),
+                   7: Status(7, 'Provável')}
 
 
 class Api(object):
@@ -103,18 +108,66 @@ class Api(object):
     def amigos(self):
         url = '{base_url}/auth/amigos'.format(base_url=self._base_url)
         data = self._request(url)
-        return data
+        return [TimeInfo.from_dict(time_info) for time_info in data['times']]
 
-    def status(self):
+    def clubes(self):
+        url = '{base_url}/clubes'.format(base_url=self._base_url)
+        data = self._request(url)
+        return {clube_id: Clube.from_dict(clube) for clube_id, clube in data.items()}
+
+    @RequiresAuthentication
+    def liga(self, nome=None, slug=None):
+        if not any((nome, slug)):
+            raise CartolaFCError('Você precisa informar o nome ou o slug da liga que deseja obter')
+
+        slug = slug if slug else convert_team_name_to_slug(nome)
+        url = '{base_url}/auth/liga/{slug}'.format(base_url=self._base_url, slug=slug)
+        data = self._request(url)
+
+        return Liga.from_dict(data)
+
+    def ligas(self, query):
+        url = '{base_url}/ligas'.format(base_url=self._base_url)
+        data = self._request(url, params=dict(q=query))
+
+        return [LigaInfo.from_dict(liga_info) for liga_info in data]
+
+    def mercado(self):
+        url = '{base_url}/atletas/mercado'.format(base_url=self._base_url)
+        data = self._request(url)
+
+        clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
+        return [Atleta.from_dict(athlete, clubes=clubes, posicoes=_posicoes, mercado_status=_mercado_status) for athlete
+                in data['atletas']]
+
+    def status_mercado(self):
         """ Obtém o status do mercado na rodada atual. 
 
         Returns:
-            Uma instância de cartolafc.Status representando o status do mercado na rodada atual.
+            Uma instância de cartolafc.Mercado representando o status do mercado na rodada atual.
         """
+
         url = '{base_url}/mercado/status'.format(base_url=self._base_url)
         data = self._request(url)
+        return Mercado.from_dict(data)
 
-        return Status.from_dict(data)
+    def parciais(self):
+        if self.status_mercado().status_mercado == 'Mercado fechado':
+            url = '{base_url}/atletas/pontuados'.format(base_url=self._base_url)
+            data = self._request(url)
+
+            clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
+
+            return {athlete_id: PontuacaoAtleta.from_dict(athlete, clubes=clubes, posicoes=_posicoes) for
+                    athlete_id, athlete in data['atletas'].items()}
+
+        raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
+
+    @RequiresAuthentication
+    def pontuacao_atleta(self, id_):
+        url = '{base_url}/auth/mercado/atleta/{id}/pontuacao'.format(base_url=self._base_url, id=id_)
+        data = self._request(url)
+        return [PontuacaoInfo.from_dict(pontuacao_info) for pontuacao_info in data]
 
     def time(self, nome=None, slug=None):
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
@@ -131,92 +184,39 @@ class Api(object):
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
         if not any((nome, slug)):
-            raise CartolaFCError('Você precisa informar o nome ou o slug do time que deseja buscar')
+            raise CartolaFCError('Você precisa informar o nome ou o slug do time que deseja obter')
 
-        url = '{base_url}/time/slug/{slug}'.format(base_url=self._base_url,
-                                                   slug=slug if slug else convert_team_name_to_slug(nome))
+        slug = slug if slug else convert_team_name_to_slug(nome)
+        url = '{base_url}/time/slug/{slug}'.format(base_url=self._base_url, slug=slug)
         data = self._request(url)
 
-        return Time.from_dict(data)
+        clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
 
-    def busca_times(self, termo):
+        return Time.from_dict(data, posicoes=_posicoes, clubes=clubes, mercado_status=_mercado_status)
+
+    def times(self, query):
         """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa. 
 
         Args:
-            termo (str): Termo para utilizar na busca.
+            query (str): Termo para utilizar na busca.
 
         Returns:
             Uma lista de instâncias de cartolafc.TimeInfo, uma para cada time contento o termo utilizado na busca.
         """
-        url = '{base_url}/times?q={term}'.format(base_url=self._base_url, term=termo)
-        data = self._request(url)
+        url = '{base_url}/times'.format(base_url=self._base_url)
+        data = self._request(url, params=dict(q=query))
 
         return [TimeInfo.from_dict(time_info) for time_info in data]
 
-    def liga(self, name, is_slug=False):
-        """ check_slug_liga """
-        slug = name if is_slug else convert_team_name_to_slug(name)
-        url = '{base_url}/auth/liga/{slug}'.format(base_url=self._base_url, slug=slug)
-        data = self._request(url)
-
-        return Liga.from_dict(data)
-
-    def market(self):
-        """ market. """
-        url = '%s/atletas/mercado' % (self._base_url,)
-        data = self._request(url)
-
-        clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
-        positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
-        status = {status['id']: status for status in data['status'].values()}
-        return [Athlete.from_dict(athlete, clubs=clubs, positions=positions, status=status) for athlete
-                in data['atletas']]
-
-    def round_score(self):
-        """ round_score. """
-        url = '%s/atletas/pontuados' % (self._base_url,)
-
-        if self.status().status_mercado == 'Mercado fechado':
-            data = self._request(url)
-
-            clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
-            positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
-
-            return {athlete_id: AthleteScore.from_dict(athlete, clubs=clubs, positions=positions) for
-                    athlete_id, athlete in data['atletas'].items()}
-
-        raise CartolaFCError('A pontuação parcial só fica disponível com o mercado fechado.')
-
-    def highlights(self):
-        """ highlights. """
-        url = '%s/mercado/destaques' % (self._base_url,)
-        data = self._request(url)
-
-        return [Highlight.from_dict(highlight) for highlight in data]
-
-    def schemes(self):
-        """ schemes. """
-        url = '%s/esquemas' % (self._base_url,)
-        data = self._request(url)
-
-        return [Scheme.from_dict(scheme) for scheme in data]
-
-    def search_league_info_by_name(self, name):
-        """ search_league_info_by_name. """
-        url = '%s/ligas?q=%s' % (self._base_url, name)
-        data = self._request(url)
-
-        return [LeagueInfo.from_dict(league_info) for league_info in data]
-
-    def _request(self, url):
+    def _request(self, url, params=None):
         attempts = self.attempts
         while attempts:
             try:
                 headers = {'X-GLB-Token': self._glb_id} if self._glb_id else None
-                response = requests.get(url, headers=headers)
+                response = requests.get(url, params=params, headers=headers)
                 if self._glb_id and response.status_code == 401:
                     self.set_credentials(self._email, self._password)
-                    response = requests.get(url, headers={'X-GLB-Token': self._glb_id})
+                    response = requests.get(url, params=params, headers={'X-GLB-Token': self._glb_id})
                 return parse_and_check_cartolafc(response.content.decode('utf-8'))
             except CartolaFCOverloadError as error:
                 attempts -= 1
