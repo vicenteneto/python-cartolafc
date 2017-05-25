@@ -10,6 +10,7 @@ from cartolafc.error import CartolaFCError, CartolaFCOverloadError
 from cartolafc.models import (
     Atleta,
     Clube,
+    DestaqueRodada,
     Liga,
     LigaInfo,
     Mercado,
@@ -171,10 +172,19 @@ class Api(object):
         return {patrocinador_id: Patrocinador.from_dict(patrocinador) for patrocinador_id, patrocinador in data.items()}
 
     @RequiresAuthentication
-    def pontuacao_atleta(self, id_):
-        url = '{base_url}/auth/mercado/atleta/{id}/pontuacao'.format(base_url=self._base_url, id=id_)
+    def pontuacao_atleta(self, id):
+        url = '{base_url}/auth/mercado/atleta/{id}/pontuacao'.format(base_url=self._base_url, id=id)
         data = self._request(url)
         return [PontuacaoInfo.from_dict(pontuacao_info) for pontuacao_info in data]
+
+    def pos_rodada_destaques(self):
+        if self.status_mercado().status_mercado == 'Mercado aberto':
+            url = '{base_url}/pos-rodada/destaques'.format(base_url=self._base_url)
+            data = self._request(url)
+
+            return DestaqueRodada.from_dict(data)
+
+        raise CartolaFCError('Os destaques de pós-rodada só ficam disponíveis com o mercado aberto.')
 
     def time(self, id=None, nome=None, slug=None):
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
@@ -197,6 +207,15 @@ class Api(object):
         param = 'id' if id else 'slug'
         value = id if id else (slug if slug else convert_team_name_to_slug(nome))
         url = '{base_url}/time/{param}/{value}'.format(base_url=self._base_url, param=param, value=value)
+        data = self._request(url)
+
+        clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
+
+        return Time.from_dict(data, posicoes=_posicoes, clubes=clubes, mercado_status=_mercado_status)
+
+    @RequiresAuthentication
+    def time_logado(self):
+        url = '{base_url}/auth/time'.format(base_url=self._base_url)
         data = self._request(url)
 
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}

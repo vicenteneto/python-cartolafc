@@ -28,8 +28,8 @@ class Atleta(object):
 class Clube(object):
     """ Clube """
 
-    def __init__(self, id_, nome, abreviacao):
-        self.id = id_
+    def __init__(self, id, nome, abreviacao):
+        self.id = id
         self.nome = nome
         self.abreviacao = abreviacao
 
@@ -38,11 +38,25 @@ class Clube(object):
         return cls(data['id'], data['nome'], data['abreviacao'])
 
 
+class DestaqueRodada(object):
+    """ Destaque Rodada"""
+
+    def __init__(self, media_cartoletas, media_pontos, mito_rodada):
+        self.media_cartoletas = media_cartoletas
+        self.media_pontos = media_pontos
+        self.mito_rodada = mito_rodada
+
+    @classmethod
+    def from_dict(cls, data):
+        mito_rodada = TimeInfo.from_dict(data['mito_rodada'])
+        return cls(data['media_cartoletas'], data['media_pontos'], mito_rodada)
+
+
 class Liga(object):
     """ Liga """
 
-    def __init__(self, id_, nome, slug, times):
-        self.id = id_
+    def __init__(self, id, nome, slug, times):
+        self.id = id
         self.nome = nome
         self.slug = slug
         self.times = times
@@ -142,8 +156,8 @@ class PontuacaoInfo(object):
 class Posicao(object):
     """ Posição """
 
-    def __init__(self, id_, nome, abreviacao):
-        self.id = id_
+    def __init__(self, id, nome, abreviacao):
+        self.id = id
         self.nome = nome
         self.abreviavao = abreviacao
 
@@ -155,8 +169,8 @@ class Posicao(object):
 class Status(object):
     """ Status """
 
-    def __init__(self, id_, nome):
-        self.id = id_
+    def __init__(self, id, nome):
+        self.id = id
         self.nome = nome
 
 
