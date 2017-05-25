@@ -3,10 +3,20 @@ Changelog
 
 Aqui você pode ver a lista completa de modificações entre cada versão.
 
+Versão 0.5.26
+-------------
+
+Lançada em 26 de maio de 2017
+
+- Alterando toda a documentação para português
+- Alterando todos os modelos para português
+- Adicionando a possibilidade de utilizar funções com autenticação
+
+
 Versão 0.5.17
 --------------
 
-Lançada em 17 de maior de 2017.
+Lançada em 17 de maio de 2017.
 
 - ``#35`` Adding dynamic reexecution support if you can not get the response on the first request
 
@@ -22,7 +32,7 @@ Lançada em 15 de maio de 2017.
 Versão 0.5.14
 --------------
 
-Lançada em 14 de maior de 2017.
+Lançada em 14 de maio de 2017.
 
 - ``#33`` Returning clubs and athletes as dictionaries to facilitate searching
 
