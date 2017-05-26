@@ -140,7 +140,7 @@ class Api(object):
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
         return [Atleta.from_dict(atleta, clubes=clubes) for atleta in data['atletas']]
 
-    def status_mercado(self):
+    def status(self):
         """ Obtém o status do mercado na rodada atual. 
 
         Returns:
@@ -152,7 +152,7 @@ class Api(object):
         return Mercado.from_dict(data)
 
     def parciais(self):
-        if self.status_mercado().status_mercado.id == MERCADO_FECHADO:
+        if self.status().status_mercado.id == MERCADO_FECHADO:
             url = '{base_url}/atletas/pontuados'.format(base_url=self._base_url)
             data = self._request(url)
             clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
@@ -167,7 +167,7 @@ class Api(object):
         return {patrocinador_id: Patrocinador.from_dict(patrocinador) for patrocinador_id, patrocinador in data.items()}
 
     def pos_rodada_destaques(self):
-        if self.status_mercado().status_mercado.id == MERCADO_ABERTO:
+        if self.status().status_mercado.id == MERCADO_ABERTO:
             url = '{base_url}/pos-rodada/destaques'.format(base_url=self._base_url)
             data = self._request(url)
             return DestaqueRodada.from_dict(data)
