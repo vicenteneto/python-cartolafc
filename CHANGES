@@ -1,56 +1,66 @@
 Changelog
 =========
 
-Here you can see the full list of changes between each release.
+Aqui você pode ver a lista completa de modificações entre cada versão.
 
-Version 0.5.17
+Versão 0.5.26
+-------------
+
+Lançada em 26 de maio de 2017
+
+- Alterando toda a documentação para português
+- Alterando todos os modelos para português
+- Adicionando a possibilidade de utilizar funções com autenticação
+
+
+Versão 0.5.17
 --------------
 
-Released on May 17th 2017.
+Lançada em 17 de maio de 2017.
 
 - ``#35`` Adding dynamic reexecution support if you can not get the response on the first request
 
 
-Version 0.5.15
+Versão 0.5.15
 --------------
 
-Released on May 15th 2017.
+Lançada em 15 de maio de 2017.
 
 - ``#34`` Fixing team name to slug convertion
 
 
-Version 0.5.14
+Versão 0.5.14
 --------------
 
-Released on May 14th 2017.
+Lançada em 14 de maio de 2017.
 
 - ``#33`` Returning clubs and athletes as dictionaries to facilitate searching
 
 
-Version 0.5.13
+Versão 0.5.13
 --------------
 
-Released on May 13th 2017.
+Lançada em 13 de maio de 2017.
 
 - ``#31`` Improving installation and quickstart documentation and updating api for the 2017 version
 - Updating api for the 2017 version
 - Enabling team search by slug or by name
 
 
-Version 0.3.13
+Versão 0.3.13
 --------------
 
-Released on Mar 13th 2017.
+Lançada em 13 de março de 2017.
 
 - ``#29`` Setting up tox to perform tests in Python versions 2.7, 3.3, 3.4, 3.5 and 3.6
 - Changed development status to ``Beta``
 - Updating README with information on how to install and examples
 
 
-Version 0.2.19
+Versão 0.2.19
 --------------
 
-Released on Feb 19th 2017.
+Lançada em 19 de fevereiro de 2017.
 
 - ``#28`` Releasing version 0.2.19
 - ``#27`` Creating tests to the ``cartolafc.Api.search_league_info_by_name`` method
@@ -68,10 +78,10 @@ Released on Feb 19th 2017.
 - ``#15`` Changing repository name from python-cartolafc-api to python-cartolafc
 
 
-Version 0.2.18
+Versão 0.2.18
 --------------
 
-Released on Feb 18th 2017.
+Lançada em 18 de fevereiro de 2017.
 
 - ``#14`` Creating PyPi setup file and sample examples directory
 - ``#13`` Creating tests to the ``cartolafc.Api.status`` method

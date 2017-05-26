@@ -1,28 +1,28 @@
 .. _installation:
 
-Installation
-============
+Instalação
+==========
 
-From PyPI
----------
+Pypi
+----
 
-Just run pip without privileges::
+Apenas execute o pip::
 
     $ pip install Python-CartolaFC
 
 
-By source
----------
+Código-fonte
+------------
 
-Download the source files and run::
+Faça o download do código-fonte e execute::
 
     $ python setup.py install
 
 
-Development version
--------------------
+Versão em desenvolvimento
+-------------------------
 
-If you want to work with the latest version of Python CartolaFC's, you can either let ``pip`` pull in the development
-version::
+Se você quiser trabalhar com a versão mais recente do Python CartolaFC, você pode deixar o ``pip`` puxar a versão em
+desenvolvimento::
 
     $ pip install git+https://github.com/vicenteneto/python-cartolafc.git#egg=Python-CartolaFC

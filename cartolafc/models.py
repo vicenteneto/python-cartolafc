@@ -1,348 +1,175 @@
 # -*- coding: utf-8 -*-
 
+from collections import namedtuple
 from datetime import datetime
 
+Posicao = namedtuple('Posicao', ['id', 'nome', 'abreviacao'])
+Status = namedtuple('Status', ['id', 'nome'])
 
-class BaseModel(object):
-    """  Base class from which all Cartola FC models will inherit. """
+_posicoes = {
+    1: Posicao(1, 'Goleiro', 'gol'),
+    2: Posicao(2, 'Lateral', 'lat'),
+    3: Posicao(3, 'Zagueiro', 'zag'),
+    4: Posicao(4, 'Meia', 'mei'),
+    5: Posicao(5, 'Atacante', 'ata'),
+    6: Posicao(6, 'Técnico', 'tec')
+}
 
-    def __init__(self, param_defaults, **kwargs):
-        for param in param_defaults:
-            setattr(self, param, kwargs.get(param, getattr(self, param, None)))
+_atleta_status = {
+    2: Status(2, 'Dúvida'),
+    3: Status(3, 'Suspenso'),
+    5: Status(5, 'Contundido'),
+    6: Status(6, 'Nulo'),
+    7: Status(7, 'Provável')
+}
 
-    @classmethod
-    def from_dict(cls, data, **kwargs):
-        """
-        Create a new instance based on a JSON dict. Any kwargs should be supplied by the inherited, calling class.
-        Args:
-            data: A JSON dict, as converted from the JSON in the Cartola FC API.
-        """
-
-        json_data = data.copy()
-        return cls(**json_data)
-
-
-class Athlete(BaseModel):
-    """  Athlete. """
-
-    atleta_id = None
-    nome = None
-    apelido = None
-    foto = None
-    clube = None
-    posicao = None
-    status = None
-    pontos = None
-    preco = None
-    variacao = None
-    media = None
-    jogos = None
-    scout = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'clube', 'posicao', 'status', 'pontos', 'preco',
-                          'variacao', 'media', 'jogos', 'scout')
-        super(Athlete, self).__init__(param_defaults, **kwargs)
-
-    @classmethod
-    def from_dict(cls, data, **kwargs):
-        try:
-            data['clube'] = kwargs['clubs'][data['clube_id']]
-        except KeyError:
-            pass
-        try:
-            data['posicao'] = kwargs['positions'][data['posicao_id']]
-        except KeyError:
-            pass
-        try:
-            data['status'] = kwargs['status'][data['status_id']]['nome']
-        except KeyError:
-            pass
-        data['pontos'] = data['pontos_num']
-        data['preco'] = data['preco_num']
-        data['variacao'] = data['variacao_num']
-        data['media'] = data['media_num']
-        data['jogos'] = data['jogos_num']
-        return super(cls, cls).from_dict(data)
+_mercado_status = {
+    1: Status(1, 'Mercado aberto'),
+    2: Status(2, 'Mercado fechado'),
+    3: Status(3, 'Mercado em atualização'),
+    4: Status(4, 'Mercado em manutenção'),
+    6: Status(6, 'Final de temporada')
+}
 
 
-class AthleteInfo(BaseModel):
-    """  AthleteInfo. """
+class Atleta(object):
+    """ Atleta """
 
-    atleta_id = None
-    nome = None
-    apelido = None
-    foto = None
-    preco_editorial = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('atleta_id', 'nome', 'apelido', 'foto', 'preco_editorial')
-        super(AthleteInfo, self).__init__(param_defaults, **kwargs)
-
-
-class AthleteScore(BaseModel):
-    """ AthleteScore. """
-
-    apelido = None
-    pontuacao = None
-    foto = None
-    clube = None
-    posicao = None
-    scout = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('apelido', 'pontuacao', 'foto', 'clube', 'posicao', 'scout')
-        super(AthleteScore, self).__init__(param_defaults, **kwargs)
+    def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None):
+        self.atleta_id = atleta_id
+        self.apelido = apelido
+        self.pontos = pontos
+        self.scout = scout
+        self.posicao = _posicoes[posicao_id]
+        self.clube = clube
+        self.status = _atleta_status[status_id] if status_id else None
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        try:
-            data['clube'] = kwargs['clubs'][data['clube_id']]
-        except KeyError:
-            pass
-        try:
-            data['posicao'] = kwargs['positions'][data['posicao_id']]
-        except KeyError:
-            pass
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data, clubes, atleta_id=None):
+        atleta_id = atleta_id if atleta_id else data['atleta_id']
+        pontos = data['pontos_num'] if 'pontos_num' in data else data['pontuacao']
+        clube = clubes[data['clube_id']]
+        return cls(atleta_id, data['apelido'], pontos, data['scout'], data['posicao_id'], clube,
+                   data.get('status_id', None))
 
 
-class Club(BaseModel):
-    """ Club. """
+class Clube(object):
+    """ Clube """
 
-    id = None
-    nome = None
-    abreviacao = None
-    posicao = None
-    escudos = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('id', 'nome', 'abreviacao', 'posicao', 'escudos')
-        super(Club, self).__init__(param_defaults, **kwargs)
-
-
-class Highlight(BaseModel):
-    """ Highlight. """
-
-    atleta = None
-    escalacoes = None
-    clube = None
-    escudo_clube = None
-    posicao = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('atleta', 'escalacoes', 'clube', 'escudo_clube', 'posicao')
-        super(Highlight, self).__init__(param_defaults, **kwargs)
+    def __init__(self, clube_id, nome, abreviacao):
+        self.id = clube_id
+        self.nome = nome
+        self.abreviacao = abreviacao
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        data['atleta'] = AthleteInfo.from_dict(data['Atleta'])
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data):
+        return cls(data['id'], data['nome'], data['abreviacao'])
 
 
-class LeagueInfo(BaseModel):
-    """ LeagueInfo. """
+class DestaqueRodada(object):
+    """ Destaque Rodada"""
 
-    liga_id = None
-    nome = None
-    descricao = None
-    slug = None
-    imagem = None
-    quantidade_times = None
-    mata_mata = None
-    tipo = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('liga_id', 'nome', 'descricao', 'slug', 'imagem', 'quantidade_times', 'mata_mata', 'tipo')
-        super(LeagueInfo, self).__init__(param_defaults, **kwargs)
-
-
-class Match(BaseModel):
-    """ Match. """
-
-    clube_casa = None
-    clube_casa_posicao = None
-    clube_visitante = None
-    clube_visitante_posicao = None
-    partida_data = None
-    local = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('clube_casa', 'clube_casa_posicao', 'clube_visitante', 'clube_visitante_posicao',
-                          'partida_data', 'local')
-        super(Match, self).__init__(param_defaults, **kwargs)
+    def __init__(self, media_cartoletas, media_pontos, mito_rodada):
+        self.media_cartoletas = media_cartoletas
+        self.media_pontos = media_pontos
+        self.mito_rodada = mito_rodada
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        date_format = '%Y-%m-%d %H:%M:%S'
-        try:
-            data['clube_casa'] = kwargs['clubs'][data['clube_casa_id']]
-        except KeyError:
-            pass
-        try:
-            data['clube_visitante'] = kwargs['clubs'][data['clube_visitante_id']]
-        except KeyError:
-            pass
-        data['partida_data'] = datetime.strptime(data['partida_data'], date_format)
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data):
+        mito_rodada = TimeInfo.from_dict(data['mito_rodada'])
+        return cls(data['media_cartoletas'], data['media_pontos'], mito_rodada)
 
 
-class Position(BaseModel):
-    """ Position. """
+class Liga(object):
+    """ Liga """
 
-    id = None
-    nome = None
-    abreviacao = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('id', 'nome', 'abreviacao')
-        super(Position, self).__init__(param_defaults, **kwargs)
-
-
-class Round(BaseModel):
-    """ Round. """
-
-    rodada_id = None
-    inicio = None
-    fim = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('rodada_id', 'inicio', 'fim')
-        super(Round, self).__init__(param_defaults, **kwargs)
+    def __init__(self, liga_id, nome, slug, descricao, times):
+        self.id = liga_id
+        self.nome = nome
+        self.slug = slug
+        self.descricao = descricao
+        self.times = times
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        date_format = '%Y-%m-%d %H:%M:%S'
-        data['inicio'] = datetime.strptime(data['inicio'], date_format)
-        data['fim'] = datetime.strptime(data['fim'], date_format)
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data):
+        data_liga = data.get('liga', data)
+        times = [TimeInfo.from_dict(time) for time in data['times']] if 'times' in data else None
+        return cls(data_liga['liga_id'], data_liga['nome'], data_liga['slug'], data_liga['descricao'], times)
 
 
-class RoundHighlights(BaseModel):
-    """ RoundHighlights. """
+class Mercado(object):
+    """ Mercado """
 
-    media_cartoletas = None
-    media_pontos = None
-    mito_rodada = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('media_cartoletas', 'media_pontos', 'mito_rodada')
-        super(RoundHighlights, self).__init__(param_defaults, **kwargs)
+    def __init__(self, rodada_atual, status_mercado, times_escalados, aviso, fechamento):
+        self.rodada_atual = rodada_atual
+        self.status_mercado = _mercado_status[status_mercado]
+        self.times_escalados = times_escalados
+        self.aviso = aviso
+        self.fechamento = fechamento
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        if data['mito_rodada']:
-            data['mito_rodada'] = TeamInfo.from_dict(data['mito_rodada'])
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data):
+        fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'])
+        return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
-class Scheme(BaseModel):
-    """ Scheme. """
+class Patrocinador(object):
+    """ Patrocinador """
 
-    esquema_id = None
-    nome = None
-    posicoes = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('esquema_id', 'nome', 'posicoes')
-        super(Scheme, self).__init__(param_defaults, **kwargs)
-
-
-class Sponsor(BaseModel):
-    """ Sponsor. """
-
-    liga_editorial_id = None
-    liga_id = None
-    tipo_ranking = None
-    url_link = None
-    url_editoria_ge = None
-    img_background = None
-    img_marca_patrocinador = None
-    nome = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('liga_editorial_id', 'liga_id', 'tipo_ranking', 'url_link', 'url_editoria_ge',
-                          'img_background', 'img_marca_patrocinador', 'nome')
-        super(Sponsor, self).__init__(param_defaults, **kwargs)
-
-
-class Status(BaseModel):
-    """ Status. """
-
-    rodada_atual = None
-    status_mercado = None
-    temporada = None
-    times_escalados = None
-    fechamento = None
-    mercado_pos_rodada = None
-    aviso = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('rodada_atual', 'status_mercado', 'temporada', 'times_escalados', 'fechamento',
-                          'mercado_pos_rodada', 'aviso')
-        super(Status, self).__init__(param_defaults, **kwargs)
+    def __init__(self, liga_id, nome, url_link):
+        self.liga_id = liga_id
+        self.nome = nome
+        self.url_link = url_link
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        status_mercado = {
-            1: 'Mercado aberto',
-            2: 'Mercado fechado',
-            3: 'Mercado em atualização',
-            4: 'Mercado em manutenção',
-            6: 'Mercado encerrado'
-        }
-
-        data['status_mercado'] = status_mercado.get(data['status_mercado'], 'Desconhecido')
-        data['fechamento'] = datetime.fromtimestamp(data['fechamento']['timestamp'])
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data):
+        return cls(data['liga_id'], data['nome'], data['url_link'])
 
 
-class Team(BaseModel):
-    """ Team. """
+class PontuacaoInfo(object):
+    """ Pontuação Info """
 
-    atletas = None
-    esquema_id = None
-    patrimonio = None
-    pontos = None
-    info = None
-    valor_time = None
-
-    def __init__(self, **kwargs):
-        param_defaults = ('atletas', 'esquema_id', 'patrimonio', 'pontos', 'info', 'valor_time')
-        super(Team, self).__init__(param_defaults, **kwargs)
+    def __init__(self, atleta_id, rodada_id, pontos, preco, variacao, media):
+        self.atleta_id = atleta_id
+        self.rodada_id = rodada_id
+        self.pontos = pontos
+        self.preco = preco
+        self.variacao = variacao
+        self.media = media
 
     @classmethod
-    def from_dict(cls, data, **kwargs):
-        clubs = {club['id']: Club.from_dict(club) for club in data['clubes'].values()}
-        positions = {position['id']: Position.from_dict(position) for position in data['posicoes'].values()}
-        status = {status['id']: status for status in data['status'].values()}
-        data['atletas'] = [Athlete.from_dict(athlete, clubs=clubs, positions=positions, status=status) for athlete
-                           in data['atletas']]
-        data['info'] = TeamInfo.from_dict(data['time'])
-        return super(cls, cls).from_dict(data)
+    def from_dict(cls, data):
+        return cls(data['atleta_id'], data['rodada_id'], data['pontos'], data['preco'], data['variacao'], data['media'])
 
 
-class TeamInfo(BaseModel):
-    """ TeamInfo. """
+class Time(object):
+    """ Time """
 
-    time_id = None
-    clube_id = None
-    esquema_id = None
-    facebook_id = None
-    foto_perfil = None
-    nome = None
-    nome_cartola = None
-    slug = None
-    url_escudo_png = None
-    url_escudo_svg = None
-    url_camisa_png = None
-    url_camisa_svg = None
-    url_escudo_placeholder_png = None
-    url_camisa_placeholder_png = None
-    assinante = None
+    def __init__(self, patrimonio, valor_time, ultima_pontuacao, atletas, info):
+        self.patrimonio = patrimonio
+        self.valor_time = valor_time
+        self.ultima_pontuacao = ultima_pontuacao
+        self.atletas = atletas
+        self.info = info
 
-    def __init__(self, **kwargs):
-        param_defaults = ('time_id', 'clube_id', 'esquema_id', 'facebook_id', 'foto_perfil', 'nome', 'nome_cartola',
-                          'slug', 'url_escudo_png', 'url_escudo_svg', 'url_camisa_png', 'url_camisa_svg',
-                          'url_escudo_placeholder_png', 'url_camisa_placeholder_png', 'assinante')
-        super(TeamInfo, self).__init__(param_defaults, **kwargs)
+    @classmethod
+    def from_dict(cls, data, clubes):
+        data['atletas'].sort(key=lambda a: a['posicao_id'])
+        atletas = [Atleta.from_dict(atleta, clubes) for atleta in data['atletas']]
+        info = TimeInfo.from_dict(data['time'])
+        return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
+
+
+class TimeInfo(object):
+    """ Time Info """
+
+    def __init__(self, time_id, nome, nome_cartola, slug, assinante):
+        self.time_id = time_id
+        self.nome = nome
+        self.nome_cartola = nome_cartola
+        self.slug = slug
+        self.assinante = assinante
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['time_id'], data['nome'], data['nome_cartola'], data['slug'], data['assinante'])

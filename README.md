@@ -8,84 +8,89 @@
 [![Development Status](http://img.shields.io/:status-production/stable-brightgreen.svg)](https://github.com/vicenteneto/python-cartolafc)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE)
 
-A python interface into the Cartola FC API.
+Uma interface em Python para a API Rest do Cartola FC.
 
 
-# Table of contents
+# Índice
 
-- [About this library](#about-this-library)
-- [Python versions](#python-versions)
-- [Installation](#installation)
-- [Example](#example)
-- [Contributors](#contributors)
-- [Copyright and License](#copyright-and-license)
-
-
-## About this library
-
-[Cartola FC](https://cartolafc.globo.com/) is a fantasy sport about football, meaning it is a fictional game in which
-people create their teams with real life football players. It was released in the year 2005.
-
-Created and maintained by [Globo.com](http://www.globo.com/) and promoted by the cable TV channel
-[Sportv](http://sportv.globo.com/), this virtual soccer game already has more than 3 million registered users. At the
-start of the 2016 season, the game recorded its best-ever scoring team in a single round in 12 years of fantasy history,
-an incredible 2,723,915 users set up their teams for the first round of the 2016 Brazilian Championship.
-
-Thankfully the designers have provided an excellent and complete REST interface. This library wraps up that interface as
-more conventional python objects.
+- [Sobre este projeto](#sobre-este-projeto)
+- [Versões](#versoes)
+- [Instalação](#instalacao)
+- [Exemplo](#exemplo)
+- [Contribuintes](#contribuintes)
+- [Direitos autorais e licença](#direitos-autorais-e-licenca)
 
 
-## Python versions
+## Sobre este projeto
 
-The project have been tested and working on Python 2.7, 3.3, 3.4, 3.5 and 3.6.
+Este projeto é uma interface em Python para a API REST do Cartola FC. [Cartola FC](https://cartolafc.globo.com/) é um 
+esporte fantasy sobre futebol, ou seja, é um jogo fictício no qual as pessoas montam seus times com jogadores de futebol 
+da vida real. Foi lançado no ano de 2005.
+
+Criado e mantido por [Globo.com](http://www.globo.com/) e promovido pelo canal de TV por assinatura 
+[Sportv](http://sportv.globo.com/), este jogo de futebol virtual conta com mais de 3 milhões de usuários registrados. 
+Logo na abertura da temporada 2016, o jogo registrou a sua melhor marca entre times escalados em uma única rodada em 12 
+anos de história do fantasy, incríveis 2.723.915 de usuários montaram as suas equipes para a primeira rodada do 
+Campeonato Brasileiro de 2016.
+
+Felizmente, os designers forneceram uma excelente e completa interface REST. Essa biblioteca inclui essa interface como 
+objetos de python mais convencionais.
 
 
-## Installation
+## Versões
 
-From PyPI:
+Este projeto foi testado e funciona em Python 2.7, 3.3, 3.4, 3.5 e 3.6.
+
+
+## Instalação
+
+PyPI:
 
 ```bash
     $ pip install Python-CartolaFC
 ```
 
-Or by downloading the source and running:
+Ou baixando o código fonte e executando:
 
 ```bash
     $ python setup.py install
 ```
 
-Latest git version:
+Versão em desenvolvimento:
 
 ```bash
     $ pip install git+https://github.com/vicenteneto/python-cartolafc.git#egg=Python-CartolaFC
 ```
 
 
-## Example
+## Exemplo
 
-Python-CartolaFC API is intended to map the objects in CartolaFC (e.g. Athlete, Club, League, Team) into easily
-managed Python objects:
+A API Python-CartolaFC destina-se a mapear os objetos no CartolaFC (por exemplo, Atleta, Clube, Liga, Equipe) em objetos 
+Python facilmente gerenciados:
 
 ```python
 >>> import cartolafc
 >>> api = cartolafc.Api()
->>> team = api.get_team('Falydos FC')
->>> team.pontos
+>>> time = api.time('Falydos FC')
+>>> time.ultima_pontuacao
 48.889892578125
->>> team.info.nome
+>>> time.info.nome
 u'Falydos FC'
 ```
 
-More examples available on Github: [https://github.com/vicenteneto/python-cartolafc/tree/master/examples](https://github.com/vicenteneto/python-cartolafc/tree/master/examples)
+Mais exemplos disponíveis no Github:
+[https://github.com/vicenteneto/python-cartolafc/tree/master/examples](https://github.com/vicenteneto/python-cartolafc/tree/master/examples)
 
 
-## Contributors
+## Contribuintes
 
-Have a bug or a feature request? [Please, open a GitHub issue](https://github.com/vicenteneto/python-cartolafc/issues/new>).
+Identificou algum bug ou tem alguma requisição de funcionalidade nova?
+[Por favor, abra uma nova issue](https://github.com/vicenteneto/python-cartolafc/issues/new>).
 
-**Vicente Neto (creator)** - <https://github.com/vicenteneto><br/>
+**Vicente Neto (criador)** - <https://github.com/vicenteneto><br/>
 
 
-## Copyright and license
+## Direitos autorais e licença
 
-Copyright 2017-, Vicente Neto. This project is licensed under the [MIT License](https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE).
+Copyright 2017-, Vicente Neto. Este projeto é licenciado sob a 
+[Licença MIT](https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE).

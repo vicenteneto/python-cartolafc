@@ -1,1 +1,1 @@
-Python-CartolaFC==0.5.17
+Python-CartolaFC==0.5.26

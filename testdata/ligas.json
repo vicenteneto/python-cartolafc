@@ -1,0 +1,402 @@
+[
+  {
+    "liga_id": 36741,
+    "nome": "PREMIERE_LIGA_ENTEL",
+    "descricao": "“Vale tudo, só não vale...”",
+    "slug": "premiere-liga-entel",
+    "imagem": "https://s2.glbimg.com/QRLl6ruuMdCnnOya8Fh_7extg2Y=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/72/32/36/0040167220160726163236",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 809372,
+    "nome": "PremiereVacas",
+    "descricao": "So os mlk liso",
+    "slug": "premierevacas",
+    "imagem": "https://s2.glbimg.com/-q20fGKpzgfcXBS0D-kNo18t3yE=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_57/flamula/72/16/30/0080937220170516201630",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 332281,
+    "nome": "PremiereFC",
+    "descricao": "Liga Premiere FC",
+    "slug": "premierefc",
+    "imagem": "https://s2.glbimg.com/8213cqKjAJoEW8ID3G1kek44w9M=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/18/52/24/0043291820160726165224",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 704108,
+    "nome": "#PremiereShow",
+    "descricao": "liga show",
+    "slug": "premiereshow",
+    "imagem": "https://s2.glbimg.com/Fv1uwYw3P5j2yvOiwgmrqmTOCEM=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_36/flamula/00/50/46/00020161003215046",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 969801,
+    "nome": "PremiereMG",
+    "descricao": ".",
+    "slug": "premieremg",
+    "imagem": "https://s2.glbimg.com/iPYzTbo97H3O3SwSkh9ttcKrMkY=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_60/trofeu/01/18/14/0096980120170523101814",
+    "quantidade_times": 0,
+    "mata_mata": true,
+    "tipo": "Mata Mata"
+  },
+  {
+    "liga_id": 415804,
+    "nome": "Premierelion",
+    "descricao": "só o mais esperto ou sortudo vence...",
+    "slug": "premierelion",
+    "imagem": "https://s2.glbimg.com/TvoM1Uv3h-OdJKQwuI1Ww53BqVQ=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_53/flamula/04/34/48/0041580420170511233448",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 178587,
+    "nome": "PremiereBR",
+    "descricao": "#SóOsMelhores",
+    "slug": "premierebr",
+    "imagem": "https://s2.glbimg.com/dHFD7bZTPx8ClvRJcMNQ-GnRxos=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_46/flamula/87/03/56/0017858720170429150356",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 106380,
+    "nome": "premiere",
+    "descricao": "première fc",
+    "slug": "premiere",
+    "imagem": "https://s2.glbimg.com/QHv5NDc3BfMm98VUjP_mxx79Z_I=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_45/flamula/80/39/49/0010638020170426163949",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 895252,
+    "nome": "PremiereFCJard",
+    "descricao": "Liga Top...",
+    "slug": "premierefcjard",
+    "imagem": "https://s2.glbimg.com/XTsihwpLSU6dIS-kbg43mkpav2g=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_59/flamula/52/13/56/0089525220170520011356",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 833986,
+    "nome": "Premièresporttv03",
+    "descricao": "Show de pontuação ",
+    "slug": "premieresporttv03",
+    "imagem": "https://s2.glbimg.com/WGJF6FdDob_NsMI__hEkP5DgUE0=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_60/flamula/86/01/30/0083398620170522210130",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 408513,
+    "nome": "premiere_molekada",
+    "descricao": "so os manow",
+    "slug": "premiere-molekada",
+    "imagem": "https://s2.glbimg.com/dMvgTpiGMlRFwyXL0kaoYy8HPHE=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_61/flamula/13/55/22/0040851320170525205522",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 1029275,
+    "nome": "PremiereLeague_2017",
+    "descricao": ".",
+    "slug": "premiereleague-2017",
+    "imagem": "https://s2.glbimg.com/r9X96shhfUYxbS-yF3OYrug3-yY=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_61/flamula/75/05/37/00102927520170525230537",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 2937,
+    "nome": "Premiere F.C",
+    "descricao": "Liga criada para os cartoleiros do grupo, aliás futebol e uma paixão nacional e cartola faz parte.",
+    "slug": "premiere-f-c",
+    "imagem": "https://s2.glbimg.com/aHANsNXMlpZPhkDDB6n-1xyT5fw=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_40/flamula/37/41/45/00293720170425104145",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Moderada"
+  },
+  {
+    "liga_id": 114222,
+    "nome": "Premiere Laliga",
+    "descricao": "Fechou",
+    "slug": "premiere-laliga",
+    "imagem": "https://s2.glbimg.com/hUMEAZk6sflcV6T_GmQ4TG6FS3E=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_45/flamula/22/49/20/0011422220170426194920",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Moderada"
+  },
+  {
+    "liga_id": 75104,
+    "nome": "PREMIERE BECO",
+    "descricao": "liga de amigos do futebol e do trabalho , que venca o melhor",
+    "slug": "premiere-beco",
+    "imagem": "https://s2.glbimg.com/IhdBpybduLkJHzyll0mENfNZ528=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_43/flamula/04/52/26/007510420170425225226",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 272987,
+    "nome": "PREMIERE BELGAS",
+    "descricao": "U.U",
+    "slug": "premiere-belgas",
+    "imagem": "https://s2.glbimg.com/_V3YdaXM8hbVCfE9DWvCU4HfRjY=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_48/flamula/87/27/30/0027298720170504122730",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 159890,
+    "nome": "PREMIERE LEAGUEJP",
+    "descricao": "Só os melhores",
+    "slug": "premiere-leaguejp",
+    "imagem": "https://s2.glbimg.com/tK1wZMEbcsOL6NnRYE87b1KdMXY=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_47/trofeu/90/43/32/0015989020170502214332",
+    "quantidade_times": 0,
+    "mata_mata": true,
+    "tipo": "Mata Mata"
+  },
+  {
+    "liga_id": 368416,
+    "nome": "Premiere Várzea",
+    "descricao": "Liga dos membros da AD Várzea Pta",
+    "slug": "premiere-varzea",
+    "imagem": "https://s2.glbimg.com/yb-wE9rrkOLgPMDMDgBliXdA3kQ=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_50/flamula/16/50/39/0036841620170508185039",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 517530,
+    "nome": "Copa Premiere",
+    "descricao": "Entre",
+    "slug": "copa-premiere",
+    "imagem": "https://s2.glbimg.com/jCk3ySWDM0AJeRvrBf96BcIaZaI=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_52/flamula/30/08/16/0051753020170511150816",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 479255,
+    "nome": "Salgadinho Premiere",
+    "descricao": "Só entra bola Murcha",
+    "slug": "salgadinho-premiere",
+    "imagem": "https://s2.glbimg.com/ao8H3elMB10Se_eTR7qtHpeD-is=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/41/52/20/0082424120160726165220",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 129795,
+    "nome": "Première Estelar ",
+    "descricao": "Liga Criada para os apaixonados por esse pequeno esporte chamado Futebol !",
+    "slug": "premiere-estelar",
+    "imagem": "https://s2.glbimg.com/kqTGPOLmK-nxPcxI8xvapRIf2uk=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_51/flamula/95/28/14/0012979520170510202814",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 513182,
+    "nome": "#Premiere' League2017",
+    "descricao": "Hora do show",
+    "slug": "premiere-league2017",
+    "imagem": "https://s2.glbimg.com/bgkw2CbGwnv9gBmVa7uHjMHGKOE=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_52/flamula/82/47/25/0051318220170511134725",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 150677,
+    "nome": "Pracinha premiere",
+    "descricao": "Pracinha fc",
+    "slug": "pracinha-premiere",
+    "imagem": "https://s2.glbimg.com/j2YIvJrYNBd16OoOxxN3hRBpUC0=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_53/flamula/77/40/14/0015067720170512164014",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 574646,
+    "nome": "PremiereMooca Br ",
+    "descricao": "...",
+    "slug": "premieremooca-br",
+    "imagem": "https://s2.glbimg.com/ZovmOpaR73xcLfGPC69lDdnzcBo=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_53/flamula/46/53/07/0057464620170512145307",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 570452,
+    "nome": "Premiere Legends",
+    "descricao": "Só quem vai mitar essa rodada",
+    "slug": "premiere-legends",
+    "imagem": "https://s2.glbimg.com/xnDsb-P8id9Wlxe7-4VdeGesTr0=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_53/flamula/52/00/53/0057045220170512140053",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 582622,
+    "nome": "Rota Premiere",
+    "descricao": "Que vença o melhor !!",
+    "slug": "rota-premiere",
+    "imagem": "https://s2.glbimg.com/YQnOrgA-U1772lZ6J44vxo2QClk=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_53/trofeu/22/52/36/0058262220170512165236",
+    "quantidade_times": 0,
+    "mata_mata": true,
+    "tipo": "Mata Mata"
+  },
+  {
+    "liga_id": 335761,
+    "nome": "Ninho Premiere",
+    "descricao": "Melhor Liga do Cartola.\nOnde só os melhores tem vez.\nSejam bem vindos, e que vença o melhor.",
+    "slug": "ninho-premiere",
+    "imagem": "https://s2.glbimg.com/gunzlgsggsyBeSPWyUADxtbdPQg=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_51/flamula/61/53/54/0033576120170509175354",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 439790,
+    "nome": "Premiere Xomanos",
+    "descricao": "Uma liga entre amigos.",
+    "slug": "premiere-xomanos",
+    "imagem": "https://s2.glbimg.com/QOu7L1FbcL-X-_Io2pWQXCSmLbQ=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/03/44/08/0024800320160726164408",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 251942,
+    "nome": "MS Premiere",
+    "descricao": "Cartoleiros NTI",
+    "slug": "ms-premiere",
+    "imagem": "https://s2.glbimg.com/sHaWBS64tem-WxmX2xJkwHt-HEQ=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/85/47/41/001878520160726164741",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Moderada"
+  },
+  {
+    "liga_id": 261242,
+    "nome": "Premiere Parças",
+    "descricao": "Fut",
+    "slug": "premiere-parcas",
+    "imagem": "https://s2.glbimg.com/4EAF2wJfVdwWPoRvh4V_DAAW6Oc=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_1/flamula/62/22/39/00107816220160726162239",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 630609,
+    "nome": "PREMIERE CARMO",
+    "descricao": "LIGA MATA MATA, SOMENTE O MELHOR VENCERA.",
+    "slug": "premiere-carmo",
+    "imagem": "https://s2.glbimg.com/2aba4u4VAanoEip7czh4_jgJM74=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_54/trofeu/09/15/50/0063060920170513101550",
+    "quantidade_times": 0,
+    "mata_mata": true,
+    "tipo": "Mata Mata"
+  },
+  {
+    "liga_id": 52984,
+    "nome": "liga premieres",
+    "descricao": "liga premiere",
+    "slug": "liga-premieres",
+    "imagem": "https://s2.glbimg.com/3UVyEqxnJL-nOeRK1TOsb1XOE3g=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_55/flamula/84/50/25/005298420170513175025",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Moderada"
+  },
+  {
+    "liga_id": 675755,
+    "nome": "Premiere SLS",
+    "descricao": "A liga mais top de São Luís ",
+    "slug": "premiere-sls",
+    "imagem": "https://s2.glbimg.com/KcgjNAd8CGmYbkky6o3hfStaLfY=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_55/flamula/55/32/04/0067575520170513163204",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 664402,
+    "nome": "Premiere Caiçara",
+    "descricao": "Baixada santista",
+    "slug": "premiere-caicara",
+    "imagem": "https://s2.glbimg.com/9tSHrgvIo4q5i2eyluobElgXVtU=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_55/flamula/02/13/04/0066440220170513141304",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Moderada"
+  },
+  {
+    "liga_id": 697522,
+    "nome": "Première Coxinha",
+    "descricao": "A melhor do mundo!",
+    "slug": "premiere-coxinha",
+    "imagem": "https://s2.glbimg.com/53fmMBCizXQ477i1leUippX-Ze0=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_56/flamula/22/23/20/0069752220170514142320",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Moderada"
+  },
+  {
+    "liga_id": 757104,
+    "nome": "marimbondo premiere",
+    "descricao": "o último paga a breja",
+    "slug": "marimbondo-premiere",
+    "imagem": "https://s2.glbimg.com/d678ZklZGk5ptFoKjLzPWIAEhv0=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_56/flamula/04/01/44/0075710420170515180144",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 671143,
+    "nome": "RJ Première ",
+    "descricao": "Para os melhores!",
+    "slug": "rj-premiere",
+    "imagem": "https://s2.glbimg.com/dxwSslj8HNhEIlF0x3tNmIPKoog=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_57/flamula/43/40/27/0067114320170516214027",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Aberta"
+  },
+  {
+    "liga_id": 784327,
+    "nome": "DTO PREMIERE",
+    "descricao": "Zuera never ends",
+    "slug": "dto-premiere",
+    "imagem": "https://s2.glbimg.com/IuOpgJ_76-BIgR0lf55mgEpFaAY=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_57/trofeu/27/08/27/0078432720170516130827",
+    "quantidade_times": 0,
+    "mata_mata": true,
+    "tipo": "Mata Mata"
+  },
+  {
+    "liga_id": 749085,
+    "nome": "PREMIERE MEDINOSO ",
+    "descricao": "ein?",
+    "slug": "premiere-medinoso",
+    "imagem": "https://s2.glbimg.com/fUEnnpbXo_YwW7MfzsMdAL_l-GE=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_56/flamula/85/06/58/0074908520170515140658",
+    "quantidade_times": 0,
+    "mata_mata": false,
+    "tipo": "Fechada"
+  },
+  {
+    "liga_id": 870063,
+    "nome": "Engineer premiere",
+    "descricao": "Produzindo campeões ",
+    "slug": "engineer-premiere",
+    "imagem": "https://s2.glbimg.com/Q6gyxfbcDAEg-4jNs06ixFCPbdE=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_58/trofeu/63/52/42/0087006320170519025242",
+    "quantidade_times": 0,
+    "mata_mata": true,
+    "tipo": "Mata Mata"
+  }
+]

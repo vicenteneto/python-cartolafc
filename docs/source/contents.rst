@@ -1,5 +1,5 @@
-Table of contents
------------------
+Índice
+------
 
 .. toctree::
     :maxdepth: 2
@@ -8,10 +8,10 @@ Table of contents
     quickstart
 
 
-API Reference
--------------
+API
+---
 
-If you are looking for information on a specific function, class or method, this part of the documentation is for you.
+Se você estiver procurando por informações sobre uma função, classe ou método específico, esta parte da documentação é para você.
 
 .. toctree::
     :maxdepth: 2
@@ -19,10 +19,10 @@ If you are looking for information on a specific function, class or method, this
     api
 
 
-Additional Notes
+Notas adicionais
 ----------------
 
-Design notes, legal information and changelog are here for the interested.
+Notas de design, informações legais e changelog estão aqui para os interessados.
 
 .. toctree::
     :maxdepth: 2

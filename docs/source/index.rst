@@ -5,21 +5,22 @@ Python Cartola FC API
 
 .. include:: badges.rst
 
-Welcome to Python CartolaFC's documentation. This project is a python interface into the Cartola FC API. `Cartola FC <https://cartolafc.globo.com/>`__
-is a fantasy sport about football, meaning it is a fictional game in which people create their teams with real life
-football players. It was released in the year 2005.
+Bem-vindo à documentação da biblioteca python-cartolafc. Este projeto é uma interface em Python para a API REST do
+Cartola FC. `Cartola FC <https://cartolafc.globo.com/>`__ é um esporte fantasy sobre futebol, ou seja, é um jogo
+fictício no qual as pessoas montam seus times com jogadores de futebol da vida real. Foi lançado no ano de 2005.
 
-Created and maintained by `Globo.com <http://www.globo.com/>`__ and promoted by the cable TV channel
-`Sportv <http://sportv.globo.com/>`__, this virtual soccer game already has more than 3 million registered users. At the
-start of the 2016 season, the game recorded its best-ever scoring team in a single round in 12 years of fantasy history,
-an incredible 2,723,915 users set up their teams for the first round of the 2016 Brazilian Championship.
+Criado e mantido por `Globo.com <http://www.globo.com/>`__ e promovido pelo canal de TV por assinatura
+`Sportv <http://sportv.globo.com/>`__, este jogo de futebol virtual conta com mais de 3 milhões de usuários registrados.
+Logo na abertura da temporada 2016, o jogo registrou a sua melhor marca entre times escalados em uma única rodada em 12
+anos de história do fantasy, incríveis 2.723.915 de usuários montaram as suas equipes para a primeira rodada do
+Campeonato Brasileiro de 2016.
 
-Thankfully the designers have provided an excellent and complete REST interface. This library wraps up that interface as
-more conventional python objects.
+Felizmente, os designers forneceram uma excelente e completa interface REST. Essa biblioteca inclui essa interface como
+objetos de python mais convencionais.
 
-Python versions
----------------
+Versões
+-------
 
-The project have been tested and working on Python 2.7, 3.3, 3.4, 3.5 and 3.6.
+Este projeto foi testado e funciona em Python 2.7, 3.3, 3.4, 3.5 e 3.6.
 
 .. include:: contents.rst

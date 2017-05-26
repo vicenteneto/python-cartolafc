@@ -1,6 +1,6 @@
 {
-  "rodada_atual": 38,
-  "status_mercado": 1,
+  "rodada_atual": 3,
+  "status_mercado": 2,
   "esquema_default_id": 4,
   "cartoleta_inicial": 100,
   "max_ligas_free": 2,
@@ -9,16 +9,17 @@
   "max_ligas_matamata_pro": 5,
   "max_ligas_patrocinadas_free": 2,
   "max_ligas_patrocinadas_pro_num": 2,
-  "game_over": true,
-  "temporada": 2016,
-  "times_escalados": 1702092,
+  "game_over": false,
+  "temporada": 2017,
+  "reativar": true,
+  "times_escalados": 3601523,
   "fechamento": {
-    "dia": 11,
-    "mes": 12,
-    "ano": 2016,
-    "hora": 15,
+    "dia": 27,
+    "mes": 5,
+    "ano": 2017,
+    "hora": 14,
     "minuto": 0,
-    "timestamp": 1481475600
+    "timestamp": 1495904400
   },
   "mercado_pos_rodada": false,
   "aviso": ""

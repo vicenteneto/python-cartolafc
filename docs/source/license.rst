@@ -1,20 +1,20 @@
 .. _license:
 
-Copyright and license
-=====================
+Direitos autorais e licença
+===========================
 
-Copyright 2017-, Vicente Neto. This project is licensed under the `MIT License <https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE>`__.
+Copyright 2017-, Vicente Neto. Este projeto é licenciado sob a `Licença MIT <https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE>`__.
 
-The full license text can be found below.
+O texto completo da licença pode ser encontrado abaixo.
 
 
-Authors
+Autores
 -------
 
 .. include:: ../../AUTHORS
 
 
-License
+Licença
 -------
 
 .. include:: ../../LICENSE
