@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import types
-
 from cartolafc.error import CartolaFCError
 
 
@@ -10,10 +8,11 @@ class RequiresAuthentication(object):
         self.func = func
 
     def __get__(self, instance, owner):
-        return types.MethodType(self, instance, owner)
+        self.instance = instance
+        return self
 
-    def __call__(self, api, *args, **kwargs):
-        if not api._glb_id:
+    def __call__(self, *args, **kwargs):
+        if not self.instance._glb_id:
             raise CartolaFCError('Esta função requer autenticação')
 
-        return self.func(api, *args, **kwargs)
+        return self.func(self.instance, *args, **kwargs)
