@@ -7,8 +7,7 @@ import requests
 
 from cartolafc.decorators import RequiresAuthentication
 from cartolafc.error import CartolaFCError, CartolaFCOverloadError
-from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaInfo, Mercado, Patrocinador, PontuacaoAtleta
-from cartolafc.models import PontuacaoInfo, Time, TimeInfo
+from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, Mercado, Patrocinador, PontuacaoInfo, Time, TimeInfo
 from cartolafc.util import convert_team_name_to_slug, parse_and_check_cartolafc
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -133,13 +132,13 @@ class Api(object):
     def ligas(self, query):
         url = '{base_url}/ligas'.format(base_url=self._base_url)
         data = self._request(url, params=dict(q=query))
-        return [LigaInfo.from_dict(liga_info) for liga_info in data]
+        return [Liga.from_dict(liga_info) for liga_info in data]
 
     def mercado(self):
         url = '{base_url}/atletas/mercado'.format(base_url=self._base_url)
         data = self._request(url)
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-        return [Atleta.from_dict(athlete, clubes=clubes) for athlete in data['atletas']]
+        return [Atleta.from_dict(atleta, clubes=clubes) for atleta in data['atletas']]
 
     def status_mercado(self):
         """ Obtém o status do mercado na rodada atual. 
@@ -157,10 +156,16 @@ class Api(object):
             url = '{base_url}/atletas/pontuados'.format(base_url=self._base_url)
             data = self._request(url)
             clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-            return {athlete_id: PontuacaoAtleta.from_dict(athlete, clubes=clubes) for athlete_id, athlete in
-                    data['atletas'].items()}
+            return {atleta_id: Atleta.from_dict(atleta, clubes=clubes, atleta_id=atleta_id) for atleta_id, atleta
+                    in data['atletas'].items()}
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
+
+    def parcial(self, id=None, nome=None, slug=None):
+        if self.status_mercado().status_mercado.id == MERCADO_FECHADO:
+            time = self.time(id, nome, slug)
+
+        raise CartolaFCError('A pontuação parcial só fica disponível com o mercado fechado.')
 
     def patrocinadores(self):
         url = '{base_url}/patrocinadores'.format(base_url=self._base_url)

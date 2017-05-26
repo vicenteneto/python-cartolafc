@@ -35,28 +35,29 @@ _mercado_status = {
 class Atleta(object):
     """ Atleta """
 
-    def __init__(self, atleta_id, nome, apelido, pontos_num, scout, posicao_id, status_id, clube):
+    def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None):
         self.atleta_id = atleta_id
-        self.nome = nome
         self.apelido = apelido
-        self.pontos_num = pontos_num
+        self.pontos = pontos
         self.scout = scout
         self.posicao = _posicoes[posicao_id]
-        self.status = _atleta_status[status_id]
         self.clube = clube
+        self.status = _atleta_status[status_id] if status_id else None
 
     @classmethod
-    def from_dict(cls, data, clubes):
+    def from_dict(cls, data, clubes, atleta_id=None):
+        atleta_id = atleta_id if atleta_id else data['atleta_id']
+        pontos = data['pontos_num'] if 'pontos_num' in data else data['pontuacao']
         clube = clubes[data['clube_id']]
-        return cls(data['atleta_id'], data['nome'], data['apelido'], data['pontos_num'], data['scout'],
-                   data['posicao_id'], data['status_id'], clube)
+        return cls(atleta_id, data['apelido'], pontos, data['scout'], data['posicao_id'], clube,
+                   data.get('status_id', None))
 
 
 class Clube(object):
     """ Clube """
 
-    def __init__(self, id, nome, abreviacao):
-        self.id = id
+    def __init__(self, clube_id, nome, abreviacao):
+        self.id = clube_id
         self.nome = nome
         self.abreviacao = abreviacao
 
@@ -82,31 +83,18 @@ class DestaqueRodada(object):
 class Liga(object):
     """ Liga """
 
-    def __init__(self, id, nome, slug, times):
-        self.id = id
+    def __init__(self, liga_id, nome, slug, descricao, times):
+        self.id = liga_id
         self.nome = nome
         self.slug = slug
+        self.descricao = descricao
         self.times = times
 
     @classmethod
     def from_dict(cls, data):
-        times = [TimeInfo.from_dict(time) for time in data['times']]
-        return cls(data['liga']['liga_id'], data['liga']['nome'], data['liga']['slug'], times)
-
-
-class LigaInfo(object):
-    """ Liga Info"""
-
-    def __init__(self, liga_id, nome, slug, descricao, tipo):
-        self.liga_id = liga_id
-        self.nome = nome
-        self.slug = slug
-        self.descricao = descricao
-        self.tupo = tipo
-
-    @classmethod
-    def from_dict(cls, data):
-        return cls(data['liga_id'], data['nome'], data['slug'], data['descricao'], data['tipo'])
+        data_liga = data.get('liga', data)
+        times = [TimeInfo.from_dict(time) for time in data['times']] if 'times' in data else None
+        return cls(data_liga['liga_id'], data_liga['nome'], data_liga['slug'], data_liga['descricao'], times)
 
 
 class Mercado(object):
@@ -136,22 +124,6 @@ class Patrocinador(object):
     @classmethod
     def from_dict(cls, data):
         return cls(data['liga_id'], data['nome'], data['url_link'])
-
-
-class PontuacaoAtleta(object):
-    """ Pontuação Atleta """
-
-    def __init__(self, apelido, pontuacao, scout, posicao_id, clube):
-        self.apelido = apelido
-        self.pontuacao = pontuacao
-        self.scout = scout
-        self.posicao = _posicoes[posicao_id]
-        self.clube = clube
-
-    @classmethod
-    def from_dict(cls, data, clubes):
-        clube = clubes[data['clube_id']]
-        return cls(data['apelido'], data['pontuacao'], data['scout'], data['posicao_id'], clube)
 
 
 class PontuacaoInfo(object):
