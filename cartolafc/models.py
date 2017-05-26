@@ -1,28 +1,55 @@
 # -*- coding: utf-8 -*-
 
+from collections import namedtuple
 from datetime import datetime
+
+Posicao = namedtuple('Posicao', ['id', 'nome', 'abreviacao'])
+Status = namedtuple('Status', ['id', 'nome'])
+
+_posicoes = {
+    1: Posicao(1, 'Goleiro', 'gol'),
+    2: Posicao(2, 'Lateral', 'lat'),
+    3: Posicao(3, 'Zagueiro', 'zag'),
+    4: Posicao(4, 'Meia', 'mei'),
+    5: Posicao(5, 'Atacante', 'ata'),
+    6: Posicao(6, 'Técnico', 'tec')
+}
+
+_atleta_status = {
+    2: Status(2, 'Dúvida'),
+    3: Status(3, 'Suspenso'),
+    5: Status(5, 'Contundido'),
+    6: Status(6, 'Nulo'),
+    7: Status(7, 'Provável')
+}
+
+_mercado_status = {
+    1: Status(1, 'Mercado aberto'),
+    2: Status(2, 'Mercado fechado'),
+    3: Status(3, 'Mercado em atualização'),
+    4: Status(4, 'Mercado em manutenção'),
+    6: Status(6, 'Final de temporada')
+}
 
 
 class Atleta(object):
     """ Atleta """
 
-    def __init__(self, atleta_id, nome, apelido, pontos_num, scout, posicao, clube, status):
+    def __init__(self, atleta_id, nome, apelido, pontos_num, scout, posicao_id, status_id, clube):
         self.atleta_id = atleta_id
         self.nome = nome
         self.apelido = apelido
         self.pontos_num = pontos_num
         self.scout = scout
-        self.posicao = posicao
+        self.posicao = _posicoes[posicao_id]
+        self.status = _atleta_status[status_id]
         self.clube = clube
-        self.status = status
 
     @classmethod
-    def from_dict(cls, data, posicoes, clubes, mercado_status):
-        posicao = posicoes[data['posicao_id']]
+    def from_dict(cls, data, clubes):
         clube = clubes[data['clube_id']]
-        status = mercado_status[data['status_id']]
-        return cls(data['atleta_id'], data['nome'], data['apelido'], data['pontos_num'], data['scout'], posicao, clube,
-                   status)
+        return cls(data['atleta_id'], data['nome'], data['apelido'], data['pontos_num'], data['scout'],
+                   data['posicao_id'], data['status_id'], clube)
 
 
 class Clube(object):
@@ -85,26 +112,17 @@ class LigaInfo(object):
 class Mercado(object):
     """ Mercado """
 
-    def __init__(self, rodada_atual, status_mercado, times_escalados, fechamento, aviso):
+    def __init__(self, rodada_atual, status_mercado, times_escalados, aviso, fechamento):
         self.rodada_atual = rodada_atual
-        self.status_mercado = status_mercado
+        self.status_mercado = _mercado_status[status_mercado]
         self.times_escalados = times_escalados
-        self.fechamento = fechamento
         self.aviso = aviso
+        self.fechamento = fechamento
 
     @classmethod
     def from_dict(cls, data):
-        status = {
-            1: 'Mercado aberto',
-            2: 'Mercado fechado',
-            3: 'Mercado em atualização',
-            4: 'Mercado em manutenção',
-            6: 'Final de temporada'
-        }
-
-        status_mercado = status.get(data['status_mercado'], 'Desconhecido')
         fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'])
-        return cls(data['rodada_atual'], status_mercado, data['times_escalados'], fechamento, data['aviso'])
+        return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
 class Patrocinador(object):
@@ -123,18 +141,17 @@ class Patrocinador(object):
 class PontuacaoAtleta(object):
     """ Pontuação Atleta """
 
-    def __init__(self, apelido, pontuacao, scout, posicao, clube):
+    def __init__(self, apelido, pontuacao, scout, posicao_id, clube):
         self.apelido = apelido
         self.pontuacao = pontuacao
         self.scout = scout
-        self.posicao = posicao
+        self.posicao = _posicoes[posicao_id]
         self.clube = clube
 
     @classmethod
-    def from_dict(cls, data, clubes, posicoes):
-        data['clube'] = clubes[data['clube_id']]
-        data['posicao'] = posicoes[data['posicao_id']]
-        return cls(data['apelido'], data['pontuacao'], data['scout'], data['posicao'], data['clube'])
+    def from_dict(cls, data, clubes):
+        clube = clubes[data['clube_id']]
+        return cls(data['apelido'], data['pontuacao'], data['scout'], data['posicao_id'], clube)
 
 
 class PontuacaoInfo(object):
@@ -153,27 +170,6 @@ class PontuacaoInfo(object):
         return cls(data['atleta_id'], data['rodada_id'], data['pontos'], data['preco'], data['variacao'], data['media'])
 
 
-class Posicao(object):
-    """ Posição """
-
-    def __init__(self, id, nome, abreviacao):
-        self.id = id
-        self.nome = nome
-        self.abreviavao = abreviacao
-
-    @classmethod
-    def from_dict(cls, data):
-        return cls(data['id'], data['nome'], data['abreviacao'])
-
-
-class Status(object):
-    """ Status """
-
-    def __init__(self, id, nome):
-        self.id = id
-        self.nome = nome
-
-
 class Time(object):
     """ Time """
 
@@ -185,9 +181,9 @@ class Time(object):
         self.info = info
 
     @classmethod
-    def from_dict(cls, data, posicoes, clubes, mercado_status):
+    def from_dict(cls, data, clubes):
         data['atletas'].sort(key=lambda a: a['posicao_id'])
-        atletas = [Atleta.from_dict(atleta, posicoes, clubes, mercado_status) for atleta in data['atletas']]
+        atletas = [Atleta.from_dict(atleta, clubes) for atleta in data['atletas']]
         info = TimeInfo.from_dict(data['time'])
         return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
 
