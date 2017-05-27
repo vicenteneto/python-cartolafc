@@ -36,7 +36,7 @@ class Atleta(object):
     """ Atleta """
 
     def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None):
-        self.atleta_id = atleta_id
+        self.id = atleta_id
         self.apelido = apelido
         self.pontos = pontos
         self.scout = scout
@@ -56,8 +56,8 @@ class Atleta(object):
 class Clube(object):
     """ Clube """
 
-    def __init__(self, clube_id, nome, abreviacao):
-        self.id = clube_id
+    def __init__(self, id, nome, abreviacao):
+        self.id = id
         self.nome = nome
         self.abreviacao = abreviacao
 
@@ -102,7 +102,7 @@ class Mercado(object):
 
     def __init__(self, rodada_atual, status_mercado, times_escalados, aviso, fechamento):
         self.rodada_atual = rodada_atual
-        self.status_mercado = _mercado_status[status_mercado]
+        self.status = _mercado_status[status_mercado]
         self.times_escalados = times_escalados
         self.aviso = aviso
         self.fechamento = fechamento
@@ -113,11 +113,11 @@ class Mercado(object):
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
-class Patrocinador(object):
-    """ Patrocinador """
+class LigaPatrocinador(object):
+    """ Liga Patrocinador """
 
     def __init__(self, liga_id, nome, url_link):
-        self.liga_id = liga_id
+        self.id = liga_id
         self.nome = nome
         self.url_link = url_link
 
@@ -164,7 +164,7 @@ class TimeInfo(object):
     """ Time Info """
 
     def __init__(self, time_id, nome, nome_cartola, slug, assinante):
-        self.time_id = time_id
+        self.id = time_id
         self.nome = nome
         self.nome_cartola = nome_cartola
         self.slug = slug
