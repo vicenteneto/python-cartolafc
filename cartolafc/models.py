@@ -33,7 +33,7 @@ _mercado_status = {
 
 
 class Atleta(object):
-    """ Atleta """
+    """ Representa um atleta (jogador ou técnico), e possui informações como o apelido, clube e pontuação obtida """
 
     def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None):
         self.id = atleta_id
@@ -54,7 +54,7 @@ class Atleta(object):
 
 
 class Clube(object):
-    """ Clube """
+    """ Representa um dos 20 clubes presentes no campeonato, e possui informações como o nome e a abreviação """
 
     def __init__(self, id, nome, abreviacao):
         self.id = id

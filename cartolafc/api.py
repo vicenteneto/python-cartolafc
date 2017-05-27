@@ -59,7 +59,7 @@ class Api(object):
             password (str, opcional): A senha da sua conta no CartolaFC. Requerido se o email for informado.
             attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
             
-        raises:
+        Raises:
             cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos 
             dois argumentos (email e password) for informado.
         """
@@ -105,6 +105,25 @@ class Api(object):
 
     @RequiresAuthentication
     def liga(self, nome=None, slug=None, page=1, order_by=CAMPEONATO):
+        """ Este serviço requer que a API esteja autenticada, e realiza uma busca pelo nome ou slug informados.
+        Este serviço obtém apenas 20 times por página, portanto, caso sua liga possua mais que 20 membros, deve-se
+        utilizar o argumento "page" para obter mais times.
+
+        Args:
+            nome (str): Nome da liga que se deseja obter. Requerido se o slug não for informado.
+            slug (str): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
+            page (int): Página dos times que se deseja obter.
+            order_by (str): É possível obter os times ordenados por "campeonato", "turno", "mes", "rodada" e
+            "patrimonio". As constantes estão disponíveis em "cartolafc.CAMPEONATO", "cartolafc.TURNO" e assim
+            sucessivamente.
+
+        Returns:
+            Um objeto representando a liga encontrada.
+
+        Raises:
+            CartolaFCError: Se a API não está autenticada ou se nenhuma liga foi encontrada com os dados recebidos.
+        """
+
         if not any((nome, slug)):
             raise CartolaFCError('Você precisa informar o nome ou o slug da liga que deseja obter')
 
