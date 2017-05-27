@@ -97,6 +97,19 @@ class Liga(object):
         return cls(data_liga['liga_id'], data_liga['nome'], data_liga['slug'], data_liga['descricao'], times)
 
 
+class LigaPatrocinador(object):
+    """ Liga Patrocinador """
+
+    def __init__(self, liga_id, nome, url_link):
+        self.id = liga_id
+        self.nome = nome
+        self.url_link = url_link
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['liga_id'], data['nome'], data['url_link'])
+
+
 class Mercado(object):
     """ Mercado """
 
@@ -111,19 +124,6 @@ class Mercado(object):
     def from_dict(cls, data):
         fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'])
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
-
-
-class LigaPatrocinador(object):
-    """ Liga Patrocinador """
-
-    def __init__(self, liga_id, nome, url_link):
-        self.id = liga_id
-        self.nome = nome
-        self.url_link = url_link
-
-    @classmethod
-    def from_dict(cls, data):
-        return cls(data['liga_id'], data['nome'], data['url_link'])
 
 
 class PontuacaoInfo(object):
