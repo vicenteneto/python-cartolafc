@@ -164,8 +164,8 @@ class Api(object):
             url = '{api_url}/atletas/pontuados'.format(api_url=self._api_url)
             data = self._request(url)
             clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-            return {int(atleta_id): Atleta.from_dict(atleta, clubes=clubes, atleta_id=atleta_id) for atleta_id, atleta
-                    in data['atletas'].items()}
+            return {int(atleta_id): Atleta.from_dict(atleta, clubes=clubes, atleta_id=int(atleta_id)) for
+                    atleta_id, atleta in data['atletas'].items()}
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
@@ -209,9 +209,9 @@ class Api(object):
 
             time.pontos = 0
             for atleta in time.atletas:
-                tem_parcial = atleta.atleta_id in parciais
-                atleta.pontos = parciais[atleta.atleta_id].pontos if tem_parcial else 0
-                atleta.scout = parciais[atleta.atleta_id].scout if tem_parcial else {}
+                tem_parcial = atleta.id in parciais
+                atleta.pontos = parciais[atleta.id].pontos if tem_parcial else 0
+                atleta.scout = parciais[atleta.id].scout if tem_parcial else {}
                 time.pontos += atleta.pontos
 
             return time

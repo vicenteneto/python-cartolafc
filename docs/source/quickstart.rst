@@ -19,7 +19,7 @@ Um uso mínimo desta biblioteca se parece com algo assim::
 
 
     api = Api()
-    time = api.time('Falydos FC')
+    time = api.time(nome='Falydos FC')
 
 
 Então, o que este código faz?
