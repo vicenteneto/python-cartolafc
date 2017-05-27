@@ -93,6 +93,8 @@ class ApiAuthComErro(unittest.TestCase):
 class ApiAuthTest(unittest.TestCase):
     with open('testdata/amigos.json', 'rb') as f:
         AMIGOS = f.read().decode('utf8')
+    with open('testdata/liga.json', 'rb') as f:
+        LIGA = f.read().decode('utf8')
     with open('testdata/pontuacao_atleta.json', 'rb') as f:
         PONTUACAO_ATLETA = f.read().decode('utf8')
     with open('testdata/time_logado.json', 'rb') as f:
@@ -128,6 +130,49 @@ class ApiAuthTest(unittest.TestCase):
         with self.assertRaisesRegexp(cartolafc.CartolaFCError,
                                      'Você precisa informar o nome ou o slug da liga que deseja obter'):
             self.api.liga()
+
+    def test_liga_com_nome(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/auth/liga/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            m.get(url, text=self.LIGA)
+            liga = self.api.liga(nome='Falydos FC')
+            primeiro_time = liga.times[0]
+
+            # Assert
+            self.assertIsInstance(liga, Liga)
+            self.assertEqual(liga.id, 6407)
+            self.assertEqual(liga.nome, 'Virtus Premier League')
+            self.assertEqual(liga.slug, 'virtus-premier-league')
+            self.assertEqual(liga.descricao,
+                             u'Prêmios para: \n\n- Melhor de cada Mês (R$50,00)\n- Melhor do 1º e 2º Turno (R$150,00)\n- 2º Lugar Geral (R$50)\n- 1º Lugar Geral (R$250,00)\n\nBoa sorte!')
+            self.assertIsInstance(liga.times, list)
+            self.assertIsInstance(primeiro_time, TimeInfo)
+            self.assertEqual(primeiro_time.id, 453420)
+            self.assertEqual(primeiro_time.nome, 'Mosqueteiros JPB')
+            self.assertEqual(primeiro_time.nome_cartola, 'Erick Costa')
+            self.assertEqual(primeiro_time.slug, 'mosqueteiros-jpb')
+            self.assertTrue(primeiro_time.assinante)
+
+    def test_liga_com_slug(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/auth/liga/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            m.get(url, text=self.LIGA)
+            liga = self.api.liga(slug='falydos-fc')
+
+            # Assert
+            self.assertIsInstance(liga, Liga)
+
+    def test_liga_com_nome_e_slug(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/auth/liga/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            m.get(url, text=self.LIGA)
+            liga = self.api.liga(nome='Falydos FC', slug='falydos-fc')
+
+            # Assert
+            self.assertIsInstance(liga, Liga)
 
     def test_pontuacao_atleta(self):
         # Arrange and Act
@@ -195,6 +240,8 @@ class ApiTest(unittest.TestCase):
         MERCADO_STATUS_FECHADO = f.read().decode('utf8')
     with open('testdata/pos_rodada_destaques.json', 'rb') as f:
         POS_RODADA_DESTAQUES = f.read().decode('utf8')
+    with open('testdata/time.json', 'rb') as f:
+        TIME = f.read().decode('utf8')
     with open('testdata/times.json', 'rb') as f:
         TIMES = f.read().decode('utf-8')
 
@@ -334,11 +381,73 @@ class ApiTest(unittest.TestCase):
             with self.assertRaisesRegexp(cartolafc.CartolaFCError, ''):
                 self.api.pos_rodada_destaques()
 
-    def test_time_sem_nome_e_slug(self):
+    def test_time_sem_id_sem_nome_e_sem_slug(self):
         # Act and Assert
         with self.assertRaisesRegexp(cartolafc.CartolaFCError,
                                      'Você precisa informar o nome ou o slug do time que deseja obter'):
             self.api.time()
+
+    def test_time_com_id(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/time/id/{id}'.format(api_url=self.api_url, id=471815)
+            m.get(url, text=self.TIME)
+            time = self.api.time(id=471815)
+            primeiro_atleta = time.atletas[0]
+
+            # Assert
+            self.assertIsInstance(time, Time)
+            self.assertEqual(time.patrimonio, 0)
+            self.assertEqual(time.valor_time, 0)
+            self.assertEqual(time.ultima_pontuacao, 70.02978515625)
+            self.assertIsInstance(time.atletas, list)
+            self.assertIsInstance(primeiro_atleta, Atleta)
+            self.assertEqual(primeiro_atleta.id, 38140)
+            self.assertEqual(primeiro_atleta.apelido, 'Fernando Prass')
+            self.assertEqual(primeiro_atleta.pontos, 7.5)
+            self.assertEqual(primeiro_atleta.scout, {'DD': 3, 'FS': 1, 'GS': 1})
+            self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
+            self.assertIsInstance(primeiro_atleta.clube, Clube)
+            self.assertEqual(primeiro_atleta.clube.id, 275)
+            self.assertEqual(primeiro_atleta.clube.nome, 'Palmeiras')
+            self.assertEqual(primeiro_atleta.clube.abreviacao, 'PAL')
+            self.assertEqual(primeiro_atleta.status, _atleta_status[7])
+            self.assertIsInstance(time.info, TimeInfo)
+            self.assertEqual(time.info.id, 471815)
+            self.assertEqual(time.info.nome, 'Falydos FC')
+            self.assertEqual(time.info.nome_cartola, 'Vicente Neto')
+            self.assertEqual(time.info.slug, 'falydos-fc')
+            self.assertTrue(time.info.assinante)
+
+    def test_time_com_nome(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/time/slug/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            m.get(url, text=self.TIME)
+            time = self.api.time(nome='Falydos FC')
+
+            # Assert
+            self.assertIsInstance(time, Time)
+
+    def test_time_com_slug(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/time/slug/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            m.get(url, text=self.TIME)
+            time = self.api.time(slug='falydos-fc')
+
+            # Assert
+            self.assertIsInstance(time, Time)
+
+    def test_time_com_id_com_nome_e_com_slug(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/time/id/{id}'.format(api_url=self.api_url, id=471815)
+            m.get(url, text=self.TIME)
+            time = self.api.time(id=471815, nome='Falydos FC', slug='falydos-fc')
+
+            # Assert
+            self.assertIsInstance(time, Time)
 
     def test_time_parcial_mercado_aberto(self):
         # Arrange
