@@ -7,7 +7,8 @@ import requests_mock
 
 import cartolafc
 from cartolafc.api import MERCADO_ABERTO
-from cartolafc.models import Atleta, Clube, Liga, LigaPatrocinador, Mercado, PontuacaoInfo, Time, TimeInfo
+from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, PontuacaoInfo, Time
+from cartolafc.models import TimeInfo
 from cartolafc.models import _atleta_status, _posicoes
 
 
@@ -122,6 +123,12 @@ class ApiAuthTest(unittest.TestCase):
             self.assertEqual(primeiro_time.slug, 'uniao-brunao-f-c')
             self.assertFalse(primeiro_time.assinante)
 
+    def test_liga_sem_nome_e_slug(self):
+        # Act and Assert
+        with self.assertRaisesRegexp(cartolafc.CartolaFCError,
+                                     'Você precisa informar o nome ou o slug da liga que deseja obter'):
+            self.api.liga()
+
     def test_pontuacao_atleta(self):
         # Arrange and Act
         with requests_mock.mock() as m:
@@ -184,6 +191,10 @@ class ApiTest(unittest.TestCase):
         MERCADO_ATLETAS = f.read().decode('utf8')
     with open('testdata/mercado_status_aberto.json', 'rb') as f:
         MERCADO_STATUS_ABERTO = f.read().decode('utf8')
+    with open('testdata/mercado_status_fechado.json', 'rb') as f:
+        MERCADO_STATUS_FECHADO = f.read().decode('utf8')
+    with open('testdata/pos_rodada_destaques.json', 'rb') as f:
+        POS_RODADA_DESTAQUES = f.read().decode('utf8')
     with open('testdata/times.json', 'rb') as f:
         TIMES = f.read().decode('utf-8')
 
@@ -266,7 +277,7 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(primeiro_atleta.clube.abreviacao, 'SPO')
             self.assertEqual(primeiro_atleta.status, _atleta_status[6])
 
-    def test_parciais_mercado_fechado(self):
+    def test_parciais_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
             url = '{api_url}/mercado/status'.format(api_url=self.api_url)
@@ -292,8 +303,53 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(liga_brahma.nome, 'Cerveja Brahma')
             self.assertEqual(liga_brahma.url_link, 'http://brahma.com.br')
 
-    def test_pos_rodada_destaques(self):
-        pass
+    def test_pos_rodada_destaques_com_mercado_aberto(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.MERCADO_STATUS_ABERTO)
+
+            url = '{api_url}/pos-rodada/destaques'.format(api_url=self.api_url)
+            m.get(url, text=self.POS_RODADA_DESTAQUES)
+            destaque_rodada = self.api.pos_rodada_destaques()
+
+            # Assert
+            self.assertIsInstance(destaque_rodada, DestaqueRodada)
+            self.assertEqual(destaque_rodada.media_cartoletas, 115.8235753058391)
+            self.assertEqual(destaque_rodada.media_pontos, 46.6480728839843)
+            self.assertIsInstance(destaque_rodada.mito_rodada, TimeInfo)
+            self.assertEqual(destaque_rodada.mito_rodada.id, 896224)
+            self.assertEqual(destaque_rodada.mito_rodada.nome, 'gama campos fc')
+            self.assertEqual(destaque_rodada.mito_rodada.nome_cartola, 'malmal')
+            self.assertEqual(destaque_rodada.mito_rodada.slug, 'gama-campos-fc')
+            self.assertFalse(destaque_rodada.mito_rodada.assinante)
+
+    def test_pos_rodada_destaques_com_mercado_fechado(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.MERCADO_STATUS_FECHADO)
+
+            # Act and Assert
+            with self.assertRaisesRegexp(cartolafc.CartolaFCError, ''):
+                self.api.pos_rodada_destaques()
+
+    def test_time_sem_nome_e_slug(self):
+        # Act and Assert
+        with self.assertRaisesRegexp(cartolafc.CartolaFCError,
+                                     'Você precisa informar o nome ou o slug do time que deseja obter'):
+            self.api.time()
+
+    def test_time_parcial_mercado_aberto(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.MERCADO_STATUS_ABERTO)
+
+            # Act and Assert
+            with self.assertRaisesRegexp(cartolafc.CartolaFCError,
+                                         'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
+                self.api.time_parcial(nome='Falydos FC')
 
     def test_times(self):
         # Arrange and Act

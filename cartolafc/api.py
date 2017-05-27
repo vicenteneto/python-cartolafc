@@ -203,17 +203,20 @@ class Api(object):
         return Time.from_dict(data, clubes=clubes)
 
     def time_parcial(self, id=None, nome=None, slug=None, parciais=None):
-        parciais = parciais if parciais else self.parciais()
-        time = self.time(id, nome, slug)
+        if self.mercado().status.id == MERCADO_FECHADO:
+            parciais = parciais if parciais else self.parciais()
+            time = self.time(id, nome, slug)
 
-        time.pontos = 0
-        for atleta in time.atletas:
-            tem_parcial = atleta.atleta_id in parciais
-            atleta.pontos = parciais[atleta.atleta_id].pontos if tem_parcial else 0
-            atleta.scout = parciais[atleta.atleta_id].scout if tem_parcial else {}
-            time.pontos += atleta.pontos
+            time.pontos = 0
+            for atleta in time.atletas:
+                tem_parcial = atleta.atleta_id in parciais
+                atleta.pontos = parciais[atleta.atleta_id].pontos if tem_parcial else 0
+                atleta.scout = parciais[atleta.atleta_id].scout if tem_parcial else {}
+                time.pontos += atleta.pontos
 
-        return time
+            return time
+
+        raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
     def times(self, query):
         """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa. 
