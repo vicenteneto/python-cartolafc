@@ -20,24 +20,18 @@ Erros
 -----
 
 .. autoclass:: cartolafc.CartolaFCError
+.. autoclass:: cartolafc.CartolaFCOverloadError
 
 
 Modelos
 -------
 
-.. autoclass:: cartolafc.models.BaseModel
-.. autoclass:: cartolafc.models.Athlete
-.. autoclass:: cartolafc.models.AthleteInfo
-.. autoclass:: cartolafc.models.AthleteScore
-.. autoclass:: cartolafc.models.Club
-.. autoclass:: cartolafc.models.Highlight
-.. autoclass:: cartolafc.models.LeagueInfo
-.. autoclass:: cartolafc.models.Match
-.. autoclass:: cartolafc.models.Position
-.. autoclass:: cartolafc.models.Round
-.. autoclass:: cartolafc.models.RoundHighlights
-.. autoclass:: cartolafc.models.Scheme
-.. autoclass:: cartolafc.models.Sponsor
-.. autoclass:: cartolafc.models.Status
-.. autoclass:: cartolafc.models.Team
-.. autoclass:: cartolafc.models.TeamInfo
+.. autoclass:: cartolafc.models.Atleta
+.. autoclass:: cartolafc.models.Clube
+.. autoclass:: cartolafc.models.DestaqueRodada
+.. autoclass:: cartolafc.models.Liga
+.. autoclass:: cartolafc.models.LigaPatrocinador
+.. autoclass:: cartolafc.models.Mercado
+.. autoclass:: cartolafc.models.PontuacaoInfo
+.. autoclass:: cartolafc.models.Time
+.. autoclass:: cartolafc.models.TimeInfo

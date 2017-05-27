@@ -3,6 +3,15 @@ Changelog
 
 Aqui você pode ver a lista completa de modificações entre cada versão.
 
+Versão 0.5.27
+-------------
+
+Lançada em 27 de maio de 2017
+
+- Adicionando testes para o serviço de obtenção de parciais dos atletas
+- Corrigindo bug ao obter a parcial de um time específico
+
+
 Versão 0.5.26
 -------------
 

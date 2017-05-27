@@ -14,7 +14,7 @@
 """
 from setuptools import setup
 
-version = '0.5.26'
+version = '0.5.27'
 packages = ['cartolafc']
 install_requires = ['requests']
 python_cartolafc_pkg_data = []

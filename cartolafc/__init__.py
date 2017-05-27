@@ -8,5 +8,5 @@
     :license: MIT, veja LICENSE para mais detalhes.
 """
 
-from .api import Api
+from .api import Api, CAMPEONATO, TURNO, MES, RODADA, PATRIMONIO
 from .error import CartolaFCError, CartolaFCOverloadError

@@ -7,6 +7,6 @@ class CartolaFCError(Exception):
 
 
 class CartolaFCOverloadError(Exception):
-    """ Erro lançada quando o servidores estão sobrecarregados e a biblioteca não consegue obter os dados 
+    """ Erro lançado quando o servidores estão sobrecarregados e a biblioteca não consegue obter os dados
     requisitados """
     pass

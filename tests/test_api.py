@@ -238,6 +238,8 @@ class ApiTest(unittest.TestCase):
         MERCADO_STATUS_ABERTO = f.read().decode('utf8')
     with open('testdata/mercado_status_fechado.json', 'rb') as f:
         MERCADO_STATUS_FECHADO = f.read().decode('utf8')
+    with open('testdata/parciais.json', 'rb') as f:
+        PARCIAIS = f.read().decode('utf8')
     with open('testdata/pos_rodada_destaques.json', 'rb') as f:
         POS_RODADA_DESTAQUES = f.read().decode('utf8')
     with open('testdata/time.json', 'rb') as f:
@@ -334,6 +336,32 @@ class ApiTest(unittest.TestCase):
             with self.assertRaisesRegexp(cartolafc.CartolaFCError,
                                          'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
                 self.api.parciais()
+
+    def test_parciais_mercado_fechado(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.MERCADO_STATUS_FECHADO)
+
+            url = '{api_url}/atletas/pontuados'.format(api_url=self.api_url)
+            m.get(url, text=self.PARCIAIS)
+
+            # Act
+            parciais = self.api.parciais()
+            parcial_juan = parciais[36540]
+
+            # Assert
+            self.assertIsInstance(parciais, dict)
+            self.assertIsInstance(parcial_juan, Atleta)
+            self.assertEqual(parcial_juan.id, 36540)
+            self.assertEqual(parcial_juan.apelido, 'Juan')
+            self.assertEqual(parcial_juan.pontos, 2.9)
+            self.assertEqual(parcial_juan.scout, {'CA': 1, 'FC': 1, 'FS': 2, 'PE': 2, 'SG': 1})
+            self.assertEqual(parcial_juan.posicao, _posicoes[3])
+            self.assertIsInstance(parcial_juan.clube, Clube)
+            self.assertEqual(parcial_juan.clube.id, 262)
+            self.assertEqual(parcial_juan.clube.nome, 'Flamengo')
+            self.assertEqual(parcial_juan.clube.abreviacao, 'FLA')
 
     def test_patrocinadores(self):
         # Arrange and Act

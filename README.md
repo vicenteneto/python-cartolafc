@@ -71,7 +71,7 @@ Python facilmente gerenciados:
 ```python
 >>> import cartolafc
 >>> api = cartolafc.Api()
->>> time = api.time('Falydos FC')
+>>> time = api.time(nome='Falydos FC')
 >>> time.ultima_pontuacao
 48.889892578125
 >>> time.info.nome
