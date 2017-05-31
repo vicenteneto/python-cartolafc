@@ -130,7 +130,7 @@ class Api(object):
         slug = slug if slug else convert_team_name_to_slug(nome)
         url = '{api_url}/auth/liga/{slug}'.format(api_url=self._api_url, slug=slug)
         data = self._request(url, params=dict(page=page, orderBy=order_by))
-        return Liga.from_dict(data)
+        return Liga.from_dict(data, order_by)
 
     @RequiresAuthentication
     def pontuacao_atleta(self, id):
