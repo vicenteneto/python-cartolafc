@@ -3,6 +3,14 @@ Changelog
 
 Aqui você pode ver a lista completa de modificações entre cada versão.
 
+Versão 0.5.30
+-------------
+
+Lançada em 30 de maio de 2017
+
+- Adicionando pontuação no modelo de TimeInfo, utilizado na obtenção de times pertencentes a ligas (autenticada)
+
+
 Versão 0.5.27
 -------------
 

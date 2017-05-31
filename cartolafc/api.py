@@ -55,8 +55,8 @@ class Api(object):
         """ Instancia um novo objeto de cartolafc.Api.
 
         Args:
-            email (str, opcional): O e-mail da sua conta no CartolaFC. Requerido se o password for informado.
-            password (str, opcional): A senha da sua conta no CartolaFC. Requerido se o email for informado.
+            email (str): O e-mail da sua conta no CartolaFC. Requerido se o password for informado.
+            password (str): A senha da sua conta no CartolaFC. Requerido se o email for informado.
             attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
             
         Raises:
@@ -130,7 +130,7 @@ class Api(object):
         slug = slug if slug else convert_team_name_to_slug(nome)
         url = '{api_url}/auth/liga/{slug}'.format(api_url=self._api_url, slug=slug)
         data = self._request(url, params=dict(page=page, orderBy=order_by))
-        return Liga.from_dict(data)
+        return Liga.from_dict(data, order_by)
 
     @RequiresAuthentication
     def pontuacao_atleta(self, id):
@@ -151,6 +151,15 @@ class Api(object):
         return {int(clube_id): Clube.from_dict(clube) for clube_id, clube in data.items()}
 
     def ligas(self, query):
+        """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa.
+
+        Args:
+            query (str): Termo para utilizar na busca.
+
+        Returns:
+            Uma lista de instâncias de cartolafc.Liga, uma para cada liga contento o termo utilizado na busca.
+        """
+
         url = '{api_url}/ligas'.format(api_url=self._api_url)
         data = self._request(url, params=dict(q=query))
         return [Liga.from_dict(liga_info) for liga_info in data]
@@ -179,6 +188,15 @@ class Api(object):
         return [Atleta.from_dict(atleta, clubes=clubes) for atleta in data['atletas']]
 
     def parciais(self):
+        """ Obtém um mapa com todos os atletas que já pontuaram na rodada atual (aberta).
+
+        Returns:
+            Uma mapa, onde a key é um inteiro representando o id do atleta e o valor é uma instância de cartolafc.Atleta
+
+        Raises:
+            CartolaFCError: Se o mercado atual estiver com o status fechado.
+        """
+
         if self.mercado().status.id == MERCADO_FECHADO:
             url = '{api_url}/atletas/pontuados'.format(api_url=self._api_url)
             data = self._request(url)
@@ -201,9 +219,9 @@ class Api(object):
         Ao menos um dos dois devem ser informado. 
 
         Args:
-            id (int, opcional): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
-            nome (str, opcional): Nome do time que se deseja obter. Requerido se o slug não for informado.
-            slug (str, opcional): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
+            id (int): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
+            nome (str): Nome do time que se deseja obter. Requerido se o slug não for informado.
+            slug (str): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
 
         Returns:
             Uma instância de cartolafc.Time se o time foi encontrado.

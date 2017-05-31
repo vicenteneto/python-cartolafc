@@ -91,9 +91,9 @@ class Liga(object):
         self.times = times
 
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data, ranking=None):
         data_liga = data.get('liga', data)
-        times = [TimeInfo.from_dict(time) for time in data['times']] if 'times' in data else None
+        times = [TimeInfo.from_dict(time, ranking=ranking) for time in data['times']] if 'times' in data else None
         return cls(data_liga['liga_id'], data_liga['nome'], data_liga['slug'], data_liga['descricao'], times)
 
 
@@ -163,13 +163,15 @@ class Time(object):
 class TimeInfo(object):
     """ Time Info """
 
-    def __init__(self, time_id, nome, nome_cartola, slug, assinante):
+    def __init__(self, time_id, nome, nome_cartola, slug, assinante, pontos):
         self.id = time_id
         self.nome = nome
         self.nome_cartola = nome_cartola
         self.slug = slug
         self.assinante = assinante
+        self.pontos = pontos
 
     @classmethod
-    def from_dict(cls, data):
-        return cls(data['time_id'], data['nome'], data['nome_cartola'], data['slug'], data['assinante'])
+    def from_dict(cls, data, ranking=None):
+        pontos = data['pontos'][ranking] if ranking and ranking in data['pontos'] else None
+        return cls(data['time_id'], data['nome'], data['nome_cartola'], data['slug'], data['assinante'], pontos)
