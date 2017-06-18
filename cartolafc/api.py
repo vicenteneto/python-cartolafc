@@ -58,7 +58,7 @@ class Api(object):
             email (str): O e-mail da sua conta no CartolaFC. Requerido se o password for informado.
             password (str): A senha da sua conta no CartolaFC. Requerido se o email for informado.
             attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
-            
+
         Raises:
             cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos 
             dois argumentos (email e password) for informado.
@@ -214,7 +214,7 @@ class Api(object):
 
         raise CartolaFCError('Os destaques de pós-rodada só ficam disponíveis com o mercado aberto.')
 
-    def time(self, id=None, nome=None, slug=None):
+    def time(self, id=None, nome=None, slug=None, as_json=False):
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
         Ao menos um dos dois devem ser informado. 
 
@@ -222,6 +222,7 @@ class Api(object):
             id (int): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
             nome (str): Nome do time que se deseja obter. Requerido se o slug não for informado.
             slug (str): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
+            as_json (bool): Se desejar obter o retorno no formato json.
 
         Returns:
             Uma instância de cartolafc.Time se o time foi encontrado.
@@ -236,6 +237,10 @@ class Api(object):
         value = id if id else (slug if slug else convert_team_name_to_slug(nome))
         url = '{api_url}/time/{param}/{value}'.format(api_url=self._api_url, param=param, value=value)
         data = self._request(url)
+
+        if bool(as_json):
+            return data
+
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
         return Time.from_dict(data, clubes=clubes)
 

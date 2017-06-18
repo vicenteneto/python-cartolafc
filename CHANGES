@@ -3,6 +3,15 @@ Changelog
 
 Aqui você pode ver a lista completa de modificações entre cada versão.
 
+Versão 0.6.18
+-------------
+
+Lançada em 18 de junho de 2017
+
+- Corrigindo bug no retorno de textos no formato unicode
+- Dando suporte à retornar os dados de um time no formato json
+
+
 Versão 0.5.30
 -------------
 

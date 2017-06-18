@@ -477,6 +477,16 @@ class ApiTest(unittest.TestCase):
             # Assert
             self.assertIsInstance(time, Time)
 
+    def test_time_com_json(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/time/id/{id}'.format(api_url=self.api_url, id=471815)
+            m.get(url, text=self.TIME)
+            time = self.api.time(id=471815, as_json=True)
+
+            # Assert
+            self.assertIsInstance(time, dict)
+
     def test_time_parcial_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
