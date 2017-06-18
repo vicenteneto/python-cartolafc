@@ -7,8 +7,8 @@ import requests_mock
 
 import cartolafc
 from cartolafc.api import MERCADO_ABERTO
-from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, PontuacaoInfo, Time
-from cartolafc.models import TimeInfo
+from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
+from cartolafc.models import Time, TimeInfo
 from cartolafc.models import _atleta_status, _posicoes
 
 
@@ -238,6 +238,8 @@ class ApiTest(unittest.TestCase):
         MERCADO_STATUS_ABERTO = f.read().decode('utf8')
     with open('testdata/mercado_status_fechado.json', 'rb') as f:
         MERCADO_STATUS_FECHADO = f.read().decode('utf8')
+    with open('testdata/partidas.json', 'rb') as f:
+        PARTIDAS = f.read().decode('utf8')
     with open('testdata/parciais.json', 'rb') as f:
         PARCIAIS = f.read().decode('utf8')
     with open('testdata/pos_rodada_destaques.json', 'rb') as f:
@@ -362,6 +364,20 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(parcial_juan.clube.id, 262)
             self.assertEqual(parcial_juan.clube.nome, 'Flamengo')
             self.assertEqual(parcial_juan.clube.abreviacao, 'FLA')
+
+    def test_partidas(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/partidas/{rodada}'.format(api_url=self.api_url, rodada=1)
+            m.get(url, text=self.PARTIDAS)
+            partidas = self.api.partidas(1)
+            primeira_partida = partidas[0]
+
+            # Assert
+            self.assertIsInstance(partidas, list)
+            self.assertIsInstance(primeira_partida, Partida)
+            self.assertEqual(primeira_partida.clube_casa.nome, 'Fluminense')
+            self.assertEqual(primeira_partida.clube_visitante.nome, 'Santos')
 
     def test_patrocinadores(self):
         # Arrange and Act

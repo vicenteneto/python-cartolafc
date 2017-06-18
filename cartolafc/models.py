@@ -126,6 +126,20 @@ class Mercado(object):
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
+class Partida(object):
+    """ Partida """
+
+    def __init__(self, clube_casa, clube_visitante):
+        self.clube_casa = clube_casa
+        self.clube_visitante = clube_visitante
+
+    @classmethod
+    def from_dict(cls, data, clubes):
+        clube_casa = clubes[data['clube_casa_id']]
+        clube_visitante = clubes[data['clube_visitante_id']]
+        return cls(clube_casa, clube_visitante)
+
+
 class PontuacaoInfo(object):
     """ Pontuação Info """
 

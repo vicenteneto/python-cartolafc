@@ -7,8 +7,8 @@ import requests
 
 from cartolafc.decorators import RequiresAuthentication
 from cartolafc.error import CartolaFCError, CartolaFCOverloadError
-from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, PontuacaoInfo, Time
-from cartolafc.models import TimeInfo
+from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
+from cartolafc.models import Time, TimeInfo
 from cartolafc.util import convert_team_name_to_slug, parse_and_check_cartolafc
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -205,6 +205,12 @@ class Api(object):
                     atleta_id, atleta in data['atletas'].items()}
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
+
+    def partidas(self, rodada):
+        url = '{api_url}/partidas/{rodada}'.format(api_url=self._api_url, rodada=rodada)
+        data = self._request(url)
+        clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
+        return [Partida.from_dict(partida, clubes=clubes) for partida in data['partidas']]
 
     def pos_rodada_destaques(self):
         if self.mercado().status.id == MERCADO_ABERTO:

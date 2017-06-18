@@ -1,0 +1,497 @@
+{
+  "partidas": [
+    {
+      "clube_casa_id": 266,
+      "clube_casa_posicao": 6,
+      "clube_visitante_id": 277,
+      "aproveitamento_mandante": [
+        "v",
+        "e",
+        "d",
+        "d",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "v",
+        "v",
+        "v",
+        "e"
+      ],
+      "clube_visitante_posicao": 4,
+      "partida_data": "2017-05-14 11:00:00",
+      "local": "Maracanã",
+      "valida": true,
+      "placar_oficial_mandante": 3,
+      "placar_oficial_visitante": 2,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 262,
+      "clube_casa_posicao": 14,
+      "clube_visitante_id": 282,
+      "aproveitamento_mandante": [
+        "e",
+        "d",
+        "e",
+        "v",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "e",
+        "v",
+        "d",
+        "d",
+        "e"
+      ],
+      "clube_visitante_posicao": 15,
+      "partida_data": "2017-05-13 16:00:00",
+      "local": "Maracanã",
+      "valida": true,
+      "placar_oficial_mandante": 1,
+      "placar_oficial_visitante": 1,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 275,
+      "clube_casa_posicao": 11,
+      "clube_visitante_id": 267,
+      "aproveitamento_mandante": [
+        "e",
+        "d",
+        "v",
+        "d",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "d",
+        "v",
+        "d",
+        "v"
+      ],
+      "clube_visitante_posicao": 7,
+      "partida_data": "2017-05-14 16:00:00",
+      "local": "Arena Palmeiras",
+      "valida": true,
+      "placar_oficial_mandante": 4,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 264,
+      "clube_casa_posicao": 1,
+      "clube_visitante_id": 315,
+      "aproveitamento_mandante": [
+        "v",
+        "v",
+        "v",
+        "v",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "v",
+        "d",
+        "d",
+        "v",
+        "e"
+      ],
+      "clube_visitante_posicao": 5,
+      "partida_data": "2017-05-13 19:00:00",
+      "local": "Arena Corinthians",
+      "valida": true,
+      "placar_oficial_mandante": 1,
+      "placar_oficial_visitante": 1,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 283,
+      "clube_casa_posicao": 13,
+      "clube_visitante_id": 276,
+      "aproveitamento_mandante": [
+        "v",
+        "d",
+        "d",
+        "v",
+        "d"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "v",
+        "d",
+        "e",
+        "e"
+      ],
+      "clube_visitante_posicao": 12,
+      "partida_data": "2017-05-14 16:00:00",
+      "local": "Mineirão",
+      "valida": true,
+      "placar_oficial_mandante": 1,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 294,
+      "clube_casa_posicao": 3,
+      "clube_visitante_id": 373,
+      "aproveitamento_mandante": [
+        "v",
+        "v",
+        "e",
+        "e",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "v",
+        "d",
+        "v",
+        "d"
+      ],
+      "clube_visitante_posicao": 18,
+      "partida_data": "2017-05-15 20:00:00",
+      "local": "Couto Pereira",
+      "valida": true,
+      "placar_oficial_mandante": 4,
+      "placar_oficial_visitante": 1,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 284,
+      "clube_casa_posicao": 2,
+      "clube_visitante_id": 263,
+      "aproveitamento_mandante": [
+        "d",
+        "v",
+        "v",
+        "v",
+        "v"
+      ],
+      "aproveitamento_visitante": [
+        "e",
+        "d",
+        "e",
+        "e",
+        "e"
+      ],
+      "clube_visitante_posicao": 8,
+      "partida_data": "2017-05-14 19:00:00",
+      "local": "Arena do Grêmio",
+      "valida": true,
+      "placar_oficial_mandante": 2,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 265,
+      "clube_casa_posicao": 10,
+      "clube_visitante_id": 293,
+      "aproveitamento_mandante": [
+        "v",
+        "v",
+        "d",
+        "e",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "e",
+        "d",
+        "v",
+        "v"
+      ],
+      "clube_visitante_posicao": 17,
+      "partida_data": "2017-05-14 16:00:00",
+      "local": "Fonte Nova",
+      "valida": true,
+      "placar_oficial_mandante": 6,
+      "placar_oficial_visitante": 2,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 303,
+      "clube_casa_posicao": 9,
+      "clube_visitante_id": 292,
+      "aproveitamento_mandante": [
+        "v",
+        "d",
+        "v",
+        "d",
+        "e"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "v",
+        "d",
+        "e",
+        "e"
+      ],
+      "clube_visitante_posicao": 16,
+      "partida_data": "2017-05-14 16:00:00",
+      "local": "Moisés Lucarelli",
+      "valida": true,
+      "placar_oficial_mandante": 4,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    },
+    {
+      "clube_casa_id": 314,
+      "clube_casa_posicao": 20,
+      "clube_visitante_id": 287,
+      "aproveitamento_mandante": [
+        "v",
+        "d",
+        "e",
+        "d",
+        "d"
+      ],
+      "aproveitamento_visitante": [
+        "d",
+        "d",
+        "v",
+        "e",
+        "e"
+      ],
+      "clube_visitante_posicao": 19,
+      "partida_data": "2017-05-14 16:00:00",
+      "local": "Ressacada",
+      "valida": true,
+      "placar_oficial_mandante": 0,
+      "placar_oficial_visitante": 0,
+      "url_confronto": "",
+      "url_transmissao": ""
+    }
+  ],
+  "clubes": {
+    "262": {
+      "id": 262,
+      "nome": "Flamengo",
+      "abreviacao": "FLA",
+      "posicao": 10,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/flamengo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/flamengo_30x30.png"
+      }
+    },
+    "263": {
+      "id": 263,
+      "nome": "Botafogo",
+      "abreviacao": "BOT",
+      "posicao": 13,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_30x30.png"
+      }
+    },
+    "264": {
+      "id": 264,
+      "nome": "Corinthians",
+      "abreviacao": "COR",
+      "posicao": 1,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/corinthians_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/corinthians_30x30.png"
+      }
+    },
+    "265": {
+      "id": 265,
+      "nome": "Bahia",
+      "abreviacao": "BAH",
+      "posicao": 11,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/bahia_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/bahia_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/bahia_30x30.png"
+      }
+    },
+    "266": {
+      "id": 266,
+      "nome": "Fluminense",
+      "abreviacao": "FLU",
+      "posicao": 7,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/Fluminense-escudo.png"
+      }
+    },
+    "267": {
+      "id": 267,
+      "nome": "Vasco",
+      "abreviacao": "VAS",
+      "posicao": 12,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2016/07/29/Vasco-65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2016/07/29/Vasco-45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2016/07/29/Vasco-30.png"
+      }
+    },
+    "275": {
+      "id": 275,
+      "nome": "Palmeiras",
+      "abreviacao": "PAL",
+      "posicao": 15,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/palmeiras_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_30x30.png"
+      }
+    },
+    "276": {
+      "id": 276,
+      "nome": "São Paulo",
+      "abreviacao": "SAO",
+      "posicao": 6,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/sao_paulo_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/sao_paulo_30x30.png"
+      }
+    },
+    "277": {
+      "id": 277,
+      "nome": "Santos",
+      "abreviacao": "SAN",
+      "posicao": 5,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/santos_30x30.png"
+      }
+    },
+    "282": {
+      "id": 282,
+      "nome": "Atlético-MG",
+      "abreviacao": "ATL",
+      "posicao": 17,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/atletico_mg_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/atletico_mg_30x30.png"
+      }
+    },
+    "283": {
+      "id": 283,
+      "nome": "Cruzeiro",
+      "abreviacao": "CRU",
+      "posicao": 8,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_30.png"
+      }
+    },
+    "284": {
+      "id": 284,
+      "nome": "Grêmio",
+      "abreviacao": "GRE",
+      "posicao": 2,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_30x30.png"
+      }
+    },
+    "287": {
+      "id": 287,
+      "nome": "Vitória",
+      "abreviacao": "VIT",
+      "posicao": 18,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/vitoria_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/vitoria_30x30.png"
+      }
+    },
+    "292": {
+      "id": 292,
+      "nome": "Sport",
+      "abreviacao": "SPO",
+      "posicao": 14,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/sport30.png"
+      }
+    },
+    "293": {
+      "id": 293,
+      "nome": "Atlético-PR",
+      "abreviacao": "ATL",
+      "posicao": 20,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/06/24/atletico-pr_2015_30.png"
+      }
+    },
+    "294": {
+      "id": 294,
+      "nome": "Coritiba",
+      "abreviacao": "COR",
+      "posicao": 3,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2017/03/27/coritiba65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2017/03/27/coritiba45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2017/03/27/coritiba30.png"
+      }
+    },
+    "303": {
+      "id": 303,
+      "nome": "Ponte Preta",
+      "abreviacao": "PON",
+      "posicao": 9,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/ponte_preta_60x60.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/ponte_preta_30x30.png"
+      }
+    },
+    "314": {
+      "id": 314,
+      "nome": "Avaí",
+      "abreviacao": "AVA",
+      "posicao": 19,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/avai_60x60_.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/avai_45x45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/avai_30x30.png"
+      }
+    },
+    "315": {
+      "id": 315,
+      "nome": "Chapecoense",
+      "abreviacao": "CHA",
+      "posicao": 4,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-165.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-145.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/08/03/Escudo-Chape-130.png"
+      }
+    },
+    "373": {
+      "id": 373,
+      "nome": "Atlético-GO",
+      "abreviacao": "ATL",
+      "posicao": 16,
+      "escudos": {
+        "60x60": "https://s.glbimg.com/es/sde/f/organizacoes/2017/04/10/Atletico-GO-65.png",
+        "45x45": "https://s.glbimg.com/es/sde/f/organizacoes/2017/04/11/Atletico-GO-45.png",
+        "30x30": "https://s.glbimg.com/es/sde/f/organizacoes/2017/04/11/Atletico-GO-30.png"
+      }
+    }
+  },
+  "rodada": 1
+}
