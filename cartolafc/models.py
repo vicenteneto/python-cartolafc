@@ -129,15 +129,19 @@ class Mercado(object):
 class Partida(object):
     """ Partida """
 
-    def __init__(self, clube_casa, clube_visitante):
+    def __init__(self, clube_casa, placar_casa, clube_visitante, placar_visitante):
         self.clube_casa = clube_casa
+        self.placar_casa = placar_casa
         self.clube_visitante = clube_visitante
+        self.placar_visitante = placar_visitante
 
     @classmethod
     def from_dict(cls, data, clubes):
         clube_casa = clubes[data['clube_casa_id']]
+        placar_casa = data['placar_oficial_mandante']
         clube_visitante = clubes[data['clube_visitante_id']]
-        return cls(clube_casa, clube_visitante)
+        placar_visitante = data['placar_oficial_visitante']
+        return cls(clube_casa, placar_casa, clube_visitante, placar_visitante)
 
 
 class PontuacaoInfo(object):

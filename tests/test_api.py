@@ -377,7 +377,9 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(partidas, list)
             self.assertIsInstance(primeira_partida, Partida)
             self.assertEqual(primeira_partida.clube_casa.nome, 'Fluminense')
+            self.assertEqual(primeira_partida.placar_casa, 3)
             self.assertEqual(primeira_partida.clube_visitante.nome, 'Santos')
+            self.assertEqual(primeira_partida.placar_visitante, 2)
 
     def test_patrocinadores(self):
         # Arrange and Act
