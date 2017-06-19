@@ -210,7 +210,7 @@ class Api(object):
         url = '{api_url}/partidas/{rodada}'.format(api_url=self._api_url, rodada=rodada)
         data = self._request(url)
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-        return [Partida.from_dict(partida, clubes=clubes) for partida in data['partidas']]
+        return sorted([Partida.from_dict(partida, clubes=clubes) for partida in data['partidas']], key=lambda p: p.data)
 
     def pos_rodada_destaques(self):
         if self.mercado().status.id == MERCADO_ABERTO:
