@@ -3,6 +3,8 @@
 from collections import namedtuple
 from datetime import datetime
 
+import json
+
 Posicao = namedtuple('Posicao', ['id', 'nome', 'abreviacao'])
 Status = namedtuple('Status', ['id', 'nome'])
 
@@ -44,6 +46,10 @@ class Atleta(object):
         self.clube = clube
         self.status = _atleta_status[status_id] if status_id else None
 
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
+
     @classmethod
     def from_dict(cls, data, clubes, atleta_id=None):
         atleta_id = atleta_id if atleta_id else data['atleta_id']
@@ -61,6 +67,9 @@ class Clube(object):
         self.nome = nome
         self.abreviacao = abreviacao
 
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
     @classmethod
     def from_dict(cls, data):
         return cls(data['id'], data['nome'], data['abreviacao'])
@@ -73,6 +82,9 @@ class DestaqueRodada(object):
         self.media_cartoletas = media_cartoletas
         self.media_pontos = media_pontos
         self.mito_rodada = mito_rodada
+
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data):
@@ -90,6 +102,9 @@ class Liga(object):
         self.descricao = descricao
         self.times = times
 
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
     @classmethod
     def from_dict(cls, data, ranking=None):
         data_liga = data.get('liga', data)
@@ -105,6 +120,9 @@ class LigaPatrocinador(object):
         self.nome = nome
         self.url_link = url_link
 
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
     @classmethod
     def from_dict(cls, data):
         return cls(data['liga_id'], data['nome'], data['url_link'])
@@ -119,6 +137,9 @@ class Mercado(object):
         self.times_escalados = times_escalados
         self.aviso = aviso
         self.fechamento = fechamento
+
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data):
@@ -136,6 +157,9 @@ class Partida(object):
         self.placar_casa = placar_casa
         self.clube_visitante = clube_visitante
         self.placar_visitante = placar_visitante
+
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data, clubes):
@@ -159,6 +183,9 @@ class PontuacaoInfo(object):
         self.variacao = variacao
         self.media = media
 
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
     @classmethod
     def from_dict(cls, data):
         return cls(data['atleta_id'], data['rodada_id'], data['pontos'], data['preco'], data['variacao'], data['media'])
@@ -173,6 +200,9 @@ class Time(object):
         self.ultima_pontuacao = ultima_pontuacao
         self.atletas = atletas
         self.info = info
+
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data, clubes):
@@ -192,6 +222,9 @@ class TimeInfo(object):
         self.slug = slug
         self.assinante = assinante
         self.pontos = pontos
+
+    def __repr__(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data, ranking=None):
