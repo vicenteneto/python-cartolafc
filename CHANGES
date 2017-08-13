@@ -3,6 +3,15 @@ Changelog
 
 Aqui você pode ver a lista completa de modificações entre cada versão.
 
+Versão 0.8.13
+-------------
+
+Lançada em 13 de agosto de 2017
+
+- Retornando modelo com um json como representação
+- Corrigindo erro nas parciais com atletas inválidos
+
+
 Versão 0.6.18
 -------------
 
