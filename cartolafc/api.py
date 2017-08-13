@@ -33,14 +33,14 @@ class Api(object):
         Para criar uma instância da classe cartolafc.Api, sem autenticação:
             >>> import cartolafc
             >>> api = cartolafc.Api()
-        
+
         Para obter o status atual do mercado
             >>> mercado = api.mercado()
             >>> print(mercado.rodada_atual, mercado.status.nome)
-        
+
         Para utilizar autenticação, é necessário instancias a classe cartolafc.Api com os argumentos email e senha.
             >>> api =  cartolafc.Api(email='usuario@email.com', password='s3nha')
-            
+
         Para obter os dados de uma liga (após se autenticar), onde "nome" é o nome da liga que deseja buscar:
             >>> liga = api.liga(nome)
             >>> print(liga.nome)
@@ -60,7 +60,7 @@ class Api(object):
             attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
 
         Raises:
-            cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos 
+            cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos
             dois argumentos (email e password) for informado.
         """
 
@@ -82,7 +82,7 @@ class Api(object):
         Args:
             email (str): O email do usuário
             password (str): A senha do usuário
-          
+
         Raises:
             cartolafc.CartolaFCError: Se o conjunto (email, password) não conseguiu realizar a autenticação com sucesso.
         """
@@ -202,7 +202,7 @@ class Api(object):
             data = self._request(url)
             clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
             return {int(atleta_id): Atleta.from_dict(atleta, clubes=clubes, atleta_id=int(atleta_id)) for
-                    atleta_id, atleta in data['atletas'].items()}
+                    atleta_id, atleta in data['atletas'].items() if atleta['clube_id'] > 0}
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
@@ -222,7 +222,7 @@ class Api(object):
 
     def time(self, id=None, nome=None, slug=None, as_json=False):
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
-        Ao menos um dos dois devem ser informado. 
+        Ao menos um dos dois devem ser informado.
 
         Args:
             id (int): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
@@ -232,7 +232,7 @@ class Api(object):
 
         Returns:
             Uma instância de cartolafc.Time se o time foi encontrado.
-            
+
         Raises:
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
@@ -267,7 +267,7 @@ class Api(object):
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
     def times(self, query):
-        """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa. 
+        """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa.
 
         Args:
             query (str): Termo para utilizar na busca.
