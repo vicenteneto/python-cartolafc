@@ -21,6 +21,6 @@ objetos de python mais convencionais.
 Versões
 -------
 
-Este projeto foi testado e funciona em Python 2.7, 3.3, 3.4, 3.5 e 3.6.
+Este projeto foi testado e funciona em Python 2.7, 3.4, 3.5 e 3.6.
 
 .. include:: contents.rst
