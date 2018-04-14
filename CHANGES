@@ -3,6 +3,16 @@ Changelog
 
 Aqui você pode ver a lista completa de modificações entre cada versão.
 
+Versão 1.4.14
+-------------
+
+Lançada em 1 de abril de 2018
+
+- Atualizando projeto exemplo para suportar Python3
+- Corrigindo erro ao visualizar Mercado
+- Atualizando dependencias
+
+
 Versão 0.8.13
 -------------
 
