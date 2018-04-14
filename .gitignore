@@ -10,7 +10,7 @@ __pycache__/
 .idea/
 
 # VirtualEnv dir
-pyEnv/
+.venv/
 
 # Coverage
 .coverage
