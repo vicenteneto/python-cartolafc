@@ -5,11 +5,11 @@ import sys
 
 import requests
 
-from cartolafc.decorators import RequiresAuthentication
-from cartolafc.error import CartolaFCError, CartolaFCOverloadError
-from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
-from cartolafc.models import Time, TimeInfo
-from cartolafc.util import convert_team_name_to_slug, parse_and_check_cartolafc
+from .decorators import RequiresAuthentication
+from .errors import CartolaFCError, CartolaFCOverloadError
+from .models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
+from .models import Time, TimeInfo
+from .util import convert_team_name_to_slug, parse_and_check_cartolafc
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
