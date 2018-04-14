@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from cartolafc.error import CartolaFCError
+from .errors import CartolaFCError
 
 
 class RequiresAuthentication(object):

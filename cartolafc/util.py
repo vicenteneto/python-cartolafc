@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 import json
 import logging
 import re
 import unicodedata
 
-from cartolafc.error import CartolaFCError, CartolaFCOverloadError
+from .errors import CartolaFCError, CartolaFCOverloadError
 
 
 def _strip_accents(text):
@@ -22,6 +23,13 @@ def convert_team_name_to_slug(name):
     slug = _strip_accents(name.lower())
     slug = re.sub(r'--', '-', re.sub(r'[^a-z0-9]', '-', slug))
     return slug[:-1] if slug.endswith('-') else slug
+
+
+def json_default(value):
+    if isinstance(value, datetime.datetime):
+        return dict(year=value.year, month=value.month, day=value.day, hour=value.hour, minute=value.minute,
+                    second=value.second, microsecond=value.microsecond, tzinfo=value.tzinfo)
+    return value.__dict__
 
 
 def parse_and_check_cartolafc(json_data):

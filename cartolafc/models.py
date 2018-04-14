@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import json
 from collections import namedtuple
 from datetime import datetime
 
-import json
+from .util import json_default
 
 Posicao = namedtuple('Posicao', ['id', 'nome', 'abreviacao'])
 Status = namedtuple('Status', ['id', 'nome'])
@@ -34,7 +35,12 @@ _mercado_status = {
 }
 
 
-class Atleta(object):
+class BaseModel(object):
+    def __repr__(self):
+        return json.dumps(self, default=json_default)
+
+
+class Atleta(BaseModel):
     """ Representa um atleta (jogador ou técnico), e possui informações como o apelido, clube e pontuação obtida """
 
     def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None):
@@ -46,10 +52,6 @@ class Atleta(object):
         self.clube = clube
         self.status = _atleta_status[status_id] if status_id else None
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
-
     @classmethod
     def from_dict(cls, data, clubes, atleta_id=None):
         atleta_id = atleta_id if atleta_id else data['atleta_id']
@@ -59,7 +61,7 @@ class Atleta(object):
                    data.get('status_id', None))
 
 
-class Clube(object):
+class Clube(BaseModel):
     """ Representa um dos 20 clubes presentes no campeonato, e possui informações como o nome e a abreviação """
 
     def __init__(self, id, nome, abreviacao):
@@ -67,15 +69,12 @@ class Clube(object):
         self.nome = nome
         self.abreviacao = abreviacao
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data):
         return cls(data['id'], data['nome'], data['abreviacao'])
 
 
-class DestaqueRodada(object):
+class DestaqueRodada(BaseModel):
     """ Destaque Rodada"""
 
     def __init__(self, media_cartoletas, media_pontos, mito_rodada):
@@ -83,16 +82,13 @@ class DestaqueRodada(object):
         self.media_pontos = media_pontos
         self.mito_rodada = mito_rodada
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data):
         mito_rodada = TimeInfo.from_dict(data['mito_rodada'])
         return cls(data['media_cartoletas'], data['media_pontos'], mito_rodada)
 
 
-class Liga(object):
+class Liga(BaseModel):
     """ Liga """
 
     def __init__(self, liga_id, nome, slug, descricao, times):
@@ -102,9 +98,6 @@ class Liga(object):
         self.descricao = descricao
         self.times = times
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data, ranking=None):
         data_liga = data.get('liga', data)
@@ -112,7 +105,7 @@ class Liga(object):
         return cls(data_liga['liga_id'], data_liga['nome'], data_liga['slug'], data_liga['descricao'], times)
 
 
-class LigaPatrocinador(object):
+class LigaPatrocinador(BaseModel):
     """ Liga Patrocinador """
 
     def __init__(self, liga_id, nome, url_link):
@@ -120,15 +113,12 @@ class LigaPatrocinador(object):
         self.nome = nome
         self.url_link = url_link
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data):
         return cls(data['liga_id'], data['nome'], data['url_link'])
 
 
-class Mercado(object):
+class Mercado(BaseModel):
     """ Mercado """
 
     def __init__(self, rodada_atual, status_mercado, times_escalados, aviso, fechamento):
@@ -138,16 +128,13 @@ class Mercado(object):
         self.aviso = aviso
         self.fechamento = fechamento
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data):
         fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'])
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
-class Partida(object):
+class Partida(BaseModel):
     """ Partida """
 
     def __init__(self, data, local, clube_casa, placar_casa, clube_visitante, placar_visitante):
@@ -157,9 +144,6 @@ class Partida(object):
         self.placar_casa = placar_casa
         self.clube_visitante = clube_visitante
         self.placar_visitante = placar_visitante
-
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data, clubes):
@@ -172,7 +156,7 @@ class Partida(object):
         return cls(data_, local, clube_casa, placar_casa, clube_visitante, placar_visitante)
 
 
-class PontuacaoInfo(object):
+class PontuacaoInfo(BaseModel):
     """ Pontuação Info """
 
     def __init__(self, atleta_id, rodada_id, pontos, preco, variacao, media):
@@ -183,15 +167,12 @@ class PontuacaoInfo(object):
         self.variacao = variacao
         self.media = media
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data):
         return cls(data['atleta_id'], data['rodada_id'], data['pontos'], data['preco'], data['variacao'], data['media'])
 
 
-class Time(object):
+class Time(BaseModel):
     """ Time """
 
     def __init__(self, patrimonio, valor_time, ultima_pontuacao, atletas, info):
@@ -201,9 +182,6 @@ class Time(object):
         self.atletas = atletas
         self.info = info
 
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
-
     @classmethod
     def from_dict(cls, data, clubes):
         data['atletas'].sort(key=lambda a: a['posicao_id'])
@@ -212,7 +190,7 @@ class Time(object):
         return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
 
 
-class TimeInfo(object):
+class TimeInfo(BaseModel):
     """ Time Info """
 
     def __init__(self, time_id, nome, nome_cartola, slug, assinante, pontos):
@@ -222,9 +200,6 @@ class TimeInfo(object):
         self.slug = slug
         self.assinante = assinante
         self.pontos = pontos
-
-    def __repr__(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
 
     @classmethod
     def from_dict(cls, data, ranking=None):
