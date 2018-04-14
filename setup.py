@@ -23,6 +23,8 @@ setup(
     name='Python-CartolaFC',
     version=version,
     description='Uma interface em Python para a API Rest do Cartola FC',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     url='https://github.com/vicenteneto/python-cartolafc',
     author='Vicente Neto',
     author_email='sneto.vicente@gmail.com',

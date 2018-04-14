@@ -9,4 +9,17 @@
 """
 
 from .api import Api, CAMPEONATO, TURNO, MERCADO_ABERTO, MERCADO_FECHADO, MES, RODADA, PATRIMONIO
-from .error import CartolaFCError, CartolaFCOverloadError
+from .errors import CartolaFCError, CartolaFCOverloadError
+
+__all__ = [
+    'Api',
+    'CAMPEONATO',
+    'TURNO',
+    'MERCADO_ABERTO',
+    'MERCADO_FECHADO',
+    'MES',
+    'RODADA',
+    'PATRIMONIO',
+    'CartolaFCError',
+    'CartolaFCOverloadError',
+]

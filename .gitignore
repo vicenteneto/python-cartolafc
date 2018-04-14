@@ -25,3 +25,6 @@ docs/build/
 
 # Tox
 .tox/
+
+# Helper scripts
+deploy.sh
