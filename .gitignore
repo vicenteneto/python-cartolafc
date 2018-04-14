@@ -20,9 +20,6 @@ cover
 Python_CartolaFC.egg-info/
 dist/
 
-# Sphinx
-docs/build/
-
 # Tox
 .tox/
 
