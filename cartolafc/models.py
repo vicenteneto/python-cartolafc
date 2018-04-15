@@ -43,7 +43,7 @@ class BaseModel(object):
 class Atleta(BaseModel):
     """ Representa um atleta (jogador ou técnico), e possui informações como o apelido, clube e pontuação obtida """
 
-    def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None):
+    def __init__(self, atleta_id, apelido, pontos, scout, posicao_id, clube, status_id=None, is_capitao=None):
         self.id = atleta_id
         self.apelido = apelido
         self.pontos = pontos
@@ -51,14 +51,15 @@ class Atleta(BaseModel):
         self.posicao = _posicoes[posicao_id]
         self.clube = clube
         self.status = _atleta_status[status_id] if status_id else None
+        self.is_capitao = is_capitao
 
     @classmethod
-    def from_dict(cls, data, clubes, atleta_id=None):
+    def from_dict(cls, data, clubes, atleta_id=None, is_capitao=None):
         atleta_id = atleta_id if atleta_id else data['atleta_id']
         pontos = data['pontos_num'] if 'pontos_num' in data else data['pontuacao']
         clube = clubes[data['clube_id']]
         return cls(atleta_id, data['apelido'], pontos, data['scout'], data['posicao_id'], clube,
-                   data.get('status_id', None))
+                   data.get('status_id', None), is_capitao)
 
 
 class Clube(BaseModel):
@@ -183,9 +184,9 @@ class Time(BaseModel):
         self.info = info
 
     @classmethod
-    def from_dict(cls, data, clubes):
+    def from_dict(cls, data, clubes, capitao):
         data['atletas'].sort(key=lambda a: a['posicao_id'])
-        atletas = [Atleta.from_dict(atleta, clubes) for atleta in data['atletas']]
+        atletas = [Atleta.from_dict(atleta, clubes, is_capitao=atleta['atleta_id'] == capitao) for atleta in data['atletas']]
         info = TimeInfo.from_dict(data['time'])
         return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
 

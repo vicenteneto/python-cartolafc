@@ -143,7 +143,7 @@ class Api(object):
         url = '{api_url}/auth/time'.format(api_url=self._api_url)
         data = self._request(url)
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-        return Time.from_dict(data, clubes=clubes)
+        return Time.from_dict(data, clubes=clubes, capitao=data['capitao_id'])
 
     def clubes(self):
         url = '{api_url}/clubes'.format(api_url=self._api_url)
@@ -248,7 +248,7 @@ class Api(object):
             return data
 
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-        return Time.from_dict(data, clubes=clubes)
+        return Time.from_dict(data, clubes=clubes, capitao=data['capitao_id'])
 
     def time_parcial(self, id=None, nome=None, slug=None, parciais=None):
         if self.mercado().status.id == MERCADO_FECHADO:
@@ -260,6 +260,10 @@ class Api(object):
                 tem_parcial = atleta.id in parciais
                 atleta.pontos = parciais[atleta.id].pontos if tem_parcial else 0
                 atleta.scout = parciais[atleta.id].scout if tem_parcial else {}
+
+                if atleta.is_capitao:
+                    atleta.pontos *= 2
+
                 time.pontos += atleta.pontos
 
             return time
