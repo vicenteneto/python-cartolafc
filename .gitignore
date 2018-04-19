@@ -18,6 +18,7 @@ cover
 
 #PyPi
 Python_CartolaFC.egg-info/
+build/
 dist/
 
 # Tox
