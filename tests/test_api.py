@@ -18,14 +18,14 @@ class ApiAttemptsTest(unittest.TestCase):
         api = cartolafc.Api(attempts='texto')
 
         # Assert
-        self.assertEqual(api.attempts, 1)
+        self.assertEqual(api._attempts, 1)
 
     def test_api_attempts_menor_que_1(self):
         # Arrange and Act
         api = cartolafc.Api(attempts=0)
 
         # Assert
-        self.assertEqual(api.attempts, 1)
+        self.assertEqual(api._attempts, 1)
 
     def test_api_attempts(self):
         # Arrange and Act

@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import json
 import logging
 import sys
 
+import redis
 import requests
+from requests.status_codes import codes
 
 from .decorators import RequiresAuthentication
 from .errors import CartolaFCError, CartolaFCOverloadError
@@ -51,13 +54,15 @@ class Api(object):
             >>> api.busca_times(termo)
     """
 
-    def __init__(self, email=None, password=None, attempts=1):
+    def __init__(self, email=None, password=None, attempts=1, redis_url=None, redis_timeout=10):
         """ Instancia um novo objeto de cartolafc.Api.
 
         Args:
             email (str): O e-mail da sua conta no CartolaFC. Requerido se o password for informado.
             password (str): A senha da sua conta no CartolaFC. Requerido se o email for informado.
             attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
+            redis_url (str): URL para conectar ao servidor Redis, exemplo: redis://user:password@localhost:6379/2.
+            redis_timeout (int): O timeout padrão (em segundos).
 
         Raises:
             cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos
@@ -69,7 +74,13 @@ class Api(object):
         self._email = email
         self._password = password
         self._glb_id = None
-        self.attempts = attempts if isinstance(attempts, int) and attempts > 0 else 1
+        self._attempts = attempts if isinstance(attempts, int) and attempts > 0 else 1
+        self._redis_url = redis_url
+        self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
+        self._redis = None
+
+        if redis_url:
+            self.set_redis(redis_url, redis_timeout)
 
         if bool(email) != bool(password):
             raise CartolaFCError('E-mail ou senha ausente')
@@ -92,10 +103,25 @@ class Api(object):
         response = requests.post(self._auth_url,
                                  json=dict(payload=dict(email=self._email, password=self._password, serviceId=4728)))
         body = response.json()
-        if response.status_code == 200:
+        if response.status_code == codes.ok:
             self._glb_id = body['glbId']
         else:
             raise CartolaFCError(body['userMessage'])
+
+    def set_redis(self, redis_url, redis_timeout=10):
+        """ Realiza a autenticação no servidor Redis utilizando a URL informada.
+
+        Args:
+            redis_url (str): URL para conectar ao servidor Redis, exemplo: redis://user:password@localhost:6379/2.
+            redis_timeout (int): O timeout padrão (em segundos).
+            kwargs (dict):
+
+        Raises:
+            cartolafc.CartolaFCError: Se não for possível se conectar ao servidor Redis
+        """
+        self._redis_url = redis_url
+        self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
+        self._redis = redis.StrictRedis.from_url(url=redis_url)
 
     @RequiresAuthentication
     def amigos(self):
@@ -251,24 +277,12 @@ class Api(object):
         return Time.from_dict(data, clubes=clubes, capitao=data['capitao_id'])
 
     def time_parcial(self, id=None, nome=None, slug=None, parciais=None):
-        if self.mercado().status.id == MERCADO_FECHADO:
-            parciais = parciais if parciais else self.parciais()
-            time = self.time(id, nome, slug)
+        if parciais is None and self.mercado().status.id != MERCADO_FECHADO:
+            raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
-            time.pontos = 0
-            for atleta in time.atletas:
-                tem_parcial = atleta.id in parciais
-                atleta.pontos = parciais[atleta.id].pontos if tem_parcial else 0
-                atleta.scout = parciais[atleta.id].scout if tem_parcial else {}
-
-                if atleta.is_capitao:
-                    atleta.pontos *= 2
-
-                time.pontos += atleta.pontos
-
-            return time
-
-        raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
+        parciais = parciais if isinstance(parciais, dict) else self.parciais()
+        time = self.time(id, nome, slug)
+        return self._calculate_parcial(time, parciais)
 
     def times(self, query):
         """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa.
@@ -283,17 +297,50 @@ class Api(object):
         data = self._request(url, params=dict(q=query))
         return [TimeInfo.from_dict(time_info) for time_info in data]
 
+    def _calculate_parcial(self, time, parciais):
+        if not isinstance(time, Time) or not isinstance(parciais, dict):
+            raise CartolaFCError('Time ou parciais não são válidos')
+
+        time.pontos = 0
+        for atleta in time.atletas:
+            atleta_parcial = parciais.get(atleta.id)
+            atleta.pontos = atleta_parcial.pontos if isinstance(atleta_parcial, Atleta) else 0
+            atleta.scout = atleta_parcial.scout if isinstance(atleta_parcial, Atleta) else {}
+
+            if atleta.is_capitao:
+                atleta.pontos *= 2
+
+            time.pontos += atleta.pontos
+
+        return time
+
     def _request(self, url, params=None):
-        attempts = self.attempts
+        cached = self._get(url)
+        if cached:
+            return json.loads(cached)
+
+        attempts = self._attempts
         while attempts:
             try:
                 headers = {'X-GLB-Token': self._glb_id} if self._glb_id else None
                 response = requests.get(url, params=params, headers=headers)
-                if self._glb_id and response.status_code == 401:
+                if self._glb_id and response.status_code == codes.unauthorized:
                     self.set_credentials(self._email, self._password)
                     response = requests.get(url, params=params, headers={'X-GLB-Token': self._glb_id})
-                return parse_and_check_cartolafc(response.content.decode('utf-8'))
+                parsed = parse_and_check_cartolafc(response.content.decode('utf-8'))
+                return self._set(url, parsed)
             except CartolaFCOverloadError as error:
                 attempts -= 1
                 if not attempts:
                     raise error
+
+    def _get(self, url):
+        cached = None
+        if self._redis:
+            cached = self._redis.get(url)
+        return cached
+
+    def _set(self, url, data):
+        if self._redis:
+            self._redis.set(url, json.dumps(data))
+        return data
