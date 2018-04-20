@@ -323,6 +323,10 @@ class Api(object):
     def _request(self, url, params=None):
         cached = self._get(url)
         if cached:
+            try:
+                cached = cached.decode('utf-8')
+            except AttributeError:
+                pass
             return json.loads(cached)
 
         attempts = self._attempts
