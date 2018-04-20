@@ -308,10 +308,14 @@ class Api(object):
             raise CartolaFCError('Time ou parciais não são válidos.')
 
         time.pontos = 0
+        time.jogados = 0
         for atleta in time.atletas:
             atleta_parcial = parciais.get(atleta.id)
-            atleta.pontos = atleta_parcial.pontos if isinstance(atleta_parcial, Atleta) else 0
-            atleta.scout = atleta_parcial.scout if isinstance(atleta_parcial, Atleta) else {}
+            tem_parcial = isinstance(atleta_parcial, Atleta)
+
+            atleta.pontos = atleta_parcial.pontos if tem_parcial else 0
+            atleta.scout = atleta_parcial.scout if tem_parcial else {}
+            time.jogados += 1 if tem_parcial else 0
 
             if atleta.is_capitao:
                 atleta.pontos *= 2
