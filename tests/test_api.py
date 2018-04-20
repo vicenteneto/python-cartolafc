@@ -4,6 +4,7 @@ import unittest
 from datetime import datetime
 
 import requests_mock
+from requests.status_codes import codes
 
 import cartolafc
 from cartolafc.api import MERCADO_ABERTO
@@ -34,32 +35,32 @@ class ApiAttemptsTest(unittest.TestCase):
 
             url = '{api_url}/mercado/status'.format(api_url=api._api_url)
             error_message = 'Mensagem de erro'
-            m.get(url, status_code=200, text='{"mensagem": "%s"}' % error_message)
+            m.get(url, status_code=codes.ok, text='{"mensagem": "%s"}' % error_message)
 
-            with self.assertRaisesRegexp(cartolafc.CartolaFCError, error_message):
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
                 api.mercado()
 
 
-class ApiAuthComErro(unittest.TestCase):
+class ApiAuthTest(unittest.TestCase):
     def test_api_auth_sem_email(self):
         # Act and Assert
-        with self.assertRaisesRegexp(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
+        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
             cartolafc.Api(password='s3nha')
 
     def test_api_auth_sem_password(self):
         # Act and Assert
-        with self.assertRaisesRegexp(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
+        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
             cartolafc.Api(email='email@email.com')
 
     def test_api_auth_invalida(self):
         # Arrange
         with requests_mock.mock() as m:
             user_message = 'Seu e-mail ou senha estao incorretos.'
-            m.post('https://login.globo.com/api/authentication', status_code=401,
+            m.post('https://login.globo.com/api/authentication', status_code=codes.unauthorized,
                    text='{"id": "BadCredentials", "userMessage": "%s"}' % user_message)
 
             # Act and Assert
-            with self.assertRaisesRegexp(cartolafc.CartolaFCError, user_message):
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, user_message):
                 cartolafc.Api(email='email@email.com', password='s3nha')
 
     def test_api_auth_com_sucesso(self):
@@ -83,14 +84,71 @@ class ApiAuthComErro(unittest.TestCase):
             api = cartolafc.Api(email='email@email.com', password='s3nha')
 
             url = '{api_url}/mercado/status'.format(api_url=api._api_url)
-            m.get(url, status_code=401)
+            m.get(url, status_code=codes.unauthorized)
 
             # Act and Assert
             with self.assertRaises(cartolafc.CartolaFCOverloadError):
                 api.mercado()
 
 
-class ApiAuthTest(unittest.TestCase):
+class ApiRedisTest(unittest.TestCase):
+    with open('testdata/mercado_status_aberto.json', 'rb') as f:
+        MERCADO_STATUS_ABERTO = f.read().decode('utf8')
+
+    def setUp(self):
+        with requests_mock.mock() as m:
+            m.post('https://login.globo.com/api/authentication',
+                   text='{"id": "Authenticated", "userMessage": "Usuario autenticado com sucesso", "glbId": "GLB_ID"}')
+
+            self.api = cartolafc.Api(email='email@email.com', password='s3nha', redis_url='redis://localhost:6379/0')
+            self.api_url = self.api._api_url
+
+    def test_api_redis_invalid_server(self):
+        # Act and Assert
+        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Erro conectando ao servidor Redis.'):
+            cartolafc.Api(redis_url='redis://localhost:1234')
+
+    def test_api_redis_invalid_url(self):
+        # Arrange
+        api = cartolafc.Api(redis_url='invalid-url')
+
+        # Act and Assert
+        self.assertTrue(api._redis.ping())
+
+    def test_mercado_with_redis_hit(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.MERCADO_STATUS_ABERTO)
+            status = self.api.mercado()
+
+            # Assert
+            self.assertIsInstance(status, Mercado)
+            self.assertEqual(status.rodada_atual, 3)
+            self.assertEqual(status.status.id, MERCADO_ABERTO)
+            self.assertEqual(status.times_escalados, 3601523)
+            self.assertIsInstance(status.fechamento, datetime)
+            self.assertEqual(status.fechamento, datetime.fromtimestamp(1495904400))
+            self.assertEqual(status.aviso, '')
+
+    def test_mercado_with_redis_miss(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.MERCADO_STATUS_ABERTO)
+            status = self.api.mercado()
+
+            # Assert
+            self.assertIsInstance(status, Mercado)
+            self.assertEqual(status.rodada_atual, 3)
+            self.assertEqual(status.status.id, MERCADO_ABERTO)
+            self.assertEqual(status.times_escalados, 3601523)
+            self.assertIsInstance(status.fechamento, datetime)
+            self.assertEqual(status.fechamento, datetime.fromtimestamp(1495904400))
+            self.assertEqual(status.aviso, '')
+
+
+class ApiAuthenticatedTest(unittest.TestCase):
     with open('testdata/amigos.json', 'rb') as f:
         AMIGOS = f.read().decode('utf8')
     with open('testdata/liga.json', 'rb') as f:
@@ -127,8 +185,8 @@ class ApiAuthTest(unittest.TestCase):
 
     def test_liga_sem_nome_e_slug(self):
         # Act and Assert
-        with self.assertRaisesRegexp(cartolafc.CartolaFCError,
-                                     'Você precisa informar o nome ou o slug da liga que deseja obter'):
+        with self.assertRaisesRegex(cartolafc.CartolaFCError,
+                                    'Você precisa informar o nome ou o slug da liga que deseja obter'):
             self.api.liga()
 
     def test_liga_com_nome(self):
@@ -255,7 +313,7 @@ class ApiTest(unittest.TestCase):
 
     def test_amigos_sem_autenticacao(self):
         # Act and Assert
-        with self.assertRaisesRegexp(cartolafc.CartolaFCError, 'Esta função requer autenticação'):
+        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Esta função requer autenticação'):
             self.api.amigos()
 
     def test_clubes(self):
@@ -335,8 +393,8 @@ class ApiTest(unittest.TestCase):
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
             # Act and Assert
-            with self.assertRaisesRegexp(cartolafc.CartolaFCError,
-                                         'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
+            with self.assertRaisesRegex(cartolafc.CartolaFCError,
+                                        'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
                 self.api.parciais()
 
     def test_parciais_mercado_fechado(self):
@@ -426,13 +484,13 @@ class ApiTest(unittest.TestCase):
             m.get(url, text=self.MERCADO_STATUS_FECHADO)
 
             # Act and Assert
-            with self.assertRaisesRegexp(cartolafc.CartolaFCError, ''):
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, ''):
                 self.api.pos_rodada_destaques()
 
     def test_time_sem_id_sem_nome_e_sem_slug(self):
         # Act and Assert
-        with self.assertRaisesRegexp(cartolafc.CartolaFCError,
-                                     'Você precisa informar o nome ou o slug do time que deseja obter'):
+        with self.assertRaisesRegex(cartolafc.CartolaFCError,
+                                    'Você precisa informar o nome ou o slug do time que deseja obter'):
             self.api.time()
 
     def test_time_com_id(self):
@@ -514,9 +572,48 @@ class ApiTest(unittest.TestCase):
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
             # Act and Assert
-            with self.assertRaisesRegexp(cartolafc.CartolaFCError,
-                                         'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
+            with self.assertRaisesRegex(cartolafc.CartolaFCError,
+                                        'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
                 self.api.time_parcial(nome='Falydos FC')
+
+    def test_time_parcial_mercado_fechado(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            mercado_url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            parciais_url = '{api_url}/atletas/pontuados'.format(api_url=self.api_url)
+            time_url = '{api_url}/time/slug/falydos-fc'.format(api_url=self.api_url)
+
+            m.get(mercado_url, text=self.MERCADO_STATUS_FECHADO)
+            m.get(parciais_url, text=self.PARCIAIS)
+            m.get(time_url, text=self.TIME)
+
+            time = self.api.time_parcial(nome='Falydos FC')
+            primeiro_atleta = time.atletas[0]
+
+            # Assert
+            self.assertIsInstance(time, Time)
+            self.assertEqual(time.patrimonio, 0)
+            self.assertEqual(time.valor_time, 0)
+            self.assertEqual(time.ultima_pontuacao, 70.02978515625)
+            self.assertEqual(time.pontos, 13.299999999999999)
+            self.assertIsInstance(time.atletas, list)
+            self.assertIsInstance(primeiro_atleta, Atleta)
+            self.assertEqual(primeiro_atleta.id, 38140)
+            self.assertEqual(primeiro_atleta.apelido, 'Fernando Prass')
+            self.assertEqual(primeiro_atleta.pontos, 0)
+            self.assertEqual(primeiro_atleta.scout, {})
+            self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
+            self.assertIsInstance(primeiro_atleta.clube, Clube)
+            self.assertEqual(primeiro_atleta.clube.id, 275)
+            self.assertEqual(primeiro_atleta.clube.nome, 'Palmeiras')
+            self.assertEqual(primeiro_atleta.clube.abreviacao, 'PAL')
+            self.assertEqual(primeiro_atleta.status, _atleta_status[7])
+            self.assertIsInstance(time.info, TimeInfo)
+            self.assertEqual(time.info.id, 471815)
+            self.assertEqual(time.info.nome, 'Falydos FC')
+            self.assertEqual(time.info.nome_cartola, 'Vicente Neto')
+            self.assertEqual(time.info.slug, 'falydos-fc')
+            self.assertTrue(time.info.assinante)
 
     def test_times(self):
         # Arrange and Act

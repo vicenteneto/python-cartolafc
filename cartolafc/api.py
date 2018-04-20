@@ -6,6 +6,7 @@ import sys
 
 import redis
 import requests
+from redis import ConnectionError, TimeoutError
 from requests.status_codes import codes
 
 from .decorators import RequiresAuthentication
@@ -121,7 +122,12 @@ class Api(object):
         """
         self._redis_url = redis_url
         self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
-        self._redis = redis.StrictRedis.from_url(url=redis_url)
+
+        try:
+            self._redis = redis.StrictRedis.from_url(url=redis_url)
+            self._redis.ping()
+        except (ConnectionError, TimeoutError):
+            raise CartolaFCError('Erro conectando ao servidor Redis.')
 
     @RequiresAuthentication
     def amigos(self):
@@ -299,7 +305,7 @@ class Api(object):
 
     def _calculate_parcial(self, time, parciais):
         if not isinstance(time, Time) or not isinstance(parciais, dict):
-            raise CartolaFCError('Time ou parciais não são válidos')
+            raise CartolaFCError('Time ou parciais não são válidos.')
 
         time.pontos = 0
         for atleta in time.atletas:
@@ -342,5 +348,5 @@ class Api(object):
 
     def _set(self, url, data):
         if self._redis:
-            self._redis.set(url, json.dumps(data))
+            self._redis.set(url, json.dumps(data), ex=self._redis_timeout)
         return data
