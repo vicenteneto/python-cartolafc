@@ -16,7 +16,7 @@
 """
 from setuptools import setup
 
-version = '1.4.19'
+version = '1.4.20'
 packages = ['cartolafc']
 install_requires = ['redis', 'requests']
 python_cartolafc_pkg_data = []
