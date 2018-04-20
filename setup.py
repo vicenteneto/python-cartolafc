@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
     Python Cartola FC API
     ---------------------
@@ -14,9 +16,9 @@
 """
 from setuptools import setup
 
-version = '1.4.15'
+version = '1.4.19'
 packages = ['cartolafc']
-install_requires = ['requests']
+install_requires = ['redis', 'requests']
 python_cartolafc_pkg_data = []
 
 setup(
