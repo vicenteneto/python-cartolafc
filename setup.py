@@ -16,16 +16,21 @@
 """
 from setuptools import setup
 
-version = '1.4.20'
+version = '1.4.21'
 packages = ['cartolafc']
 install_requires = ['redis', 'requests']
 python_cartolafc_pkg_data = []
+
+try:
+    long_description = unicode(open('README.md').read(), errors='ignore')
+except Exception:
+    long_description = open('README.md', errors='ignore').read()
 
 setup(
     name='Python-CartolaFC',
     version=version,
     description='Uma interface em Python para a API Rest do Cartola FC',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/vicenteneto/python-cartolafc',
     author='Vicente Neto',
