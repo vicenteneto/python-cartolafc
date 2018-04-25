@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import pytz
 from collections import namedtuple
 from datetime import datetime
 
@@ -131,7 +132,8 @@ class Mercado(BaseModel):
 
     @classmethod
     def from_dict(cls, data):
-        fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'])
+        fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'], tz=pytz.utc)
+        fechamento = fechamento.astimezone(pytz.timezone('America/Sao_Paulo'))
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
@@ -186,7 +188,8 @@ class Time(BaseModel):
     @classmethod
     def from_dict(cls, data, clubes, capitao):
         data['atletas'].sort(key=lambda a: a['posicao_id'])
-        atletas = [Atleta.from_dict(atleta, clubes, is_capitao=atleta['atleta_id'] == capitao) for atleta in data['atletas']]
+        atletas = [Atleta.from_dict(atleta, clubes, is_capitao=atleta['atleta_id'] == capitao) for atleta in
+                   data['atletas']]
         info = TimeInfo.from_dict(data['time'])
         return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
 
