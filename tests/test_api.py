@@ -3,6 +3,7 @@
 import unittest
 from datetime import datetime
 
+import pytz
 import requests_mock
 from requests.status_codes import codes
 
@@ -123,12 +124,14 @@ class ApiRedisTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
+            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
+
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
             self.assertEqual(status.status.id, MERCADO_ABERTO)
             self.assertEqual(status.times_escalados, 3601523)
             self.assertIsInstance(status.fechamento, datetime)
-            self.assertEqual(status.fechamento, datetime.fromtimestamp(1495904400))
+            self.assertEqual(status.fechamento, fechamento)
             self.assertEqual(status.aviso, '')
 
     def test_mercado_with_redis_miss(self):
@@ -139,12 +142,14 @@ class ApiRedisTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
+            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
+
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
             self.assertEqual(status.status.id, MERCADO_ABERTO)
             self.assertEqual(status.times_escalados, 3601523)
             self.assertIsInstance(status.fechamento, datetime)
-            self.assertEqual(status.fechamento, datetime.fromtimestamp(1495904400))
+            self.assertEqual(status.fechamento, fechamento)
             self.assertEqual(status.aviso, '')
 
 
@@ -356,12 +361,14 @@ class ApiTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
+            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
+
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
             self.assertEqual(status.status.id, MERCADO_ABERTO)
             self.assertEqual(status.times_escalados, 3601523)
             self.assertIsInstance(status.fechamento, datetime)
-            self.assertEqual(status.fechamento, datetime.fromtimestamp(1495904400))
+            self.assertEqual(status.fechamento, fechamento)
             self.assertEqual(status.aviso, '')
 
     def test_mercado_atletas(self):
