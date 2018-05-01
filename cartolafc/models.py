@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import json
-import pytz
 from collections import namedtuple
 from datetime import datetime
+
+import pytz
 
 from .util import json_default
 
@@ -132,8 +133,8 @@ class Mercado(BaseModel):
 
     @classmethod
     def from_dict(cls, data):
-        fechamento = datetime.fromtimestamp(data['fechamento']['timestamp'], tz=pytz.utc)
-        fechamento = fechamento.astimezone(pytz.timezone('America/Sao_Paulo'))
+        timezone = pytz.timezone('America/Sao_Paulo')
+        fechamento = datetime.fromtimestamp(data['fechamento']['timestamp']).astimezone(timezone)
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
