@@ -124,7 +124,7 @@ class ApiRedisTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime.fromtimestamp(1495904400).astimezone(pytz.timezone('America/Sao_Paulo'))
+            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
@@ -142,7 +142,7 @@ class ApiRedisTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime.fromtimestamp(1495904400).astimezone(pytz.timezone('America/Sao_Paulo'))
+            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
@@ -361,7 +361,7 @@ class ApiTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime.fromtimestamp(1495904400).astimezone(pytz.timezone('America/Sao_Paulo'))
+            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)

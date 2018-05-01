@@ -133,8 +133,9 @@ class Mercado(BaseModel):
 
     @classmethod
     def from_dict(cls, data):
-        timezone = pytz.timezone('America/Sao_Paulo')
-        fechamento = datetime.fromtimestamp(data['fechamento']['timestamp']).astimezone(timezone)
+        fechamento = datetime(data['fechamento']['ano'], data['fechamento']['mes'], data['fechamento']['dia'],
+                              data['fechamento']['hora'], data['fechamento']['minuto'],
+                              tzinfo=pytz.timezone('America/Sao_Paulo'))
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
