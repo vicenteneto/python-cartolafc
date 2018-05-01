@@ -18,7 +18,7 @@ from setuptools import setup
 
 version = '1.5.1'
 packages = ['cartolafc']
-install_requires = ['redis', 'requests']
+install_requires = ['pytz', 'redis', 'requests']
 python_cartolafc_pkg_data = []
 
 try:
