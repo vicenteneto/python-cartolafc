@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import datetime
 import json
 import logging
@@ -10,11 +8,6 @@ from .errors import CartolaFCError, CartolaFCOverloadError
 
 
 def _strip_accents(text):
-    try:
-        text = unicode(text, 'utf-8')
-    except (NameError, TypeError):  # unicode is a default on python 3
-        pass
-
     text = unicodedata.normalize('NFD', text)
     return str(text.encode('ascii', 'ignore').decode('utf-8'))
 

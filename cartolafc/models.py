@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
-
 import json
 from collections import namedtuple
 from datetime import datetime
-
-import pytz
 
 from .util import json_default
 
@@ -12,28 +8,28 @@ Posicao = namedtuple('Posicao', ['id', 'nome', 'abreviacao'])
 Status = namedtuple('Status', ['id', 'nome'])
 
 _posicoes = {
-    1: Posicao(1, u'Goleiro', 'gol'),
-    2: Posicao(2, u'Lateral', 'lat'),
-    3: Posicao(3, u'Zagueiro', 'zag'),
-    4: Posicao(4, u'Meia', 'mei'),
-    5: Posicao(5, u'Atacante', 'ata'),
-    6: Posicao(6, u'Técnico', 'tec')
+    1: Posicao(1, 'Goleiro', 'gol'),
+    2: Posicao(2, 'Lateral', 'lat'),
+    3: Posicao(3, 'Zagueiro', 'zag'),
+    4: Posicao(4, 'Meia', 'mei'),
+    5: Posicao(5, 'Atacante', 'ata'),
+    6: Posicao(6, 'Técnico', 'tec')
 }
 
 _atleta_status = {
-    2: Status(2, u'Dúvida'),
-    3: Status(3, u'Suspenso'),
-    5: Status(5, u'Contundido'),
-    6: Status(6, u'Nulo'),
-    7: Status(7, u'Provável')
+    2: Status(2, 'Dúvida'),
+    3: Status(3, 'Suspenso'),
+    5: Status(5, 'Contundido'),
+    6: Status(6, 'Nulo'),
+    7: Status(7, 'Provável')
 }
 
 _mercado_status = {
-    1: Status(1, u'Mercado aberto'),
-    2: Status(2, u'Mercado fechado'),
-    3: Status(3, u'Mercado em atualização'),
-    4: Status(4, u'Mercado em manutenção'),
-    6: Status(6, u'Final de temporada')
+    1: Status(1, 'Mercado aberto'),
+    2: Status(2, 'Mercado fechado'),
+    3: Status(3, 'Mercado em atualização'),
+    4: Status(4, 'Mercado em manutenção'),
+    6: Status(6, 'Final de temporada')
 }
 
 
@@ -134,8 +130,7 @@ class Mercado(BaseModel):
     @classmethod
     def from_dict(cls, data):
         fechamento = datetime(data['fechamento']['ano'], data['fechamento']['mes'], data['fechamento']['dia'],
-                              data['fechamento']['hora'], data['fechamento']['minuto'],
-                              tzinfo=pytz.timezone('America/Sao_Paulo'))
+                              data['fechamento']['hora'], data['fechamento']['minuto'])
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 

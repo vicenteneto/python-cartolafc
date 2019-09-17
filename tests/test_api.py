@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-
 import unittest
 from datetime import datetime
 
-import pytz
 import requests_mock
 from requests.status_codes import codes
 
@@ -110,11 +107,9 @@ class ApiRedisTest(unittest.TestCase):
             cartolafc.Api(redis_url='redis://localhost:1234')
 
     def test_api_redis_invalid_url(self):
-        # Arrange
-        api = cartolafc.Api(redis_url='invalid-url')
-
         # Act and Assert
-        self.assertTrue(api._redis.ping())
+        with self.assertRaisesRegexp(cartolafc.CartolaFCError, 'Erro conectando ao servidor Redis.'):
+            cartolafc.Api(redis_url='invalid-url')
 
     def test_mercado_with_redis_hit(self):
         # Arrange and Act
@@ -124,7 +119,7 @@ class ApiRedisTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
+            fechamento = datetime(2017, 5, 27, 14, 0)
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
@@ -142,7 +137,7 @@ class ApiRedisTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
+            fechamento = datetime(2017, 5, 27, 14, 0)
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
@@ -182,11 +177,11 @@ class ApiAuthenticatedTest(unittest.TestCase):
             # Assert
             self.assertIsInstance(amigos, list)
             self.assertIsInstance(primeiro_time, TimeInfo)
-            self.assertEqual(primeiro_time.id, 22463)
-            self.assertEqual(primeiro_time.nome, u'UNIÃO BRUNÃO F.C')
-            self.assertEqual(primeiro_time.nome_cartola, 'Bruno Nascimento')
-            self.assertEqual(primeiro_time.slug, 'uniao-brunao-f-c')
-            self.assertFalse(primeiro_time.assinante)
+            self.assertEqual(primeiro_time.id, 2990131)
+            self.assertEqual(primeiro_time.nome, 'FC Porto Brasil')
+            self.assertEqual(primeiro_time.nome_cartola, 'Elmano Neves Neto')
+            self.assertEqual(primeiro_time.slug, 'fc-porto-brasil')
+            self.assertTrue(primeiro_time.assinante)
 
     def test_liga_sem_nome_e_slug(self):
         # Act and Assert
@@ -208,7 +203,7 @@ class ApiAuthenticatedTest(unittest.TestCase):
             self.assertEqual(liga.nome, 'Virtus Premier League')
             self.assertEqual(liga.slug, 'virtus-premier-league')
             self.assertEqual(liga.descricao,
-                             u'Prêmios para: \n\n- Melhor de cada Mês (R$50,00)\n- Melhor do 1º e 2º Turno (R$150,00)\n- 2º Lugar Geral (R$50)\n- 1º Lugar Geral (R$250,00)\n\nBoa sorte!')
+                             'Prêmios para: \n\n- Melhor de cada Mês (R$50,00)\n- Melhor do 1º e 2º Turno (R$150,00)\n- 2º Lugar Geral (R$50)\n- 1º Lugar Geral (R$250,00)\n\nBoa sorte!')
             self.assertIsInstance(liga.times, list)
             self.assertIsInstance(primeiro_time, TimeInfo)
             self.assertEqual(primeiro_time.id, 453420)
@@ -350,7 +345,7 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(primeira_liga.id, 36741)
             self.assertEqual(primeira_liga.nome, 'PREMIERE_LIGA_ENTEL')
             self.assertEqual(primeira_liga.slug, 'premiere-liga-entel')
-            self.assertEqual(primeira_liga.descricao, u'“Vale tudo, só não vale...”')
+            self.assertEqual(primeira_liga.descricao, '“Vale tudo, só não vale...”')
             self.assertIsNone(primeira_liga.times)
 
     def test_mercado(self):
@@ -361,7 +356,7 @@ class ApiTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime(2017, 5, 27, 14, 0, tzinfo=pytz.timezone('America/Sao_Paulo'))
+            fechamento = datetime(2017, 5, 27, 14, 0)
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
@@ -442,10 +437,10 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(partidas, list)
             self.assertIsInstance(primeira_partida, Partida)
             self.assertIsInstance(primeira_partida.data, datetime)
-            self.assertEqual(primeira_partida.local, u'Maracanã')
+            self.assertEqual(primeira_partida.local, 'Maracanã')
             self.assertEqual(primeira_partida.clube_casa.nome, 'Flamengo')
             self.assertEqual(primeira_partida.placar_casa, 1)
-            self.assertEqual(primeira_partida.clube_visitante.nome, u'Atlético-MG')
+            self.assertEqual(primeira_partida.clube_visitante.nome, 'Atlético-MG')
             self.assertEqual(primeira_partida.placar_visitante, 1)
 
     def test_patrocinadores(self):

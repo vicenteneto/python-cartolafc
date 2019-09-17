@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
-
 import json
 import logging
-import sys
 
 import redis
 import requests
@@ -17,9 +14,6 @@ from .util import convert_team_name_to_slug, parse_and_check_cartolafc
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-if sys.version_info < (2, 7, 9):
-    requests.packages.urllib3.disable_warnings()
-
 MERCADO_ABERTO = 1
 MERCADO_FECHADO = 2
 
@@ -30,7 +24,7 @@ RODADA = 'rodada'
 PATRIMONIO = 'patrimonio'
 
 
-class Api(object):
+class Api:
     """ Uma API em Python para o Cartola FC
 
     Exemplo de uso:
@@ -126,7 +120,7 @@ class Api(object):
         try:
             self._redis = redis.StrictRedis.from_url(url=redis_url)
             self._redis.ping()
-        except (ConnectionError, TimeoutError):
+        except (ConnectionError, TimeoutError, ValueError):
             raise CartolaFCError('Erro conectando ao servidor Redis.')
 
     @RequiresAuthentication

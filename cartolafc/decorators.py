@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 from .errors import CartolaFCError
 
 
-class RequiresAuthentication(object):
+class RequiresAuthentication:
     def __init__(self, func):
         self.func = func
 

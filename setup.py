@@ -16,15 +16,11 @@
 """
 from setuptools import setup
 
-version = '1.5.1'
+version = '2.0.0'
 packages = ['cartolafc']
 install_requires = ['pytz', 'redis', 'requests']
 python_cartolafc_pkg_data = []
-
-try:
-    long_description = unicode(open('README.md').read(), errors='ignore')
-except Exception:
-    long_description = open('README.md', errors='ignore').read()
+long_description = open('README.md', errors='ignore').read()
 
 setup(
     name='Python-CartolaFC',
