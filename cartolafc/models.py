@@ -60,8 +60,15 @@ class Atleta(BaseModel):
         atleta_id = atleta_id if atleta_id else data['atleta_id']
         pontos = data['pontos_num'] if 'pontos_num' in data else data['pontuacao']
         clube = clubes[data['clube_id']]
-        return cls(atleta_id, data['apelido'], pontos, data['scout'], data['posicao_id'], clube,
-                   data.get('status_id', None), is_capitao)
+        return cls(
+            atleta_id, data['apelido'],
+            pontos,
+            data['scout'],
+            data['posicao_id'],
+            clube,
+            data.get('status_id', None),
+            is_capitao,
+        )
 
 
 class Clube(BaseModel):
@@ -133,9 +140,14 @@ class Mercado(BaseModel):
 
     @classmethod
     def from_dict(cls, data):
-        fechamento = datetime(data['fechamento']['ano'], data['fechamento']['mes'], data['fechamento']['dia'],
-                              data['fechamento']['hora'], data['fechamento']['minuto'],
-                              tzinfo=pytz.timezone('America/Sao_Paulo'))
+        fechamento = datetime(
+            data['fechamento']['ano'],
+            data['fechamento']['mes'],
+            data['fechamento']['dia'],
+            data['fechamento']['hora'],
+            data['fechamento']['minuto'],
+            tzinfo=pytz.timezone('America/Sao_Paulo'),
+        )
         return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
 
 
@@ -190,8 +202,10 @@ class Time(BaseModel):
     @classmethod
     def from_dict(cls, data, clubes, capitao):
         data['atletas'].sort(key=lambda a: a['posicao_id'])
-        atletas = [Atleta.from_dict(atleta, clubes, is_capitao=atleta['atleta_id'] == capitao) for atleta in
-                   data['atletas']]
+        atletas = [
+            Atleta.from_dict(atleta, clubes, is_capitao=atleta['atleta_id'] == capitao)
+            for atleta in data['atletas']
+        ]
         info = TimeInfo.from_dict(data['time'])
         return cls(data['patrimonio'], data['valor_time'], data['pontos'], atletas, info)
 

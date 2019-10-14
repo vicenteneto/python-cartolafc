@@ -101,9 +101,18 @@ class Api(object):
 
         self._email = email
         self._password = password
-        response = requests.post(self._auth_url,
-                                 json=dict(payload=dict(email=self._email, password=self._password, serviceId=4728)))
+
+        data = {
+            "payload": {
+                "email": self._email,
+                "password": self._password,
+                "serviceId": 4728,
+            }
+        }
+
+        response = requests.post(self._auth_url, json=data)
         body = response.json()
+
         if response.status_code == codes.ok:
             self._glb_id = body['glbId']
         else:
@@ -199,8 +208,10 @@ class Api(object):
     def ligas_patrocinadores(self):
         url = '{api_url}/patrocinadores'.format(api_url=self._api_url)
         data = self._request(url)
-        return {int(patrocinador_id): LigaPatrocinador.from_dict(patrocinador) for patrocinador_id, patrocinador in
-                data.items()}
+        return {
+            int(patrocinador_id): LigaPatrocinador.from_dict(patrocinador)
+            for patrocinador_id, patrocinador in data.items()
+        }
 
     def mercado(self):
         """ Obtém o status do mercado na rodada atual.
@@ -233,8 +244,11 @@ class Api(object):
             url = '{api_url}/atletas/pontuados'.format(api_url=self._api_url)
             data = self._request(url)
             clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
-            return {int(atleta_id): Atleta.from_dict(atleta, clubes=clubes, atleta_id=int(atleta_id)) for
-                    atleta_id, atleta in data['atletas'].items() if atleta['clube_id'] > 0}
+            return {
+                int(atleta_id): Atleta.from_dict(atleta, clubes=clubes, atleta_id=int(atleta_id))
+                for atleta_id, atleta in data['atletas'].items()
+                if atleta['clube_id'] > 0
+            }
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
