@@ -18,7 +18,7 @@ from setuptools import setup
 
 version = '2.0.0'
 packages = ['cartolafc']
-install_requires = ['pytz', 'redis', 'requests']
+install_requires = ['redis', 'requests']
 python_cartolafc_pkg_data = []
 long_description = open('README.md', errors='ignore').read()
 
