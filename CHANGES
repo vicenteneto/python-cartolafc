@@ -6,10 +6,12 @@ Aqui você pode ver a lista completa de modificações entre cada versão.
 Versão 2.0.0
 ------------
 
-Lançada em de setembro de 2019
+Lançada em de Abril de 2020
 
-- Atualizando para o Cartola 2019
+- Atualizando para o Cartola 2020
 - Removendo pytz
+- Adicionando Python typing
+- Atualizando para Python 3
 
 
 Versão 1.5.1
