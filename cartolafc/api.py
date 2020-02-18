@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
-
 import json
 import logging
-import sys
+from typing import Any, Dict, List, Optional, Union
 
 import redis
 import requests
 from redis import ConnectionError, TimeoutError
 from requests.status_codes import codes
 
+from .constants import MERCADO_ABERTO, MERCADO_FECHADO, CAMPEONATO
 from .decorators import RequiresAuthentication
 from .errors import CartolaFCError, CartolaFCOverloadError
 from .models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
@@ -16,18 +15,6 @@ from .models import Time, TimeInfo
 from .util import convert_team_name_to_slug, parse_and_check_cartolafc
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-
-if sys.version_info < (2, 7, 9):
-    requests.packages.urllib3.disable_warnings()
-
-MERCADO_ABERTO = 1
-MERCADO_FECHADO = 2
-
-CAMPEONATO = 'campeonato'
-TURNO = 'turno'
-MES = 'mes'
-RODADA = 'rodada'
-PATRIMONIO = 'patrimonio'
 
 
 class Api(object):
@@ -46,16 +33,17 @@ class Api(object):
             >>> api =  cartolafc.Api(email='usuario@email.com', password='s3nha')
 
         Para obter os dados de uma liga (após se autenticar), onde "nome" é o nome da liga que deseja buscar:
-            >>> liga = api.liga(nome)
+            >>> liga = api.liga('nome')
             >>> print(liga.nome)
 
         python-cartolafc é massa!!! E possui muitos outros métodos, como:
             >>> api.mercado()
-            >>> api.time(nome, slug)
-            >>> api.busca_times(termo)
+            >>> api.time(123, 'slug')
+            >>> api.times('termo')
     """
 
-    def __init__(self, email=None, password=None, attempts=1, redis_url=None, redis_timeout=10):
+    def __init__(self, email: Optional[str] = None, password: Optional[str] = None, attempts: int = 1,
+                 redis_url: Optional[str] = None, redis_timeout: int = 10) -> None:
         """ Instancia um novo objeto de cartolafc.Api.
 
         Args:
@@ -88,7 +76,7 @@ class Api(object):
         elif all((email, password)):
             self.set_credentials(email, password)
 
-    def set_credentials(self, email, password):
+    def set_credentials(self, email: str, password: str) -> None:
         """ Realiza a autenticação no sistema do CartolaFC utilizando o email e password informados.
 
         Args:
@@ -118,13 +106,12 @@ class Api(object):
         else:
             raise CartolaFCError(body['userMessage'])
 
-    def set_redis(self, redis_url, redis_timeout=10):
+    def set_redis(self, redis_url: str, redis_timeout: int = 10) -> None:
         """ Realiza a autenticação no servidor Redis utilizando a URL informada.
 
         Args:
             redis_url (str): URL para conectar ao servidor Redis, exemplo: redis://user:password@localhost:6379/2.
             redis_timeout (int): O timeout padrão (em segundos).
-            kwargs (dict):
 
         Raises:
             cartolafc.CartolaFCError: Se não for possível se conectar ao servidor Redis
@@ -135,17 +122,18 @@ class Api(object):
         try:
             self._redis = redis.StrictRedis.from_url(url=redis_url)
             self._redis.ping()
-        except (ConnectionError, TimeoutError):
+        except (ConnectionError, TimeoutError, ValueError):
             raise CartolaFCError('Erro conectando ao servidor Redis.')
 
     @RequiresAuthentication
-    def amigos(self):
+    def amigos(self) -> List[TimeInfo]:
         url = '{api_url}/auth/amigos'.format(api_url=self._api_url)
         data = self._request(url)
         return [TimeInfo.from_dict(time_info) for time_info in data['times']]
 
     @RequiresAuthentication
-    def liga(self, nome=None, slug=None, page=1, order_by=CAMPEONATO):
+    def liga(self, nome: Optional[str] = None, slug: Optional[str] = None, page: int = 1,
+             order_by: str = CAMPEONATO) -> Liga:
         """ Este serviço requer que a API esteja autenticada, e realiza uma busca pelo nome ou slug informados.
         Este serviço obtém apenas 20 times por página, portanto, caso sua liga possua mais que 20 membros, deve-se
         utilizar o argumento "page" para obter mais times.
@@ -174,24 +162,24 @@ class Api(object):
         return Liga.from_dict(data, order_by)
 
     @RequiresAuthentication
-    def pontuacao_atleta(self, id):
-        url = '{api_url}/auth/mercado/atleta/{id}/pontuacao'.format(api_url=self._api_url, id=id)
+    def pontuacao_atleta(self, atleta_id: int) -> List[PontuacaoInfo]:
+        url = '{api_url}/auth/mercado/atleta/{id}/pontuacao'.format(api_url=self._api_url, id=atleta_id)
         data = self._request(url)
         return [PontuacaoInfo.from_dict(pontuacao_info) for pontuacao_info in data]
 
     @RequiresAuthentication
-    def time_logado(self):
+    def time_logado(self) -> Time:
         url = '{api_url}/auth/time'.format(api_url=self._api_url)
         data = self._request(url)
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
         return Time.from_dict(data, clubes=clubes, capitao=data['capitao_id'])
 
-    def clubes(self):
+    def clubes(self) -> Dict[int, Clube]:
         url = '{api_url}/clubes'.format(api_url=self._api_url)
         data = self._request(url)
         return {int(clube_id): Clube.from_dict(clube) for clube_id, clube in data.items()}
 
-    def ligas(self, query):
+    def ligas(self, query: str) -> List[Liga]:
         """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa.
 
         Args:
@@ -205,7 +193,7 @@ class Api(object):
         data = self._request(url, params=dict(q=query))
         return [Liga.from_dict(liga_info) for liga_info in data]
 
-    def ligas_patrocinadores(self):
+    def ligas_patrocinadores(self) -> Dict[int, LigaPatrocinador]:
         url = '{api_url}/patrocinadores'.format(api_url=self._api_url)
         data = self._request(url)
         return {
@@ -213,7 +201,7 @@ class Api(object):
             for patrocinador_id, patrocinador in data.items()
         }
 
-    def mercado(self):
+    def mercado(self) -> Mercado:
         """ Obtém o status do mercado na rodada atual.
 
         Returns:
@@ -224,13 +212,13 @@ class Api(object):
         data = self._request(url)
         return Mercado.from_dict(data)
 
-    def mercado_atletas(self):
+    def mercado_atletas(self) -> List[Atleta]:
         url = '{api_url}/atletas/mercado'.format(api_url=self._api_url)
         data = self._request(url)
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
         return [Atleta.from_dict(atleta, clubes=clubes) for atleta in data['atletas']]
 
-    def parciais(self):
+    def parciais(self) -> Dict[int, Atleta]:
         """ Obtém um mapa com todos os atletas que já pontuaram na rodada atual (aberta).
 
         Returns:
@@ -252,13 +240,13 @@ class Api(object):
 
         raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
-    def partidas(self, rodada):
+    def partidas(self, rodada) -> List[Partida]:
         url = '{api_url}/partidas/{rodada}'.format(api_url=self._api_url, rodada=rodada)
         data = self._request(url)
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
         return sorted([Partida.from_dict(partida, clubes=clubes) for partida in data['partidas']], key=lambda p: p.data)
 
-    def pos_rodada_destaques(self):
+    def pos_rodada_destaques(self) -> DestaqueRodada:
         if self.mercado().status.id == MERCADO_ABERTO:
             url = '{api_url}/pos-rodada/destaques'.format(api_url=self._api_url)
             data = self._request(url)
@@ -266,12 +254,13 @@ class Api(object):
 
         raise CartolaFCError('Os destaques de pós-rodada só ficam disponíveis com o mercado aberto.')
 
-    def time(self, id=None, nome=None, slug=None, as_json=False):
+    def time(self, time_id: Optional[int] = None, nome: Optional[str] = None, slug: Optional[str] = None,
+             as_json: bool = False) -> Union[Time, dict]:
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
         Ao menos um dos dois devem ser informado.
 
         Args:
-            id (int): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
+            time_id (int): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
             nome (str): Nome do time que se deseja obter. Requerido se o slug não for informado.
             slug (str): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
             as_json (bool): Se desejar obter o retorno no formato json.
@@ -282,11 +271,11 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
-        if not any((id, nome, slug)):
+        if not any((time_id, nome, slug)):
             raise CartolaFCError('Você precisa informar o nome ou o slug do time que deseja obter')
 
-        param = 'id' if id else 'slug'
-        value = id if id else (slug if slug else convert_team_name_to_slug(nome))
+        param = 'id' if time_id else 'slug'
+        value = time_id if time_id else (slug if slug else convert_team_name_to_slug(nome))
         url = '{api_url}/time/{param}/{value}'.format(api_url=self._api_url, param=param, value=value)
         data = self._request(url)
 
@@ -296,15 +285,16 @@ class Api(object):
         clubes = {clube['id']: Clube.from_dict(clube) for clube in data['clubes'].values()}
         return Time.from_dict(data, clubes=clubes, capitao=data['capitao_id'])
 
-    def time_parcial(self, id=None, nome=None, slug=None, parciais=None):
+    def time_parcial(self, time_id: Optional[int] = None, nome: Optional[str] = None, slug: Optional[str] = None,
+                     parciais: Optional[Dict[int, Atleta]] = None) -> Time:
         if parciais is None and self.mercado().status.id != MERCADO_FECHADO:
             raise CartolaFCError('As pontuações parciais só ficam disponíveis com o mercado fechado.')
 
         parciais = parciais if isinstance(parciais, dict) else self.parciais()
-        time = self.time(id, nome, slug)
+        time = self.time(time_id, nome, slug)
         return self._calculate_parcial(time, parciais)
 
-    def times(self, query):
+    def times(self, query: str) -> List[TimeInfo]:
         """ Retorna o resultado da busca ao Cartola por um determinado termo de pesquisa.
 
         Args:
@@ -317,7 +307,8 @@ class Api(object):
         data = self._request(url, params=dict(q=query))
         return [TimeInfo.from_dict(time_info) for time_info in data]
 
-    def _calculate_parcial(self, time, parciais):
+    @staticmethod
+    def _calculate_parcial(time: Time, parciais: Dict[int, Atleta]) -> Time:
         if not isinstance(time, Time) or not isinstance(parciais, dict):
             raise CartolaFCError('Time ou parciais não são válidos.')
 
@@ -338,7 +329,7 @@ class Api(object):
 
         return time
 
-    def _request(self, url, params=None):
+    def _request(self, url: str, params: Optional[Dict[str, Any]] = None) -> dict:
         cached = self._get(url)
         if cached:
             try:
@@ -362,13 +353,13 @@ class Api(object):
                 if not attempts:
                     raise error
 
-    def _get(self, url):
+    def _get(self, url: str) -> bytes:
         cached = None
         if self._redis:
             cached = self._redis.get(url)
         return cached
 
-    def _set(self, url, data):
+    def _set(self, url: str, data: dict) -> dict:
         if self._redis:
             self._redis.set(url, json.dumps(data), ex=self._redis_timeout)
         return data
