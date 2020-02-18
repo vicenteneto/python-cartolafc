@@ -212,6 +212,7 @@ class Time(BaseModel):
         self.ultima_pontuacao = ultima_pontuacao
         self.atletas = atletas
         self.info = info
+        self.pontos = None
 
     @classmethod
     def from_dict(cls, data: dict, clubes: Dict[int, Clube], capitao: int) -> 'Time':
