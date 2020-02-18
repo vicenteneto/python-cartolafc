@@ -1,7 +1,7 @@
 from .errors import CartolaFCError
 
 
-class RequiresAuthentication:
+class RequiresAuthentication(object):
     def __init__(self, func):
         self.func = func
 
