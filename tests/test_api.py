@@ -320,6 +320,8 @@ class ApiTest(unittest.TestCase):
         TIME = f.read().decode('utf8')
     with open('testdata/times.json', 'rb') as f:
         TIMES = f.read().decode('utf-8')
+    with open('testdata/game_over.json', 'rb') as f:
+        GAME_OVER = f.read().decode('utf-8')
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -631,6 +633,28 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(time.info.slug, 'falydos-fc')
             self.assertTrue(time.info.assinante)
 
+    def test_time_parcial_key_invalida(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            error_message = 'Time ou parciais não são válidos.'
+            time_url = '{api_url}/time/slug/falydos-fc'.format(api_url=self.api_url)
+
+            m.get(time_url, text=self.TIME)
+
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
+                self.api.time_parcial(nome='Falydos FC', parciais=dict(key='valor'))
+
+    def test_time_parcial_valor_invalido(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            error_message = 'Time ou parciais não são válidos.'
+            time_url = '{api_url}/time/slug/falydos-fc'.format(api_url=self.api_url)
+
+            m.get(time_url, text=self.TIME)
+
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
+                self.api.time_parcial(nome='Falydos FC', parciais={1: 'valor'})
+
     def test_times(self):
         # Arrange and Act
         with requests_mock.mock() as m:
@@ -656,4 +680,14 @@ class ApiTest(unittest.TestCase):
 
             # Act and Assert
             with self.assertRaises(cartolafc.CartolaFCOverloadError):
+                self.api.mercado()
+
+    def test_game_over(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            m.get(url, text=self.GAME_OVER)
+
+            # Act and Assert
+            with self.assertRaises(cartolafc.CartolaFCGameOverError):
                 self.api.mercado()

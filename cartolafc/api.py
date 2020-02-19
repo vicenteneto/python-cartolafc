@@ -309,7 +309,8 @@ class Api(object):
 
     @staticmethod
     def _calculate_parcial(time: Time, parciais: Dict[int, Atleta]) -> Time:
-        if not isinstance(time, Time) or not isinstance(parciais, dict):
+        if any(not isinstance(key, int) or not isinstance(parciais[key], Atleta) for key in parciais.keys()) \
+                or not isinstance(time, Time):
             raise CartolaFCError('Time ou parciais não são válidos.')
 
         time.pontos = 0

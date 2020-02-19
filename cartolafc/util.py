@@ -3,9 +3,9 @@ import json
 import logging
 import re
 import unicodedata
-from typing import Any
+from typing import Any, Dict
 
-from .errors import CartolaFCError, CartolaFCOverloadError
+from .errors import CartolaFCError, CartolaFCGameOverError, CartolaFCOverloadError
 
 
 def _strip_accents(text: str) -> str:
@@ -37,6 +37,9 @@ def json_default(value: Any) -> dict:
 def parse_and_check_cartolafc(json_data: str) -> dict:
     try:
         data = json.loads(json_data)
+        if 'game_over' in data and data['game_over']:
+            logging.info('Desculpe-nos, o jogo acabou e não podemos obter os dados solicitados')
+            raise CartolaFCGameOverError('Desculpe-nos, o jogo acabou e não podemos obter os dados solicitados')
         if 'mensagem' in data and data['mensagem']:
             logging.error(data['mensagem'])
             raise CartolaFCError(data['mensagem'].encode('utf-8'))
