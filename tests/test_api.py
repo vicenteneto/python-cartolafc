@@ -5,7 +5,7 @@ import requests_mock
 from requests.status_codes import codes
 
 import cartolafc
-from cartolafc.api import MERCADO_ABERTO
+from cartolafc.constants import MERCADO_ABERTO
 from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
 from cartolafc.models import Time, TimeInfo
 from cartolafc.models import _atleta_status, _posicoes
@@ -26,7 +26,7 @@ class ApiAttemptsTest(unittest.TestCase):
         # Assert
         self.assertEqual(api._attempts, 1)
 
-    def test_api_attempts(self):
+    def test_api_attempts_com_erros(self):
         # Arrange and Act
         with requests_mock.mock() as m:
             api = cartolafc.Api(attempts=2)
@@ -34,6 +34,19 @@ class ApiAttemptsTest(unittest.TestCase):
             url = '{api_url}/mercado/status'.format(api_url=api._api_url)
             error_message = 'Mensagem de erro'
             m.get(url, status_code=codes.ok, text='{"mensagem": "%s"}' % error_message)
+
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
+                api.mercado()
+
+    def test_api_attempts_com_servidores_sobrecarregados(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            api = cartolafc.Api(attempts=2)
+
+            url = '{api_url}/mercado/status'.format(api_url=api._api_url)
+            error_message = 'Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados.'
+            m.get(url, response_list=[dict(status_code=codes.ok, text='{"mensagem": "%s"}}' % error_message),
+                                      dict(status_code=codes.ok, text='{"mensagem": "%s"}}' % error_message)])
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
                 api.mercado()

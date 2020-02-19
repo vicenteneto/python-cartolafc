@@ -14,15 +14,12 @@ __pycache__/
 
 # Coverage
 .coverage
-cover
+cover/
 
-#PyPi
+# PyPi
 Python_CartolaFC.egg-info/
 build/
 dist/
 
 # Tox
 .tox/
-
-# Helper scripts
-deploy.sh
