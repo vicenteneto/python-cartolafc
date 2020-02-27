@@ -3,6 +3,7 @@ from datetime import datetime
 
 import requests_mock
 from requests.status_codes import codes
+from requests.exceptions import HTTPError
 
 import cartolafc
 from cartolafc.constants import MERCADO_ABERTO
@@ -62,6 +63,16 @@ class ApiAuthTest(unittest.TestCase):
         # Act and Assert
         with self.assertRaisesRegex(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
             cartolafc.Api(email='email@email.com')
+
+    def test_api_auth_http_error(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            user_message = 'Seu e-mail ou senha estao incorretos.'
+            m.post('https://login.globo.com/api/authentication', exc=HTTPError)
+
+            # Act and Assert
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Erro authenticando no Cartola'):
+                cartolafc.Api(email='email@email.com', password='s3nha')
 
     def test_api_auth_invalida(self):
         # Arrange

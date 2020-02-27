@@ -69,11 +69,8 @@ class Api(object):
         self._redis_timeout = None
         self._redis = None
 
-        if redis_url:
-            self.set_redis(redis_url, redis_timeout)
-
-        if email:
-            self.set_credentials(email, password)
+        self.set_credentials(email, password)
+        self.set_redis(redis_url, redis_timeout)
 
     def set_credentials(self, email: str, password: str) -> None:
         """ Realiza a autenticação no sistema do CartolaFC utilizando o email e password informados.
@@ -88,6 +85,8 @@ class Api(object):
 
         if bool(email) != bool(password):
             raise CartolaFCError('E-mail ou senha ausente')
+        elif not email:
+            return
 
         self._email = email
         self._password = password
@@ -121,6 +120,9 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se não for possível se conectar ao servidor Redis
         """
+        if not redis_url:
+            return
+
         self._redis_url = redis_url
         self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
 
