@@ -33,9 +33,6 @@ anos de história do fantasy, incríveis 2.723.915 de usuários montaram as suas
 Campeonato Brasileiro de 2016. A 10ª rodada do Campeonato Brasileiro de 2017 instituiu um novo recorde, onde 5.540.835
 times foram escalados no jogo.
 
-Felizmente, os designers forneceram uma excelente e completa interface REST. Essa biblioteca inclui essa interface como 
-objetos de python mais convencionais.
-
 
 ## Versões
 
@@ -86,8 +83,6 @@ Mais exemplos disponíveis no Github:
 
 Identificou algum bug ou tem alguma requisição de funcionalidade nova?
 [Por favor, abra uma nova issue](https://github.com/vicenteneto/python-cartolafc/issues/new>).
-
-**Vicente Neto (criador)** - <https://github.com/vicenteneto><br/>
 
 
 ## Direitos autorais e licença
