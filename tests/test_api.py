@@ -3,6 +3,7 @@ from datetime import datetime
 
 import requests_mock
 from requests.status_codes import codes
+from requests.exceptions import HTTPError
 
 import cartolafc
 from cartolafc.constants import MERCADO_ABERTO
@@ -63,6 +64,16 @@ class ApiAuthTest(unittest.TestCase):
         with self.assertRaisesRegex(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
             cartolafc.Api(email='email@email.com')
 
+    def test_api_auth_http_error(self):
+        # Arrange
+        with requests_mock.mock() as m:
+            user_message = 'Seu e-mail ou senha estao incorretos.'
+            m.post('https://login.globo.com/api/authentication', exc=HTTPError)
+
+            # Act and Assert
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Erro authenticando no Cartola'):
+                cartolafc.Api(email='email@email.com', password='s3nha')
+
     def test_api_auth_invalida(self):
         # Arrange
         with requests_mock.mock() as m:
@@ -103,7 +114,7 @@ class ApiAuthTest(unittest.TestCase):
 
 
 class ApiRedisTest(unittest.TestCase):
-    with open('testdata/mercado_status_aberto.json', 'rb') as f:
+    with open('tests/testdata/mercado_status_aberto.json', 'rb') as f:
         MERCADO_STATUS_ABERTO = f.read().decode('utf8')
 
     def setUp(self):
@@ -162,13 +173,13 @@ class ApiRedisTest(unittest.TestCase):
 
 
 class ApiAuthenticatedTest(unittest.TestCase):
-    with open('testdata/amigos.json', 'rb') as f:
+    with open('tests/testdata/amigos.json', 'rb') as f:
         AMIGOS = f.read().decode('utf8')
-    with open('testdata/liga.json', 'rb') as f:
+    with open('tests/testdata/liga.json', 'rb') as f:
         LIGA = f.read().decode('utf8')
-    with open('testdata/pontuacao_atleta.json', 'rb') as f:
+    with open('tests/testdata/pontuacao_atleta.json', 'rb') as f:
         PONTUACAO_ATLETA = f.read().decode('utf8')
-    with open('testdata/time_logado.json', 'rb') as f:
+    with open('tests/testdata/time_logado.json', 'rb') as f:
         TIME_LOGADO = f.read().decode('utf8')
 
     def setUp(self):
@@ -298,29 +309,29 @@ class ApiAuthenticatedTest(unittest.TestCase):
 
 
 class ApiTest(unittest.TestCase):
-    with open('testdata/clubes.json', 'rb') as f:
+    with open('tests/testdata/clubes.json', 'rb') as f:
         CLUBES = f.read().decode('utf8')
-    with open('testdata/ligas.json', 'rb') as f:
+    with open('tests/testdata/ligas.json', 'rb') as f:
         LIGAS = f.read().decode('utf8')
-    with open('testdata/ligas_patrocinadores.json', 'rb') as f:
+    with open('tests/testdata/ligas_patrocinadores.json', 'rb') as f:
         LIGAS_PATROCINADORES = f.read().decode('utf8')
-    with open('testdata/mercado_atletas.json', 'rb') as f:
+    with open('tests/testdata/mercado_atletas.json', 'rb') as f:
         MERCADO_ATLETAS = f.read().decode('utf8')
-    with open('testdata/mercado_status_aberto.json', 'rb') as f:
+    with open('tests/testdata/mercado_status_aberto.json', 'rb') as f:
         MERCADO_STATUS_ABERTO = f.read().decode('utf8')
-    with open('testdata/mercado_status_fechado.json', 'rb') as f:
+    with open('tests/testdata/mercado_status_fechado.json', 'rb') as f:
         MERCADO_STATUS_FECHADO = f.read().decode('utf8')
-    with open('testdata/partidas.json', 'rb') as f:
+    with open('tests/testdata/partidas.json', 'rb') as f:
         PARTIDAS = f.read().decode('utf8')
-    with open('testdata/parciais.json', 'rb') as f:
+    with open('tests/testdata/parciais.json', 'rb') as f:
         PARCIAIS = f.read().decode('utf8')
-    with open('testdata/pos_rodada_destaques.json', 'rb') as f:
+    with open('tests/testdata/pos_rodada_destaques.json', 'rb') as f:
         POS_RODADA_DESTAQUES = f.read().decode('utf8')
-    with open('testdata/time.json', 'rb') as f:
+    with open('tests/testdata/time.json', 'rb') as f:
         TIME = f.read().decode('utf8')
-    with open('testdata/times.json', 'rb') as f:
+    with open('tests/testdata/times.json', 'rb') as f:
         TIMES = f.read().decode('utf-8')
-    with open('testdata/game_over.json', 'rb') as f:
+    with open('tests/testdata/game_over.json', 'rb') as f:
         GAME_OVER = f.read().decode('utf-8')
 
     def setUp(self):

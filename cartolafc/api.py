@@ -6,6 +6,7 @@ import redis
 import requests
 from redis import ConnectionError, TimeoutError
 from requests.status_codes import codes
+from requests.exceptions import HTTPError
 
 from .constants import MERCADO_ABERTO, MERCADO_FECHADO, CAMPEONATO
 from .decorators import RequiresAuthentication
@@ -60,21 +61,16 @@ class Api(object):
 
         self._api_url = 'https://api.cartolafc.globo.com'
         self._auth_url = 'https://login.globo.com/api/authentication'
-        self._email = email
-        self._password = password
+        self._email = None
+        self._password = None
         self._glb_id = None
         self._attempts = attempts if isinstance(attempts, int) and attempts > 0 else 1
-        self._redis_url = redis_url
-        self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
+        self._redis_url = None
+        self._redis_timeout = None
         self._redis = None
 
-        if redis_url:
-            self.set_redis(redis_url, redis_timeout)
-
-        if bool(email) != bool(password):
-            raise CartolaFCError('E-mail ou senha ausente')
-        elif all((email, password)):
-            self.set_credentials(email, password)
+        self.set_credentials(email, password)
+        self.set_redis(redis_url, redis_timeout)
 
     def set_credentials(self, email: str, password: str) -> None:
         """ Realiza a autenticação no sistema do CartolaFC utilizando o email e password informados.
@@ -87,6 +83,11 @@ class Api(object):
             cartolafc.CartolaFCError: Se o conjunto (email, password) não conseguiu realizar a autenticação com sucesso.
         """
 
+        if bool(email) != bool(password):
+            raise CartolaFCError('E-mail ou senha ausente')
+        elif not email:
+            return
+
         self._email = email
         self._password = password
 
@@ -98,13 +99,16 @@ class Api(object):
             }
         }
 
-        response = requests.post(self._auth_url, json=data)
-        body = response.json()
+        try:
+            response = requests.post(self._auth_url, json=data)
+            body = response.json()
 
-        if response.status_code == codes.ok:
+            if response.status_code != codes.ok:
+                raise CartolaFCError(body['userMessage'])
+
             self._glb_id = body['glbId']
-        else:
-            raise CartolaFCError(body['userMessage'])
+        except HTTPError:
+            raise CartolaFCError('Erro authenticando no Cartola.')
 
     def set_redis(self, redis_url: str, redis_timeout: int = 10) -> None:
         """ Realiza a autenticação no servidor Redis utilizando a URL informada.
@@ -116,6 +120,9 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se não for possível se conectar ao servidor Redis
         """
+        if not redis_url:
+            return
+
         self._redis_url = redis_url
         self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
 
@@ -123,6 +130,7 @@ class Api(object):
             self._redis = redis.StrictRedis.from_url(url=redis_url)
             self._redis.ping()
         except (ConnectionError, TimeoutError, ValueError):
+            self._redis = None
             raise CartolaFCError('Erro conectando ao servidor Redis.')
 
     @RequiresAuthentication
