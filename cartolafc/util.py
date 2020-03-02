@@ -3,7 +3,7 @@ import json
 import logging
 import re
 import unicodedata
-from typing import Any, Dict
+from typing import Any
 
 from .errors import CartolaFCError, CartolaFCGameOverError, CartolaFCOverloadError
 
