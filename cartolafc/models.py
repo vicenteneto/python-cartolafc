@@ -171,7 +171,7 @@ class Mercado(BaseModel):
             data['fechamento']['hora'],
             data['fechamento']['minuto'],
         )
-        return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], data['aviso'], fechamento)
+        return cls(data['rodada_atual'], data['status_mercado'], data['times_escalados'], fechamento)
 
 
 class Partida(BaseModel):
