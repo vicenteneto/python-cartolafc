@@ -272,6 +272,7 @@ class Api(object):
             nome (str): Nome do time que se deseja obter. Requerido se o slug não for informado.
             slug (str): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
             as_json (bool): Se desejar obter o retorno no formato json.
+            rodada (int): Número da rodada. Se não for informado, será retornado sempre a última rodada.
 
         Returns:
             Uma instância de cartolafc.Time se o time foi encontrado.
