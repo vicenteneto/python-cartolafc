@@ -263,7 +263,7 @@ class Api(object):
         raise CartolaFCError('Os destaques de pós-rodada só ficam disponíveis com o mercado aberto.')
 
     def time(self, time_id: Optional[int] = None, nome: Optional[str] = None, slug: Optional[str] = None,
-             as_json: bool = False) -> Union[Time, dict]:
+             as_json: bool = False, rodada: Optional[int] = 0) -> Union[Time, dict]:
         """ Obtém um time específico, baseando-se no nome ou no slug utilizado.
         Ao menos um dos dois devem ser informado.
 
@@ -285,6 +285,9 @@ class Api(object):
         param = 'id' if time_id else 'slug'
         value = time_id if time_id else (slug if slug else convert_team_name_to_slug(nome))
         url = '{api_url}/time/{param}/{value}'.format(api_url=self._api_url, param=param, value=value)
+        if rodada:
+            url += f'/{rodada}'
+
         data = self._request(url)
 
         if bool(as_json):
