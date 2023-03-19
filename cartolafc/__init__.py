@@ -12,8 +12,8 @@ from .api import Api
 from .errors import CartolaFCError, CartolaFCGameOverError, CartolaFCOverloadError
 
 __all__ = [
-    'Api',
-    'CartolaFCError',
-    'CartolaFCGameOverError',
-    'CartolaFCOverloadError',
+    "Api",
+    "CartolaFCError",
+    "CartolaFCGameOverError",
+    "CartolaFCOverloadError",
 ]

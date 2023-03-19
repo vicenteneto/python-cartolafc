@@ -6,7 +6,15 @@ from requests.status_codes import codes
 
 import cartolafc
 from cartolafc.constants import MERCADO_ABERTO
-from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida
+from cartolafc.models import (
+    Atleta,
+    Clube,
+    DestaqueRodada,
+    Liga,
+    LigaPatrocinador,
+    Mercado,
+    Partida,
+)
 from cartolafc.models import Time, TimeInfo
 from cartolafc.models import _atleta_status, _posicoes
 
@@ -24,8 +32,8 @@ class ApiAttemptsTest(unittest.TestCase):
         with requests_mock.mock() as m:
             api = cartolafc.Api(attempts=2)
 
-            url = '{api_url}/mercado/status'.format(api_url=api._api_url)
-            error_message = 'Mensagem de erro'
+            url = "{api_url}/mercado/status".format(api_url=api._api_url)
+            error_message = "Mensagem de erro"
             m.get(url, status_code=codes.ok, text='{"mensagem": "%s"}' % error_message)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
@@ -36,40 +44,51 @@ class ApiAttemptsTest(unittest.TestCase):
         with requests_mock.mock() as m:
             api = cartolafc.Api(attempts=2)
 
-            url = '{api_url}/mercado/status'.format(api_url=api._api_url)
-            error_message = 'Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados.'
-            m.get(url, response_list=[dict(status_code=codes.ok, text='{"mensagem": "%s"}}' % error_message),
-                                      dict(status_code=codes.ok, text='{"mensagem": "%s"}}' % error_message)])
+            url = "{api_url}/mercado/status".format(api_url=api._api_url)
+            error_message = (
+                "Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados."
+            )
+            m.get(
+                url,
+                response_list=[
+                    dict(
+                        status_code=codes.ok, text='{"mensagem": "%s"}}' % error_message
+                    ),
+                    dict(
+                        status_code=codes.ok, text='{"mensagem": "%s"}}' % error_message
+                    ),
+                ],
+            )
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
                 api.mercado()
 
 
 class ApiTest(unittest.TestCase):
-    with open('tests/testdata/clubes.json', 'rb') as f:
-        CLUBES = f.read().decode('utf8')
-    with open('tests/testdata/ligas.json', 'rb') as f:
-        LIGAS = f.read().decode('utf8')
-    with open('tests/testdata/ligas_patrocinadores.json', 'rb') as f:
-        LIGAS_PATROCINADORES = f.read().decode('utf8')
-    with open('tests/testdata/mercado_atletas.json', 'rb') as f:
-        MERCADO_ATLETAS = f.read().decode('utf8')
-    with open('tests/testdata/mercado_status_aberto.json', 'rb') as f:
-        MERCADO_STATUS_ABERTO = f.read().decode('utf8')
-    with open('tests/testdata/mercado_status_fechado.json', 'rb') as f:
-        MERCADO_STATUS_FECHADO = f.read().decode('utf8')
-    with open('tests/testdata/partidas.json', 'rb') as f:
-        PARTIDAS = f.read().decode('utf8')
-    with open('tests/testdata/parciais.json', 'rb') as f:
-        PARCIAIS = f.read().decode('utf8')
-    with open('tests/testdata/pos_rodada_destaques.json', 'rb') as f:
-        POS_RODADA_DESTAQUES = f.read().decode('utf8')
-    with open('tests/testdata/time.json', 'rb') as f:
-        TIME = f.read().decode('utf8')
-    with open('tests/testdata/times.json', 'rb') as f:
-        TIMES = f.read().decode('utf-8')
-    with open('tests/testdata/game_over.json', 'rb') as f:
-        GAME_OVER = f.read().decode('utf-8')
+    with open("tests/testdata/clubes.json", "rb") as f:
+        CLUBES = f.read().decode("utf8")
+    with open("tests/testdata/ligas.json", "rb") as f:
+        LIGAS = f.read().decode("utf8")
+    with open("tests/testdata/ligas_patrocinadores.json", "rb") as f:
+        LIGAS_PATROCINADORES = f.read().decode("utf8")
+    with open("tests/testdata/mercado_atletas.json", "rb") as f:
+        MERCADO_ATLETAS = f.read().decode("utf8")
+    with open("tests/testdata/mercado_status_aberto.json", "rb") as f:
+        MERCADO_STATUS_ABERTO = f.read().decode("utf8")
+    with open("tests/testdata/mercado_status_fechado.json", "rb") as f:
+        MERCADO_STATUS_FECHADO = f.read().decode("utf8")
+    with open("tests/testdata/partidas.json", "rb") as f:
+        PARTIDAS = f.read().decode("utf8")
+    with open("tests/testdata/parciais.json", "rb") as f:
+        PARCIAIS = f.read().decode("utf8")
+    with open("tests/testdata/pos_rodada_destaques.json", "rb") as f:
+        POS_RODADA_DESTAQUES = f.read().decode("utf8")
+    with open("tests/testdata/time.json", "rb") as f:
+        TIME = f.read().decode("utf8")
+    with open("tests/testdata/times.json", "rb") as f:
+        TIMES = f.read().decode("utf-8")
+    with open("tests/testdata/game_over.json", "rb") as f:
+        GAME_OVER = f.read().decode("utf-8")
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -78,7 +97,7 @@ class ApiTest(unittest.TestCase):
     def test_clubes(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/clubes'.format(api_url=self.api_url)
+            url = "{api_url}/clubes".format(api_url=self.api_url)
             m.get(url, text=self.CLUBES)
             clubes = self.api.clubes()
             clube_flamengo = clubes[262]
@@ -87,30 +106,30 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(clubes, dict)
             self.assertIsInstance(clube_flamengo, Clube)
             self.assertEqual(clube_flamengo.id, 262)
-            self.assertEqual(clube_flamengo.nome, 'Flamengo')
-            self.assertEqual(clube_flamengo.abreviacao, 'FLA')
+            self.assertEqual(clube_flamengo.nome, "Flamengo")
+            self.assertEqual(clube_flamengo.abreviacao, "FLA")
 
     def test_ligas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/ligas'.format(api_url=self.api_url)
+            url = "{api_url}/ligas".format(api_url=self.api_url)
             m.get(url, text=self.LIGAS)
-            ligas = self.api.ligas(query='premiere')
+            ligas = self.api.ligas(query="premiere")
             primeira_liga = ligas[0]
 
             # Assert
             self.assertIsInstance(ligas, list)
             self.assertIsInstance(primeira_liga, Liga)
             self.assertEqual(primeira_liga.id, 36741)
-            self.assertEqual(primeira_liga.nome, 'PREMIERE_LIGA_ENTEL')
-            self.assertEqual(primeira_liga.slug, 'premiere-liga-entel')
-            self.assertEqual(primeira_liga.descricao, '“Vale tudo, só não vale...”')
+            self.assertEqual(primeira_liga.nome, "PREMIERE_LIGA_ENTEL")
+            self.assertEqual(primeira_liga.slug, "premiere-liga-entel")
+            self.assertEqual(primeira_liga.descricao, "“Vale tudo, só não vale...”")
             self.assertIsNone(primeira_liga.times)
 
     def test_mercado(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
             status = self.api.mercado()
 
@@ -123,12 +142,12 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(status.times_escalados, 3601523)
             self.assertIsInstance(status.fechamento, datetime)
             self.assertEqual(status.fechamento, fechamento)
-            self.assertEqual(status.aviso, '')
+            self.assertEqual(status.aviso, "")
 
     def test_mercado_atletas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/atletas/mercado'.format(api_url=self.api_url)
+            url = "{api_url}/atletas/mercado".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_ATLETAS)
             mercado = self.api.mercado_atletas()
             primeiro_atleta = mercado[0]
@@ -137,34 +156,38 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(mercado, list)
             self.assertIsInstance(primeiro_atleta, Atleta)
             self.assertEqual(primeiro_atleta.id, 86935)
-            self.assertEqual(primeiro_atleta.apelido, 'Rodrigo')
+            self.assertEqual(primeiro_atleta.apelido, "Rodrigo")
             self.assertEqual(primeiro_atleta.pontos, 0)
-            self.assertEqual(primeiro_atleta.scout, {'CA': 1, 'FC': 3, 'FS': 1, 'PE': 2, 'RB': 2})
+            self.assertEqual(
+                primeiro_atleta.scout, {"CA": 1, "FC": 3, "FS": 1, "PE": 2, "RB": 2}
+            )
             self.assertEqual(primeiro_atleta.posicao, _posicoes[4])
             self.assertIsInstance(primeiro_atleta.clube, Clube)
             self.assertEqual(primeiro_atleta.clube.id, 292)
-            self.assertEqual(primeiro_atleta.clube.nome, 'Sport')
-            self.assertEqual(primeiro_atleta.clube.abreviacao, 'SPO')
+            self.assertEqual(primeiro_atleta.clube.nome, "Sport")
+            self.assertEqual(primeiro_atleta.clube.abreviacao, "SPO")
             self.assertEqual(primeiro_atleta.status, _atleta_status[6])
 
     def test_parciais_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
             # Act and Assert
-            with self.assertRaisesRegex(cartolafc.CartolaFCError,
-                                        'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
+            with self.assertRaisesRegex(
+                cartolafc.CartolaFCError,
+                "As pontuações parciais só ficam disponíveis com o mercado fechado.",
+            ):
                 self.api.parciais()
 
     def test_parciais_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_STATUS_FECHADO)
 
-            url = '{api_url}/atletas/pontuados'.format(api_url=self.api_url)
+            url = "{api_url}/atletas/pontuados".format(api_url=self.api_url)
             m.get(url, text=self.PARCIAIS)
 
             # Act
@@ -175,19 +198,21 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(parciais, dict)
             self.assertIsInstance(parcial_juan, Atleta)
             self.assertEqual(parcial_juan.id, 36540)
-            self.assertEqual(parcial_juan.apelido, 'Juan')
+            self.assertEqual(parcial_juan.apelido, "Juan")
             self.assertEqual(parcial_juan.pontos, 2.9)
-            self.assertEqual(parcial_juan.scout, {'CA': 1, 'FC': 1, 'FS': 2, 'PE': 2, 'SG': 1})
+            self.assertEqual(
+                parcial_juan.scout, {"CA": 1, "FC": 1, "FS": 2, "PE": 2, "SG": 1}
+            )
             self.assertEqual(parcial_juan.posicao, _posicoes[3])
             self.assertIsInstance(parcial_juan.clube, Clube)
             self.assertEqual(parcial_juan.clube.id, 262)
-            self.assertEqual(parcial_juan.clube.nome, 'Flamengo')
-            self.assertEqual(parcial_juan.clube.abreviacao, 'FLA')
+            self.assertEqual(parcial_juan.clube.nome, "Flamengo")
+            self.assertEqual(parcial_juan.clube.abreviacao, "FLA")
 
     def test_partidas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/partidas/{rodada}'.format(api_url=self.api_url, rodada=1)
+            url = "{api_url}/partidas/{rodada}".format(api_url=self.api_url, rodada=1)
             m.get(url, text=self.PARTIDAS)
             partidas = self.api.partidas(1)
             primeira_partida = partidas[0]
@@ -196,16 +221,16 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(partidas, list)
             self.assertIsInstance(primeira_partida, Partida)
             self.assertIsInstance(primeira_partida.data, datetime)
-            self.assertEqual(primeira_partida.local, 'Maracanã')
-            self.assertEqual(primeira_partida.clube_casa.nome, 'Flamengo')
+            self.assertEqual(primeira_partida.local, "Maracanã")
+            self.assertEqual(primeira_partida.clube_casa.nome, "Flamengo")
             self.assertEqual(primeira_partida.placar_casa, 1)
-            self.assertEqual(primeira_partida.clube_visitante.nome, 'Atlético-MG')
+            self.assertEqual(primeira_partida.clube_visitante.nome, "Atlético-MG")
             self.assertEqual(primeira_partida.placar_visitante, 1)
 
     def test_patrocinadores(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/patrocinadores'.format(api_url=self.api_url)
+            url = "{api_url}/patrocinadores".format(api_url=self.api_url)
             m.get(url, text=self.LIGAS_PATROCINADORES)
             ligas = self.api.ligas_patrocinadores()
             liga_brahma = ligas[62]
@@ -214,16 +239,16 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(ligas, dict)
             self.assertIsInstance(liga_brahma, LigaPatrocinador)
             self.assertEqual(liga_brahma.id, 62)
-            self.assertEqual(liga_brahma.nome, 'Cerveja Brahma')
-            self.assertEqual(liga_brahma.url_link, 'http://brahma.com.br')
+            self.assertEqual(liga_brahma.nome, "Cerveja Brahma")
+            self.assertEqual(liga_brahma.url_link, "http://brahma.com.br")
 
     def test_pos_rodada_destaques_com_mercado_aberto(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
-            url = '{api_url}/pos-rodada/destaques'.format(api_url=self.api_url)
+            url = "{api_url}/pos-rodada/destaques".format(api_url=self.api_url)
             m.get(url, text=self.POS_RODADA_DESTAQUES)
             destaque_rodada = self.api.pos_rodada_destaques()
 
@@ -233,31 +258,33 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(destaque_rodada.media_pontos, 46.6480728839843)
             self.assertIsInstance(destaque_rodada.mito_rodada, TimeInfo)
             self.assertEqual(destaque_rodada.mito_rodada.id, 896224)
-            self.assertEqual(destaque_rodada.mito_rodada.nome, 'gama campos fc')
-            self.assertEqual(destaque_rodada.mito_rodada.nome_cartola, 'malmal')
-            self.assertEqual(destaque_rodada.mito_rodada.slug, 'gama-campos-fc')
+            self.assertEqual(destaque_rodada.mito_rodada.nome, "gama campos fc")
+            self.assertEqual(destaque_rodada.mito_rodada.nome_cartola, "malmal")
+            self.assertEqual(destaque_rodada.mito_rodada.slug, "gama-campos-fc")
             self.assertFalse(destaque_rodada.mito_rodada.assinante)
 
     def test_pos_rodada_destaques_com_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_STATUS_FECHADO)
 
             # Act and Assert
-            with self.assertRaisesRegex(cartolafc.CartolaFCError, ''):
+            with self.assertRaisesRegex(cartolafc.CartolaFCError, ""):
                 self.api.pos_rodada_destaques()
 
     def test_time_sem_id_sem_nome_e_sem_slug(self):
         # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError,
-                                    'Você precisa informar o nome ou o slug do time que deseja obter'):
+        with self.assertRaisesRegex(
+            cartolafc.CartolaFCError,
+            "Você precisa informar o nome ou o slug do time que deseja obter",
+        ):
             self.api.time()
 
     def test_time_com_id(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/time/id/{id}'.format(api_url=self.api_url, id=471815)
+            url = "{api_url}/time/id/{id}".format(api_url=self.api_url, id=471815)
             m.get(url, text=self.TIME)
             time = self.api.time(time_id=471815)
             primeiro_atleta = time.atletas[0]
@@ -270,28 +297,30 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(time.atletas, list)
             self.assertIsInstance(primeiro_atleta, Atleta)
             self.assertEqual(primeiro_atleta.id, 38140)
-            self.assertEqual(primeiro_atleta.apelido, 'Fernando Prass')
+            self.assertEqual(primeiro_atleta.apelido, "Fernando Prass")
             self.assertEqual(primeiro_atleta.pontos, 7.5)
-            self.assertEqual(primeiro_atleta.scout, {'DD': 3, 'FS': 1, 'GS': 1})
+            self.assertEqual(primeiro_atleta.scout, {"DD": 3, "FS": 1, "GS": 1})
             self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
             self.assertIsInstance(primeiro_atleta.clube, Clube)
             self.assertEqual(primeiro_atleta.clube.id, 275)
-            self.assertEqual(primeiro_atleta.clube.nome, 'Palmeiras')
-            self.assertEqual(primeiro_atleta.clube.abreviacao, 'PAL')
+            self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
+            self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
             self.assertEqual(primeiro_atleta.status, _atleta_status[7])
             self.assertIsInstance(time.info, TimeInfo)
             self.assertEqual(time.info.id, 471815)
-            self.assertEqual(time.info.nome, 'Falydos FC')
-            self.assertEqual(time.info.nome_cartola, 'Vicente Neto')
-            self.assertEqual(time.info.slug, 'falydos-fc')
+            self.assertEqual(time.info.nome, "Falydos FC")
+            self.assertEqual(time.info.nome_cartola, "Vicente Neto")
+            self.assertEqual(time.info.slug, "falydos-fc")
             self.assertTrue(time.info.assinante)
 
     def test_time_com_nome(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/time/slug/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            url = "{api_url}/time/slug/{slug}".format(
+                api_url=self.api_url, slug="falydos-fc"
+            )
             m.get(url, text=self.TIME)
-            time = self.api.time(nome='Falydos FC')
+            time = self.api.time(nome="Falydos FC")
 
             # Assert
             self.assertIsInstance(time, Time)
@@ -299,9 +328,11 @@ class ApiTest(unittest.TestCase):
     def test_time_com_slug(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/time/slug/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
+            url = "{api_url}/time/slug/{slug}".format(
+                api_url=self.api_url, slug="falydos-fc"
+            )
             m.get(url, text=self.TIME)
-            time = self.api.time(slug='falydos-fc')
+            time = self.api.time(slug="falydos-fc")
 
             # Assert
             self.assertIsInstance(time, Time)
@@ -309,9 +340,9 @@ class ApiTest(unittest.TestCase):
     def test_time_com_id_com_nome_e_com_slug(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/time/id/{id}'.format(api_url=self.api_url, id=471815)
+            url = "{api_url}/time/id/{id}".format(api_url=self.api_url, id=471815)
             m.get(url, text=self.TIME)
-            time = self.api.time(time_id=471815, nome='Falydos FC', slug='falydos-fc')
+            time = self.api.time(time_id=471815, nome="Falydos FC", slug="falydos-fc")
 
             # Assert
             self.assertIsInstance(time, Time)
@@ -319,26 +350,28 @@ class ApiTest(unittest.TestCase):
     def test_time_parcial_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
             # Act and Assert
-            with self.assertRaisesRegex(cartolafc.CartolaFCError,
-                                        'As pontuações parciais só ficam disponíveis com o mercado fechado.'):
-                self.api.time_parcial(nome='Falydos FC')
+            with self.assertRaisesRegex(
+                cartolafc.CartolaFCError,
+                "As pontuações parciais só ficam disponíveis com o mercado fechado.",
+            ):
+                self.api.time_parcial(nome="Falydos FC")
 
     def test_time_parcial_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
-            mercado_url = '{api_url}/mercado/status'.format(api_url=self.api_url)
-            parciais_url = '{api_url}/atletas/pontuados'.format(api_url=self.api_url)
-            time_url = '{api_url}/time/slug/falydos-fc'.format(api_url=self.api_url)
+            mercado_url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            parciais_url = "{api_url}/atletas/pontuados".format(api_url=self.api_url)
+            time_url = "{api_url}/time/slug/falydos-fc".format(api_url=self.api_url)
 
             m.get(mercado_url, text=self.MERCADO_STATUS_FECHADO)
             m.get(parciais_url, text=self.PARCIAIS)
             m.get(time_url, text=self.TIME)
 
-            time = self.api.time_parcial(nome='Falydos FC')
+            time = self.api.time_parcial(nome="Falydos FC")
             primeiro_atleta = time.atletas[0]
 
             # Assert
@@ -350,65 +383,65 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(time.atletas, list)
             self.assertIsInstance(primeiro_atleta, Atleta)
             self.assertEqual(primeiro_atleta.id, 38140)
-            self.assertEqual(primeiro_atleta.apelido, 'Fernando Prass')
+            self.assertEqual(primeiro_atleta.apelido, "Fernando Prass")
             self.assertEqual(primeiro_atleta.pontos, 0)
             self.assertEqual(primeiro_atleta.scout, {})
             self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
             self.assertIsInstance(primeiro_atleta.clube, Clube)
             self.assertEqual(primeiro_atleta.clube.id, 275)
-            self.assertEqual(primeiro_atleta.clube.nome, 'Palmeiras')
-            self.assertEqual(primeiro_atleta.clube.abreviacao, 'PAL')
+            self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
+            self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
             self.assertEqual(primeiro_atleta.status, _atleta_status[7])
             self.assertIsInstance(time.info, TimeInfo)
             self.assertEqual(time.info.id, 471815)
-            self.assertEqual(time.info.nome, 'Falydos FC')
-            self.assertEqual(time.info.nome_cartola, 'Vicente Neto')
-            self.assertEqual(time.info.slug, 'falydos-fc')
+            self.assertEqual(time.info.nome, "Falydos FC")
+            self.assertEqual(time.info.nome_cartola, "Vicente Neto")
+            self.assertEqual(time.info.slug, "falydos-fc")
             self.assertTrue(time.info.assinante)
 
     def test_time_parcial_key_invalida(self):
         # Arrange
         with requests_mock.mock() as m:
-            error_message = 'Time ou parciais não são válidos.'
-            time_url = '{api_url}/time/slug/falydos-fc'.format(api_url=self.api_url)
+            error_message = "Time ou parciais não são válidos."
+            time_url = "{api_url}/time/slug/falydos-fc".format(api_url=self.api_url)
 
             m.get(time_url, text=self.TIME)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
-                self.api.time_parcial(nome='Falydos FC', parciais=dict(key='valor'))
+                self.api.time_parcial(nome="Falydos FC", parciais=dict(key="valor"))
 
     def test_time_parcial_valor_invalido(self):
         # Arrange
         with requests_mock.mock() as m:
-            error_message = 'Time ou parciais não são válidos.'
-            time_url = '{api_url}/time/slug/falydos-fc'.format(api_url=self.api_url)
+            error_message = "Time ou parciais não são válidos."
+            time_url = "{api_url}/time/slug/falydos-fc".format(api_url=self.api_url)
 
             m.get(time_url, text=self.TIME)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
-                self.api.time_parcial(nome='Falydos FC', parciais={1: 'valor'})
+                self.api.time_parcial(nome="Falydos FC", parciais={1: "valor"})
 
     def test_times(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = '{api_url}/times'.format(api_url=self.api_url)
+            url = "{api_url}/times".format(api_url=self.api_url)
             m.get(url, text=self.TIMES)
-            times = self.api.times(query='Faly')
+            times = self.api.times(query="Faly")
             primeiro_time = times[0]
 
             # Assert
             self.assertIsInstance(times, list)
             self.assertIsInstance(primeiro_time, TimeInfo)
             self.assertEqual(primeiro_time.id, 4626963)
-            self.assertEqual(primeiro_time.nome, 'Falysson29')
-            self.assertEqual(primeiro_time.nome_cartola, 'Alysson')
-            self.assertEqual(primeiro_time.slug, 'falysson29')
+            self.assertEqual(primeiro_time.nome, "Falysson29")
+            self.assertEqual(primeiro_time.nome_cartola, "Alysson")
+            self.assertEqual(primeiro_time.slug, "falysson29")
             self.assertFalse(primeiro_time.assinante)
 
     def test_servidores_sobrecarregados(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url)
 
             # Act and Assert
@@ -418,7 +451,7 @@ class ApiTest(unittest.TestCase):
     def test_game_over(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
+            url = "{api_url}/mercado/status".format(api_url=self.api_url)
             m.get(url, text=self.GAME_OVER)
 
             # Act and Assert
