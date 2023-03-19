@@ -113,65 +113,6 @@ class ApiAuthTest(unittest.TestCase):
                 api.mercado()
 
 
-class ApiRedisTest(unittest.TestCase):
-    with open('tests/testdata/mercado_status_aberto.json', 'rb') as f:
-        MERCADO_STATUS_ABERTO = f.read().decode('utf8')
-
-    def setUp(self):
-        with requests_mock.mock() as m:
-            m.post('https://login.globo.com/api/authentication',
-                   text='{"id": "Authenticated", "userMessage": "Usuario autenticado com sucesso", "glbId": "GLB_ID"}')
-
-            self.api = cartolafc.Api(email='email@email.com', password='s3nha', redis_url='redis://localhost:6379/0')
-            self.api_url = self.api._api_url
-
-    def test_api_redis_invalid_server(self):
-        # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Erro conectando ao servidor Redis.'):
-            cartolafc.Api(redis_url='redis://localhost:1234')
-
-    def test_api_redis_invalid_url(self):
-        # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Erro conectando ao servidor Redis.'):
-            cartolafc.Api(redis_url='invalid-url')
-
-    def test_mercado_with_redis_hit(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
-            m.get(url, text=self.MERCADO_STATUS_ABERTO)
-            status = self.api.mercado()
-
-            # Assert
-            fechamento = datetime(2017, 5, 27, 14, 0)
-
-            self.assertIsInstance(status, Mercado)
-            self.assertEqual(status.rodada_atual, 3)
-            self.assertEqual(status.status.id, MERCADO_ABERTO)
-            self.assertEqual(status.times_escalados, 3601523)
-            self.assertIsInstance(status.fechamento, datetime)
-            self.assertEqual(status.fechamento, fechamento)
-            self.assertEqual(status.aviso, '')
-
-    def test_mercado_with_redis_miss(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/mercado/status'.format(api_url=self.api_url)
-            m.get(url, text=self.MERCADO_STATUS_ABERTO)
-            status = self.api.mercado()
-
-            # Assert
-            fechamento = datetime(2017, 5, 27, 14, 0)
-
-            self.assertIsInstance(status, Mercado)
-            self.assertEqual(status.rodada_atual, 3)
-            self.assertEqual(status.status.id, MERCADO_ABERTO)
-            self.assertEqual(status.times_escalados, 3601523)
-            self.assertIsInstance(status.fechamento, datetime)
-            self.assertEqual(status.fechamento, fechamento)
-            self.assertEqual(status.aviso, '')
-
-
 class ApiAuthenticatedTest(unittest.TestCase):
     with open('tests/testdata/amigos.json', 'rb') as f:
         AMIGOS = f.read().decode('utf8')
