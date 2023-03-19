@@ -36,7 +36,7 @@ class Api(object):
 
         python-cartolafc é massa!!! E possui muitos outros métodos, como:
             >>> api.mercado()
-            >>> api.time(123, 'slug')
+            >>> api.time(123)
             >>> api.times('termo')
     """
 
@@ -138,7 +138,13 @@ class Api(object):
         )
 
     def pos_rodada_destaques(self) -> DestaqueRodada:
-        if self.mercado().status.id == MERCADO_ABERTO:
+        mercado = self.mercado()
+        if mercado.rodada_atual == 1:
+            raise CartolaFCError(
+            "Os destaques de pós-rodada só ficam disponíveis após a primeira rodada."
+        )
+
+        if mercado.status.id == MERCADO_ABERTO:
             url = "{api_url}/pos-rodada/destaques".format(api_url=self._api_url)
             data = self._request(url)
             return DestaqueRodada.from_dict(data)

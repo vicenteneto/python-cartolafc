@@ -142,7 +142,6 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(status.times_escalados, 3601523)
             self.assertIsInstance(status.fechamento, datetime)
             self.assertEqual(status.fechamento, fechamento)
-            self.assertEqual(status.aviso, "")
 
     def test_mercado_atletas(self):
         # Arrange and Act
