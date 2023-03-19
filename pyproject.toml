@@ -10,7 +10,7 @@ authors = [
 ]
 description = "Uma interface em Python para a API Rest do Cartola FC"
 readme = "README.md"
-dependencies = ["redis", "requests"]
+dependencies = ["requests"]
 requires-python = ">=3.7"
 keywords = ["python", "cartolafc", "api"]
 classifiers = [

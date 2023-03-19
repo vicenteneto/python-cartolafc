@@ -2,9 +2,7 @@ import json
 import logging
 from typing import Any, Dict, List, Optional, Union
 
-import redis
 import requests
-from redis import ConnectionError, TimeoutError
 from requests.status_codes import codes
 from requests.exceptions import HTTPError
 
@@ -43,16 +41,13 @@ class Api(object):
             >>> api.times('termo')
     """
 
-    def __init__(self, email: Optional[str] = None, password: Optional[str] = None, attempts: int = 1,
-                 redis_url: Optional[str] = None, redis_timeout: int = 10) -> None:
+    def __init__(self, email: Optional[str] = None, password: Optional[str] = None, attempts: int = 1) -> None:
         """ Instancia um novo objeto de cartolafc.Api.
 
         Args:
             email (str): O e-mail da sua conta no CartolaFC. Requerido se o password for informado.
             password (str): A senha da sua conta no CartolaFC. Requerido se o email for informado.
             attempts (int): Quantidade de tentativas que serão efetuadas se os servidores estiverem sobrecarregados.
-            redis_url (str): URL para conectar ao servidor Redis, exemplo: redis://user:password@localhost:6379/2.
-            redis_timeout (int): O timeout padrão (em segundos).
 
         Raises:
             cartolafc.CartolaFCError: Se as credenciais forem inválidas ou se apenas um dos
@@ -65,12 +60,8 @@ class Api(object):
         self._password = None
         self._glb_id = None
         self._attempts = attempts if isinstance(attempts, int) and attempts > 0 else 1
-        self._redis_url = None
-        self._redis_timeout = None
-        self._redis = None
 
         self.set_credentials(email, password)
-        self.set_redis(redis_url, redis_timeout)
 
     def set_credentials(self, email: str, password: str) -> None:
         """ Realiza a autenticação no sistema do CartolaFC utilizando o email e password informados.
@@ -109,29 +100,6 @@ class Api(object):
             self._glb_id = body['glbId']
         except HTTPError:
             raise CartolaFCError('Erro authenticando no Cartola.')
-
-    def set_redis(self, redis_url: str, redis_timeout: int = 10) -> None:
-        """ Realiza a autenticação no servidor Redis utilizando a URL informada.
-
-        Args:
-            redis_url (str): URL para conectar ao servidor Redis, exemplo: redis://user:password@localhost:6379/2.
-            redis_timeout (int): O timeout padrão (em segundos).
-
-        Raises:
-            cartolafc.CartolaFCError: Se não for possível se conectar ao servidor Redis
-        """
-        if not redis_url:
-            return
-
-        self._redis_url = redis_url
-        self._redis_timeout = redis_timeout if isinstance(redis_timeout, int) and redis_timeout > 0 else 10
-
-        try:
-            self._redis = redis.StrictRedis.from_url(url=redis_url)
-            self._redis.ping()
-        except (ConnectionError, TimeoutError, ValueError):
-            self._redis = None
-            raise CartolaFCError('Erro conectando ao servidor Redis.')
 
     @RequiresAuthentication
     def amigos(self) -> List[TimeInfo]:
@@ -343,14 +311,6 @@ class Api(object):
         return time
 
     def _request(self, url: str, params: Optional[Dict[str, Any]] = None) -> dict:
-        cached = self._get(url)
-        if cached:
-            try:
-                cached = cached.decode('utf-8')
-            except AttributeError:
-                pass
-            return json.loads(cached)
-
         attempts = self._attempts
         while attempts:
             try:
@@ -359,20 +319,8 @@ class Api(object):
                 if self._glb_id and response.status_code == codes.unauthorized:
                     self.set_credentials(self._email, self._password)
                     response = requests.get(url, params=params, headers={'X-GLB-Token': self._glb_id})
-                parsed = parse_and_check_cartolafc(response.content.decode('utf-8'))
-                return self._set(url, parsed)
+                return parse_and_check_cartolafc(response.content.decode('utf-8'))
             except CartolaFCOverloadError as error:
                 attempts -= 1
                 if not attempts:
                     raise error
-
-    def _get(self, url: str) -> bytes:
-        cached = None
-        if self._redis:
-            cached = self._redis.get(url)
-        return cached
-
-    def _set(self, url: str, data: dict) -> dict:
-        if self._redis:
-            self._redis.set(url, json.dumps(data), ex=self._redis_timeout)
-        return data

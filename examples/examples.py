@@ -1,6 +1,6 @@
 import cartolafc
 
-api = cartolafc.Api(email='email@email.com', password='s3nh4', attempts=5, redis_url='redis://localhost:6379/0')
+api = cartolafc.Api(email='email@email.com', password='s3nh4', attempts=5)
 
 print(api.amigos())
 print(api.clubes())
