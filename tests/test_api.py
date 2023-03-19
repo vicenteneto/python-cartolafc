@@ -142,7 +142,6 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(status.times_escalados, 3601523)
             self.assertIsInstance(status.fechamento, datetime)
             self.assertEqual(status.fechamento, fechamento)
-            self.assertEqual(status.aviso, "")
 
     def test_mercado_atletas(self):
         # Arrange and Act
@@ -273,14 +272,6 @@ class ApiTest(unittest.TestCase):
             with self.assertRaisesRegex(cartolafc.CartolaFCError, ""):
                 self.api.pos_rodada_destaques()
 
-    def test_time_sem_id_sem_nome_e_sem_slug(self):
-        # Act and Assert
-        with self.assertRaisesRegex(
-            cartolafc.CartolaFCError,
-            "Você precisa informar o nome ou o slug do time que deseja obter",
-        ):
-            self.api.time()
-
     def test_time_com_id(self):
         # Arrange and Act
         with requests_mock.mock() as m:
@@ -313,40 +304,6 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(time.info.slug, "falydos-fc")
             self.assertTrue(time.info.assinante)
 
-    def test_time_com_nome(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = "{api_url}/time/slug/{slug}".format(
-                api_url=self.api_url, slug="falydos-fc"
-            )
-            m.get(url, text=self.TIME)
-            time = self.api.time(nome="Falydos FC")
-
-            # Assert
-            self.assertIsInstance(time, Time)
-
-    def test_time_com_slug(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = "{api_url}/time/slug/{slug}".format(
-                api_url=self.api_url, slug="falydos-fc"
-            )
-            m.get(url, text=self.TIME)
-            time = self.api.time(slug="falydos-fc")
-
-            # Assert
-            self.assertIsInstance(time, Time)
-
-    def test_time_com_id_com_nome_e_com_slug(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = "{api_url}/time/id/{id}".format(api_url=self.api_url, id=471815)
-            m.get(url, text=self.TIME)
-            time = self.api.time(time_id=471815, nome="Falydos FC", slug="falydos-fc")
-
-            # Assert
-            self.assertIsInstance(time, Time)
-
     def test_time_parcial_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
@@ -358,20 +315,20 @@ class ApiTest(unittest.TestCase):
                 cartolafc.CartolaFCError,
                 "As pontuações parciais só ficam disponíveis com o mercado fechado.",
             ):
-                self.api.time_parcial(nome="Falydos FC")
+                self.api.time_parcial(471815)
 
     def test_time_parcial_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
             mercado_url = "{api_url}/mercado/status".format(api_url=self.api_url)
             parciais_url = "{api_url}/atletas/pontuados".format(api_url=self.api_url)
-            time_url = "{api_url}/time/slug/falydos-fc".format(api_url=self.api_url)
+            time_url = "{api_url}/time/id/471815".format(api_url=self.api_url)
 
             m.get(mercado_url, text=self.MERCADO_STATUS_FECHADO)
             m.get(parciais_url, text=self.PARCIAIS)
             m.get(time_url, text=self.TIME)
 
-            time = self.api.time_parcial(nome="Falydos FC")
+            time = self.api.time_parcial(471815)
             primeiro_atleta = time.atletas[0]
 
             # Assert
@@ -403,23 +360,23 @@ class ApiTest(unittest.TestCase):
         # Arrange
         with requests_mock.mock() as m:
             error_message = "Time ou parciais não são válidos."
-            time_url = "{api_url}/time/slug/falydos-fc".format(api_url=self.api_url)
+            time_url = "{api_url}/time/id/471815".format(api_url=self.api_url)
 
             m.get(time_url, text=self.TIME)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
-                self.api.time_parcial(nome="Falydos FC", parciais=dict(key="valor"))
+                self.api.time_parcial(time_id=471815, parciais=dict(key="valor"))
 
     def test_time_parcial_valor_invalido(self):
         # Arrange
         with requests_mock.mock() as m:
             error_message = "Time ou parciais não são válidos."
-            time_url = "{api_url}/time/slug/falydos-fc".format(api_url=self.api_url)
+            time_url = "{api_url}/time/id/471815".format(api_url=self.api_url)
 
             m.get(time_url, text=self.TIME)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
-                self.api.time_parcial(nome="Falydos FC", parciais={1: "valor"})
+                self.api.time_parcial(time_id=471815, parciais={1: "valor"})
 
     def test_times(self):
         # Arrange and Act

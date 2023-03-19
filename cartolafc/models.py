@@ -204,13 +204,11 @@ class Mercado(BaseModel):
         rodada_atual: int,
         status_mercado: int,
         times_escalados: int,
-        aviso: str,
         fechamento: datetime,
     ) -> None:
         self.rodada_atual = rodada_atual
         self.status = _mercado_status[status_mercado]
         self.times_escalados = times_escalados
-        self.aviso = aviso
         self.fechamento = fechamento
 
     @classmethod
@@ -226,7 +224,6 @@ class Mercado(BaseModel):
             data["rodada_atual"],
             data["status_mercado"],
             data["times_escalados"],
-            data["aviso"],
             fechamento,
         )
 

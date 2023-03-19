@@ -15,7 +15,7 @@ from .models import (
     Partida,
 )
 from .models import Time, TimeInfo
-from .util import convert_team_name_to_slug, parse_and_check_cartolafc
+from .util import parse_and_check_cartolafc
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -36,7 +36,7 @@ class Api(object):
 
         python-cartolafc é massa!!! E possui muitos outros métodos, como:
             >>> api.mercado()
-            >>> api.time(123, 'slug')
+            >>> api.time(123)
             >>> api.times('termo')
     """
 
@@ -138,7 +138,13 @@ class Api(object):
         )
 
     def pos_rodada_destaques(self) -> DestaqueRodada:
-        if self.mercado().status.id == MERCADO_ABERTO:
+        mercado = self.mercado()
+        if mercado.rodada_atual == 1:
+            raise CartolaFCError(
+            "Os destaques de pós-rodada só ficam disponíveis após a primeira rodada."
+        )
+
+        if mercado.status.id == MERCADO_ABERTO:
             url = "{api_url}/pos-rodada/destaques".format(api_url=self._api_url)
             data = self._request(url)
             return DestaqueRodada.from_dict(data)
@@ -149,17 +155,12 @@ class Api(object):
 
     def time(
         self,
-        time_id: Optional[int] = None,
-        nome: Optional[str] = None,
-        slug: Optional[str] = None,
+        time_id: int = None,
     ) -> Time:
-        """Obtém um time específico, baseando-se no nome ou no slug utilizado.
-        Ao menos um dos dois devem ser informado.
+        """Obtém um time específico, utilizando o id informado.
 
         Args:
-            time_id (int): Id to time que se deseja obter. *Este argumento sempre será utilizado primeiro*
-            nome (str): Nome do time que se deseja obter. Requerido se o slug não for informado.
-            slug (str): Slug do time que se deseja obter. *Este argumento tem prioridade sobre o nome*
+            time_id (int): Id to time que se deseja obter.
 
         Returns:
             Uma instância de cartolafc.Time se o time foi encontrado.
@@ -167,17 +168,8 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
-        if not any((time_id, nome, slug)):
-            raise CartolaFCError(
-                "Você precisa informar o nome ou o slug do time que deseja obter"
-            )
-
-        param = "id" if time_id else "slug"
-        value = (
-            time_id if time_id else (slug if slug else convert_team_name_to_slug(nome))
-        )
-        url = "{api_url}/time/{param}/{value}".format(
-            api_url=self._api_url, param=param, value=value
+        url = "{api_url}/time/id/{time_id}".format(
+            api_url=self._api_url, time_id=time_id
         )
         data = self._request(url)
 
@@ -188,9 +180,7 @@ class Api(object):
 
     def time_parcial(
         self,
-        time_id: Optional[int] = None,
-        nome: Optional[str] = None,
-        slug: Optional[str] = None,
+        time_id: int = None,
         parciais: Optional[Dict[int, Atleta]] = None,
     ) -> Time:
         if parciais is None and self.mercado().status.id != MERCADO_FECHADO:
@@ -199,7 +189,7 @@ class Api(object):
             )
 
         parciais = parciais if isinstance(parciais, dict) else self.parciais()
-        time = self.time(time_id, nome, slug)
+        time = self.time(time_id)
         return self._calculate_parcial(time, parciais)
 
     def times(self, query: str) -> List[TimeInfo]:

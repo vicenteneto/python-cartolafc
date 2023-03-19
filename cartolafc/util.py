@@ -1,22 +1,9 @@
 import datetime
 import json
 import logging
-import re
-import unicodedata
 from typing import Any
 
 from .errors import CartolaFCError, CartolaFCGameOverError, CartolaFCOverloadError
-
-
-def _strip_accents(text: str) -> str:
-    text = unicodedata.normalize("NFD", text)
-    return text.encode("ascii", "ignore").decode("utf-8")
-
-
-def convert_team_name_to_slug(name: str) -> str:
-    slug = _strip_accents(name.lower())
-    slug = re.sub(r"--", "-", re.sub(r"[^a-z0-9]", "-", slug))
-    return slug[:-1] if slug.endswith("-") else slug
 
 
 def json_default(value: Any) -> dict:
