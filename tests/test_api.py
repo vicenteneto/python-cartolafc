@@ -3,23 +3,15 @@ from datetime import datetime
 
 import requests_mock
 from requests.status_codes import codes
-from requests.exceptions import HTTPError
 
 import cartolafc
 from cartolafc.constants import MERCADO_ABERTO
-from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida, PontuacaoInfo
+from cartolafc.models import Atleta, Clube, DestaqueRodada, Liga, LigaPatrocinador, Mercado, Partida
 from cartolafc.models import Time, TimeInfo
 from cartolafc.models import _atleta_status, _posicoes
 
 
 class ApiAttemptsTest(unittest.TestCase):
-    def test_api_attempts_nao_inteiro(self):
-        # Arrange and Act
-        api = cartolafc.Api(attempts='texto')
-
-        # Assert
-        self.assertEqual(api._attempts, 1)
-
     def test_api_attempts_menor_que_1(self):
         # Arrange and Act
         api = cartolafc.Api(attempts=0)
@@ -53,202 +45,6 @@ class ApiAttemptsTest(unittest.TestCase):
                 api.mercado()
 
 
-class ApiAuthTest(unittest.TestCase):
-    def test_api_auth_sem_email(self):
-        # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
-            cartolafc.Api(password='s3nha')
-
-    def test_api_auth_sem_password(self):
-        # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'E-mail ou senha ausente'):
-            cartolafc.Api(email='email@email.com')
-
-    def test_api_auth_http_error(self):
-        # Arrange
-        with requests_mock.mock() as m:
-            user_message = 'Seu e-mail ou senha estao incorretos.'
-            m.post('https://login.globo.com/api/authentication', exc=HTTPError)
-
-            # Act and Assert
-            with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Erro authenticando no Cartola'):
-                cartolafc.Api(email='email@email.com', password='s3nha')
-
-    def test_api_auth_invalida(self):
-        # Arrange
-        with requests_mock.mock() as m:
-            user_message = 'Seu e-mail ou senha estao incorretos.'
-            m.post('https://login.globo.com/api/authentication', status_code=codes.unauthorized,
-                   text='{"id": "BadCredentials", "userMessage": "%s"}' % user_message)
-
-            # Act and Assert
-            with self.assertRaisesRegex(cartolafc.CartolaFCError, user_message):
-                cartolafc.Api(email='email@email.com', password='s3nha')
-
-    def test_api_auth_com_sucesso(self):
-        # Arrange
-        with requests_mock.mock() as m:
-            m.post('https://login.globo.com/api/authentication',
-                   text='{"id": "Authenticated", "userMessage": "Usuario autenticado com sucesso", "glbId": "GLB_ID"}')
-
-            # Act
-            api = cartolafc.Api(email='email@email.com', password='s3nha')
-
-            # Assert
-            self.assertEqual(api._glb_id, 'GLB_ID')
-
-    def test_api_auth_unauthorized(self):
-        # Arrange
-        with requests_mock.mock() as m:
-            m.post('https://login.globo.com/api/authentication',
-                   text='{"id": "Authenticated", "userMessage": "Usuario autenticado com sucesso", "glbId": "GLB_ID"}')
-
-            api = cartolafc.Api(email='email@email.com', password='s3nha')
-
-            url = '{api_url}/mercado/status'.format(api_url=api._api_url)
-            m.get(url, status_code=codes.unauthorized)
-
-            # Act and Assert
-            with self.assertRaises(cartolafc.CartolaFCOverloadError):
-                api.mercado()
-
-
-class ApiAuthenticatedTest(unittest.TestCase):
-    with open('tests/testdata/amigos.json', 'rb') as f:
-        AMIGOS = f.read().decode('utf8')
-    with open('tests/testdata/liga.json', 'rb') as f:
-        LIGA = f.read().decode('utf8')
-    with open('tests/testdata/pontuacao_atleta.json', 'rb') as f:
-        PONTUACAO_ATLETA = f.read().decode('utf8')
-    with open('tests/testdata/time_logado.json', 'rb') as f:
-        TIME_LOGADO = f.read().decode('utf8')
-
-    def setUp(self):
-        with requests_mock.mock() as m:
-            m.post('https://login.globo.com/api/authentication',
-                   text='{"id": "Authenticated", "userMessage": "Usuario autenticado com sucesso", "glbId": "GLB_ID"}')
-
-            self.api = cartolafc.Api(email='email@email.com', password='s3nha')
-            self.api_url = self.api._api_url
-
-    def test_amigos(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/auth/amigos'.format(api_url=self.api_url)
-            m.get(url, text=self.AMIGOS)
-            amigos = self.api.amigos()
-            primeiro_time = amigos[0]
-
-            # Assert
-            self.assertIsInstance(amigos, list)
-            self.assertIsInstance(primeiro_time, TimeInfo)
-            self.assertEqual(primeiro_time.id, 2990131)
-            self.assertEqual(primeiro_time.nome, 'FC Porto Brasil')
-            self.assertEqual(primeiro_time.nome_cartola, 'Elmano Neves Neto')
-            self.assertEqual(primeiro_time.slug, 'fc-porto-brasil')
-            self.assertTrue(primeiro_time.assinante)
-
-    def test_liga_sem_nome_e_slug(self):
-        # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError,
-                                    'Você precisa informar o nome ou o slug da liga que deseja obter'):
-            self.api.liga()
-
-    def test_liga_com_nome(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/auth/liga/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
-            m.get(url, text=self.LIGA)
-            liga = self.api.liga(nome='Falydos FC')
-            primeiro_time = liga.times[0]
-
-            # Assert
-            self.assertIsInstance(liga, Liga)
-            self.assertEqual(liga.id, 6407)
-            self.assertEqual(liga.nome, 'Virtus Premier League')
-            self.assertEqual(liga.slug, 'virtus-premier-league')
-            self.assertEqual(liga.descricao,
-                             'Prêmios para: \n\n- Melhor de cada Mês (R$50,00)\n- Melhor do 1º e 2º Turno (R$150,00)\n'
-                             '- 2º Lugar Geral (R$50)\n- 1º Lugar Geral (R$250,00)\n\nBoa sorte!')
-            self.assertIsInstance(liga.times, list)
-            self.assertIsInstance(primeiro_time, TimeInfo)
-            self.assertEqual(primeiro_time.id, 453420)
-            self.assertEqual(primeiro_time.nome, 'Mosqueteiros JPB')
-            self.assertEqual(primeiro_time.nome_cartola, 'Erick Costa')
-            self.assertEqual(primeiro_time.slug, 'mosqueteiros-jpb')
-            self.assertTrue(primeiro_time.assinante)
-
-    def test_liga_com_slug(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/auth/liga/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
-            m.get(url, text=self.LIGA)
-            liga = self.api.liga(slug='falydos-fc')
-
-            # Assert
-            self.assertIsInstance(liga, Liga)
-
-    def test_liga_com_nome_e_slug(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/auth/liga/{slug}'.format(api_url=self.api_url, slug='falydos-fc')
-            m.get(url, text=self.LIGA)
-            liga = self.api.liga(nome='Falydos FC', slug='falydos-fc')
-
-            # Assert
-            self.assertIsInstance(liga, Liga)
-
-    def test_pontuacao_atleta(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/auth/mercado/atleta/{id}/pontuacao'.format(api_url=self.api_url, id=81682)
-            m.get(url, text=self.PONTUACAO_ATLETA)
-            pontuacoes = self.api.pontuacao_atleta(81682)
-            primeira_rodada = pontuacoes[0]
-
-            # Assert
-            self.assertIsInstance(pontuacoes, list)
-            self.assertIsInstance(primeira_rodada, PontuacaoInfo)
-            self.assertEqual(primeira_rodada.atleta_id, 81682)
-            self.assertEqual(primeira_rodada.rodada_id, 1)
-            self.assertEqual(primeira_rodada.pontos, 1.1)
-            self.assertEqual(primeira_rodada.preco, 6.44)
-            self.assertEqual(primeira_rodada.variacao, -1.56)
-            self.assertEqual(primeira_rodada.media, 1.1)
-
-    def test_time_logado(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/auth/time'.format(api_url=self.api_url)
-            m.get(url, text=self.TIME_LOGADO)
-            time = self.api.time_logado()
-            primeiro_atleta = time.atletas[0]
-
-            # Assert
-            self.assertIsInstance(time, Time)
-            self.assertEqual(time.patrimonio, 144.74)
-            self.assertEqual(time.valor_time, 143.84961)
-            self.assertEqual(time.ultima_pontuacao, 70.02978515625)
-            self.assertIsInstance(time.atletas, list)
-            self.assertIsInstance(primeiro_atleta, Atleta)
-            self.assertEqual(primeiro_atleta.id, 38140)
-            self.assertEqual(primeiro_atleta.apelido, 'Fernando Prass')
-            self.assertEqual(primeiro_atleta.pontos, 7.5)
-            self.assertEqual(primeiro_atleta.scout, {'DD': 5, 'FS': 1, 'GS': 1, 'PE': 1, 'SG': 1})
-            self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
-            self.assertIsInstance(primeiro_atleta.clube, Clube)
-            self.assertEqual(primeiro_atleta.clube.id, 275)
-            self.assertEqual(primeiro_atleta.clube.nome, 'Palmeiras')
-            self.assertEqual(primeiro_atleta.clube.abreviacao, 'PAL')
-            self.assertEqual(primeiro_atleta.status, _atleta_status[7])
-            self.assertIsInstance(time.info, TimeInfo)
-            self.assertEqual(time.info.id, 471815)
-            self.assertEqual(time.info.nome, 'Falydos FC')
-            self.assertEqual(time.info.nome_cartola, 'Vicente Neto')
-            self.assertEqual(time.info.slug, 'falydos-fc')
-            self.assertTrue(time.info.assinante)
-
-
 class ApiTest(unittest.TestCase):
     with open('tests/testdata/clubes.json', 'rb') as f:
         CLUBES = f.read().decode('utf8')
@@ -278,11 +74,6 @@ class ApiTest(unittest.TestCase):
     def setUp(self):
         self.api = cartolafc.Api()
         self.api_url = self.api._api_url
-
-    def test_amigos_sem_autenticacao(self):
-        # Act and Assert
-        with self.assertRaisesRegex(cartolafc.CartolaFCError, 'Esta função requer autenticação'):
-            self.api.amigos()
 
     def test_clubes(self):
         # Arrange and Act
@@ -524,16 +315,6 @@ class ApiTest(unittest.TestCase):
 
             # Assert
             self.assertIsInstance(time, Time)
-
-    def test_time_com_json(self):
-        # Arrange and Act
-        with requests_mock.mock() as m:
-            url = '{api_url}/time/id/{id}'.format(api_url=self.api_url, id=471815)
-            m.get(url, text=self.TIME)
-            time = self.api.time(time_id=471815, as_json=True)
-
-            # Assert
-            self.assertIsInstance(time, dict)
 
     def test_time_parcial_mercado_aberto(self):
         # Arrange

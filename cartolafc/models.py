@@ -197,23 +197,6 @@ class Partida(BaseModel):
         return cls(data_, local, clube_casa, placar_casa, clube_visitante, placar_visitante)
 
 
-class PontuacaoInfo(BaseModel):
-    """ Pontuação Info """
-
-    def __init__(self, atleta_id: int, rodada_id: int, pontos: float, preco: float, variacao: float,
-                 media: float) -> None:
-        self.atleta_id = atleta_id
-        self.rodada_id = rodada_id
-        self.pontos = pontos
-        self.preco = preco
-        self.variacao = variacao
-        self.media = media
-
-    @classmethod
-    def from_dict(cls, data: dict) -> 'PontuacaoInfo':
-        return cls(data['atleta_id'], data['rodada_id'], data['pontos'], data['preco'], data['variacao'], data['media'])
-
-
 class Time(BaseModel):
     """ Time """
 
