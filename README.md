@@ -1,11 +1,9 @@
 # Python Cartola FC API
 
 [![PyPi Version](https://img.shields.io/pypi/v/python-cartolafc.svg)](https://pypi.org/project/python-cartolafc/)
-[![Build Status](https://travis-ci.org/vicenteneto/python-cartolafc.svg?branch=master)](https://travis-ci.org/vicenteneto/python-cartolafc)
-[![Coverage Status](https://coveralls.io/repos/github/vicenteneto/python-cartolafc/badge.svg?branch=master)](https://coveralls.io/github/vicenteneto/python-cartolafc?branch=master)
-[![Requirements Status](https://requires.io/github/vicenteneto/python-cartolafc/requirements.svg?branch=master)](https://requires.io/github/vicenteneto/python-cartolafc/requirements/?branch=master)
+[![Build Status](https://github.com/vicenteneto/python-cartolafc/actions/workflows/main.yml/badge.svg)](https://github.com/vicenteneto/python-cartolafc/actions/workflows/main.yml)
 [![Development Status](http://img.shields.io/:status-production/stable-brightgreen.svg)](https://github.com/vicenteneto/python-cartolafc)
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vicenteneto/python-cartolafc/blob/main/LICENSE)
 
 Uma interface em Python para a API Rest do Cartola FC.
 
@@ -36,7 +34,7 @@ times foram escalados no jogo.
 
 ## Versões
 
-Este projeto foi testado e funciona em Python 3.5, 3.6, 3.7 e 3.8.
+Este projeto foi testado e funciona em Python 3.8, 3.9 e 3.10.
 
 
 ## Instalação
@@ -76,7 +74,7 @@ Python facilmente gerenciados:
 ```
 
 Mais exemplos disponíveis no Github:
-[https://github.com/vicenteneto/python-cartolafc/tree/master/examples](https://github.com/vicenteneto/python-cartolafc/tree/master/examples)
+[https://github.com/vicenteneto/python-cartolafc/tree/main/examples](https://github.com/vicenteneto/python-cartolafc/tree/main/examples)
 
 
 ## Contribuintes
@@ -88,4 +86,4 @@ Identificou algum bug ou tem alguma requisição de funcionalidade nova?
 ## Direitos autorais e licença
 
 Copyright 2017-, Vicente Neto. Este projeto é licenciado sob a 
-[Licença MIT](https://github.com/vicenteneto/python-cartolafc/blob/master/LICENSE).
+[Licença MIT](https://github.com/vicenteneto/python-cartolafc/blob/main/LICENSE).
