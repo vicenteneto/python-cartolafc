@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Python-CartolaFC"
+version = "2.0.1"
+authors = [
+  { name="Vicente Ramos", email="sneto.vicente@gmail.com" },
+]
+description = "Uma interface em Python para a API Rest do Cartola FC"
+readme = "README.md"
+dependencies = ["requests"]
+requires-python = ">=3.7"
+keywords = ["python", "cartolafc", "api"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/vicenteneto/python-cartolafc"
+"Bug Tracker" = "https://github.com/vicenteneto/python-cartolafc/issues"
