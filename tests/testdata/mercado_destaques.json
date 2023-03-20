@@ -1,0 +1,342 @@
+[
+  {
+    "posicao": "Lateral",
+    "posicao_abreviacao": "LAT",
+    "clube": "PAL",
+    "clube_nome": "Palmeiras",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/palmeiras_60x60.png",
+    "Atleta": {
+      "nome": "Marcos Luis Rocha Aquino",
+      "apelido": "Marcos Rocha",
+      "apelido_abreviado": "M. Rocha",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/15/photo_FORMATO_OnxH8aq.png",
+      "atleta_id": 63013,
+      "preco_editorial": 5
+    },
+    "clube_id": 275,
+    "escalacoes": 118020
+  },
+  {
+    "posicao": "Zagueiro",
+    "posicao_abreviacao": "ZAG",
+    "clube": "CAP",
+    "clube_nome": "Athlético-PR",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2019/09/09/Athletico-PR-65x65.png",
+    "Atleta": {
+      "nome": "Pedro Henrique Ribeiro Gonçalves",
+      "apelido": "Pedro Henrique",
+      "apelido_abreviado": "P. Henrique",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/02/28/photo_FORMATO_Pmz9ta0.png",
+      "atleta_id": 87225,
+      "preco_editorial": 5
+    },
+    "clube_id": 293,
+    "escalacoes": 97309
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "BGT",
+    "clube_nome": "Bragantino",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2020/01/01/65.png",
+    "Atleta": {
+      "nome": "Artur Victor Guimarães",
+      "apelido": "Artur",
+      "apelido_abreviado": "Artur",
+      "foto": "https://s.sde.globo.com/media/person_role/2022/05/05/5c98a0d6cc76edfef83280072bbd3832_FORMATO.png",
+      "atleta_id": 95799,
+      "preco_editorial": 7
+    },
+    "clube_id": 280,
+    "escalacoes": 89654
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "CAM",
+    "clube_nome": "Atlético-MG",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2017/11/23/Atletico-Mineiro-escudo65px.png",
+    "Atleta": {
+      "nome": "Paulo Henrique Sampaio Filho",
+      "apelido": "Paulinho",
+      "apelido_abreviado": "Paulinho",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/01/photo_FORMATO_WoByTJE.png",
+      "atleta_id": 99818,
+      "preco_editorial": 8
+    },
+    "clube_id": 282,
+    "escalacoes": 85976
+  },
+  {
+    "posicao": "Goleiro",
+    "posicao_abreviacao": "GOL",
+    "clube": "CAM",
+    "clube_nome": "Atlético-MG",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2017/11/23/Atletico-Mineiro-escudo65px.png",
+    "Atleta": {
+      "nome": "Everson Felipe Marques Pires",
+      "apelido": "Everson",
+      "apelido_abreviado": "Everson",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/01/photo_FORMATO_XhJDp6n.png",
+      "atleta_id": 72294,
+      "preco_editorial": 5
+    },
+    "clube_id": 282,
+    "escalacoes": 83757
+  },
+  {
+    "posicao": "Técnico",
+    "posicao_abreviacao": "TEC",
+    "clube": "CAP",
+    "clube_nome": "Athlético-PR",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2019/09/09/Athletico-PR-65x65.png",
+    "Atleta": {
+      "nome": "Paulo César Turra",
+      "apelido": "Paulo Turra",
+      "apelido_abreviado": "P. Turra",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/06/photo_FORMATO_L21KedQ.png",
+      "atleta_id": 82747,
+      "preco_editorial": 5
+    },
+    "clube_id": 293,
+    "escalacoes": 80364
+  },
+  {
+    "posicao": "Lateral",
+    "posicao_abreviacao": "LAT",
+    "clube": "FLA",
+    "clube_nome": "Flamengo",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2018/04/09/Flamengo-65.png",
+    "Atleta": {
+      "nome": "Guillermo Varela Olivera",
+      "apelido": "Varela",
+      "apelido_abreviado": "Varela",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/01/photo_FORMATO_NeDa74S.png",
+      "atleta_id": 84816,
+      "preco_editorial": 5
+    },
+    "clube_id": 262,
+    "escalacoes": 56800
+  },
+  {
+    "posicao": "Meia",
+    "posicao_abreviacao": "MEI",
+    "clube": "COR",
+    "clube_nome": "Corinthians",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2019/09/30/Corinthians_65.png",
+    "Atleta": {
+      "nome": "Adson Ferreira Soares",
+      "apelido": "Adson",
+      "apelido_abreviado": "Adson",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/02/photo_FORMATO_uzK3HTh.png",
+      "atleta_id": 111682,
+      "preco_editorial": 5
+    },
+    "clube_id": 264,
+    "escalacoes": 45686
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "PAL",
+    "clube_nome": "Palmeiras",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/palmeiras_60x60.png",
+    "Atleta": {
+      "nome": "Ronielson da Silva Barbosa",
+      "apelido": "Rony",
+      "apelido_abreviado": "Rony",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/15/photo_FORMATO_eJOedW8.png",
+      "atleta_id": 91607,
+      "preco_editorial": 15
+    },
+    "clube_id": 275,
+    "escalacoes": 44915
+  },
+  {
+    "posicao": "Zagueiro",
+    "posicao_abreviacao": "ZAG",
+    "clube": "COR",
+    "clube_nome": "Corinthians",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2019/09/30/Corinthians_65.png",
+    "Atleta": {
+      "nome": "Bruno Méndez Cittadini",
+      "apelido": "Bruno Méndez",
+      "apelido_abreviado": "B. Méndez",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/02/photo_FORMATO_VwEvkmY.png",
+      "atleta_id": 103700,
+      "preco_editorial": 6
+    },
+    "clube_id": 264,
+    "escalacoes": 44383
+  },
+  {
+    "posicao": "Meia",
+    "posicao_abreviacao": "MEI",
+    "clube": "PAL",
+    "clube_nome": "Palmeiras",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/palmeiras_60x60.png",
+    "Atleta": {
+      "nome": "Gabriel Vinícius Menino",
+      "apelido": "Gabriel Menino",
+      "apelido_abreviado": "G. Menino",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/15/photo_FORMATO_a770SrF.png",
+      "atleta_id": 103767,
+      "preco_editorial": 8
+    },
+    "clube_id": 275,
+    "escalacoes": 43541
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "VAS",
+    "clube_nome": "Vasco",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2021/09/04/ESCUDO-VASCO-RGB_65px.png",
+    "Atleta": {
+      "nome": "Pedro Raul Garay da Silva",
+      "apelido": "Pedro Raul",
+      "apelido_abreviado": "P. Raul",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/14/photo_FORMATO_IDn4App.png",
+      "atleta_id": 98225,
+      "preco_editorial": 5
+    },
+    "clube_id": 267,
+    "escalacoes": 42436
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "FLA",
+    "clube_nome": "Flamengo",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2018/04/09/Flamengo-65.png",
+    "Atleta": {
+      "nome": "Pedro Guilherme Abreu dos Santos",
+      "apelido": "Pedro",
+      "apelido_abreviado": "Pedro",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/01/photo_FORMATO_r1M3bLz.png",
+      "atleta_id": 94583,
+      "preco_editorial": 19
+    },
+    "clube_id": 262,
+    "escalacoes": 40902
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "CAM",
+    "clube_nome": "Atlético-MG",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2017/11/23/Atletico-Mineiro-escudo65px.png",
+    "Atleta": {
+      "nome": "Givanildo Vieira de Souza",
+      "apelido": "Hulk",
+      "apelido_abreviado": "Hulk",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/01/photo_FORMATO_HgdfwiM.png",
+      "atleta_id": 39148,
+      "preco_editorial": 16
+    },
+    "clube_id": 282,
+    "escalacoes": 40649
+  },
+  {
+    "posicao": "Goleiro",
+    "posicao_abreviacao": "GOL",
+    "clube": "GRE",
+    "clube_nome": "Grêmio",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/gremio_60x60.png",
+    "Atleta": {
+      "nome": "Adriel Vasconcelos Ramos",
+      "apelido": "Adriel",
+      "apelido_abreviado": "Adriel",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/08/photo_FORMATO_WyxMzh5.png",
+      "atleta_id": 107748,
+      "preco_editorial": 6
+    },
+    "clube_id": 284,
+    "escalacoes": 35336
+  },
+  {
+    "posicao": "Meia",
+    "posicao_abreviacao": "MEI",
+    "clube": "CAP",
+    "clube_nome": "Athlético-PR",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2019/09/09/Athletico-PR-65x65.png",
+    "Atleta": {
+      "nome": "Vitor Frezarin Bueno",
+      "apelido": "Vitor Bueno",
+      "apelido_abreviado": "V. Bueno",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/02/28/photo_FORMATO_Vn5DBCR.png",
+      "atleta_id": 87552,
+      "preco_editorial": 5
+    },
+    "clube_id": 293,
+    "escalacoes": 32263
+  },
+  {
+    "posicao": "Meia",
+    "posicao_abreviacao": "MEI",
+    "clube": "PAL",
+    "clube_nome": "Palmeiras",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/palmeiras_60x60.png",
+    "Atleta": {
+      "nome": "Bruno Vinícius Souza Ramos",
+      "apelido": "Bruno Tabata",
+      "apelido_abreviado": "B. Tabata",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/15/photo_FORMATO_g6CL75l.png",
+      "atleta_id": 107174,
+      "preco_editorial": 4
+    },
+    "clube_id": 275,
+    "escalacoes": 31716
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ATA",
+    "clube": "GRE",
+    "clube_nome": "Grêmio",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/gremio_60x60.png",
+    "Atleta": {
+      "nome": "Luis Alberto Suárez Díaz",
+      "apelido": "Luis Suárez",
+      "apelido_abreviado": "L. Suárez",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/08/photo_FORMATO_f8gCuyP.png",
+      "atleta_id": 69318,
+      "preco_editorial": 23
+    },
+    "clube_id": 284,
+    "escalacoes": 30133
+  },
+  {
+    "posicao": "Zagueiro",
+    "posicao_abreviacao": "ZAG",
+    "clube": "GRE",
+    "clube_nome": "Grêmio",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/gremio_60x60.png",
+    "Atleta": {
+      "nome": "Walter Kannemann",
+      "apelido": "Kannemann",
+      "apelido_abreviado": "Kannemann",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/08/photo_FORMATO_q2fTOjY.png",
+      "atleta_id": 87342,
+      "preco_editorial": 7
+    },
+    "clube_id": 284,
+    "escalacoes": 29665
+  },
+  {
+    "posicao": "Meia",
+    "posicao_abreviacao": "MEI",
+    "clube": "GRE",
+    "clube_nome": "Grêmio",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/gremio_60x60.png",
+    "Atleta": {
+      "nome": "Vinícius Goes Barbosa de Souza",
+      "apelido": "Vina",
+      "apelido_abreviado": "Vina",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/08/photo_FORMATO_q8oUM9e.png",
+      "atleta_id": 71162,
+      "preco_editorial": 9
+    },
+    "clube_id": 284,
+    "escalacoes": 26665
+  }
+]

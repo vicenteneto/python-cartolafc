@@ -4,7 +4,7 @@ api = cartolafc.Api(attempts=5)
 
 print(api.clubes())
 print(api.ligas(query="Teste"))
-print(api.ligas_patrocinadores())
+print(api.patrocinadores())
 print(api.mercado())
 print(api.mercado_atletas())
 print(api.parciais())

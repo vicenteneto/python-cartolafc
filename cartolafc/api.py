@@ -7,10 +7,11 @@ from .constants import MERCADO_ABERTO, MERCADO_FECHADO
 from .errors import CartolaFCError, CartolaFCOverloadError
 from .models import (
     Atleta,
+    AtletaDestaque,
     Clube,
     DestaqueRodada,
     Liga,
-    LigaPatrocinador,
+    Patrocinador,
     Mercado,
     Partida,
 )
@@ -71,11 +72,11 @@ class Api(object):
         data = self._request(url, params=dict(q=query))
         return [Liga.from_dict(liga_info) for liga_info in data]
 
-    def ligas_patrocinadores(self) -> Dict[int, LigaPatrocinador]:
+    def patrocinadores(self) -> Dict[int, Patrocinador]:
         url = f"{self._api_url}/patrocinadores"
         data = self._request(url)
         return {
-            int(patrocinador_id): LigaPatrocinador.from_dict(patrocinador)
+            int(patrocinador_id): Patrocinador.from_dict(patrocinador)
             for patrocinador_id, patrocinador in data.items()
         }
 
@@ -126,8 +127,11 @@ class Api(object):
             "As pontuações parciais só ficam disponíveis com o mercado fechado."
         )
 
-    def partidas(self, rodada) -> List[Partida]:
-        url = f"{self._api_url}/partidas/{rodada}"
+    def partidas(self, rodada: Optional[int] = 0) -> List[Partida]:
+        url = f"{self._api_url}/partidas"
+        if rodada:
+            url += f"/{rodada}"
+
         data = self._request(url)
         clubes = {
             clube["id"]: Clube.from_dict(clube) for clube in data["clubes"].values()
@@ -136,6 +140,28 @@ class Api(object):
             [Partida.from_dict(partida, clubes=clubes) for partida in data["partidas"]],
             key=lambda p: p.data,
         )
+
+    def destaques(self) -> List[AtletaDestaque]:
+        """Obtém os destaques do mercado na rodada atual.
+
+        Returns:
+            Uma lista de Atletas.
+        """
+
+        url = f"{self._api_url}/mercado/destaques"
+        data = self._request(url)
+        return [AtletaDestaque.from_dict(destaque) for destaque in data]
+
+    def destaques_reservas(self) -> List[AtletaDestaque]:
+        """Obtém os destaques resservas do mercado na rodada atual.
+
+        Returns:
+            Uma lista de Atletas.
+        """
+
+        url = f"{self._api_url}/mercado/destaques/reservas"
+        data = self._request(url)
+        return [AtletaDestaque.from_dict(destaque) for destaque in data]
 
     def pos_rodada_destaques(self) -> DestaqueRodada:
         mercado = self.mercado()

@@ -8,10 +8,11 @@ import cartolafc
 from cartolafc.constants import MERCADO_ABERTO
 from cartolafc.models import (
     Atleta,
+    AtletaDestaque,
     Clube,
     DestaqueRodada,
     Liga,
-    LigaPatrocinador,
+    Patrocinador,
     Mercado,
     Partida,
 )
@@ -69,8 +70,8 @@ class ApiTest(unittest.TestCase):
         CLUBES = f.read().decode("utf8")
     with open("tests/testdata/ligas.json", "rb") as f:
         LIGAS = f.read().decode("utf8")
-    with open("tests/testdata/ligas_patrocinadores.json", "rb") as f:
-        LIGAS_PATROCINADORES = f.read().decode("utf8")
+    with open("tests/testdata/patrocinadores.json", "rb") as f:
+        PATROCINADORES = f.read().decode("utf8")
     with open("tests/testdata/mercado_atletas.json", "rb") as f:
         MERCADO_ATLETAS = f.read().decode("utf8")
     with open("tests/testdata/mercado_status_aberto.json", "rb") as f:
@@ -89,6 +90,10 @@ class ApiTest(unittest.TestCase):
         TIMES = f.read().decode("utf-8")
     with open("tests/testdata/game_over.json", "rb") as f:
         GAME_OVER = f.read().decode("utf-8")
+    with open("tests/testdata/mercado_destaques.json", "rb") as f:
+        DESTAQUES = f.read().decode("utf-8")
+    with open("tests/testdata/mercado_destaques_reservas.json", "rb") as f:
+        DESTAQUES_RESERVAS = f.read().decode("utf-8")
 
     def setUp(self):
         self.api = cartolafc.Api()
@@ -213,6 +218,25 @@ class ApiTest(unittest.TestCase):
     def test_partidas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
+            url = f"{self.api_url}/partidas"
+            m.get(url, text=self.PARTIDAS)
+            partidas = self.api.partidas()
+            primeira_partida = partidas[0]
+
+            # Assert
+            self.assertIsInstance(partidas, list)
+            self.assertIsInstance(primeira_partida, Partida)
+            self.assertIsInstance(primeira_partida.data, datetime)
+            # TODO: Teste partidas com local e placar
+            # self.assertEqual(primeira_partida.local, "Maracanã")
+            self.assertEqual(primeira_partida.clube_casa.nome, "Flamengo")
+            # self.assertEqual(primeira_partida.placar_casa, 1)
+            self.assertEqual(primeira_partida.clube_visitante.nome, "Coritiba")
+            # self.assertEqual(primeira_partida.placar_visitante, 1)
+
+    def test_partidas_com_rodada(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
             url = f"{self.api_url}/partidas/1"
             m.get(url, text=self.PARTIDAS)
             partidas = self.api.partidas(1)
@@ -233,13 +257,13 @@ class ApiTest(unittest.TestCase):
         # Arrange and Act
         with requests_mock.mock() as m:
             url = f"{self.api_url}/patrocinadores"
-            m.get(url, text=self.LIGAS_PATROCINADORES)
-            ligas = self.api.ligas_patrocinadores()
+            m.get(url, text=self.PATROCINADORES)
+            ligas = self.api.patrocinadores()
             liga_gato_mestre = ligas[62]
 
             # Assert
             self.assertIsInstance(ligas, dict)
-            self.assertIsInstance(liga_gato_mestre, LigaPatrocinador)
+            self.assertIsInstance(liga_gato_mestre, Patrocinador)
             self.assertEqual(liga_gato_mestre.id, 62)
             self.assertEqual(liga_gato_mestre.nome, "Liga Gato Mestre")
             self.assertEqual(
@@ -439,3 +463,40 @@ class ApiTest(unittest.TestCase):
             # Act and Assert
             with self.assertRaises(cartolafc.CartolaFCGameOverError):
                 self.api.mercado()
+
+    def test_destaques(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = f"{self.api_url}/mercado/destaques"
+            m.get(url, text=self.DESTAQUES)
+            destaques = self.api.destaques()
+            primeiro_destaque = destaques[0]
+
+            # Assert
+            self.assertIsInstance(destaques, list)
+            self.assertIsInstance(primeiro_destaque, AtletaDestaque)
+            self.assertEqual(primeiro_destaque.id, 63013)
+            self.assertEqual(primeiro_destaque.apelido, "Marcos Rocha")
+            print(primeiro_destaque)
+            self.assertEqual(primeiro_destaque.posicao.nome, "Lateral")
+            self.assertEqual(primeiro_destaque.preco, 5)
+            self.assertEqual(primeiro_destaque.clube.nome, "Palmeiras")
+            self.assertEqual(primeiro_destaque.escalacoes, 118020)
+
+    def test_destaques_reservas(self):
+        # Arrange and Act
+        with requests_mock.mock() as m:
+            url = f"{self.api_url}/mercado/destaques/reservas"
+            m.get(url, text=self.DESTAQUES_RESERVAS)
+            destaques = self.api.destaques_reservas()
+            primeiro_destaque = destaques[0]
+
+            # Assert
+            self.assertIsInstance(destaques, list)
+            self.assertIsInstance(primeiro_destaque, AtletaDestaque)
+            self.assertEqual(primeiro_destaque.id, 70449)
+            self.assertEqual(primeiro_destaque.apelido, "Gabriel")
+            self.assertEqual(primeiro_destaque.posicao.nome, "Goleiro")
+            self.assertEqual(primeiro_destaque.preco, 5)
+            self.assertEqual(primeiro_destaque.clube.nome, "Coritiba")
+            self.assertEqual(primeiro_destaque.escalacoes, 62746)

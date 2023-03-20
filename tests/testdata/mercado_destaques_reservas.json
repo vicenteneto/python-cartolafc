@@ -1,0 +1,87 @@
+[
+  {
+    "posicao": "Goleiro",
+    "posicao_abreviacao": "gol",
+    "clube": "CFC",
+    "clube_nome": "Coritiba",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2017/03/29/coritiba65.png",
+    "Atleta": {
+      "nome": "Gabriel Vasconcelos Ferreira - Vasconcellos",
+      "apelido": "Gabriel",
+      "apelido_abreviado": "Gabriel",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/02/28/photo_FORMATO_ovYbvXA.png",
+      "atleta_id": 70449,
+      "preco_editorial": 5
+    },
+    "clube_id": 294,
+    "escalacoes": 62746
+  },
+  {
+    "posicao": "Atacante",
+    "posicao_abreviacao": "ata",
+    "clube": "VAS",
+    "clube_nome": "Vasco",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2021/09/04/ESCUDO-VASCO-RGB_65px.png",
+    "Atleta": {
+      "nome": "Pedro Raul Garay da Silva",
+      "apelido": "Pedro Raul",
+      "apelido_abreviado": "P. Raul",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/14/photo_FORMATO_IDn4App.png",
+      "atleta_id": 98225,
+      "preco_editorial": 5
+    },
+    "clube_id": 267,
+    "escalacoes": 33207
+  },
+  {
+    "posicao": "Lateral",
+    "posicao_abreviacao": "lat",
+    "clube": "FLA",
+    "clube_nome": "Flamengo",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2018/04/09/Flamengo-65.png",
+    "Atleta": {
+      "nome": "Guillermo Varela Olivera",
+      "apelido": "Varela",
+      "apelido_abreviado": "Varela",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/01/photo_FORMATO_NeDa74S.png",
+      "atleta_id": 84816,
+      "preco_editorial": 5
+    },
+    "clube_id": 262,
+    "escalacoes": 31379
+  },
+  {
+    "posicao": "Meia",
+    "posicao_abreviacao": "mei",
+    "clube": "PAL",
+    "clube_nome": "Palmeiras",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/palmeiras_60x60.png",
+    "Atleta": {
+      "nome": "Bruno Vinícius Souza Ramos",
+      "apelido": "Bruno Tabata",
+      "apelido_abreviado": "B. Tabata",
+      "foto": "https://s.sde.globo.com/media/person_role/2023/03/15/photo_FORMATO_g6CL75l.png",
+      "atleta_id": 107174,
+      "preco_editorial": 4
+    },
+    "clube_id": 275,
+    "escalacoes": 17348
+  },
+  {
+    "posicao": "Zagueiro",
+    "posicao_abreviacao": "zag",
+    "clube": "FLU",
+    "clube_nome": "Fluminense",
+    "escudo_clube": "https://s.sde.globo.com/media/organizations/2014/04/14/fluminense_60x60.png",
+    "Atleta": {
+      "nome": "David Braz de Oliveira Filho",
+      "apelido": "David Braz",
+      "apelido_abreviado": "D. Braz",
+      "foto": "https://s.sde.globo.com/media/person_role/2022/04/20/2787635c960a396f6aca8c8ff11b00d3_FORMATO.png",
+      "atleta_id": 50317,
+      "preco_editorial": 5
+    },
+    "clube_id": 266,
+    "escalacoes": 27580
+  }
+]

@@ -141,6 +141,45 @@ class Atleta(BaseModel):
         )
 
 
+class AtletaDestaque(BaseModel):
+    """Representa um atleta destaque, e possui informações como o apelido, clube e pontuação obtida"""
+
+    def __init__(
+        self,
+        atleta_id: int,
+        apelido: str,
+        posicao: Posicao,
+        preco: int,
+        clube: Clube,
+        escalacoes: int,
+    ) -> None:
+        self.id = atleta_id
+        self.apelido = apelido
+        self.posicao = posicao
+        self.preco = preco
+        self.clube = clube
+        self.escalacoes = escalacoes
+
+    @classmethod
+    def from_dict(
+        cls,
+        data: dict,
+    ) -> "AtletaDestaque":
+        posicao = None
+        for pos in _posicoes.values():
+            if pos.abreviacao == str.lower(data["posicao_abreviacao"]):
+                posicao = pos
+
+        return cls(
+            data["Atleta"]["atleta_id"],
+            data["Atleta"]["apelido"],
+            posicao,
+            data["Atleta"]["preco_editorial"],
+            Clube(data["clube_id"], data["clube_nome"], data["clube"]),
+            data["escalacoes"],
+        )
+
+
 class DestaqueRodada(BaseModel):
     """Destaque Rodada"""
 
@@ -186,8 +225,8 @@ class Liga(BaseModel):
         )
 
 
-class LigaPatrocinador(BaseModel):
-    """Liga Patrocinador"""
+class Patrocinador(BaseModel):
+    """Patrocinador"""
 
     def __init__(self, liga_id: int, nome: str, url_link: str) -> None:
         self.id = liga_id
@@ -195,7 +234,7 @@ class LigaPatrocinador(BaseModel):
         self.url_link = url_link
 
     @classmethod
-    def from_dict(cls, data: dict) -> "LigaPatrocinador":
+    def from_dict(cls, data: dict) -> "Patrocinador":
         return cls(data["liga_id"], data["nome"], data["url_link"])
 
 
