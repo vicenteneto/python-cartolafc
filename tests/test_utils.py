@@ -7,8 +7,8 @@ from cartolafc.util import json_default
 
 
 class ApiAttemptsTest(unittest.TestCase):
-    with open('tests/testdata/liga.json', 'rb') as f:
-        LIGA = f.read().decode('utf8')
+    with open("tests/testdata/liga.json", "rb") as f:
+        LIGA = f.read().decode("utf8")
 
     def test_json_default_datetime(self):
         date = datetime(
