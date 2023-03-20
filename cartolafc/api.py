@@ -153,14 +153,13 @@ class Api(object):
             "Os destaques de pós-rodada só ficam disponíveis com o mercado aberto."
         )
 
-    def time(
-        self,
-        time_id: int = None,
-    ) -> Time:
-        """Obtém um time específico, utilizando o id informado.
+    def time(self, time_id: int, rodada: Optional[int] = 0) -> Time:
+        """Obtém um time específico, baseando-se no nome ou no slug utilizado.
+        Ao menos um dos dois devem ser informado.
 
         Args:
             time_id (int): Id to time que se deseja obter.
+            rodada (int): Número da rodada. Se não for informado, será retornado sempre a última rodada.
 
         Returns:
             Uma instância de cartolafc.Time se o time foi encontrado.
@@ -168,7 +167,11 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
+
         url = f"{self._api_url}/time/id/{time_id}"
+        if rodada:
+            url += f"/{rodada}"
+
         data = self._request(url)
 
         clubes = {
@@ -178,7 +181,7 @@ class Api(object):
 
     def time_parcial(
         self,
-        time_id: int = None,
+        time_id: int,
         parciais: Optional[Dict[int, Atleta]] = None,
     ) -> Time:
         if parciais is None and self.mercado().status.id != MERCADO_FECHADO:
