@@ -51,7 +51,7 @@ class Api(object):
         self._attempts = attempts if attempts > 0 else 1
 
     def clubes(self) -> Dict[int, Clube]:
-        url = "{api_url}/clubes".format(api_url=self._api_url)
+        url = f"{self._api_url}/clubes"
         data = self._request(url)
         return {
             int(clube_id): Clube.from_dict(clube) for clube_id, clube in data.items()
@@ -67,12 +67,12 @@ class Api(object):
             Uma lista de instâncias de cartolafc.Liga, uma para cada liga contento o termo utilizado na busca.
         """
 
-        url = "{api_url}/ligas".format(api_url=self._api_url)
+        url = f"{self._api_url}/ligas"
         data = self._request(url, params=dict(q=query))
         return [Liga.from_dict(liga_info) for liga_info in data]
 
     def ligas_patrocinadores(self) -> Dict[int, LigaPatrocinador]:
-        url = "{api_url}/patrocinadores".format(api_url=self._api_url)
+        url = f"{self._api_url}/patrocinadores"
         data = self._request(url)
         return {
             int(patrocinador_id): LigaPatrocinador.from_dict(patrocinador)
@@ -86,12 +86,12 @@ class Api(object):
             Uma instância de cartolafc.Mercado representando o status do mercado na rodada atual.
         """
 
-        url = "{api_url}/mercado/status".format(api_url=self._api_url)
+        url = f"{self._api_url}/mercado/status"
         data = self._request(url)
         return Mercado.from_dict(data)
 
     def mercado_atletas(self) -> List[Atleta]:
-        url = "{api_url}/atletas/mercado".format(api_url=self._api_url)
+        url = f"{self._api_url}/atletas/mercado"
         data = self._request(url)
         clubes = {
             clube["id"]: Clube.from_dict(clube) for clube in data["clubes"].values()
@@ -109,7 +109,7 @@ class Api(object):
         """
 
         if self.mercado().status.id == MERCADO_FECHADO:
-            url = "{api_url}/atletas/pontuados".format(api_url=self._api_url)
+            url = f"{self._api_url}/atletas/pontuados"
             data = self._request(url)
             clubes = {
                 clube["id"]: Clube.from_dict(clube) for clube in data["clubes"].values()
@@ -127,7 +127,7 @@ class Api(object):
         )
 
     def partidas(self, rodada) -> List[Partida]:
-        url = "{api_url}/partidas/{rodada}".format(api_url=self._api_url, rodada=rodada)
+        url = f"{self._api_url}/partidas/{rodada}"
         data = self._request(url)
         clubes = {
             clube["id"]: Clube.from_dict(clube) for clube in data["clubes"].values()
@@ -141,11 +141,11 @@ class Api(object):
         mercado = self.mercado()
         if mercado.rodada_atual == 1:
             raise CartolaFCError(
-            "Os destaques de pós-rodada só ficam disponíveis após a primeira rodada."
-        )
+                "Os destaques de pós-rodada só ficam disponíveis após a primeira rodada."
+            )
 
         if mercado.status.id == MERCADO_ABERTO:
-            url = "{api_url}/pos-rodada/destaques".format(api_url=self._api_url)
+            url = f"{self._api_url}/pos-rodada/destaques"
             data = self._request(url)
             return DestaqueRodada.from_dict(data)
 
@@ -168,9 +168,7 @@ class Api(object):
         Raises:
             cartolafc.CartolaFCError: Se algum erro aconteceu, como por exemplo: Nenhum time foi encontrado.
         """
-        url = "{api_url}/time/id/{time_id}".format(
-            api_url=self._api_url, time_id=time_id
-        )
+        url = f"{self._api_url}/time/id/{time_id}"
         data = self._request(url)
 
         clubes = {
@@ -201,7 +199,7 @@ class Api(object):
         Returns:
             Uma lista de instâncias de cartolafc.TimeInfo, uma para cada time contento o termo utilizado na busca.
         """
-        url = "{api_url}/times".format(api_url=self._api_url)
+        url = f"{self._api_url}/times"
         data = self._request(url, params=dict(q=query))
         return [TimeInfo.from_dict(time_info) for time_info in data]
 

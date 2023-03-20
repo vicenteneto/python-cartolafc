@@ -32,7 +32,7 @@ class ApiAttemptsTest(unittest.TestCase):
         with requests_mock.mock() as m:
             api = cartolafc.Api(attempts=2)
 
-            url = "{api_url}/mercado/status".format(api_url=api._api_url)
+            url = f"{api._api_url}/mercado/status"
             error_message = "Mensagem de erro"
             m.get(url, status_code=codes.ok, text='{"mensagem": "%s"}' % error_message)
 
@@ -44,7 +44,7 @@ class ApiAttemptsTest(unittest.TestCase):
         with requests_mock.mock() as m:
             api = cartolafc.Api(attempts=2)
 
-            url = "{api_url}/mercado/status".format(api_url=api._api_url)
+            url = f"{api._api_url}/mercado/status"
             error_message = (
                 "Globo.com - Desculpe-nos, nossos servidores estão sobrecarregados."
             )
@@ -97,7 +97,7 @@ class ApiTest(unittest.TestCase):
     def test_clubes(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/clubes".format(api_url=self.api_url)
+            url = f"{self.api_url}/clubes"
             m.get(url, text=self.CLUBES)
             clubes = self.api.clubes()
             clube_flamengo = clubes[262]
@@ -112,7 +112,7 @@ class ApiTest(unittest.TestCase):
     def test_ligas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/ligas".format(api_url=self.api_url)
+            url = f"{self.api_url}/ligas"
             m.get(url, text=self.LIGAS)
             ligas = self.api.ligas(query="premiere")
             primeira_liga = ligas[0]
@@ -129,7 +129,7 @@ class ApiTest(unittest.TestCase):
     def test_mercado(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
             status = self.api.mercado()
 
@@ -146,7 +146,7 @@ class ApiTest(unittest.TestCase):
     def test_mercado_atletas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/atletas/mercado".format(api_url=self.api_url)
+            url = f"{self.api_url}/atletas/mercado"
             m.get(url, text=self.MERCADO_ATLETAS)
             mercado = self.api.mercado_atletas()
             primeiro_atleta = mercado[0]
@@ -170,7 +170,7 @@ class ApiTest(unittest.TestCase):
     def test_parciais_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
             # Act and Assert
@@ -183,10 +183,10 @@ class ApiTest(unittest.TestCase):
     def test_parciais_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.MERCADO_STATUS_FECHADO)
 
-            url = "{api_url}/atletas/pontuados".format(api_url=self.api_url)
+            url = f"{self.api_url}/atletas/pontuados"
             m.get(url, text=self.PARCIAIS)
 
             # Act
@@ -211,7 +211,7 @@ class ApiTest(unittest.TestCase):
     def test_partidas(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/partidas/{rodada}".format(api_url=self.api_url, rodada=1)
+            url = f"{self.api_url}/partidas/1"
             m.get(url, text=self.PARTIDAS)
             partidas = self.api.partidas(1)
             primeira_partida = partidas[0]
@@ -229,7 +229,7 @@ class ApiTest(unittest.TestCase):
     def test_patrocinadores(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/patrocinadores".format(api_url=self.api_url)
+            url = f"{self.api_url}/patrocinadores"
             m.get(url, text=self.LIGAS_PATROCINADORES)
             ligas = self.api.ligas_patrocinadores()
             liga_brahma = ligas[62]
@@ -244,10 +244,10 @@ class ApiTest(unittest.TestCase):
     def test_pos_rodada_destaques_com_mercado_aberto(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
-            url = "{api_url}/pos-rodada/destaques".format(api_url=self.api_url)
+            url = f"{self.api_url}/pos-rodada/destaques"
             m.get(url, text=self.POS_RODADA_DESTAQUES)
             destaque_rodada = self.api.pos_rodada_destaques()
 
@@ -265,7 +265,7 @@ class ApiTest(unittest.TestCase):
     def test_pos_rodada_destaques_com_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.MERCADO_STATUS_FECHADO)
 
             # Act and Assert
@@ -275,7 +275,7 @@ class ApiTest(unittest.TestCase):
     def test_time_com_id(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/time/id/{id}".format(api_url=self.api_url, id=471815)
+            url = f"{self.api_url}/time/id/471815"
             m.get(url, text=self.TIME)
             time = self.api.time(time_id=471815)
             primeiro_atleta = time.atletas[0]
@@ -307,7 +307,7 @@ class ApiTest(unittest.TestCase):
     def test_time_parcial_mercado_aberto(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.MERCADO_STATUS_ABERTO)
 
             # Act and Assert
@@ -320,9 +320,9 @@ class ApiTest(unittest.TestCase):
     def test_time_parcial_mercado_fechado(self):
         # Arrange
         with requests_mock.mock() as m:
-            mercado_url = "{api_url}/mercado/status".format(api_url=self.api_url)
-            parciais_url = "{api_url}/atletas/pontuados".format(api_url=self.api_url)
-            time_url = "{api_url}/time/id/471815".format(api_url=self.api_url)
+            mercado_url = f"{self.api_url}/mercado/status"
+            parciais_url = f"{self.api_url}/atletas/pontuados"
+            time_url = f"{self.api_url}/time/id/471815"
 
             m.get(mercado_url, text=self.MERCADO_STATUS_FECHADO)
             m.get(parciais_url, text=self.PARCIAIS)
@@ -360,7 +360,7 @@ class ApiTest(unittest.TestCase):
         # Arrange
         with requests_mock.mock() as m:
             error_message = "Time ou parciais não são válidos."
-            time_url = "{api_url}/time/id/471815".format(api_url=self.api_url)
+            time_url = f"{self.api_url}/time/id/471815"
 
             m.get(time_url, text=self.TIME)
 
@@ -371,7 +371,7 @@ class ApiTest(unittest.TestCase):
         # Arrange
         with requests_mock.mock() as m:
             error_message = "Time ou parciais não são válidos."
-            time_url = "{api_url}/time/id/471815".format(api_url=self.api_url)
+            time_url = f"{self.api_url}/time/id/471815"
 
             m.get(time_url, text=self.TIME)
 
@@ -381,7 +381,7 @@ class ApiTest(unittest.TestCase):
     def test_times(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = "{api_url}/times".format(api_url=self.api_url)
+            url = f"{self.api_url}/times"
             m.get(url, text=self.TIMES)
             times = self.api.times(query="Faly")
             primeiro_time = times[0]
@@ -398,7 +398,7 @@ class ApiTest(unittest.TestCase):
     def test_servidores_sobrecarregados(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url)
 
             # Act and Assert
@@ -408,7 +408,7 @@ class ApiTest(unittest.TestCase):
     def test_game_over(self):
         # Arrange
         with requests_mock.mock() as m:
-            url = "{api_url}/mercado/status".format(api_url=self.api_url)
+            url = f"{self.api_url}/mercado/status"
             m.get(url, text=self.GAME_OVER)
 
             # Act and Assert
