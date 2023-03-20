@@ -159,7 +159,8 @@ class ApiTest(unittest.TestCase):
             self.assertEqual(primeiro_atleta.pontos, 0)
             self.assertEqual(
                 # TODO: Teste com scouts
-                primeiro_atleta.scout, {}
+                primeiro_atleta.scout,
+                {},
             )
             self.assertEqual(primeiro_atleta.posicao, _posicoes[2])
             self.assertIsInstance(primeiro_atleta.clube, Clube)
@@ -241,7 +242,9 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(liga_gato_mestre, LigaPatrocinador)
             self.assertEqual(liga_gato_mestre.id, 62)
             self.assertEqual(liga_gato_mestre.nome, "Liga Gato Mestre")
-            self.assertEqual(liga_gato_mestre.url_link, "https://gatomestre.ge.globo.com/")
+            self.assertEqual(
+                liga_gato_mestre.url_link, "https://gatomestre.ge.globo.com/"
+            )
 
     def test_pos_rodada_destaques_com_mercado_aberto(self):
         # Arrange and Act
