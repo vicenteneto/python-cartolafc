@@ -125,7 +125,7 @@ class Atleta(BaseModel):
     ) -> "Atleta":
         atleta_id = atleta_id if atleta_id else data["atleta_id"]
         pontos = data["pontos_num"] if "pontos_num" in data else data["pontuacao"]
-        clube = clubes[data["clube_id"]]
+        clube = "Sem Clube" if data["clube_id"] == 1 else clubes[data["clube_id"]]
         return cls(
             atleta_id,
             data["apelido"],
