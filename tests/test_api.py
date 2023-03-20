@@ -280,8 +280,12 @@ class ApiTest(unittest.TestCase):
     def test_time_com_id(self):
         # Arrange and Act
         with requests_mock.mock() as m:
-            url = f"{self.api_url}/time/id/471815"
-            m.get(url, text=self.TIME)
+            time_url = f"{self.api_url}/time/id/471815"
+            clubes_url = f"{self.api_url}/clubes"
+
+            m.get(time_url, text=self.TIME)
+            m.get(clubes_url, text=self.CLUBES)
+
             time = self.api.time(time_id=471815)
             primeiro_atleta = time.atletas[0] if len(time.atletas) else None
 
@@ -333,10 +337,12 @@ class ApiTest(unittest.TestCase):
             mercado_url = f"{self.api_url}/mercado/status"
             parciais_url = f"{self.api_url}/atletas/pontuados"
             time_url = f"{self.api_url}/time/id/471815"
+            clubes_url = f"{self.api_url}/clubes"
 
             m.get(mercado_url, text=self.MERCADO_STATUS_FECHADO)
             m.get(parciais_url, text=self.PARCIAIS)
             m.get(time_url, text=self.TIME)
+            m.get(clubes_url, text=self.CLUBES)
 
             time = self.api.time_parcial(471815)
             primeiro_atleta = time.atletas[0] if len(time.atletas) else None
@@ -376,8 +382,10 @@ class ApiTest(unittest.TestCase):
         with requests_mock.mock() as m:
             error_message = "Time ou parciais não são válidos."
             time_url = f"{self.api_url}/time/id/471815"
+            clubes_url = f"{self.api_url}/clubes"
 
             m.get(time_url, text=self.TIME)
+            m.get(clubes_url, text=self.CLUBES)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
                 self.api.time_parcial(time_id=471815, parciais=dict(key="valor"))
@@ -387,8 +395,10 @@ class ApiTest(unittest.TestCase):
         with requests_mock.mock() as m:
             error_message = "Time ou parciais não são válidos."
             time_url = f"{self.api_url}/time/id/471815"
+            clubes_url = f"{self.api_url}/clubes"
 
             m.get(time_url, text=self.TIME)
+            m.get(clubes_url, text=self.CLUBES)
 
             with self.assertRaisesRegex(cartolafc.CartolaFCError, error_message):
                 self.api.time_parcial(time_id=471815, parciais={1: "valor"})

@@ -173,12 +173,7 @@ class Api(object):
             url += f"/{rodada}"
 
         data = self._request(url)
-
-        # TODO: Revisar "time" depois que a primeira rodada fechar
-        # clubes = {
-        #     clube["id"]: Clube.from_dict(clube) for clube in data["clubes"].values()
-        # }
-        return Time.from_dict(data, clubes={}, capitao=data["capitao_id"])
+        return Time.from_dict(data, clubes=self.clubes(), capitao=data["capitao_id"])
 
     def time_parcial(
         self,
