@@ -1,50 +1,15 @@
 [
   {
-    "time_id": 4626963,
-    "nome": "Falysson29",
-    "nome_cartola": "Alysson",
-    "slug": "falysson29",
-    "facebook_id": 719704144717624,
-    "url_escudo_png": "https://s2.glbimg.com/H_qmAi3pPNBpxoBhj3z2H49Bl-o=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_60/escudo/94/07/10/006958859420170522010710",
-    "url_escudo_svg": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_60/escudo/94/07/10/006958859420170522010710",
-    "url_escudo_placeholder_png": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png",
-    "foto_perfil": "https://graph.facebook.com/v2.2/719704144717624/picture?width=100&height=100",
-    "assinante": false
-  },
-  {
-    "time_id": 2603386,
-    "nome": "Falyu F. V",
-    "nome_cartola": "Fernando falyu",
-    "slug": "falyu-f-v",
-    "facebook_id": 236419976729726,
-    "url_escudo_png": "https://s2.glbimg.com/v-awNLBKeQA-N0149yaeOvZhd2s=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_51/escudo/30/59/24/006733863020170510115924",
-    "url_escudo_svg": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_51/escudo/30/59/24/006733863020170510115924",
-    "url_escudo_placeholder_png": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png",
-    "foto_perfil": "https://graph.facebook.com/v2.2/236419976729726/picture?width=100&height=100",
-    "assinante": false
-  },
-  {
-    "time_id": 1206363,
-    "nome": "Falydos f.c",
-    "nome_cartola": "William Souza",
-    "slug": "falydos-f-c",
-    "facebook_id": null,
-    "url_escudo_png": "https://s2.glbimg.com/VEmiIJvbg1_3N45mOd9USerX3S0=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_45/escudo/41/59/36/005685214120170426195936",
-    "url_escudo_svg": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_45/escudo/41/59/36/005685214120170426195936",
-    "url_escudo_placeholder_png": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png",
-    "foto_perfil": "https://cartolafc.globo.com/static/img/placeholder_perfil.png",
-    "assinante": false
-  },
-  {
-    "time_id": 471815,
-    "nome": "Falydos FC",
     "nome_cartola": "Vicente Neto",
     "slug": "falydos-fc",
+    "url_escudo_png": "https://s2.glbimg.com/0BH9mt4B0IdBJ_aAfmQ2dfH7O5E=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_201/escudo/02/38/23/0087d7b2c9-e8cf-48a7-baa3-ee2340a2170220220328013823",
+    "url_escudo_svg": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_201/escudo/02/38/23/0087d7b2c9-e8cf-48a7-baa3-ee2340a2170220220328013823",
+    "foto_perfil": "https://graph.facebook.com/v10.0/100000083906892/picture?width=100&height=100&access_token=289255557788943|p1h0FLxpyM0z4_NnY8WK5RM8k-A",
+    "nome": "Falydos FC",
     "facebook_id": 100000083906892,
-    "url_escudo_png": "https://s2.glbimg.com/vpIYgfiC6morob18b3PrEA6tmD4=/https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_48/escudo/29/43/28/004692352920170505144328",
-    "url_escudo_svg": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_48/escudo/29/43/28/004692352920170505144328",
-    "url_escudo_placeholder_png": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/placeholder/escudo.png",
-    "foto_perfil": "https://graph.facebook.com/v2.2/100000083906892/picture?width=100&height=100",
-    "assinante": true
+    "time_id": 471815,
+    "assinante": true,
+    "lgpd_removido": false,
+    "lgpd_quarentena": false
   }
 ]

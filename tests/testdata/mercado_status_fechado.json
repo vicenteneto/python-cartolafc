@@ -1,26 +1,36 @@
 {
-  "rodada_atual": 3,
+  "rodada_atual": 2,
   "status_mercado": 2,
   "esquema_default_id": 4,
   "cartoleta_inicial": 100,
-  "max_ligas_free": 2,
-  "max_ligas_pro": 5,
+  "max_ligas_free": 1,
+  "max_ligas_pro": 10,
   "max_ligas_matamata_free": 5,
-  "max_ligas_matamata_pro": 5,
+  "max_criar_ligas_matamata_free": 1,
+  "max_ligas_matamata_pro": 10,
   "max_ligas_patrocinadas_free": 2,
   "max_ligas_patrocinadas_pro_num": 2,
   "game_over": false,
-  "temporada": 2017,
+  "temporada": 2023,
   "reativar": true,
-  "times_escalados": 3601523,
+  "exibe_sorteio_pro": false,
   "fechamento": {
-    "dia": 27,
-    "mes": 5,
-    "ano": 2017,
-    "hora": 14,
-    "minuto": 0,
-    "timestamp": 1495904400
+      "dia": 15,
+      "mes": 4,
+      "ano": 2023,
+      "hora": 23,
+      "minuto": 59,
+      "timestamp": 1681613940
   },
+  "limites_competicao": {
+      "total_confronto_pro": 10,
+      "total_confronto_free": 3,
+      "criacao_confronto_pro": 10,
+      "criacao_confronto_free": 1
+  },
+  "times_escalados": 194879,
   "mercado_pos_rodada": false,
-  "aviso": ""
+  "novo_mes_ranking": false,
+  "degustacao_gatomestre": false,
+  "nome_rodada": "Rodada 1"
 }

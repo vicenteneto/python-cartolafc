@@ -120,10 +120,10 @@ class ApiTest(unittest.TestCase):
             # Assert
             self.assertIsInstance(ligas, list)
             self.assertIsInstance(primeira_liga, Liga)
-            self.assertEqual(primeira_liga.id, 36741)
-            self.assertEqual(primeira_liga.nome, "PREMIERE_LIGA_ENTEL")
-            self.assertEqual(primeira_liga.slug, "premiere-liga-entel")
-            self.assertEqual(primeira_liga.descricao, "“Vale tudo, só não vale...”")
+            self.assertEqual(primeira_liga.id, 2362309)
+            self.assertEqual(primeira_liga.nome, "Time Cartola Oficial")
+            self.assertEqual(primeira_liga.slug, "time-cartola-oficial")
+            self.assertEqual(primeira_liga.descricao, "Valendo um card no board")
             self.assertIsNone(primeira_liga.times)
 
     def test_mercado(self):
@@ -134,7 +134,7 @@ class ApiTest(unittest.TestCase):
             status = self.api.mercado()
 
             # Assert
-            fechamento = datetime(2017, 5, 27, 14, 0)
+            fechamento = datetime(2023, 4, 15, 23, 59)
 
             self.assertIsInstance(status, Mercado)
             self.assertEqual(status.rodada_atual, 3)
@@ -154,18 +154,19 @@ class ApiTest(unittest.TestCase):
             # Assert
             self.assertIsInstance(mercado, list)
             self.assertIsInstance(primeiro_atleta, Atleta)
-            self.assertEqual(primeiro_atleta.id, 86935)
-            self.assertEqual(primeiro_atleta.apelido, "Rodrigo")
+            self.assertEqual(primeiro_atleta.id, 63013)
+            self.assertEqual(primeiro_atleta.apelido, "Marcos Rocha")
             self.assertEqual(primeiro_atleta.pontos, 0)
             self.assertEqual(
-                primeiro_atleta.scout, {"CA": 1, "FC": 3, "FS": 1, "PE": 2, "RB": 2}
+                # TODO: Teste com scouts
+                primeiro_atleta.scout, {}
             )
-            self.assertEqual(primeiro_atleta.posicao, _posicoes[4])
+            self.assertEqual(primeiro_atleta.posicao, _posicoes[2])
             self.assertIsInstance(primeiro_atleta.clube, Clube)
-            self.assertEqual(primeiro_atleta.clube.id, 292)
-            self.assertEqual(primeiro_atleta.clube.nome, "Sport")
-            self.assertEqual(primeiro_atleta.clube.abreviacao, "SPO")
-            self.assertEqual(primeiro_atleta.status, _atleta_status[6])
+            self.assertEqual(primeiro_atleta.clube.id, 275)
+            self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
+            self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
+            self.assertEqual(primeiro_atleta.status, _atleta_status[7])
 
     def test_parciais_mercado_aberto(self):
         # Arrange
@@ -220,11 +221,12 @@ class ApiTest(unittest.TestCase):
             self.assertIsInstance(partidas, list)
             self.assertIsInstance(primeira_partida, Partida)
             self.assertIsInstance(primeira_partida.data, datetime)
-            self.assertEqual(primeira_partida.local, "Maracanã")
+            # TODO: Teste partidas com local e placar
+            # self.assertEqual(primeira_partida.local, "Maracanã")
             self.assertEqual(primeira_partida.clube_casa.nome, "Flamengo")
-            self.assertEqual(primeira_partida.placar_casa, 1)
-            self.assertEqual(primeira_partida.clube_visitante.nome, "Atlético-MG")
-            self.assertEqual(primeira_partida.placar_visitante, 1)
+            # self.assertEqual(primeira_partida.placar_casa, 1)
+            self.assertEqual(primeira_partida.clube_visitante.nome, "Coritiba")
+            # self.assertEqual(primeira_partida.placar_visitante, 1)
 
     def test_patrocinadores(self):
         # Arrange and Act
@@ -232,14 +234,14 @@ class ApiTest(unittest.TestCase):
             url = f"{self.api_url}/patrocinadores"
             m.get(url, text=self.LIGAS_PATROCINADORES)
             ligas = self.api.ligas_patrocinadores()
-            liga_brahma = ligas[62]
+            liga_gato_mestre = ligas[62]
 
             # Assert
             self.assertIsInstance(ligas, dict)
-            self.assertIsInstance(liga_brahma, LigaPatrocinador)
-            self.assertEqual(liga_brahma.id, 62)
-            self.assertEqual(liga_brahma.nome, "Cerveja Brahma")
-            self.assertEqual(liga_brahma.url_link, "http://brahma.com.br")
+            self.assertIsInstance(liga_gato_mestre, LigaPatrocinador)
+            self.assertEqual(liga_gato_mestre.id, 62)
+            self.assertEqual(liga_gato_mestre.nome, "Liga Gato Mestre")
+            self.assertEqual(liga_gato_mestre.url_link, "https://gatomestre.ge.globo.com/")
 
     def test_pos_rodada_destaques_com_mercado_aberto(self):
         # Arrange and Act
@@ -278,25 +280,30 @@ class ApiTest(unittest.TestCase):
             url = f"{self.api_url}/time/id/471815"
             m.get(url, text=self.TIME)
             time = self.api.time(time_id=471815)
-            primeiro_atleta = time.atletas[0]
+            primeiro_atleta = time.atletas[0] if len(time.atletas) else None
 
             # Assert
             self.assertIsInstance(time, Time)
-            self.assertEqual(time.patrimonio, 0)
+            self.assertEqual(time.patrimonio, 100)
             self.assertEqual(time.valor_time, 0)
-            self.assertEqual(time.ultima_pontuacao, 70.02978515625)
+            # TODO: Revisar depois que a primeira rodada fechar
+            # self.assertEqual(time.ultima_pontuacao, 70.02978515625)
             self.assertIsInstance(time.atletas, list)
-            self.assertIsInstance(primeiro_atleta, Atleta)
-            self.assertEqual(primeiro_atleta.id, 38140)
-            self.assertEqual(primeiro_atleta.apelido, "Fernando Prass")
-            self.assertEqual(primeiro_atleta.pontos, 7.5)
-            self.assertEqual(primeiro_atleta.scout, {"DD": 3, "FS": 1, "GS": 1})
-            self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
-            self.assertIsInstance(primeiro_atleta.clube, Clube)
-            self.assertEqual(primeiro_atleta.clube.id, 275)
-            self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
-            self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
-            self.assertEqual(primeiro_atleta.status, _atleta_status[7])
+
+            # TODO: Revisar depois que a primeira rodada fechar
+            if primeiro_atleta:
+                self.assertIsInstance(primeiro_atleta, Atleta)
+                self.assertEqual(primeiro_atleta.id, 38140)
+                self.assertEqual(primeiro_atleta.apelido, "Fernando Prass")
+                self.assertEqual(primeiro_atleta.pontos, 7.5)
+                self.assertEqual(primeiro_atleta.scout, {"DD": 3, "FS": 1, "GS": 1})
+                self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
+                self.assertIsInstance(primeiro_atleta.clube, Clube)
+                self.assertEqual(primeiro_atleta.clube.id, 275)
+                self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
+                self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
+                self.assertEqual(primeiro_atleta.status, _atleta_status[7])
+
             self.assertIsInstance(time.info, TimeInfo)
             self.assertEqual(time.info.id, 471815)
             self.assertEqual(time.info.nome, "Falydos FC")
@@ -329,26 +336,31 @@ class ApiTest(unittest.TestCase):
             m.get(time_url, text=self.TIME)
 
             time = self.api.time_parcial(471815)
-            primeiro_atleta = time.atletas[0]
+            primeiro_atleta = time.atletas[0] if len(time.atletas) else None
 
             # Assert
             self.assertIsInstance(time, Time)
-            self.assertEqual(time.patrimonio, 0)
+            self.assertEqual(time.patrimonio, 100)
             self.assertEqual(time.valor_time, 0)
-            self.assertEqual(time.ultima_pontuacao, 70.02978515625)
-            self.assertEqual(time.pontos, 13.299999999999999)
+            # TODO: Revisar depois que a primeira rodada fechar
+            # self.assertEqual(time.ultima_pontuacao, 70.02978515625)
+            # self.assertEqual(time.pontos, 13.299999999999999)
             self.assertIsInstance(time.atletas, list)
-            self.assertIsInstance(primeiro_atleta, Atleta)
-            self.assertEqual(primeiro_atleta.id, 38140)
-            self.assertEqual(primeiro_atleta.apelido, "Fernando Prass")
-            self.assertEqual(primeiro_atleta.pontos, 0)
-            self.assertEqual(primeiro_atleta.scout, {})
-            self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
-            self.assertIsInstance(primeiro_atleta.clube, Clube)
-            self.assertEqual(primeiro_atleta.clube.id, 275)
-            self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
-            self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
-            self.assertEqual(primeiro_atleta.status, _atleta_status[7])
+
+            # TODO: Revisar depois que a primeira rodada fechar
+            if primeiro_atleta:
+                self.assertIsInstance(primeiro_atleta, Atleta)
+                self.assertEqual(primeiro_atleta.id, 38140)
+                self.assertEqual(primeiro_atleta.apelido, "Fernando Prass")
+                self.assertEqual(primeiro_atleta.pontos, 0)
+                self.assertEqual(primeiro_atleta.scout, {})
+                self.assertEqual(primeiro_atleta.posicao, _posicoes[1])
+                self.assertIsInstance(primeiro_atleta.clube, Clube)
+                self.assertEqual(primeiro_atleta.clube.id, 275)
+                self.assertEqual(primeiro_atleta.clube.nome, "Palmeiras")
+                self.assertEqual(primeiro_atleta.clube.abreviacao, "PAL")
+                self.assertEqual(primeiro_atleta.status, _atleta_status[7])
+
             self.assertIsInstance(time.info, TimeInfo)
             self.assertEqual(time.info.id, 471815)
             self.assertEqual(time.info.nome, "Falydos FC")
@@ -389,11 +401,11 @@ class ApiTest(unittest.TestCase):
             # Assert
             self.assertIsInstance(times, list)
             self.assertIsInstance(primeiro_time, TimeInfo)
-            self.assertEqual(primeiro_time.id, 4626963)
-            self.assertEqual(primeiro_time.nome, "Falysson29")
-            self.assertEqual(primeiro_time.nome_cartola, "Alysson")
-            self.assertEqual(primeiro_time.slug, "falysson29")
-            self.assertFalse(primeiro_time.assinante)
+            self.assertEqual(primeiro_time.id, 471815)
+            self.assertEqual(primeiro_time.nome, "Falydos FC")
+            self.assertEqual(primeiro_time.nome_cartola, "Vicente Neto")
+            self.assertEqual(primeiro_time.slug, "falydos-fc")
+            self.assertTrue(primeiro_time.assinante)
 
     def test_servidores_sobrecarregados(self):
         # Arrange

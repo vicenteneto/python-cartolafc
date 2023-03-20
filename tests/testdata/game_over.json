@@ -4,39 +4,33 @@
   "esquema_default_id": 4,
   "cartoleta_inicial": 100,
   "max_ligas_free": 1,
-  "max_ligas_pro": 7,
+  "max_ligas_pro": 10,
   "max_ligas_matamata_free": 5,
-  "max_ligas_matamata_pro": 7,
+  "max_criar_ligas_matamata_free": 1,
+  "max_ligas_matamata_pro": 10,
   "max_ligas_patrocinadas_free": 2,
   "max_ligas_patrocinadas_pro_num": 2,
   "game_over": true,
-  "temporada": 2019,
-  "reativar": false,
-  "exibe_sorteio_pro": true,
-  "times_escalados": 2940249,
+  "temporada": 2023,
+  "reativar": true,
+  "exibe_sorteio_pro": false,
   "fechamento": {
-    "dia": 8,
-    "mes": 12,
-    "ano": 2019,
-    "hora": 14,
-    "minuto": 0,
-    "timestamp": 1575824400
-  },
-  "mercado_pos_rodada": false,
-  "aviso": "",
-  "aviso_url": "",
-  "sorteio_pro": {
-    "titulo": "Sorteio Brasil x Alemanha!",
-    "texto": "Confira seu número da sorte:",
-    "url_imagem_svg": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/sorteio-pro/sorteio-pro.svg",
-    "url_imagem_png": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/default/sorteio-pro/sorteio-pro-gde.png",
-    "texto_link": "Saiba como será o sorteio",
-    "url_link": "https://globoesporte.globo.com/cartola-fc/pro/noticia/promocao-brasil-x-alemanha-saiba-como-obter-seu-numero-da-sorte.ghtml"
+      "dia": 15,
+      "mes": 4,
+      "ano": 2023,
+      "hora": 23,
+      "minuto": 59,
+      "timestamp": 1681613940
   },
   "limites_competicao": {
-    "total_confronto_pro": 7,
-    "total_confronto_free": 3,
-    "criacao_confronto_pro": 7,
-    "criacao_confronto_free": 1
-  }
+      "total_confronto_pro": 10,
+      "total_confronto_free": 3,
+      "criacao_confronto_pro": 10,
+      "criacao_confronto_free": 1
+  },
+  "times_escalados": 194879,
+  "mercado_pos_rodada": false,
+  "novo_mes_ranking": false,
+  "degustacao_gatomestre": false,
+  "nome_rodada": "Rodada 1"
 }

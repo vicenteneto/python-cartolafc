@@ -2,13 +2,13 @@ import json
 import unittest
 from datetime import datetime
 
-from cartolafc.models import Liga
+from cartolafc.models import Mercado
 from cartolafc.util import json_default
 
 
 class ApiAttemptsTest(unittest.TestCase):
-    with open("tests/testdata/liga.json", "rb") as f:
-        LIGA = f.read().decode("utf8")
+    with open("tests/testdata/mercado_status_aberto.json", "rb") as f:
+        MERCADO = f.read().decode("utf8")
 
     def test_json_default_datetime(self):
         date = datetime(
@@ -24,6 +24,6 @@ class ApiAttemptsTest(unittest.TestCase):
         assert isinstance(result, dict)
 
     def test_json_default_cartolafc_model(self):
-        liga = Liga.from_dict(json.loads(self.LIGA))
-        result = json_default(liga)
+        mercado = Mercado.from_dict(json.loads(self.MERCADO))
+        result = json_default(mercado)
         assert isinstance(result, dict)
