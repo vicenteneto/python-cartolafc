@@ -315,7 +315,7 @@ class ApiTest(unittest.TestCase):
                 cartolafc.CartolaFCError,
                 "As pontuações parciais só ficam disponíveis com o mercado fechado.",
             ):
-                self.api.time_parcial(time_id=471815)
+                self.api.time_parcial(471815)
 
     def test_time_parcial_mercado_fechado(self):
         # Arrange
@@ -328,7 +328,7 @@ class ApiTest(unittest.TestCase):
             m.get(parciais_url, text=self.PARCIAIS)
             m.get(time_url, text=self.TIME)
 
-            time = self.api.time_parcial(time_id=471815)
+            time = self.api.time_parcial(471815)
             primeiro_atleta = time.atletas[0]
 
             # Assert
