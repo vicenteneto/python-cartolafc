@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
-from .constants import MERCADO_ABERTO, MERCADO_FECHADO
+from .constants import MERCADO_ABERTO, MERCADO_FECHADO, MULTIPLICADOR_CAPITAO
 from .errors import CartolaFCError, CartolaFCOverloadError
 from .models import (
     Atleta,
@@ -247,7 +247,7 @@ class Api(object):
             time.jogados += 1 if tem_parcial else 0
 
             if atleta.is_capitao:
-                atleta.pontos *= 2
+                atleta.pontos *= MULTIPLICADOR_CAPITAO
 
             time.pontos += atleta.pontos
 
