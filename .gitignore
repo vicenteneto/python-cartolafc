@@ -1,28 +1,61 @@
-# Byte-compiled / optimized / DLL files
+# ---------------------------
+#  Core Python artefacts
+# ---------------------------
 __pycache__/
 *.py[cod]
+*.pyo
 
+# Compiled C extensions
+*.so
+
+# ---------------------------
+#  Virtual environments
+# ---------------------------
+.venv/
+.env/
+venv/
+
+# ---------------------------
+#  Packaging / build outputs
+# ---------------------------
+# Hatch / build backends
+.hatch/
+dist/
+build/
+wheelhouse/
+
+# Setuptools egg-info
+*.egg-info/
+.eggs/
+
+# ---------------------------
+#  Testing & lint caches
+# ---------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ---------------------------
+#  IDE & editor settings
+# ---------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS & system files
 .DS_Store
 *~
-.sass-cache
 
-# PyCharm
-.idea/
+# ---------------------------
+#  Misc
+# ---------------------------
+# dotenv / direnv env files (user‑specific secrets)
+.envrc
+*.env
 
-# VirtualEnv dir
-.venv/
-
-# Coverage
-.coverage
-cover/
-
-# PyPi
-Python_CartolaFC.egg-info/
-build/
-dist/
-
-# Tox
-.tox/
-
-# Pytest
-.pytest_cache/
+# Logs
+*.log
